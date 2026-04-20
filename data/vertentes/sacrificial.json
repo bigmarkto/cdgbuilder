@@ -1,0 +1,38 @@
+{
+  "id": "sacrificial",
+  "name": "Sacrificial",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente do Preço. Vertente da troca: tudo tem preço, e o preço é sempre algo real. Não Energia genérica — pedaços reais do conjurador. Corpo (HP permanente, membros, sentidos), Mente (memórias, conhecimentos, proficiências) ou Espírito (vínculos emocionais, traços de personalidade, fragmentos da alma). O que você dá, não volta.",
+  "governingAttributes": ["CON", "ENG", "FOC"],
+  "maxRankNormal": 4,
+  "identity": "Pactos, trocas, perda permanente",
+  "tags": ["sacrificio", "pacto"],
+  "extraRules": [
+    {
+      "id": "pagamento-alternativo",
+      "name": "Pagamento Alternativo",
+      "description": "Em vez de Energia Cósmica, pode pagar com Sacrifício Real.",
+      "options": [
+        { "id": "corpo", "name": "Corpo", "description": "5 HP permanentes = 1 ponto de custo. Ou: um dedo, um olho, mobilidade de um membro." },
+        { "id": "mente", "name": "Mente", "description": "1 proficiência (perde 1 Rank permanente) = 1 ponto. Ou: uma memória significativa." },
+        { "id": "espirito", "name": "Espírito", "description": "1 vínculo emocional (laço com NPC/aliado se desfaz) = 1 ponto. Ou: um traço de personalidade." }
+      ]
+    },
+    {
+      "id": "pactos",
+      "name": "Pactos",
+      "description": "Pode firmar pacto com entidade. Recebe poder contínuo em troca de serviço/restrição. Pactos são negociados com o Mestre. Quebrar um pacto tem consequência CATASTRÓFICA."
+    },
+    {
+      "id": "sem-teto-pratico",
+      "name": "Sem Teto Prático",
+      "description": "O limite da Sacrificial é o que você está disposto a perder. Um sacrifício grande o bastante pode produzir efeitos de qualquer Intensidade. Teoricamente, sacrificar a VIDA produz o efeito mais poderoso possível (definido pelo Mestre)."
+    },
+    {
+      "id": "marca-do-preco",
+      "name": "Marca do Preço",
+      "description": "Cada sacrifício deixa marca visível. Jogadores e NPCs podem VER o que foi dado."
+    }
+  ],
+  "conjurations": []
+}

@@ -1,0 +1,526 @@
+{
+  "id": "proficiencias",
+  "name": "Proficiências e Sub-Proficiências",
+  "source": "CDG_Livro_Core.md + CDG_Criacao_v3.md + CDG_SubProficiencias.md",
+  "description": "Proficiências básicas definem o que o personagem SABE fazer. Sub-Proficiências definem em que ele é EXCEPCIONAL.",
+  "attributes": ["CON", "POT", "AGI", "PER", "INT", "ENG", "RES", "FOC", "PRE"],
+  "attributeGroups": {
+    "CORPO": ["CON", "POT", "AGI"],
+    "MENTE": ["PER", "INT", "ENG"],
+    "ESPIRITO": ["RES", "FOC", "PRE"]
+  },
+  "ranks": [
+    { "id": "nenhum", "rank": 0, "name": "Nenhum", "bonus": -4, "description": "Nunca treinou. Tenta no escuro." },
+    { "id": "assertivo", "rank": 1, "name": "Assertivo", "bonus": 0, "description": "Sabe o básico. Não atrapalha." },
+    { "id": "aprendiz", "rank": 2, "name": "Aprendiz", "bonus": 2, "description": "Treino formal. Competente." },
+    { "id": "treinado", "rank": 3, "name": "Treinado", "bonus": 4, "description": "Experiência real. Confiável." },
+    { "id": "profissional", "rank": 4, "name": "Profissional", "bonus": 6, "description": "Vive disso. Poucos questionam." },
+    { "id": "expert", "rank": 5, "name": "Expert", "bonus": 8, "description": "Referência na área. Ensinam outros." },
+    { "id": "mestre", "rank": 6, "name": "Mestre", "bonus": 10, "description": "O melhor que existe. Lendário." }
+  ],
+  "testFormula": "d20 + Atributo + BônusRank vs DT",
+  "noProficiencyRule": "Sem proficiência: -4 no teste; Desvantagem se complexo.",
+  "initialPoints": 12,
+  "maxRankAtCreation": 2,
+  "maxRankFormula": "nível/2 arredondado para cima",
+  "canonicalAttributeMap": {
+    "POT": ["luta-armada", "arremesso", "luta-desarmada", "escalada", "forca-bruta-base"],
+    "AGI": ["atirar", "furtividade", "reflexos", "prestidigitacao", "acrobacia"],
+    "CON": ["natacao", "fortitude", "vigor", "defesa"],
+    "PER": ["rastreamento", "cozinha", "empatia", "navegacao", "investigacao"],
+    "INT": ["alquimia", "feiticaria", "natureza-base", "historia", "linguistica", "medicina"],
+    "ENG": ["engenharia", "forja", "mineracao", "artesanato", "maquinario"],
+    "RES": ["sobrevivencia", "temor", "vontade", "fe"],
+    "FOC": ["ocultismo", "concentracao", "meditacao", "disciplina", "sobrenatural"],
+    "PRE": ["persuasao", "intimidacao", "negociacao", "atuacao", "lideranca", "provocacao"]
+  },
+  "canonicalSubProficiencyGroups": {
+    "combate": ["esgrima", "machados", "hastes", "armas-de-fogo", "arcos-e-bestas", "escudos-e-protecoes", "artes-marciais", "assassinato"],
+    "crafting": ["armas-craft", "armaduras-craft", "venenos", "explosivos", "arquitetura", "tecnologia"],
+    "magia": ["feitica", "dogmatica", "sacrificial", "primal-sub", "tecnomagia-sub", "braseira", "ancianica", "alem", "abissal", "devocao", "exorcismo-sub"]
+  },
+  "categories": [
+    {
+      "id": "combate",
+      "name": "Combate",
+      "count": 11,
+      "proficiencyIds": ["luta-armada", "atirar", "arremesso", "defesa", "luta-desarmada", "furtividade", "reflexos", "tatica", "atletismo", "acrobacia", "prestidigitacao"]
+    },
+    {
+      "id": "crafting",
+      "name": "Crafting",
+      "count": 8,
+      "proficiencyIds": ["forja", "carpintaria", "alquimia", "costura", "engenharia", "cozinha", "mineracao", "joalheria"]
+    },
+    {
+      "id": "sobrevivencia",
+      "name": "Sobrevivência",
+      "count": 8,
+      "proficiencyIds": ["rastreamento", "herbologia", "navegacao", "sobrevivencia", "natacao", "escalada", "vigilia", "sentinela"]
+    },
+    {
+      "id": "magia",
+      "name": "Magia",
+      "count": 6,
+      "proficiencyIds": ["arcano", "rituais", "ocultismo", "concentracao", "percepcao-espiritual", "bruxaria"]
+    },
+    {
+      "id": "fisico",
+      "name": "Físico e Resistência",
+      "count": 7,
+      "proficiencyIds": ["resistencia-fisica", "vigor", "fortitude-mental", "meditacao", "meditacao-marcial", "controle-corporal", "mergulho-profundo"]
+    },
+    {
+      "id": "social",
+      "name": "Social",
+      "count": 8,
+      "proficiencyIds": ["persuasao", "intimidacao", "enganacao", "negociacao", "empatia", "atuacao", "provocacao", "lideranca"]
+    },
+    {
+      "id": "academico",
+      "name": "Acadêmico",
+      "count": 6,
+      "proficiencyIds": ["religiao", "historia", "medicina", "linguistica", "investigacao", "politica"]
+    },
+    {
+      "id": "magitech",
+      "name": "Magitech",
+      "count": 5,
+      "proficiencyIds": ["mecanismos", "runas-prof", "automatos-prof", "tech-sangue-prof", "proteses-prof"]
+    }
+  ],
+  "proficiencies": [
+    { "id": "luta-armada", "name": "Luta Armada", "category": "combate", "attribute": "POT", "description": "Ataques corpo a corpo com armas." },
+    { "id": "atirar", "name": "Atirar", "category": "combate", "attribute": "AGI", "description": "Ataques à distância com armas de projétil." },
+    { "id": "arremesso", "name": "Arremesso", "category": "combate", "attribute": "POT", "description": "Arremessar objetos e armas." },
+    { "id": "defesa", "name": "Defesa", "category": "combate", "attribute": "AGI", "description": "Esquiva ativa e bloqueios." },
+    { "id": "luta-desarmada", "name": "Luta Desarmada", "category": "combate", "attribute": "POT", "description": "Golpes desarmados, corpo a corpo sem arma." },
+    { "id": "furtividade", "name": "Furtividade", "category": "combate", "attribute": "AGI", "description": "Mover-se em silêncio e não ser visto." },
+    { "id": "reflexos", "name": "Reflexos", "category": "combate", "attribute": "AGI", "description": "Reagir rapidamente a ameaças súbitas." },
+    { "id": "tatica", "name": "Tática", "category": "combate", "attribute": "PER/INT", "description": "Coordenar posição e movimento em combate." },
+    { "id": "atletismo", "name": "Atletismo", "category": "combate", "attribute": "POT/CON", "description": "Correr, saltar, levantar, puxar." },
+    { "id": "acrobacia", "name": "Acrobacia", "category": "combate", "attribute": "AGI", "description": "Equilíbrio, tombos, piruetas." },
+    { "id": "prestidigitacao", "name": "Prestidigitação", "category": "combate", "attribute": "AGI", "description": "Mãos ligeiras, furto, manipulação de pequenos objetos." },
+
+    { "id": "forja", "name": "Forja", "category": "crafting", "attribute": "POT/ENG", "description": "Trabalhar metais — armas, armaduras, ferramentas." },
+    { "id": "carpintaria", "name": "Carpintaria", "category": "crafting", "attribute": "ENG", "description": "Trabalhar madeira." },
+    { "id": "alquimia", "name": "Alquimia", "category": "crafting", "attribute": "INT", "description": "Poções, reagentes, extrações." },
+    { "id": "costura", "name": "Costura", "category": "crafting", "attribute": "AGI/ENG", "description": "Tecidos, roupas, velas, cordame." },
+    { "id": "engenharia", "name": "Engenharia", "category": "crafting", "attribute": "ENG/INT", "description": "Construção, estruturas, mecanismos." },
+    { "id": "cozinha", "name": "Cozinha", "category": "crafting", "attribute": "PER", "description": "Preparo de alimentos, conservação." },
+    { "id": "mineracao", "name": "Mineração", "category": "crafting", "attribute": "POT/ENG", "description": "Extrair minerais e pedras preciosas." },
+    { "id": "joalheria", "name": "Joalheria", "category": "crafting", "attribute": "AGI/ENG", "description": "Trabalho fino em metais e gemas." },
+
+    { "id": "rastreamento", "name": "Rastreamento", "category": "sobrevivencia", "attribute": "PER", "description": "Seguir rastros e pegadas." },
+    { "id": "herbologia", "name": "Herbologia", "category": "sobrevivencia", "attribute": "PER/INT", "description": "Reconhecer e usar plantas." },
+    { "id": "navegacao", "name": "Navegação", "category": "sobrevivencia", "attribute": "PER/INT", "description": "Orientar-se em terrenos e mares." },
+    { "id": "sobrevivencia", "name": "Sobrevivência", "category": "sobrevivencia", "attribute": "RES", "description": "Viver da terra, abrigo, fogo, forrageamento." },
+    { "id": "natacao", "name": "Natação", "category": "sobrevivencia", "attribute": "POT/CON", "description": "Mover-se na água." },
+    { "id": "escalada", "name": "Escalada", "category": "sobrevivencia", "attribute": "POT/AGI", "description": "Subir paredes e penhascos." },
+    { "id": "vigilia", "name": "Vigília", "category": "sobrevivencia", "attribute": "RES/FOC", "description": "Permanecer atento sem dormir." },
+    { "id": "sentinela", "name": "Sentinela", "category": "sobrevivencia", "attribute": "PER/RES", "description": "Vigiar por longos períodos, detectar aproximações." },
+
+    { "id": "arcano", "name": "Arcano", "category": "magia", "attribute": "INT", "description": "Conhecimento e prática de magia arcana. Pré-requisito para várias sub-proficiências arcanas." },
+    { "id": "rituais", "name": "Rituais", "category": "magia", "attribute": "FOC", "description": "Conduzir rituais mágicos." },
+    { "id": "ocultismo", "name": "Ocultismo", "category": "magia", "attribute": "FOC/INT", "description": "Conhecimento de fenômenos sobrenaturais, entidades, maldições." },
+    { "id": "concentracao", "name": "Concentração", "category": "magia", "attribute": "FOC", "description": "Manter efeitos mágicos de concentração sob pressão." },
+    { "id": "percepcao-espiritual", "name": "Percepção Espiritual", "category": "magia", "attribute": "FOC/PER", "description": "Perceber entidades e energias sobrenaturais." },
+    { "id": "bruxaria", "name": "Bruxaria", "category": "magia", "attribute": "PRE", "description": "Feitiços via pacto. Também existe como Sub-Proficiência." },
+
+    { "id": "resistencia-fisica", "name": "Resistência Física", "category": "fisico", "attribute": "CON", "description": "Aguentar dano físico e fadiga prolongada." },
+    { "id": "vigor", "name": "Vigor", "category": "fisico", "attribute": "CON", "description": "Exercício contínuo, marchas longas." },
+    { "id": "fortitude-mental", "name": "Fortitude Mental", "category": "fisico", "attribute": "RES", "description": "Resistir a efeitos que afetam a mente." },
+    { "id": "meditacao", "name": "Meditação", "category": "fisico", "attribute": "FOC/RES", "description": "Concentração meditativa, recuperação interior." },
+    { "id": "meditacao-marcial", "name": "Meditação Marcial", "category": "fisico", "attribute": "RES/POT", "description": "Disciplina marcial e controle corporal em combate." },
+    { "id": "controle-corporal", "name": "Controle Corporal", "category": "fisico", "attribute": "CON/FOC", "description": "Precisão fina sobre funções corporais, respiração, pulso." },
+    { "id": "mergulho-profundo", "name": "Mergulho Profundo", "category": "fisico", "attribute": "CON", "description": "Suportar pressão e apneia em grandes profundidades." },
+
+    { "id": "persuasao", "name": "Persuasão", "category": "social", "attribute": "PRE", "description": "Convencer pela razão e apelo emocional." },
+    { "id": "intimidacao", "name": "Intimidação", "category": "social", "attribute": "PRE/POT", "description": "Impor-se pelo medo ou força percebida." },
+    { "id": "enganacao", "name": "Enganação", "category": "social", "attribute": "PRE", "description": "Mentir, blefar, passar por outro." },
+    { "id": "negociacao", "name": "Negociação", "category": "social", "attribute": "PRE/INT", "description": "Trocas, acordos, tratados." },
+    { "id": "empatia", "name": "Empatia", "category": "social", "attribute": "PER/FOC", "description": "Ler emoções e intenções alheias." },
+    { "id": "atuacao", "name": "Atuação", "category": "social", "attribute": "PRE/AGI", "description": "Performar, interpretar papéis, entreter." },
+    { "id": "provocacao", "name": "Provocação", "category": "social", "attribute": "PRE", "description": "Irritar, desafiar, tirar do sério." },
+    { "id": "lideranca", "name": "Liderança", "category": "social", "attribute": "PRE/RES", "description": "Comandar, inspirar, coordenar grupos." },
+
+    { "id": "religiao", "name": "Religião", "category": "academico", "attribute": "INT/FOC", "description": "Conhecimento de cultos, Conceitos, Anciões. Pré-requisito para sub-profs divinas." },
+    { "id": "historia", "name": "História", "category": "academico", "attribute": "INT", "description": "Conhecimento de eras passadas, reinos, guerras." },
+    { "id": "medicina", "name": "Medicina", "category": "academico", "attribute": "INT/PER", "description": "Cuidados, diagnóstico, tratamento de ferimentos e doenças." },
+    { "id": "linguistica", "name": "Linguística", "category": "academico", "attribute": "INT/FOC", "description": "Línguas, escritas, decifração." },
+    { "id": "investigacao", "name": "Investigação", "category": "academico", "attribute": "PER/INT", "description": "Dedução, busca por pistas." },
+    { "id": "politica", "name": "Política", "category": "academico", "attribute": "PRE/INT", "description": "Estruturas de poder, intriga, diplomacia." },
+
+    { "id": "mecanismos", "name": "Mecanismos", "category": "magitech", "attribute": "ENG", "description": "Fechaduras, armadilhas, dispositivos." },
+    { "id": "runas-prof", "name": "Runas", "category": "magitech", "attribute": "ENG/INT", "description": "Gravação e leitura de runas mágicas. Pré-requisito para sub-prof Runas avançadas." },
+    { "id": "automatos-prof", "name": "Autômatos", "category": "magitech", "attribute": "ENG/INT", "description": "Construção e reparo de autômatos. Pré-requisito para sub-prof Autômatos." },
+    { "id": "tech-sangue-prof", "name": "Tech Sangue", "category": "magitech", "attribute": "ENG/CON", "description": "Tecnologia movida a sangue, caldeiras Motriz." },
+    { "id": "proteses-prof", "name": "Próteses", "category": "magitech", "attribute": "ENG", "description": "Criação de membros artificiais e próteses. Pré-requisito para sub-prof Exoesqueleto." },
+
+    { "id": "forca-bruta-base", "name": "Força Bruta", "category": "canonical", "attribute": "POT", "description": "Aplicar força pura — quebrar, empurrar, esmagar." },
+    { "id": "feiticaria", "name": "Feitiçaria", "category": "canonical", "attribute": "INT", "description": "Prática de feitiços formais. Pré-req para sub-prof Feitiça." },
+    { "id": "natureza-base", "name": "Natureza", "category": "canonical", "attribute": "INT", "description": "Ecologia, biomas, relações primais. Pré-req para sub-prof Primal." },
+    { "id": "artesanato", "name": "Artesanato", "category": "canonical", "attribute": "ENG", "description": "Trabalho manual em materiais leves — couros, madeiras, tecidos." },
+    { "id": "maquinario", "name": "Maquinário", "category": "canonical", "attribute": "ENG", "description": "Engrenagens, motores, mecanismos complexos. Pré-req para Tecnomagia/Tecnologia." },
+    { "id": "temor", "name": "Temor", "category": "canonical", "attribute": "RES", "description": "Aguentar horror, pânico e efeitos que paralisam." },
+    { "id": "vontade", "name": "Vontade", "category": "canonical", "attribute": "RES", "description": "Resistir dominação mental e imposição externa." },
+    { "id": "fe", "name": "Fé", "category": "canonical", "attribute": "RES", "description": "Convicção devocional. Pré-req para sub-prof Dogmática/Devoção." },
+    { "id": "disciplina", "name": "Disciplina", "category": "canonical", "attribute": "FOC", "description": "Rotina, rigor mental, cumprimento sob pressão." },
+    { "id": "sobrenatural", "name": "Sobrenatural", "category": "canonical", "attribute": "FOC", "description": "Leitura e manejo de fenômenos sobrenaturais. Pré-req p/ várias subs mágicas." },
+    { "id": "fortitude", "name": "Fortitude", "category": "canonical", "attribute": "CON", "description": "Resistência corporal — venenos, doenças, exaustão." }
+  ],
+  "subProficiencyRanks": [
+    { "rank": 0, "name": "Sem Acesso", "roll": "—", "xp": null, "levelMin": null, "description": "Não pode usar poderes dessa sub." },
+    { "rank": 1, "name": "Iniciado", "roll": "1d20", "xp": 100, "levelMin": 2, "description": "Desbloqueia a sub. Rola normal (1d20 + Atr + Prof Base). Acessa poderes básicos." },
+    { "rank": 2, "name": "Praticante", "roll": "2d20 melhor", "xp": 300, "levelMin": 4, "description": "Rola 2d20, pega o MAIOR. Acessa poderes intermediários." },
+    { "rank": 3, "name": "Veterano", "roll": "3d20 melhor", "xp": 600, "levelMin": 6, "description": "Rola 3d20, pega o MAIOR. Acessa poderes avançados." },
+    { "rank": 4, "name": "Lenda", "roll": "3d20 melhor + Atr x2", "xp": 1200, "levelMin": 8, "description": "Rola 3d20 melhor + DOBRA o bônus do atributo. Acessa poderes lendários." },
+    { "rank": 5, "name": "Ancião", "roll": "4d20 melhor + Atr x2", "xp": 2000, "levelMin": 10, "description": "Rola 4d20, pega o MAIOR, com DOBRA do bônus do atributo. Acessa poderes ancestrais/endgame." }
+  ],
+  "subProficiencyTestFormula": "Xd20(melhor) + Atributo + ProfBásica vs DT",
+  "subProficiencyPrerequisiteRule": "Com pré-req: Sub R1 requer Prof Básica R2+; Sub R2 requer Prof Básica R3+; Sub R3 requer Prof Básica R4+; Sub R4 requer Prof Básica R5+; Sub R5 requer Prof Básica R5+.",
+  "subProficiencies": [
+    {
+      "id": "evocacao",
+      "name": "Evocação",
+      "parent": "arcano",
+      "source": "fonte:magia-arcana",
+      "attribute": "INT",
+      "prerequisites": [{ "type": "proficiency", "id": "arcano", "minRank": 2 }],
+      "description": "R1: truques de dano (2d6). R2: magias de área (4d8). R3: destruição (8d6). R4: cataclismo (12d8+)."
+    },
+    {
+      "id": "abjuracao",
+      "name": "Abjuração",
+      "parent": "arcano",
+      "source": "fonte:magia-arcana",
+      "attribute": "INT",
+      "prerequisites": [{ "type": "proficiency", "id": "arcano", "minRank": 2 }],
+      "description": "R1: escudo +4DP. R2: barreira, dissipar. R3: campo de força, banir. R4: imunidade mágica em área."
+    },
+    {
+      "id": "conjuracao",
+      "name": "Conjuração",
+      "parent": "arcano",
+      "source": "fonte:magia-arcana",
+      "attribute": "INT",
+      "prerequisites": [{ "type": "proficiency", "id": "arcano", "minRank": 2 }],
+      "description": "R1: invocar menor. R2: teleporte curto, criar. R3: invocar elemental. R4: portal, teleporte massivo."
+    },
+    {
+      "id": "transmutacao",
+      "name": "Transmutação",
+      "parent": "arcano",
+      "source": "fonte:magia-arcana",
+      "attribute": "INT",
+      "prerequisites": [{ "type": "proficiency", "id": "arcano", "minRank": 2 }],
+      "description": "R1: alterar objetos. R2: velocidade, voar. R3: metamorfose. R4: alterar realidade local."
+    },
+    {
+      "id": "encantamento",
+      "name": "Encantamento",
+      "parent": "arcano",
+      "source": "fonte:magia-arcana",
+      "attribute": "INT/PRE",
+      "prerequisites": [{ "type": "proficiency", "id": "arcano", "minRank": 2 }],
+      "description": "R1: charme, sugestão. R2: comandar, amedrontar. R3: dominar mente. R4: controle absoluto."
+    },
+    {
+      "id": "necromancia",
+      "name": "Necromancia",
+      "parent": "arcano",
+      "source": "fonte:magia-arcana",
+      "attribute": "INT/FOC",
+      "prerequisites": [{ "type": "proficiency", "id": "arcano", "minRank": 2 }],
+      "description": "R1: drenar vida 2d6. R2: animar mortos, maldição. R3: criar morto-vivo forte. R4: dominar morte."
+    },
+    {
+      "id": "ilusao",
+      "name": "Ilusão",
+      "parent": "arcano",
+      "source": "fonte:magia-arcana",
+      "attribute": "INT",
+      "prerequisites": [{ "type": "proficiency", "id": "arcano", "minRank": 2 }],
+      "description": "R1: imagem, som. R2: invisibilidade, disfarce. R3: miragem perfeita. R4: realidade ilusória."
+    },
+    {
+      "id": "adivinhacao",
+      "name": "Adivinhação",
+      "parent": "arcano",
+      "source": "fonte:magia-arcana",
+      "attribute": "INT/FOC",
+      "prerequisites": [{ "type": "proficiency", "id": "arcano", "minRank": 1 }],
+      "description": "R1: detectar magia. R2: clarividência, ler mente. R3: prever futuro. R4: onisciência local."
+    },
+    {
+      "id": "bruxaria-sub",
+      "name": "Bruxaria",
+      "parent": null,
+      "source": "fonte:magia-arcana",
+      "attribute": "PRE",
+      "prerequisites": [],
+      "description": "R1: feitiços menores via pacto. R2: maldições, familiar. R3: poder do patrono. R4: avatar do patrono.",
+      "notes": "Sub-proficiência independente (sem pré-requisito de proficiência básica)."
+    },
+
+    {
+      "id": "cura-sagrada",
+      "name": "Cura Sagrada",
+      "parent": "religiao",
+      "source": "fonte:fe-devocao",
+      "attribute": "FOC",
+      "prerequisites": [{ "type": "proficiency", "id": "religiao", "minRank": 1 }],
+      "description": "R1: cura 2d8. R2: cura em grupo, remover condição. R3: milagre de cura, ressurgir. R4: ressurreição verdadeira."
+    },
+    {
+      "id": "punicao-divina",
+      "name": "Punição Divina",
+      "parent": "religiao",
+      "source": "fonte:fe-devocao",
+      "attribute": "FOC/PRE",
+      "prerequisites": [{ "type": "proficiency", "id": "religiao", "minRank": 2 }],
+      "description": "R1: +2d6 radiance. R2: raio 4d8. R3: julgamento, aura punitiva. R4: ira do Conceito 12d8."
+    },
+    {
+      "id": "protecao-sagrada",
+      "name": "Proteção Sagrada",
+      "parent": "religiao",
+      "source": "fonte:fe-devocao",
+      "attribute": "FOC",
+      "prerequisites": [{ "type": "proficiency", "id": "religiao", "minRank": 1 }],
+      "description": "R1: benção +2DP. R2: aura +4DP, escudo de fé. R3: santuário. R4: imunidade sagrada em área."
+    },
+    {
+      "id": "profecia",
+      "name": "Profecia",
+      "parent": "religiao",
+      "source": "fonte:fe-devocao",
+      "attribute": "FOC",
+      "prerequisites": [{ "type": "proficiency", "id": "religiao", "minRank": 2 }],
+      "description": "R1: sentir corrupção. R2: visão críptica. R3: prever 7 dias. R4: tecer destino (altera o futuro)."
+    },
+    {
+      "id": "exorcismo",
+      "name": "Exorcismo",
+      "parent": "religiao",
+      "source": "fonte:fe-devocao",
+      "attribute": "FOC/PRE",
+      "prerequisites": [{ "type": "proficiency", "id": "religiao", "minRank": 2 }],
+      "description": "R1: expurgar menor. R2: banir mortos-vivos. R3: purificar corrupção. R4: banir Ancião menor."
+    },
+    {
+      "id": "penitencia",
+      "name": "Penitência",
+      "parent": null,
+      "source": "fonte:fe-devocao",
+      "attribute": "FOC/RES",
+      "prerequisites": [],
+      "description": "R1: auto-dano +50% poder. R2: +100%, absorver dor de aliado. R3: sofrimento como aura. R4: sacrifício final."
+    },
+
+    {
+      "id": "forca-bruta",
+      "name": "Força Bruta",
+      "parent": "luta-armada",
+      "source": "fonte:corpo",
+      "attribute": "POT",
+      "prerequisites": [{ "type": "proficiency", "id": "luta-armada", "minRank": 2 }],
+      "description": "R1: golpe +2d6. R2: investida 4d6. R3: golpe devastador 6d6+. R4: impacto sísmico 10d6 em área."
+    },
+    {
+      "id": "agilidade",
+      "name": "Agilidade",
+      "parent": "reflexos",
+      "source": "fonte:corpo",
+      "attribute": "AGI",
+      "prerequisites": [{ "type": "proficiency", "id": "reflexos", "minRank": 2 }],
+      "description": "R1: esquiva +4DP. R2: contra-ataque. R3: esquiva perfeita (0 dano). R4: velocidade impossível (2 turnos)."
+    },
+    {
+      "id": "resistencia",
+      "name": "Resistência",
+      "parent": null,
+      "source": "fonte:corpo",
+      "attribute": "CON",
+      "prerequisites": [],
+      "description": "R1: absorver 4 dano. R2: pele de ferro +6DP. R3: regenerar 3/turno. R4: imortal temporário (1 min)."
+    },
+    {
+      "id": "armas-marciais",
+      "name": "Armas Marciais",
+      "parent": "luta-armada",
+      "source": "fonte:corpo",
+      "attribute": "POT/AGI",
+      "prerequisites": [{ "type": "proficiency", "id": "luta-armada", "minRank": 2 }],
+      "description": "R1: técnica básica de arma. R2: combo 3 hits. R3: execução (<25%HP). R4: tempestade (8 ataques)."
+    },
+    {
+      "id": "luta-desarmada-sub",
+      "name": "Luta Desarmada",
+      "parent": "luta-desarmada",
+      "source": "fonte:corpo",
+      "attribute": "POT/AGI",
+      "prerequisites": [{ "type": "proficiency", "id": "luta-desarmada", "minRank": 2 }],
+      "description": "R1: soco 1d8. R2: combo, agarrão. R3: ponto de pressão, paralisar. R4: golpe mortal (dano x4)."
+    },
+    {
+      "id": "tatica-combate",
+      "name": "Tática de Combate",
+      "parent": "tatica",
+      "source": "fonte:corpo",
+      "attribute": "INT/PRE",
+      "prerequisites": [{ "type": "proficiency", "id": "tatica", "minRank": 2 }],
+      "description": "R1: comandar aliado. R2: formação +4. R3: general (4 aliados agem). R4: estratégia perfeita (+8 grupo)."
+    },
+
+    {
+      "id": "hemomancia",
+      "name": "Hemomancia",
+      "parent": null,
+      "source": "fonte:sangue",
+      "attribute": "FOC",
+      "prerequisites": [],
+      "description": "R1: lâmina de sangue +2d6. R2: drenar 3d8, sangue vivo. R3: explosão 6d8, roubar essência. R4: domínio hemático."
+    },
+    {
+      "id": "sacrificio",
+      "name": "Sacrifício",
+      "parent": null,
+      "source": "fonte:sangue",
+      "attribute": "FOC/CON",
+      "prerequisites": [],
+      "description": "R1: HP vira poder. R2: imolação (HP=dano x2). R3: ritual de sacrifício. R4: preço final (queima atributo, ganha tudo)."
+    },
+    {
+      "id": "corrupcao",
+      "name": "Corrupção",
+      "parent": null,
+      "source": "fonte:sangue",
+      "attribute": "FOC",
+      "prerequisites": [{ "type": "proficiency", "id": "hemomancia", "minRank": 1 }],
+      "description": "R1: dons sombrios básicos. R2: dons aprimorados. R3: aura de corrupção. R4: corpo de sangue (parcialmente líquido)."
+    },
+
+    {
+      "id": "runas",
+      "name": "Runas",
+      "parent": "runas-prof",
+      "source": "fonte:magitech",
+      "attribute": "ENG",
+      "prerequisites": [{ "type": "proficiency", "id": "engenharia", "minRank": 1 }],
+      "description": "R1: runas básicas (luz, alarme). R2: runas de combate (explosão 3d6). R3: runas de área, proteção. R4: runas permanentes lendárias."
+    },
+    {
+      "id": "automatos",
+      "name": "Autômatos",
+      "parent": "automatos-prof",
+      "source": "fonte:magitech",
+      "attribute": "ENG/INT",
+      "prerequisites": [{ "type": "proficiency", "id": "engenharia", "minRank": 2 }],
+      "description": "R1: drone. R2: autômato de combate. R3: esquadrão de 3. R4: colossus mecânico."
+    },
+    {
+      "id": "armamento-tech",
+      "name": "Armamento Tech",
+      "parent": null,
+      "source": "fonte:magitech",
+      "attribute": "ENG",
+      "prerequisites": [{ "type": "proficiency", "id": "engenharia", "minRank": 2 }],
+      "description": "R1: arma rúnica +1d6. R2: canhão 4d6. R3: artilharia 8d6. R4: arma do juízo 12d6."
+    },
+    {
+      "id": "exoesqueleto",
+      "name": "Exoesqueleto",
+      "parent": "proteses-prof",
+      "source": "fonte:magitech",
+      "attribute": "ENG",
+      "prerequisites": [{ "type": "proficiency", "id": "engenharia", "minRank": 2 }],
+      "description": "R1: prótese melhorada. R2: armadura +4DP. R3: exo completo (+6DP, +4POT). R4: transcendência (mente para corpo máquina)."
+    },
+    {
+      "id": "motor-sangue",
+      "name": "Motor de Sangue",
+      "parent": null,
+      "source": "fonte:magitech",
+      "attribute": "ENG/CON",
+      "prerequisites": [],
+      "description": "R1: dispositivos a sangue. R2: veículos. R3: fábrica portátil. R4: tech Motriz avançada."
+    },
+
+    {
+      "id": "instinto",
+      "name": "Instinto",
+      "parent": null,
+      "source": "fonte:primal",
+      "attribute": "PER",
+      "prerequisites": [],
+      "description": "R1: sentir perigo. R2: +6 Iniciativa, não surpreendido. R3: prever ataque. R4: sexto sentido absoluto."
+    },
+    {
+      "id": "natureza",
+      "name": "Natureza",
+      "parent": null,
+      "source": "fonte:primal",
+      "attribute": "PER/RES",
+      "prerequisites": [{ "type": "proficiency", "id": "sobrevivencia", "minRank": 1 }],
+      "description": "R1: falar com plantas. R2: controlar crescimento, clima local. R3: terreno vivo, muro de espinhos. R4: despertar floresta."
+    },
+    {
+      "id": "bestas",
+      "name": "Bestas",
+      "parent": null,
+      "source": "fonte:primal",
+      "attribute": "PER/PRE",
+      "prerequisites": [{ "type": "custom", "text": "Sub-proficiência Caça R1+ (não documentada como prof básica)." }],
+      "description": "R1: vínculo com companheiro. R2: telepatia, 2º vínculo. R3: fusão bestial, besta lendária. R4: forma selvagem completa, horda."
+    },
+    {
+      "id": "cura-natural",
+      "name": "Cura Natural",
+      "parent": null,
+      "source": "fonte:primal",
+      "attribute": "PER/INT",
+      "prerequisites": [{ "type": "proficiency", "id": "herbologia", "minRank": 2 }],
+      "description": "R1: remédios 2d6. R2: cura 3d8, antídoto. R3: cura doença mágica. R4: cura QUALQUER coisa (maldição, corrupção)."
+    },
+    {
+      "id": "ancestral",
+      "name": "Ancestral",
+      "parent": null,
+      "source": "fonte:primal",
+      "attribute": "FOC/PER",
+      "prerequisites": [],
+      "description": "R1: falar com a terra. R2: invocar espírito animal. R3: profecia natural. R4: voz do planeta (planeta obedece pedidos)."
+    },
+
+    { "id": "esgrima", "name": "Esgrima", "category": "combate", "parent": "luta-armada", "attribute": "POT/AGI", "prerequisites": [{ "type": "proficiency", "id": "luta-armada", "minRank": 2 }], "description": "Espadas, rapieiras, floretes. R1: riposte. R2: estocada perfurante. R3: dança de lâminas. R4: mestre-espadachim." },
+    { "id": "machados", "name": "Machados", "category": "combate", "parent": "luta-armada", "attribute": "POT", "prerequisites": [{ "type": "proficiency", "id": "luta-armada", "minRank": 2 }], "description": "Machados a 1 ou 2 mãos. R1: golpe brutal. R2: quebra-escudo. R3: ceifa. R4: fúria do machadeiro." },
+    { "id": "hastes", "name": "Hastes", "category": "combate", "parent": "luta-armada", "attribute": "POT", "prerequisites": [{ "type": "proficiency", "id": "luta-armada", "minRank": 2 }], "description": "Lanças, alabardas, tridentes. R1: alcance ampliado. R2: varredura. R3: muralha de lanças. R4: investida imparável." },
+    { "id": "armas-de-fogo", "name": "Armas de Fogo", "category": "combate", "parent": "atirar", "attribute": "AGI/ENG", "prerequisites": [{ "type": "proficiency", "id": "atirar", "minRank": 2 }], "description": "Pistolas, mosquetes, arcabuzes. R1: tiro certeiro. R2: recarga rápida. R3: rajada. R4: pontaria letal." },
+    { "id": "arcos-e-bestas", "name": "Arcos & Bestas", "category": "combate", "parent": "atirar", "attribute": "AGI/POT", "prerequisites": [{ "type": "proficiency", "id": "atirar", "minRank": 2 }], "description": "Arcos longos, curtos, bestas. R1: tiro preciso. R2: tiro múltiplo. R3: tiro curvo. R4: flecha do olho do dragão." },
+    { "id": "escudos-e-protecoes", "name": "Escudos & Proteções", "category": "combate", "parent": "defesa", "attribute": "CON/POT", "prerequisites": [{ "type": "proficiency", "id": "defesa", "minRank": 2 }], "description": "Uso ativo de escudos e cobertura. R1: bloqueio ativo. R2: atordoar com escudo. R3: muralha. R4: anulação total." },
+    { "id": "artes-marciais", "name": "Artes Marciais", "category": "combate", "parent": "luta-desarmada", "attribute": "POT/AGI", "prerequisites": [{ "type": "proficiency", "id": "luta-desarmada", "minRank": 2 }], "description": "Combate corpo a corpo formalizado. R1: combo básico. R2: agarrão-chave. R3: ponto vital. R4: golpe de mil facas." },
+    { "id": "assassinato", "name": "Assassinato", "category": "combate", "parent": "furtividade", "attribute": "AGI/PER", "prerequisites": [{ "type": "proficiency", "id": "furtividade", "minRank": 2 }], "description": "Execução silenciosa. R1: golpe surpresa x2. R2: garrote. R3: ataque mortal. R4: sombra executora." },
+
+    { "id": "armas-craft", "name": "Armas (Crafting)", "category": "crafting", "parent": "forja", "attribute": "ENG/POT", "prerequisites": [{ "type": "proficiency", "id": "forja", "minRank": 2 }], "description": "Forjar armas de guerra finas. R1: +1 dano. R2: material raro. R3: obra-prima. R4: lendária." },
+    { "id": "armaduras-craft", "name": "Armaduras (Crafting)", "category": "crafting", "parent": "forja", "attribute": "ENG/CON", "prerequisites": [{ "type": "proficiency", "id": "forja", "minRank": 2 }], "description": "Forjar armaduras. R1: +1DP. R2: leve e forte. R3: relicária. R4: armadura lendária." },
+    { "id": "venenos", "name": "Venenos", "category": "crafting", "parent": "alquimia", "attribute": "INT/PER", "prerequisites": [{ "type": "proficiency", "id": "alquimia", "minRank": 2 }], "description": "Toxinas e antídotos. R1: veneno leve 2d6. R2: paralisia. R3: toxina mortal 6d8. R4: veneno de deuses." },
+    { "id": "explosivos", "name": "Explosivos", "category": "crafting", "parent": "alquimia", "attribute": "ENG/INT", "prerequisites": [{ "type": "proficiency", "id": "alquimia", "minRank": 2 }], "description": "Bombas, pólvoras, artefatos. R1: bomba 3d6. R2: explosão 5d6 em área. R3: carga de demolição. R4: bomba rúnica 10d8." },
+    { "id": "arquitetura", "name": "Arquitetura", "category": "crafting", "parent": "engenharia", "attribute": "ENG/INT", "prerequisites": [{ "type": "proficiency", "id": "engenharia", "minRank": 2 }], "description": "Projetar estruturas. R1: fortificações. R2: torre de 5 andares. R3: castelo. R4: cidadela lendária." },
+    { "id": "tecnologia", "name": "Tecnologia", "category": "crafting", "parent": "maquinario", "attribute": "ENG/INT", "prerequisites": [{ "type": "proficiency", "id": "maquinario", "minRank": 2 }], "description": "Máquinas complexas. R1: relógio. R2: autômato simples. R3: motor-a-vapor. R4: tecnomáquina lendária." },
+
+    { "id": "feitica", "name": "Feitiça", "category": "magia", "parent": "feiticaria", "attribute": "INT", "prerequisites": [{ "type": "proficiency", "id": "feiticaria", "minRank": 2 }], "description": "Feitiçaria formal arcana. R1: truques 2d6. R2: feitiços médios 4d8. R3: grandes 8d6. R4: mestre da feitiça." },
+    { "id": "dogmatica", "name": "Dogmática", "category": "magia", "parent": "fe", "attribute": "FOC/PRE", "prerequisites": [{ "type": "proficiency", "id": "fe", "minRank": 2 }], "description": "Magia de doutrina. R1: bênção. R2: julgamento. R3: santuário. R4: dogma absoluto." },
+    { "id": "sacrificial", "name": "Sacrificial", "category": "magia", "parent": "sobrenatural", "attribute": "FOC/CON", "prerequisites": [{ "type": "proficiency", "id": "sobrenatural", "minRank": 2 }], "description": "Magia pelo sacrifício. R1: oferta 2d6. R2: pacto de sangue. R3: ritual. R4: sacrifício final.", "notes": "Gera Corrupção." },
+    { "id": "primal-sub", "name": "Primal", "category": "magia", "parent": "natureza-base", "attribute": "PER/RES", "prerequisites": [{ "type": "proficiency", "id": "natureza-base", "minRank": 2 }], "description": "Energia da natureza selvagem. R1: espinhos. R2: forma animal. R3: terreno vivo. R4: espírito da mata." },
+    { "id": "tecnomagia-sub", "name": "Tecnomagia", "category": "magia", "parent": "maquinario", "attribute": "ENG/INT", "prerequisites": [{ "type": "proficiency", "id": "maquinario", "minRank": 2 }], "description": "Fusão de tech e magia. R1: armas rúnicas. R2: canhão. R3: artilharia. R4: arma do juízo." },
+    { "id": "braseira", "name": "Braseira", "category": "magia", "parent": "sobrenatural", "attribute": "FOC", "prerequisites": [{ "type": "proficiency", "id": "sobrenatural", "minRank": 2 }], "description": "Chama cósmica e energia ígnea. R1: chama 2d6. R2: explosão 5d6. R3: incêndio vivo. R4: sol em miniatura." },
+    { "id": "ancianica", "name": "Anciânica", "category": "magia", "parent": "sobrenatural", "attribute": "FOC/INT", "prerequisites": [{ "type": "proficiency", "id": "sobrenatural", "minRank": 3 }], "description": "Invocação/canalização de Anciões. R1: sussurros. R2: bênção antiga. R3: manifestação. R4: avatar.", "notes": "Corrupção severa." },
+    { "id": "alem", "name": "Além", "category": "magia", "parent": "sobrenatural", "attribute": "FOC", "prerequisites": [{ "type": "proficiency", "id": "sobrenatural", "minRank": 2 }], "description": "Dimensões fora do Véu. R1: entrever. R2: passagem curta. R3: portal. R4: rasgar o Véu.", "notes": "Corrupção." },
+    { "id": "abissal", "name": "Abissal", "category": "magia", "parent": "sobrenatural", "attribute": "FOC/PRE", "prerequisites": [{ "type": "proficiency", "id": "sobrenatural", "minRank": 2 }], "description": "Chamado demoníaco. R1: pacto menor. R2: servo. R3: general abissal. R4: príncipe do Abismo.", "notes": "Corrupção alta." },
+    { "id": "devocao", "name": "Devoção", "category": "magia", "parent": "fe", "attribute": "FOC/RES", "prerequisites": [{ "type": "proficiency", "id": "fe", "minRank": 2 }], "description": "Poder concedido pela devoção pura. R1: cura 2d8. R2: aura. R3: milagre. R4: avatar do Conceito." },
+    { "id": "exorcismo-sub", "name": "Exorcismo", "category": "magia", "parent": "ocultismo", "attribute": "FOC/PRE", "prerequisites": [{ "type": "proficiency", "id": "ocultismo", "minRank": 2 }], "description": "Banir o sobrenatural hostil. R1: expurgar menor. R2: banir mortos-vivos. R3: purificar corrupção. R4: banir Ancião menor." }
+  ],
+  "corruptionWarning": "TODAS sub-profs de Sangue geram Corrupção a partir de R2. R2: 1-3 por uso. R3: 3-5. R4: 5-10. Hemomancia R4 + Sacrifício R3 = caminho garantido para Corrupção 75+.",
+  "mixingRule": "Fonte Principal: custo XP normal para subir Sub-Profs. Fonte Secundária: custo +50% XP."
+}

@@ -1,0 +1,29 @@
+{
+  "id": "guerra",
+  "name": "Pacto de Guerra",
+  "source": "CDG_Pactos.md",
+  "patron": "Ancião da Guerra",
+  "description": "Pacto firmado com o Conceito de Guerra. Guerra não abençoa; ela consome. Oferece força sobrenatural e instinto tático perfeito em troca de compromisso com o conflito.",
+  "boons": [
+    {
+      "id": "dominio-da-guerra",
+      "name": "Domínio da Guerra",
+      "description": "Força sobrenatural, fúria de combate, resistência a dano, arma que nunca quebra, instinto tático perfeito.",
+      "modifiers": [
+        { "type": "custom", "text": "Força sobrenatural, fúria de combate, resistência a dano, arma que nunca quebra, instinto tático perfeito." }
+      ]
+    }
+  ],
+  "costs": [
+    {
+      "id": "conflito",
+      "name": "Conflito",
+      "description": "O pactuante deve lutar — não pode recusar desafio direto. Perde a capacidade de sentir empatia em combate (aliados são ferramentas)."
+    }
+  ],
+  "missions": [
+    "Alimentar conflito. Não necessariamente matar — mas garantir que batalhas aconteçam.",
+    "Treinar exércitos.",
+    "Derrotar campeões."
+  ]
+}

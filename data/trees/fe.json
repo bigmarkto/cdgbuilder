@@ -1,0 +1,276 @@
+{
+  "id": "fe",
+  "name": "Fe",
+  "source": "CDG_Progressao_P2.md",
+  "description": "Conceitos, Ancioes & Poder Divino — FOC / PRE. Fe nao e rezar — e SERVIR um Conceito. A Ancia da Guerra nao abencoa quem reza; abencoa quem luta. O Anciao da Morte nao cura quem pede; cura quem respeita o ciclo. Fe e um PACTO implicito: voce vive pelo Conceito, e o Conceito vive atraves de voce.",
+  "atributoChave": "FOC / PRE",
+  "conceitoEscolhido": {
+    "description": "Na primeira habilidade de Fe, escolha 1 CONCEITO (Morte, Guerra, Natureza, Tempo, Fogo, Conhecimento, etc.). Todas as habilidades de Fe sao TEMATICAS ao Conceito escolhido.",
+    "regra": "O EFEITO MECANICO e o mesmo. A ESTETICA muda tudo."
+  },
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Iniciado",
+      "prerequisites": [ { "type": "custom", "text": "FOC 2+ recomendado" } ],
+      "abilities": [
+        {
+          "id": "devocao",
+          "name": "Devocao",
+          "cost": 50,
+          "description": "Escolha seu Conceito. Ganha Mana adicional: +FOC x 2. Pode sentir a presenca do Conceito a 30m (locais sagrados, servos do Anciao)."
+        },
+        {
+          "id": "cura-divina",
+          "name": "Cura Divina",
+          "cost": 50,
+          "description": "Acao: toque criatura. Cura 1d8+FOC HP. Custo: 3 Mana. Estetica do Conceito.",
+          "prerequisites": [ { "type": "talent", "id": "devocao" } ]
+        },
+        {
+          "id": "prece-de-protecao",
+          "name": "Prece de Protecao",
+          "cost": 50,
+          "description": "Acao Bonus: aliado a 9m ganha +2 DP por 1 min. Custo: 2 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "devocao" } ]
+        },
+        {
+          "id": "palavra-sagrada",
+          "name": "Palavra Sagrada",
+          "cost": 50,
+          "description": "Acao: 1 palavra de comando tematica ao Conceito. Alvo a 9m: RES DT (8+PRE) ou obedece 1 turno. Custo: 3 Mana.",
+          "prerequisites": [
+            { "type": "talent", "id": "devocao" },
+            { "type": "attribute", "attr": "PRE", "min": 2 }
+          ]
+        },
+        {
+          "id": "sentir-corrupcao",
+          "name": "Sentir Corrupcao",
+          "cost": 50,
+          "description": "Acao: detecte Corrupcao em criaturas e objetos a 9m. Revela nivel aproximado. Custo: 1 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "devocao" } ]
+        },
+        {
+          "id": "punir-impios",
+          "name": "Punir Impios",
+          "cost": 50,
+          "description": "Ao atacar criatura que OFENDE o Conceito (morto-vivo para Morte, covarde para Guerra): +1d6 dano radiance. Passivo.",
+          "prerequisites": [ { "type": "talent", "id": "devocao" } ]
+        },
+        {
+          "id": "resistir-ao-profano",
+          "name": "Resistir ao Profano",
+          "cost": 50,
+          "description": "Vantagem em testes de RES contra magia necrotica, Corrupcao e efeitos de Ameacas Exteriores.",
+          "prerequisites": [ { "type": "attribute", "attr": "FOC", "min": 2 } ]
+        },
+        {
+          "id": "meditacao",
+          "name": "Meditacao",
+          "cost": 50,
+          "description": "Descanso Curto: recupere FOC x 3 de Mana (melhor que Recuperar Mana da arvore Magia). 1x/dia."
+        },
+        {
+          "id": "aura-de-conceito",
+          "name": "Aura de Conceito",
+          "cost": 50,
+          "description": "Passivo: aliados a 3m sentem o Conceito. Efeito tematico menor (+1 moral para Guerra, +1 cura recebida para Natureza, etc.).",
+          "prerequisites": [
+            { "type": "talent", "id": "devocao" },
+            { "type": "attribute", "attr": "PRE", "min": 3 }
+          ]
+        },
+        {
+          "id": "ritual-de-consagracao",
+          "name": "Ritual de Consagracao",
+          "cost": 50,
+          "description": "1h de ritual: consagre area 6m raio ao Conceito. Mortos-vivos/corrompidos sofrem -2 em testes na area. Dura 24h. Custo: 5 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "devocao" } ]
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Sacerdote",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Fe" } ],
+      "abilities": [
+        {
+          "id": "cura-em-massa",
+          "name": "Cura em Massa",
+          "cost": 100,
+          "description": "Acao: cure ate 4 criaturas a 9m. 2d6+FOC cada. Custo: 8 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "cura-divina" } ]
+        },
+        {
+          "id": "punicao-divina",
+          "name": "Punicao Divina",
+          "cost": 100,
+          "description": "Acao: raio de energia do Conceito. +PRE acerto, 18m, 3d8 radiance. Mortos-vivos/corrompidos: 4d8. Custo: 6 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "punir-impios" } ]
+        },
+        {
+          "id": "escudo-de-fe",
+          "name": "Escudo de Fe",
+          "cost": 100,
+          "description": "Reacao: aliado a 9m ganha resistencia ao proximo dano recebido (metade). Custo: 4 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "prece-de-protecao" } ]
+        },
+        {
+          "id": "expurgar",
+          "name": "Expurgar",
+          "cost": 100,
+          "description": "Acao: toque criatura. Remova 1 efeito de Corrupcao, maldicao ou doenca magica. FOC DT 15. Custo: 8 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "sentir-corrupcao" } ]
+        },
+        {
+          "id": "profecia",
+          "name": "Profecia",
+          "cost": 100,
+          "description": "1x/Descanso Longo: durante meditacao, faca 1 pergunta ao Conceito. Mestre responde com visao criptica (sempre verdadeira, nunca literal). Custo: 10 Mana.",
+          "prerequisites": [
+            { "type": "talent", "id": "meditacao" },
+            { "type": "attribute", "attr": "FOC", "min": 4 }
+          ]
+        },
+        {
+          "id": "aura-expandida",
+          "name": "Aura Expandida",
+          "cost": 100,
+          "description": "Aura expande para 6m. Efeito dobra (+2 moral, +2 cura, etc.). Inimigos na aura: -1 em testes relacionados ao Conceito.",
+          "prerequisites": [ { "type": "talent", "id": "aura-de-conceito" } ]
+        },
+        {
+          "id": "ressurgir",
+          "name": "Ressurgir",
+          "cost": 100,
+          "description": "Acao: toque criatura a 0 HP. Reviva com 1 HP + FOC. Custo: 10 Mana. 1x/Descanso Longo. Nao funciona se morto ha mais de 1 min.",
+          "prerequisites": [
+            { "type": "talent", "id": "cura-divina" },
+            { "type": "attribute", "attr": "RES", "min": 3 }
+          ]
+        },
+        {
+          "id": "comando-do-conceito",
+          "name": "Comando do Conceito",
+          "cost": 100,
+          "description": "Acao: comando de 3 palavras. Alvo RES DT (8+PRE+FOC). Falha: obedece por 1 minuto. Custo: 6 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "palavra-sagrada" } ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Alto Sacerdote",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Fe" } ],
+      "abilities": [
+        {
+          "id": "milagre-menor",
+          "name": "Milagre Menor",
+          "cost": 200,
+          "description": "Acao: cure TODOS os aliados a 9m por 4d8+FOC. Remova 1 condicao negativa de cada. Custo: 15 Mana. 1x/Descanso Longo.",
+          "prerequisites": [
+            { "type": "talent", "id": "cura-em-massa" },
+            { "type": "talent", "id": "ressurgir" }
+          ]
+        },
+        {
+          "id": "avatar-do-conceito",
+          "name": "Avatar do Conceito",
+          "cost": 200,
+          "description": "Acao Bonus: por 1 min, o Conceito se manifesta parcialmente em voce. +3 em FOC e PRE. Aparencia muda tematicamente. Aura se torna 9m com efeitos triplicados. Custo: 12 Mana. 1x/Descanso Longo.",
+          "prerequisites": [
+            { "type": "talent", "id": "aura-expandida" },
+            { "type": "attribute", "attr": "PRE", "min": 5 }
+          ]
+        },
+        {
+          "id": "julgamento",
+          "name": "Julgamento",
+          "cost": 200,
+          "description": "Acao: declare alvo a 18m CULPADO perante o Conceito. Por 1 min: todos os ataques contra alvo causam +2d6 radiance. Alvo -2 DP. Custo: 10 Mana.",
+          "prerequisites": [
+            { "type": "talent", "id": "punicao-divina" },
+            { "type": "talent", "id": "comando-do-conceito" }
+          ]
+        },
+        {
+          "id": "purificacao-total",
+          "name": "Purificacao Total",
+          "cost": 200,
+          "description": "Acao: remova ATE 20 pontos de Corrupcao de criatura tocada. FOC DT 20. Custo: 15 Mana + 1d6 dano psiquico ao sacerdote. 1x/semana.",
+          "prerequisites": [ { "type": "talent", "id": "expurgar" } ]
+        },
+        {
+          "id": "santuario",
+          "name": "Santuario",
+          "cost": 200,
+          "description": "1h: crie santuario permanente em area 18m. Dentro: cura dobrada, Corrupcao nao progride, mortos-vivos nao entram. Custo: 20 Mana + 500 Dracmas em materiais.",
+          "prerequisites": [ { "type": "talent", "id": "ritual-de-consagracao" } ]
+        },
+        {
+          "id": "canal-divino",
+          "name": "Canal Divino",
+          "cost": 200,
+          "description": "Acao: por 1 turno, canalize o Conceito diretamente. Fale com a voz do Anciao. Efeito unico decidido pelo Mestre (sempre poderoso, sempre com custo). Custo: 20 Mana. 1x/semana.",
+          "prerequisites": [
+            { "type": "talent", "id": "profecia" },
+            { "type": "attribute", "attr": "FOC", "min": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Campiao do Conceito",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Fe" } ],
+      "abilities": [
+        {
+          "id": "ressurreicao-sagrada",
+          "name": "Ressurreicao Sagrada",
+          "cost": 400,
+          "description": "Acao (10 min): ressuscite criatura morta ha ate 7 dias. Volta com HP total. Custo: 30 Mana + 1 nivel de Exaustao permanente no sacerdote. 1x/mes. Alvo ganha 15 Corrupcao.",
+          "prerequisites": [ { "type": "talent", "id": "milagre-menor" } ]
+        },
+        {
+          "id": "ira-do-conceito",
+          "name": "Ira do Conceito",
+          "cost": 400,
+          "description": "1x/dia: invoque a FURIA do Anciao. Area 18m. 10d8 radiance. Tematico ao Conceito (chamas para Fogo, ondas de morte para Morte). RES DT (8+PRE+FOC) para metade. Custo: 30 Mana.",
+          "prerequisites": [
+            { "type": "talent", "id": "avatar-do-conceito" },
+            { "type": "talent", "id": "julgamento" }
+          ]
+        },
+        {
+          "id": "imunidade-sagrada",
+          "name": "Imunidade Sagrada",
+          "cost": 400,
+          "description": "Passivo: imune a Corrupcao, doenca magica, envenenamento, Charme e Medo. Aura 3m: aliados ganham Vantagem em testes de RES.",
+          "prerequisites": [
+            { "type": "talent", "id": "purificacao-total" },
+            { "type": "talent", "id": "santuario" }
+          ]
+        },
+        {
+          "id": "ascensao-parcial",
+          "name": "Ascensao Parcial",
+          "cost": 400,
+          "description": "O Conceito habita permanentemente em voce. FOC e PRE +2 permanente. Pode usar Canal Divino 1x/dia em vez de 1x/semana. POREM: a Ancia pode dar ordens que nao pode recusar. Voce e ferramenta E pessoa.",
+          "prerequisites": [
+            { "type": "talent", "id": "canal-divino" },
+            { "type": "talent", "id": "avatar-do-conceito" }
+          ]
+        }
+      ]
+    }
+  ]
+}

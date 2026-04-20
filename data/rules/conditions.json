@@ -1,0 +1,138 @@
+{
+  "id": "condicoes",
+  "name": "Condições",
+  "source": "CDG Vale Desperto v2.0 (port)",
+  "description": "Catálogo canônico de condições (estados temporários) aplicáveis em combate, exploração e interação. Cada condição declara efeitos mecânicos como modifiers textuais. Condições com 'stages' são escadas (ex: medo 1→4). Todas são temporárias — quando permanentes, viram Cicatriz.",
+  "stackingRule": "Aplicar a mesma condição duas vezes não empilha — a de maior estágio prevalece. Condições distintas empilham seus efeitos.",
+  "removalCommon": "Testes de Fortitude Mental (RES), Medicina (INT/PER), magia de cura, ou fim da duração declarada.",
+  "conditions": [
+    { "id": "agarrado", "name": "Agarrado", "description": "Segurado por outra criatura. Não pode se mover. Desvantagem em ataques contra alvos que não seja o agarrador. Romper: teste contestado POT/AGI vs POT do agarrador.", "duration": "Até romper ou o agarrador soltar.", "effects": [
+      { "type": "custom", "text": "Velocidade 0." },
+      { "type": "custom", "text": "Desvantagem em ataques contra outros alvos." }
+    ] },
+    { "id": "atordoado", "name": "Atordoado", "description": "Mente em branco por um instante. Não age, não reage.", "duration": "1 rodada (ou até save).", "effects": [
+      { "type": "custom", "text": "Perde ação principal, bônus e reação na próxima rodada." },
+      { "type": "custom", "text": "Automaticamente falha testes de Reflexos e FOC enquanto atordoado." }
+    ] },
+    { "id": "cego", "name": "Cego", "description": "Não enxerga.", "duration": "Até remover a causa.", "effects": [
+      { "type": "custom", "text": "Desvantagem em ataques." },
+      { "type": "custom", "text": "Atacantes têm vantagem contra o alvo cego." },
+      { "type": "custom", "text": "Falha automática em testes que dependem de visão." }
+    ] },
+    { "id": "condenado", "name": "Condenado", "description": "Contagem regressiva narrativa (ex: maldição de morte em 3 dias, veneno de Ancião). Estágios avançam por tempo ou gatilho.", "duration": "Variável — termina quando a contagem zera ou a maldição é quebrada.", "stages": [
+      { "stage": 1, "name": "Marcado", "effects": [{ "type": "custom", "text": "Sonhos perturbadores; -1 em testes sociais." }] },
+      { "stage": 2, "name": "Decadente", "effects": [{ "type": "custom", "text": "-1 em todos os atributos físicos." }] },
+      { "stage": 3, "name": "Em Queda", "effects": [{ "type": "custom", "text": "-1 em todos os atributos; metade da recuperação de HP/Energia." }] },
+      { "stage": 4, "name": "Consumado", "effects": [{ "type": "custom", "text": "Morte/transformação conforme o gatilho. Não há save." }] }
+    ] },
+    { "id": "confuso", "name": "Confuso", "description": "Não distingue aliado de inimigo.", "duration": "1 rodada (save FOC).", "effects": [
+      { "type": "custom", "text": "No próximo turno, rola 1d6: 1-2 ataca aliado mais próximo; 3-4 fica imóvel; 5-6 age normalmente." }
+    ] },
+    { "id": "ensurdecido", "name": "Ensurdecido", "description": "Não ouve.", "duration": "Variável.", "effects": [
+      { "type": "custom", "text": "Falha automática em testes que dependem de audição." },
+      { "type": "custom", "text": "Não pode conjurar magias com componente verbal." }
+    ] },
+    { "id": "envenenado", "name": "Envenenado", "description": "Toxina ativa no corpo.", "duration": "Conforme o veneno.", "stages": [
+      { "stage": 1, "name": "Enjoado", "effects": [{ "type": "custom", "text": "-1 em ataques e testes." }] },
+      { "stage": 2, "name": "Debilitado", "effects": [{ "type": "custom", "text": "-2 em ataques, testes e DP." }] },
+      { "stage": 3, "name": "Em Agonia", "effects": [
+        { "type": "custom", "text": "-3 em ataques e testes." },
+        { "type": "custom", "text": "Sofre 1d6 necrótico/turno até estabilizar (Medicina DT 15 ou save CON DT 14)." }
+      ] }
+    ] },
+    { "id": "exausto", "name": "Exausto", "description": "Fadiga extrema acumulada (vigílias, marcha, ferimentos sem descanso).", "duration": "Descanso longo reduz 1 estágio.", "stages": [
+      { "stage": 1, "name": "Cansado", "effects": [{ "type": "custom", "text": "Desvantagem em testes de perícia." }] },
+      { "stage": 2, "name": "Fatigado", "effects": [{ "type": "custom", "text": "Velocidade -3m; desvantagem em testes de perícia." }] },
+      { "stage": 3, "name": "Esgotado", "effects": [{ "type": "custom", "text": "HP máximo reduzido pela metade; desvantagem em TODOS os testes." }] },
+      { "stage": 4, "name": "Colapsado", "effects": [{ "type": "custom", "text": "Velocidade 0; HP máximo reduzido pela metade; inconsciente sem teste CON DT 16 a cada hora." }] },
+      { "stage": 5, "name": "Terminal", "effects": [{ "type": "custom", "text": "Morte ao final do próximo descanso longo sem intervenção mágica." }] }
+    ] },
+    { "id": "ferido", "name": "Ferido", "description": "Ferimento persistente que não cicatriza sem cuidado.", "duration": "Medicina DT 14 ou magia de cura remove 1 estágio.", "stages": [
+      { "stage": 1, "name": "Ferido Leve", "effects": [{ "type": "custom", "text": "-1 HP máximo até curar." }] },
+      { "stage": 2, "name": "Ferido Grave", "effects": [{ "type": "custom", "text": "-1 HP máximo; desvantagem em testes de POT e AGI." }] },
+      { "stage": 3, "name": "Ferido Crítico", "effects": [
+        { "type": "custom", "text": "-HP máximo igual ao nível; desvantagem em POT, AGI e CON." },
+        { "type": "custom", "text": "Ao chegar a 0 HP, rola 2 falhas nos testes de morte." }
+      ] }
+    ] },
+    { "id": "fugindo", "name": "Fugindo", "description": "Medo agudo controla o personagem — se afasta da fonte.", "duration": "1d4 rodadas (save FOC DT 14 por rodada).", "effects": [
+      { "type": "custom", "text": "Deve usar ação principal para se mover na direção oposta da fonte." },
+      { "type": "custom", "text": "Não pode atacar voluntariamente a fonte." }
+    ] },
+    { "id": "impedido", "name": "Impedido", "description": "Movimento restrito (amarrado, preso em teia, atolado).", "duration": "Variável — teste para libertar.", "effects": [
+      { "type": "custom", "text": "Velocidade 0 OU reduzida pela metade, conforme o obstáculo." },
+      { "type": "custom", "text": "Desvantagem em ataques e Reflexos." }
+    ] },
+    { "id": "incapacitado", "name": "Incapacitado", "description": "Impedido de agir mas consciente.", "duration": "Variável.", "effects": [
+      { "type": "custom", "text": "Não pode tomar ação, ação bônus ou reação." },
+      { "type": "custom", "text": "Ainda pode falar e observar." }
+    ] },
+    { "id": "inconsciente", "name": "Inconsciente", "description": "Desacordado.", "duration": "Até recuperar HP ou ser acordado.", "effects": [
+      { "type": "custom", "text": "Incapacitado." },
+      { "type": "custom", "text": "Derruba (prone) o que segura." },
+      { "type": "custom", "text": "Falha automática em testes de POT, AGI, PER." },
+      { "type": "custom", "text": "Ataques contra alvo inconsciente a ≤3m são críticos automáticos." }
+    ] },
+    { "id": "invisivel", "name": "Invisível", "description": "Não pode ser visto sem sentidos especiais.", "duration": "Variável.", "effects": [
+      { "type": "custom", "text": "Vantagem em ataques." },
+      { "type": "custom", "text": "Atacantes contra o invisível têm desvantagem." },
+      { "type": "custom", "text": "Movimento ainda pode ser ouvido — Sentinela DT 15 detecta." }
+    ] },
+    { "id": "lento", "name": "Lento", "description": "Movimento retardado magicamente ou mecanicamente.", "duration": "Variável.", "effects": [
+      { "type": "custom", "text": "Velocidade reduzida pela metade." },
+      { "type": "custom", "text": "-2 em ataques, Reflexos e DP." }
+    ] },
+    { "id": "medo", "name": "Medo", "description": "Apreensão que escala conforme a fonte se intensifica.", "duration": "Save FOC por rodada.", "stages": [
+      { "stage": 1, "name": "Abalado", "effects": [{ "type": "custom", "text": "-1 em ataques e testes enquanto a fonte estiver visível." }] },
+      { "stage": 2, "name": "Aterrorizado", "effects": [{ "type": "custom", "text": "-2 em ataques e testes; não pode aproximar-se da fonte voluntariamente." }] },
+      { "stage": 3, "name": "Em Pânico", "effects": [{ "type": "custom", "text": "Fugindo (ver condição); não pode atacar a fonte." }] },
+      { "stage": 4, "name": "Paralisado de Medo", "effects": [{ "type": "custom", "text": "Incapacitado enquanto a fonte estiver visível." }] }
+    ] },
+    { "id": "paralisado", "name": "Paralisado", "description": "Corpo travado. Consciência presente.", "duration": "Variável.", "effects": [
+      { "type": "custom", "text": "Incapacitado." },
+      { "type": "custom", "text": "Falha automática em POT e AGI." },
+      { "type": "custom", "text": "Ataques contra alvo paralisado têm vantagem; críticos automáticos a ≤3m." }
+    ] },
+    { "id": "petrificado", "name": "Petrificado", "description": "Transformado em pedra.", "duration": "Até dissipar.", "effects": [
+      { "type": "custom", "text": "Incapacitado; inconsciente; sem percepção do entorno." },
+      { "type": "custom", "text": "Resistência a todo dano exceto +magic e contundente alta." },
+      { "type": "custom", "text": "Imune a venenos e doenças." }
+    ] },
+    { "id": "prono", "name": "Prono (Caído)", "description": "No chão. Levantar custa metade do movimento.", "duration": "Até levantar.", "effects": [
+      { "type": "custom", "text": "Desvantagem em ataques." },
+      { "type": "custom", "text": "Atacantes a ≤3m têm vantagem; atacantes a distância têm desvantagem." }
+    ] },
+    { "id": "protegido", "name": "Protegido", "description": "Sob efeito de escudo mágico ou guarda aliada ativa.", "duration": "Conforme a fonte.", "effects": [
+      { "type": "custom", "text": "+2 DP (não empilha com cobertura superior)." },
+      { "type": "custom", "text": "Primeiro ataque contra o alvo no turno erra automaticamente, se o valor específico da fonte não disser outra coisa." }
+    ] },
+    { "id": "queimando", "name": "Queimando", "description": "Em chamas.", "duration": "Até apagar (ação: rolar no chão; magia de água; imersão).", "effects": [
+      { "type": "custom", "text": "Sofre 1d6 fogo no início de cada turno." },
+      { "type": "custom", "text": "Se usar ação bônus para apagar, fim do efeito ao final do turno (Reflexos DT 12)." }
+    ] },
+    { "id": "sangrando", "name": "Sangrando", "description": "Hemorragia ativa.", "duration": "Até estabilizar (Medicina DT 12 ou magia).", "stages": [
+      { "stage": 1, "name": "Sangrando Leve", "effects": [{ "type": "custom", "text": "Sofre 1 dano no início de cada turno." }] },
+      { "stage": 2, "name": "Sangrando Grave", "effects": [{ "type": "custom", "text": "Sofre 1d4 no início de cada turno; -1 em testes físicos." }] },
+      { "stage": 3, "name": "Hemorrágico", "effects": [
+        { "type": "custom", "text": "Sofre 1d6 no início de cada turno." },
+        { "type": "custom", "text": "A cada turno sem estabilizar, +1 estágio de Ferido." }
+      ] }
+    ] },
+    { "id": "silenciado", "name": "Silenciado", "description": "Voz bloqueada por magia ou ferimento.", "duration": "Variável.", "effects": [
+      { "type": "custom", "text": "Não pode conjurar magias com componente verbal." },
+      { "type": "custom", "text": "Não pode usar Presença (PRE) em testes sociais ativos." }
+    ] },
+    { "id": "surpreso", "name": "Surpreso", "description": "Pego totalmente de guarda baixa na primeira rodada de combate.", "duration": "1 rodada (a primeira).", "effects": [
+      { "type": "custom", "text": "Não age nem reage na primeira rodada." },
+      { "type": "custom", "text": "Atacantes têm vantagem contra o surpreso na primeira rodada." }
+    ] },
+    { "id": "vulneravel", "name": "Vulnerável", "description": "Defesa comprometida — flanco aberto, posição ruim, ferida exposta.", "duration": "Até sair da condição (move, ação de recuperar).", "effects": [
+      { "type": "custom", "text": "Atacantes recebem +2 no ataque contra o alvo." },
+      { "type": "custom", "text": "Críticos causam 1 dado de dano adicional." }
+    ] }
+  ],
+  "notes": [
+    "Esta lista cobre 25 condições canônicas. Pactos, Cicatrizes e Vertentes podem introduzir condições exclusivas — registrar em seus próprios JSONs e referenciar IDs aqui quando possível.",
+    "Para duração variável, o Mestre pode padronizar: combate = 1d4 rodadas; exploração = 1d6 minutos; narrativa = cena inteira."
+  ]
+}

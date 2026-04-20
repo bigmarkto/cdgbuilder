@@ -1,0 +1,168 @@
+{
+  "id": "niveis",
+  "name": "Progressao de Nivel 1-12",
+  "source": "CDG_Progressao_Niveis.md",
+  "description": "XP ACUMULADO define o nivel automaticamente. Ao atingir o XP necessario, voce SOBE DE NIVEL imediatamente. XP e ganho por: Combate, Missoes, Descobertas, Roleplay, Sobrevivencia. Media por sessao: 150-250 XP. XP serve DOIS propositos: (1) SUBIR DE NIVEL (acumulado total); (2) COMPRAR HABILIDADES DE ARVORE (gasto separado). IMPORTANTE: XP gasto em Arvores NAO desconta do total para nivel. Voce tem XP TOTAL (define nivel) e XP DISPONIVEL (para gastar em Arvores).",
+  "levels": [
+    { "level": 1, "xpRequired": 0, "hp": "CON x5 +10", "usosMagia": "Atr.Conj +1", "energia": "RES x3", "proficiencia": "Iniciais", "atributo": null, "arvore": null, "especial": "Raca + base" },
+    { "level": 2, "xpRequired": 500, "hp": "+1d racial +CON/2", "usosMagia": "+1", "energia": null, "proficiencia": "+1 Rank", "atributo": null, "arvore": "Tier 1 aberto", "especial": "1a habilidade Arvore" },
+    { "level": 3, "xpRequired": 1000, "hp": "+1d +CON/2", "usosMagia": "+1", "energia": "+RES", "proficiencia": null, "atributo": null, "arvore": "Tier 1", "especial": null },
+    { "level": 4, "xpRequired": 1500, "hp": "+1d +CON/2", "usosMagia": "+2", "energia": "+RES", "proficiencia": "+1 Rank", "atributo": "+1 ATRIBUTO", "arvore": "Tier 1", "especial": "Marco: +1 atributo" },
+    { "level": 5, "xpRequired": 3000, "hp": "+1d +CON/2", "usosMagia": "+2", "energia": "+RES", "proficiencia": null, "atributo": null, "arvore": "Tier 1+2 aberto", "especial": "Acesso Tier 2" },
+    { "level": 6, "xpRequired": 4500, "hp": "+1d +CON/2", "usosMagia": "+2", "energia": "+RES", "proficiencia": "+1 Rank", "atributo": null, "arvore": "Tier 1+2", "especial": null },
+    { "level": 7, "xpRequired": 6000, "hp": "+1d +CON/2", "usosMagia": "+3", "energia": "+RES", "proficiencia": null, "atributo": null, "arvore": "Tier 1+2", "especial": null },
+    { "level": 8, "xpRequired": 8000, "hp": "+1d +CON/2", "usosMagia": "+3", "energia": "+RES", "proficiencia": "+1 Rank", "atributo": "+1 ATRIBUTO", "arvore": "Tier 1-3 aberto", "especial": "Marco + Tier 3" },
+    { "level": 9, "xpRequired": 10000, "hp": "+1d +CON/2", "usosMagia": "+3", "energia": "+RES x2", "proficiencia": null, "atributo": null, "arvore": "Tier 1-3", "especial": "Energia x2" },
+    { "level": 10, "xpRequired": 12000, "hp": "+1d +CON/2", "usosMagia": "+4", "energia": "+RES", "proficiencia": "+1 Rank", "atributo": null, "arvore": "Tier 1-4 aberto", "especial": "Acesso Tier 4" },
+    { "level": 11, "xpRequired": 14000, "hp": "+1d +CON/2", "usosMagia": "+4", "energia": "+RES", "proficiencia": null, "atributo": null, "arvore": "Tier 1-4", "especial": null },
+    { "level": 12, "xpRequired": 16000, "hp": "+1d +CON/2", "usosMagia": "+5", "energia": "+RES x2", "proficiencia": "+1 Rank", "atributo": "+1 ATRIBUTO", "arvore": "Tier 1-4", "especial": "Marco final. Lenda." }
+  ],
+  "resources": {
+    "hp": {
+      "description": "Nivel 1: CON x 5 + 10 + bonus racial. Nivel 2-12: +1d(dado racial) + CON/2 por nivel",
+      "racialDice": {
+        "d6": ["Inarcano", "Zenita"],
+        "d8": ["Humano", "Agouro", "Vespero", "Artesao-tipo"],
+        "d10": ["Antronoide", "Demonio", "Anao", "Diluviano", "Constructo", "Motriz"],
+        "d12": ["Mandragora", "Draconato"]
+      },
+      "range": "Range nivel 12: ~65 HP (Zenita fragil) a ~150 HP (Mandragora tanque). Arvore Corpo pode adicionar +50."
+    },
+    "usosDeMagia": {
+      "formula": "Atributo de Conjuracao + Nivel + bonus de Arvore",
+      "attributeMap": {
+        "INT": "Magia Arcana (estudo)",
+        "FOC": "Magia Divina (fe) / Rituais",
+        "PRE": "Magia Social / Encantamento",
+        "ENG": "Magitech / Runas",
+        "CON": "Magia de Sangue (sacrificio)",
+        "PER": "Magia Natural / Primal"
+      },
+      "notes": "Cada magia gasta 1+ Usos dependendo da potencia. Sem catalisador: custo +1 Uso extra.",
+      "recuperacao": {
+        "descansoLongo": "100%",
+        "descansoCurto": "25% (arredondado pra baixo)",
+        "meditacao": "FOC x 4 extra (Arvore Fe)",
+        "recuperarMana": "FOC x 3 extra (Arvore Magia)"
+      }
+    },
+    "energia": {
+      "formulaBase": "RES x 3",
+      "description": "Cada nivel a partir do 3: +RES ao total. Niveis 9 e 12: +RES x 2 (saltos de poder).",
+      "usos": [
+        "Habilidades de Arvore marcadas [ATIVA]",
+        "Segundo Folego e habilidades de sobrevivencia",
+        "Manobras especiais de combate",
+        "Resistir efeitos extremos (gastar 1 Energia pra rerolar RES)"
+      ],
+      "recuperacao": {
+        "descansoLongo": "100%",
+        "descansoCurto": "50%"
+      }
+    },
+    "proficiencias": {
+      "ganhoPorNivel": "Niveis 2, 4, 6, 8, 10, 12: +1 Rank em proficiencia EXISTENTE ou nova proficiencia Rank 1",
+      "totalAlemIniciais": 6,
+      "opcoes": [
+        "Suba 1 Rank de proficiencia que ja tem (Aprendiz > Treinado, etc)",
+        "Aprenda nova proficiencia em Rank 1 (Assertivo, +0)",
+        "Aprenda novo IDIOMA Rank 1"
+      ],
+      "limitesRank": {
+        "formula": "Rank maximo = nivel/2 (arredondado pra cima)",
+        "tabela": [
+          { "niveis": "1-2", "maxRank": 1 },
+          { "niveis": "3-4", "maxRank": 2 },
+          { "niveis": "5-6", "maxRank": 3 },
+          { "niveis": "7-8", "maxRank": 4 },
+          { "niveis": "9-10", "maxRank": 5 },
+          { "niveis": "11-12", "maxRank": 6 }
+        ]
+      }
+    },
+    "atributosMarcos": {
+      "niveis": [4, 8, 12],
+      "ganho": "+1 PERMANENTE em 1 atributo a escolha",
+      "regras": [
+        "Pode ser qualquer atributo (nao precisa ser o principal)",
+        "Pode repetir o mesmo atributo nos 3 marcos",
+        "Maximo de atributo: 8 (com raciais e marcos combinados)",
+        "Nao pode ultrapassar 8 em nenhuma circunstancia natural"
+      ]
+    }
+  },
+  "arvores": {
+    "acessoPorTier": [
+      { "tier": 1, "nivelMin": 2, "custoXP": 50, "habPorArvore": 10, "reqTierAnterior": null },
+      { "tier": 2, "nivelMin": 5, "custoXP": 100, "habPorArvore": 8, "reqTierAnterior": "3+ habilidades Tier 1 mesma arvore" },
+      { "tier": 3, "nivelMin": 8, "custoXP": 200, "habPorArvore": 6, "reqTierAnterior": "3+ habilidades Tier 2 mesma arvore" },
+      { "tier": 4, "nivelMin": 10, "custoXP": 400, "habPorArvore": 4, "reqTierAnterior": "3+ habilidades Tier 3 mesma arvore" }
+    ],
+    "xpDisponivelPorNivel": [
+      { "nivel": 2, "ganhoXP": 100, "totalXP": 100, "nota": "2 habilidades T1" },
+      { "nivel": 3, "ganhoXP": 150, "totalXP": 250, "nota": null },
+      { "nivel": 4, "ganhoXP": 200, "totalXP": 450, "nota": null },
+      { "nivel": 5, "ganhoXP": 250, "totalXP": 700, "nota": "acessa T2" },
+      { "nivel": 6, "ganhoXP": 300, "totalXP": 1000, "nota": null },
+      { "nivel": 7, "ganhoXP": 350, "totalXP": 1350, "nota": null },
+      { "nivel": 8, "ganhoXP": 400, "totalXP": 1750, "nota": "acessa T3" },
+      { "nivel": 9, "ganhoXP": 450, "totalXP": 2200, "nota": null },
+      { "nivel": 10, "ganhoXP": 500, "totalXP": 2700, "nota": "acessa T4" },
+      { "nivel": 11, "ganhoXP": 550, "totalXP": 3250, "nota": null },
+      { "nivel": 12, "ganhoXP": 600, "totalXP": 3850, "nota": null }
+    ],
+    "totalAteNivel12": "~3850 XP para gastar em Arvores. Isso permite: ~6-8 habilidades T1 + 4-5 T2 + 3-4 T3 + 1-2 T4. Ou espalhar mais fino entre varias arvores."
+  },
+  "ganhoXP": {
+    "fontes": [
+      { "fonte": "Combate (criatura derrotada)", "xp": "ND x 15 / grupo", "notas": "Dividido igualmente" },
+      { "fonte": "Boss derrotado", "xp": "ND x 30 / grupo", "notas": "Dobro de criatura normal" },
+      { "fonte": "Missao simples", "xp": "50-100", "notas": "Busca, entrega, escolta" },
+      { "fonte": "Missao complexa", "xp": "150-300", "notas": "Multi-sessao, decisoes dificeis" },
+      { "fonte": "Missao epica", "xp": "400-600", "notas": "Arco de campanha resolvido" },
+      { "fonte": "Descoberta (local novo)", "xp": "25-50", "notas": "Explorar ruina, bioma novo" },
+      { "fonte": "Descoberta (segredo importante)", "xp": "50-100", "notas": "Lore, misterio, revelacao" },
+      { "fonte": "Roleplay significativo", "xp": "25-75", "notas": "Momento de personagem, decisao dificil" },
+      { "fonte": "Sobreviver situacao extrema", "xp": "50-100", "notas": "Quase morrer, desastre, emboscada" },
+      { "fonte": "Resolver sem combate", "xp": "XP combate x 1,5", "notas": "Bonus por nao lutar (diplomacia, furtividade)" },
+      { "fonte": "Crafting item notavel", "xp": "25-50", "notas": "Criar algo util ou impressionante" },
+      { "fonte": "Domar besta", "xp": "ND x 20", "notas": "Investimento de tempo recompensado" }
+    ],
+    "mediaPorSessao": {
+      "tranquila": "100-150 XP",
+      "media": "200-300 XP",
+      "intensa": "350-500 XP"
+    },
+    "tempoEstimadoN12": {
+      "rapido": "~28 sessoes (300 XP/sessao)",
+      "medio": "~41 sessoes (200 XP/sessao)",
+      "lento": "~55 sessoes (150 XP/sessao)"
+    }
+  },
+  "referenciaDePoder": [
+    { "nivel": 1, "tier": null, "hpMedio": 30, "usosMagiaINT5": 6, "energiaRES3": 9, "descricao": "Aventureiro iniciante. Vulneravel. Generico." },
+    { "nivel": 2, "tier": "T1", "hpMedio": 37, "usosMagiaINT5": 8, "energiaRES3": 9, "descricao": "Comecando a se definir. Primeiras habilidades." },
+    { "nivel": 3, "tier": "T1", "hpMedio": 44, "usosMagiaINT5": 9, "energiaRES3": 12, "descricao": "Direcao clara. Combina 2-3 T1 de 1-2 arvores." },
+    { "nivel": 4, "tier": "T1", "hpMedio": 51, "usosMagiaINT5": 12, "energiaRES3": 15, "descricao": "Marco +1 atributo. Base solida. Pode lidar com ND 3-4." },
+    { "nivel": 5, "tier": "T1+T2", "hpMedio": 58, "usosMagiaINT5": 14, "energiaRES3": 18, "descricao": "Especializacao. T2 comeca. Salto de poder visivel." },
+    { "nivel": 6, "tier": "T1+T2", "hpMedio": 65, "usosMagiaINT5": 16, "energiaRES3": 21, "descricao": "Identidade mecanica definida. ND 5-6 e desafiante." },
+    { "nivel": 7, "tier": "T1+T2", "hpMedio": 72, "usosMagiaINT5": 19, "energiaRES3": 24, "descricao": "Combinacoes entre arvores surgem. Versatil." },
+    { "nivel": 8, "tier": "T1-3", "hpMedio": 79, "usosMagiaINT5": 22, "energiaRES3": 27, "descricao": "Marco +1 atrib. T3 comeca. Poder significativo. ND 7-8." },
+    { "nivel": 9, "tier": "T1-3", "hpMedio": 86, "usosMagiaINT5": 25, "energiaRES3": 36, "descricao": "Quase no pico. Builds complexas. ND 8-9." },
+    { "nivel": 10, "tier": "T1-4", "hpMedio": 93, "usosMagiaINT5": 28, "energiaRES3": 39, "descricao": "T4 abre. Habilidades definidoras. ND 10+." },
+    { "nivel": 11, "tier": "T1-4", "hpMedio": 100, "usosMagiaINT5": 31, "energiaRES3": 42, "descricao": "Lendario. Capstone. ND 12+." },
+    { "nivel": 12, "tier": "T1-4", "hpMedio": 107, "usosMagiaINT5": 35, "energiaRES3": 52, "descricao": "Lenda absoluta. Pico de poder mortal. Marco final." }
+  ],
+  "buildsExemplo": [
+    { "build": "Tank Puro", "arvores": "Corpo T4 + Armamento T2", "aproximadoN12": "+50 HP, +8 DP, resist. fisico, Furia Eterna" },
+    { "build": "DPS Melee", "arvores": "Armamento T4 + Corpo T2", "aproximadoN12": "8 ataques, +8 dano, crit 17-20, Arma Lendaria" },
+    { "build": "Mago Nuclear", "arvores": "Magia T4 + Fe T1", "aproximadoN12": "Mana 80+, dano x4, DT +8, 4 concentracoes" },
+    { "build": "Curandeiro", "arvores": "Fe T4 + Sobrev T2", "aproximadoN12": "+12 cura, Avatar, Ressurreicao, Medicina Natural" },
+    { "build": "Paladino", "arvores": "Fe T3 + Corpo T2 + Armam T1", "aproximadoN12": "Avatar + Tanque + arma sagrada" },
+    { "build": "Assassino", "arvores": "Armam T3 + Tatica T2 + Sobrev T1", "aproximadoN12": "Contra-ataque, emboscada, camuflagem" },
+    { "build": "Artesao Supremo", "arvores": "Oficio T4 + Magitech T2", "aproximadoN12": "Artefatos, automatos, fortaleza" },
+    { "build": "Senhor das Bestas", "arvores": "Besta T4 + Sobrev T2", "aproximadoN12": "5 companheiros, Forma Selvagem, Leviata" },
+    { "build": "General", "arvores": "Tatica T4 + Social T2", "aproximadoN12": "Xeque-Mate, discurso, imperio comercial" },
+    { "build": "Engenheiro Motriz", "arvores": "Magitech T4 + Oficio T2", "aproximadoN12": "Colossus, Arma Juizo, Transcendencia" }
+  ]
+}

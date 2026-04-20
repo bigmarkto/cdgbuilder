@@ -1,0 +1,73 @@
+{
+  "id": "mandragora",
+  "name": "Mandragora",
+  "source": "CDG_RacasDef.md + CDG_Livro_Core.md",
+  "description": "Filhos da Flora. Raça vegetal-adjacente de preferência subterrânea — não por medo ou rejeição, mas por afinidade. Encontraram cavernas, pântanos, florestas densas, e ali construíram trincheiras: redes de túneis em múltiplos níveis, câmaras de fungos bioluminescentes, lagos subterrâneos, galerias de arte esculpidas na rocha. Carne fibrosa, mais resistente que a humana. Regeneram lentamente. Comunidades lideradas por matriarcas anciãs — respeito acumulado, não lei formal.",
+  "hitDie": "d12",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "CON": 2, "POT": 1 },
+    "notes": "Herdado da linhagem anteriormente chamada 'Troll' no Livro Core. +2 CON, +1 POT refletem a natureza resistente e robusta."
+  },
+  "traits": [
+    {
+      "id": "visao-no-escuro-mandragora",
+      "name": "Visão no Escuro 36m",
+      "description": "36 metros de visão clara em escuridão total. Não visão noturna que distingue vultos — visão genuína, como sob luz difusa, em ambiente sem luz alguma.",
+      "modifiers": [
+        { "type": "custom", "text": "Visão no escuro até 36m (visão plena, não em tons de cinza)." }
+      ]
+    },
+    {
+      "id": "regeneracao-mandragora",
+      "name": "Regeneração",
+      "description": "Regenera 1 HP por hora de descanso ou exposição a fontes naturais (sol, terra úmida, água limpa).",
+      "modifiers": [
+        { "type": "custom", "text": "Regenera 1 HP por hora." }
+      ]
+    },
+    {
+      "id": "cheiro-bom",
+      "name": "Cheiro Bom",
+      "description": "Mandragoras tendem a exalar aromas agradáveis (musgo, flor, madeira). +2 em qualquer teste social.",
+      "modifiers": [
+        { "type": "custom", "text": "+2 em qualquer teste social." }
+      ]
+    },
+    {
+      "id": "sobrevivencia-hereditaria",
+      "name": "Sobrevivência Hereditária",
+      "description": "+2 em qualquer teste que envolva PER, Sobrevivência ou Natureza.",
+      "modifiers": [
+        { "type": "custom", "text": "+2 em testes de PER, Sobrevivência ou Natureza." }
+      ]
+    },
+    {
+      "id": "furtividade-natural",
+      "name": "Furtividade Natural",
+      "description": "Nas matas, um Mandragora desaparece. Não magicamente — simplesmente evoluiu para não ser visto em ambientes assim. Vantagem em Furtividade em ambientes naturais (florestas, pântanos, cavernas)."
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "fotofobia",
+      "name": "Fotofobia",
+      "description": "Sensibilidade à luz intensa. Desvantagem em testes de PER e ataques à distância sob luz solar direta ou luz mágica brilhante.",
+      "modifiers": [
+        { "type": "custom", "text": "Desvantagem sob luz intensa/solar direta (PER e ataques à distância)." }
+      ]
+    },
+    {
+      "id": "engenharia-lenta",
+      "name": "Engenharia Lenta",
+      "description": "Estruturas e assentamentos mais sofisticados são difíceis de entender. -2 em qualquer teste que envolva arquitetura, construção ou maquinário.",
+      "modifiers": [
+        { "type": "custom", "text": "-2 em arquitetura, construção ou maquinário." }
+      ]
+    }
+  ],
+  "subtypes": [],
+  "notes": "Mandragora unifica a linhagem anteriormente chamada 'Troll' no Livro Core com o conceito 'Filhos da Flora' de CDG_RacasDef. Stats mecânicos de Troll (d12, +2 CON, +1 POT, Regeneração, Visão no Escuro, Fotofobia) + traços culturais de Mandragora (Cheiro Bom, Sobrevivência, Furtividade)."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "constructo",
+  "name": "Constructo",
+  "source": "CDG_RacasDef.md",
+  "description": "Ferramentas que Sonham. Nasceram de reverência — Anões que acidentalmente criaram vida ao usar Census Aurea com desejo obstinado. Corpos de liga (bronze, ferro rúnico, pedra-forja), articulações mecânicas, runas gravadas que brilham em dourado tênue. Núcleo de Cosmonita no peito que pulsa como coração — simultaneamente alma e calcanhar de Aquiles. 150kg a 1T. Cadeiras quebram. Água é inimiga funcional. Não comem, não dormem — entram em modo de manutenção 2h diárias. Degradam ao longo de séculos.",
+  "hitDie": "d10",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "CON": 2, "POT": 1 }
+  },
+  "traits": [
+    {
+      "id": "corpo-forjado",
+      "name": "Corpo Forjado",
+      "description": "Não precisa comer, beber nem respirar. Imune a veneno e doença.",
+      "modifiers": [
+        { "type": "immunity", "damageType": "veneno" },
+        { "type": "custom", "text": "Imune a doença. Não precisa comer, beber ou respirar." }
+      ]
+    },
+    {
+      "id": "armadura-natural-constructo",
+      "name": "Armadura Natural",
+      "description": "2 pontos de defesa do corpo metálico. Pode ser melhorado por um Forjador — não como equipamento, mas como extensão do corpo.",
+      "modifiers": [
+        { "type": "derived", "target": "DP", "value": 2, "sub": "natural" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "nucleo-exposto",
+      "name": "Núcleo Exposto",
+      "description": "Ao cair a 0 HP, o núcleo fica vulnerável a ataques direcionados. Se destruído, morte permanente sem possibilidade de ressurreição."
+    },
+    {
+      "id": "peso-extremo",
+      "name": "Peso Extremo",
+      "description": "Desvantagem em natação. Terreno frágil representa risco constante. Montarias precisam ser excepcionalmente robustas.",
+      "modifiers": [
+        { "type": "custom", "text": "Desvantagem em Natação." }
+      ]
+    },
+    {
+      "id": "reparacao",
+      "name": "Reparação",
+      "description": "Em vez de cura mágica, requer reparo por Forja ou Engenharia.",
+      "modifiers": [
+        { "type": "custom", "text": "Não cura com magia convencional; requer Forja/Engenharia para reparo." }
+      ]
+    },
+    {
+      "id": "necessita-recarga",
+      "name": "Necessidade de Recarga",
+      "description": "O núcleo de Cosmonita precisa de recarga: 4 horas de luz solar ou 8 horas próximo a fonte de calor. Sem recarga por 48 horas, o desligamento começa gradualmente."
+    }
+  ],
+  "subtypes": [],
+  "notes": "Criação v3 menciona '5 variações Constructo (não-biológicas)'. Livro Core também menciona '+2 DP natural'. Tipos específicos (Runico, Cristalino etc.) não detalhados."
+}

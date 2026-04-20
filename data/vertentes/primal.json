@@ -1,0 +1,38 @@
+{
+  "id": "primal",
+  "name": "Primal",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente do Instinto. Vertente do corpo e do instinto: sem fórmulas, sem fé, sem dispositivos — o poder brota de dentro como respirar. É a conexão com o selvagem que existe em toda criatura viva, o eco da Energia Cósmica no sangue, nos músculos, nos sentidos. Quem conjura pelo Primal não pensa no poder. Sente.",
+  "governingAttributes": ["PER", "RES", "AGI", "POT"],
+  "maxRankNormal": 4,
+  "identity": "Instinto, natureza, selvagem",
+  "tags": ["natureza", "instinto"],
+  "extraRules": [
+    {
+      "id": "ambiente",
+      "name": "Ambiente",
+      "description": "Em ambientes naturais (floresta, montanha, oceano, deserto), +1 dado de bônus em todo efeito. Em ambientes artificiais (cidades, fábricas, estruturas), -1 dado de penalidade."
+    },
+    {
+      "id": "quatro-atributos",
+      "name": "4 Atributos",
+      "description": "Primal usa PER, RES, AGI ou POT — o jogador escolhe qual usar em cada conjuração. Isso torna Primal a vertente mais flexível em atributos mas menos especializada."
+    },
+    {
+      "id": "instinto",
+      "name": "Instinto",
+      "description": "Não precisa montar a conjuração conscientemente. Pode conjurar como REAÇÃO em situações de perigo (1x por combate, custo +1)."
+    },
+    {
+      "id": "forma-selvagem",
+      "name": "Forma Selvagem",
+      "description": "Efeitos de Buff Self podem incluir transformações físicas parciais: garras, escamas, visão térmica, brânquias. A forma muda o corpo temporariamente."
+    },
+    {
+      "id": "sem-grimorio",
+      "name": "Sem Grimório",
+      "description": "Não pode salvar receitas. Cada conjuração é montada no instinto."
+    }
+  ],
+  "conjurations": []
+}

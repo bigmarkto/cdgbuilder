@@ -1,0 +1,33 @@
+{
+  "id": "dogmatica",
+  "name": "Dogmática",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente da Fé Ortodoxa. Fé transformada em poder — não fé vaga e pessoal, mas fé estruturada, codificada, dogmática. O conjurador segue as regras de um Ancião, Besta Sagrada ou Entidade que prega filosofia ortodoxa. Quanto mais rigidamente segue o dogma, mais poder recebe. Questionar enfraquece. Obedecer fortalece.",
+  "governingAttributes": ["FOC", "PRE"],
+  "maxRankNormal": 4,
+  "identity": "Fé ortodoxa, dogma, anciões",
+  "tags": ["divina", "magica"],
+  "extraRules": [
+    {
+      "id": "dogma",
+      "name": "Dogma",
+      "description": "Na criação, o jogador define o dogma que segue (3 regras que não pode quebrar). Enquanto fiel ao dogma: conjurações de Cura custam -1 ponto. Se quebrar uma regra: perde acesso à Dogmática por 24h. Deve fazer penitência."
+    },
+    {
+      "id": "bencao",
+      "name": "Bênção",
+      "description": "1x por descanso longo, pode conceder Bênção a um aliado. Bênção: +2 em todos os testes por 1 hora. Não custa Energia."
+    },
+    {
+      "id": "anatema",
+      "name": "Anátema",
+      "description": "Conjurações ofensivas contra devotos do MESMO dogma custam +1 ponto extra. O poder resiste a ser usado contra os seus."
+    },
+    {
+      "id": "oratoria-sagrada",
+      "name": "Oratória Sagrada",
+      "description": "Pode usar conjurações de Buff/Debuff através de PALAVRAS. Não precisa de gesto ou componente material. Só voz. Alcance = até onde a voz chega."
+    }
+  ],
+  "conjurations": []
+}

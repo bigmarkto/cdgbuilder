@@ -1,0 +1,256 @@
+{
+  "id": "besta",
+  "name": "Besta",
+  "source": "CDG_Progressao_P3.md",
+  "description": "Domar, Montar & Comunicar com Animais — PER / PRE. Outros investem em armas, magia ou engenhosidade. Voce investiu na relacao mais antiga do mundo: a alianca entre ser senciente e besta. Seu companheiro nao e equipamento — e familia.",
+  "atributoChave": "PER / PRE",
+  "companheiroAnimal": {
+    "obtencao": "Ao comprar 'Vinculo', voce ganha 1 companheiro animal.",
+    "regras": [
+      "Age no seu turno, apos sua acao. 1 comando por turno (Acao Livre).",
+      "HP e DP da ficha da criatura. Ganha +2 HP por nivel do domador.",
+      "Lealdade: 1-5. Comeca em 3. Maus tratos -1. Cuidado +1.",
+      "Lealdade 0: foge. Lealdade 5: sacrifica-se por voce.",
+      "Se morrer: 30 dias de luto antes de vincular novo companheiro.",
+      "ND maximo: seu nivel / 2 (arredondado para baixo)."
+    ]
+  },
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Domador",
+      "prerequisites": [ { "type": "custom", "text": "PER 2+ recomendado" } ],
+      "abilities": [
+        { "id": "vinculo", "name": "Vinculo", "cost": 50, "description": "Pode vincular 1 companheiro animal. Processo: ND x 7 dias de convivencia + PER DT (10+ND x 2), 3 sucessos. Base de tudo." },
+        { "id": "falar-com-animais", "name": "Falar com Animais", "cost": 50, "description": "Pode comunicar intencoes basicas com animais (medo, fome, direcao, perigo). Nao e telepatia — e linguagem corporal + som." },
+        { "id": "cavalgar", "name": "Cavalgar", "cost": 50, "description": "Pode montar criaturas Medias ou maiores. Sem penalidade em combate montado. +3m velocidade montado." },
+        { "id": "cuidar", "name": "Cuidar", "cost": 50, "description": "Descanso Curto: cure companheiro em 1d8+PER HP. Pode tratar doencas animais. Companheiro descansa mais rapido." },
+        {
+          "id": "comando-basico",
+          "name": "Comando Basico",
+          "cost": 50,
+          "description": "Companheiro obedece comandos: Atacar, Defender, Buscar, Ficar, Seguir, Vigiar. Responde a gestos silenciosos.",
+          "prerequisites": [ { "type": "talent", "id": "vinculo" } ]
+        },
+        {
+          "id": "instinto-compartilhado",
+          "name": "Instinto Compartilhado",
+          "cost": 50,
+          "description": "Enquanto companheiro a 9m: voce sente o que ele sente (perigo, presa, medo). +2 PER quando companheiro esta atento.",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 2 } ]
+        },
+        {
+          "id": "treinar-truque",
+          "name": "Treinar Truque",
+          "cost": 50,
+          "description": "Ensine 1 truque ao companheiro (rolar, fingir morte, buscar objeto especifico). Maximo: PER truques.",
+          "prerequisites": [ { "type": "talent", "id": "comando-basico" } ]
+        },
+        {
+          "id": "acalmar-besta",
+          "name": "Acalmar Besta",
+          "cost": 50,
+          "description": "Acao: teste PRE DT 12 para acalmar animal hostil ou amedrontado. Nao funciona em Bestas magicas ou famintas.",
+          "prerequisites": [ { "type": "attribute", "attr": "PRE", "min": 2 } ]
+        },
+        {
+          "id": "sentinela-animal",
+          "name": "Sentinela Animal",
+          "cost": 50,
+          "description": "Companheiro vigia enquanto voce dorme. Acorda voce ao detectar perigo. Percepcao do companheiro = sua +2.",
+          "prerequisites": [ { "type": "talent", "id": "vinculo" } ]
+        },
+        { "id": "afinidade-natural", "name": "Afinidade Natural", "cost": 50, "description": "Animais selvagens sao Indiferentes em vez de Hostis com voce. Nao atacam a menos que provocados." }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Mestre de Bestas",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Besta" } ],
+      "abilities": [
+        {
+          "id": "segundo-vinculo",
+          "name": "Segundo Vinculo",
+          "cost": 100,
+          "description": "Pode ter 2 companheiros animais simultaneos. Ambos agem no seu turno. Comandos individuais.",
+          "prerequisites": [ { "type": "talent", "id": "vinculo" } ]
+        },
+        {
+          "id": "telepatia-bestial",
+          "name": "Telepatia Bestial",
+          "cost": 100,
+          "description": "Comunicacao telepatica com companheiro a 300m. Ve pelo olhos dele (Acao, concentracao). Sente dor dele.",
+          "prerequisites": [
+            { "type": "talent", "id": "instinto-compartilhado" },
+            { "type": "attribute", "attr": "PRE", "min": 3 }
+          ]
+        },
+        {
+          "id": "montaria-de-guerra",
+          "name": "Montaria de Guerra",
+          "cost": 100,
+          "description": "Montaria ganha: +2 DP, +2 acerto quando voce monta. Investida montada: +2d6 dano. Montaria nao foge de combate.",
+          "prerequisites": [ { "type": "talent", "id": "cavalgar" } ]
+        },
+        {
+          "id": "companheiro-evoluido",
+          "name": "Companheiro Evoluido",
+          "cost": 100,
+          "description": "Companheiro ganha: +5 HP, +1 DP, +1 dano. Pode aprender 1 manobra especial (investida, flanquear, desarmar).",
+          "prerequisites": [
+            { "type": "talent", "id": "cuidar" },
+            { "type": "talent", "id": "comando-basico" }
+          ]
+        },
+        {
+          "id": "domar-o-monstruoso",
+          "name": "Domar o Monstruoso",
+          "cost": 100,
+          "description": "Pode vincular Bestas magicas e monstruosas (nao so animais). ND maximo: nivel/2 +1. Processo mais longo (ND x 14 dias).",
+          "prerequisites": [
+            { "type": "talent", "id": "acalmar-besta" },
+            { "type": "attribute", "attr": "PER", "min": 4 }
+          ]
+        },
+        {
+          "id": "enxame",
+          "name": "Enxame",
+          "cost": 100,
+          "description": "Pode comandar grupo de animais pequenos (ratos, corvos, insetos). Nao sao companheiros — sao ferramentas. Espionagem, distracao, ataque em massa (2d6 area).",
+          "prerequisites": [ { "type": "talent", "id": "falar-com-animais" } ]
+        },
+        {
+          "id": "empatia-animal",
+          "name": "Empatia Animal",
+          "cost": 100,
+          "description": "Sente emocoes de qualquer animal a 18m. Pode projetar emocoes (acalmar, amedrontar, atrair). Funciona em Bestas magicas com PRE DT 16.",
+          "prerequisites": [
+            { "type": "talent", "id": "afinidade-natural" },
+            { "type": "attribute", "attr": "PRE", "min": 4 }
+          ]
+        },
+        {
+          "id": "combate-em-equipe",
+          "name": "Combate em Equipe",
+          "cost": 100,
+          "description": "Quando voce e companheiro atacam o mesmo alvo no mesmo turno: +3 acerto para ambos e alvo nao pode usar Reacoes.",
+          "prerequisites": [ { "type": "talent", "id": "companheiro-evoluido" } ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Senhor das Bestas",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Besta" } ],
+      "abilities": [
+        {
+          "id": "terceiro-vinculo",
+          "name": "Terceiro Vinculo",
+          "cost": 200,
+          "description": "3 companheiros simultaneos. Pode comandar todos com 1 comando coletivo ou individuais.",
+          "prerequisites": [ { "type": "talent", "id": "segundo-vinculo" } ]
+        },
+        {
+          "id": "fusao-bestial",
+          "name": "Fusao Bestial",
+          "cost": 200,
+          "description": "CROSS-TREE: 1x/Descanso Longo, funda-se temporariamente com companheiro por 1 min. Ganhe tracos fisicos dele (+POT, garras, velocidade, etc.). Aparencia hibrida.",
+          "prerequisites": [
+            { "type": "talent", "id": "telepatia-bestial" },
+            { "type": "custom", "text": "Corpo T1 (Pancada)" }
+          ]
+        },
+        {
+          "id": "matilha",
+          "name": "Matilha",
+          "cost": 200,
+          "description": "Todos os seus companheiros ganham +2 acerto e +2 dano quando lutam juntos. Se 2+ atacam o mesmo alvo: dano extra 1d8.",
+          "prerequisites": [
+            { "type": "talent", "id": "enxame" },
+            { "type": "talent", "id": "combate-em-equipe" }
+          ]
+        },
+        {
+          "id": "besta-lendaria",
+          "name": "Besta Lendaria",
+          "cost": 200,
+          "description": "Pode vincular criaturas ND ate nivel/2 +3. Inclui Bestas enormes, monstros, e aberracoes menores. Processo: ND x 21 dias.",
+          "prerequisites": [
+            { "type": "talent", "id": "domar-o-monstruoso" },
+            { "type": "attribute", "attr": "PER", "min": 5 }
+          ]
+        },
+        {
+          "id": "cavaleiro-supremo",
+          "name": "Cavaleiro Supremo",
+          "cost": 200,
+          "description": "Montada: +4 DP, +4 acerto, investida 3d6. Montaria pode fazer 1 ataque proprio por turno. Pode montar criaturas Grandes ou maiores voando.",
+          "prerequisites": [ { "type": "talent", "id": "montaria-de-guerra" } ]
+        },
+        {
+          "id": "lingua-das-bestas",
+          "name": "Lingua das Bestas",
+          "cost": 200,
+          "description": "Pode se comunicar com QUALQUER criatura viva (nao so animais). Conversa real — ideias complexas. Nao garante cooperacao, mas garante entendimento.",
+          "prerequisites": [
+            { "type": "talent", "id": "empatia-animal" },
+            { "type": "talent", "id": "telepatia-bestial" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Alpha Primordial",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Besta" } ],
+      "abilities": [
+        {
+          "id": "horda",
+          "name": "Horda",
+          "cost": 400,
+          "description": "Pode vincular ate 5 companheiros. Todos ganham +3 acerto/dano em matilha. Comandar como Acao Livre. Voce e o lider da manada.",
+          "prerequisites": [
+            { "type": "talent", "id": "terceiro-vinculo" },
+            { "type": "talent", "id": "matilha" }
+          ]
+        },
+        {
+          "id": "forma-selvagem",
+          "name": "Forma Selvagem",
+          "cost": 400,
+          "description": "Pode se TRANSFORMAR completamente em qualquer criatura que ja domou. Dura 1h. Mantem mente propria. Ganha TODOS os tracos fisicos. 1x/Descanso Longo. Ao transformar de volta: 1 nivel Exaustao.",
+          "prerequisites": [ { "type": "talent", "id": "fusao-bestial" } ]
+        },
+        {
+          "id": "leviata",
+          "name": "Leviata",
+          "cost": 400,
+          "description": "Pode vincular criaturas ND ate nivel/2 +5. Inclui dragoes menores, krakens juvenis, bestas ancias. Se montar: voce e o terror dos ceus/mares.",
+          "prerequisites": [
+            { "type": "talent", "id": "besta-lendaria" },
+            { "type": "talent", "id": "cavaleiro-supremo" }
+          ]
+        },
+        {
+          "id": "voz-da-natureza",
+          "name": "Voz da Natureza",
+          "cost": 400,
+          "description": "CROSS-TREE: Pode convocar animais selvagens num raio de 1km. 2d6 Bestas de ND 1-3 respondem ao chamado em 10 min. Chegam e lutam por voce por 1h. 1x/dia.",
+          "prerequisites": [
+            { "type": "talent", "id": "lingua-das-bestas" },
+            { "type": "talent", "id": "empatia-animal" },
+            { "type": "custom", "text": "Sobrev. T2 (Sentidos Selvagens)" }
+          ]
+        }
+      ]
+    }
+  ]
+}

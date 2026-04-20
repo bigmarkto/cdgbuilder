@@ -1,0 +1,52 @@
+{
+  "id": "humano",
+  "name": "Humano",
+  "source": "CDG_RacasDef.md",
+  "description": "Filhos da Pólvora e das Cinzas. A raça mais jovem do mundo, e ainda assim a que melhor compreende o que significa ser mortal. Um Humano sente cada estação como uma advertência gentil: este tempo também passará. Quando morre, seu corpo não apodrece — transforma-se em cinzas. Todo Humano nasce com Marcas de Cinza na pele.",
+  "hitDie": "d8",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "free",
+    "points": 2,
+    "description": "+1 em 2 atributos à escolha.",
+    "notes": "Livro Core: '+1 em 2 a escolha'. Criação v3: '+1 livre, +1 livre'."
+  },
+  "traits": [
+    {
+      "id": "versatilidade",
+      "name": "Versatilidade",
+      "description": "Nenhum caminho está fechado para um Humano. Ao começar sua jornada, pode escolher onde irão seus pontos de atributo bônus — flexibilidade que reflete séculos de adaptação constante."
+    },
+    {
+      "id": "determinacao",
+      "name": "Determinação",
+      "description": "Uma vez por dia, pode usar a energia de sua Marca para usar uma habilidade. A vontade de continuar é o único poder verdadeiramente inato da raça.",
+      "modifiers": [
+        { "type": "custom", "text": "1x por dia, pode ativar uma habilidade usando a energia da Marca de Cinza (rerolagem ou gatilho extra, conforme documento)." }
+      ]
+    },
+    {
+      "id": "mortalidade-consciente",
+      "name": "Mortalidade Consciente",
+      "description": "Humanos que crescem sabendo que irão morrer tornam-se estranhamente imunes ao medo da morte. Ameaças que paralisariam outras raças simplesmente não funcionam da mesma forma.",
+      "modifiers": [
+        { "type": "custom", "text": "Resistência a efeitos de medo relacionados a morte." }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "vida-breve",
+      "name": "Vida Breve",
+      "description": "A mesma urgência que os torna poderosos é sua maior limitação. Magia de longevidade permanente não pega em um Humano."
+    },
+    {
+      "id": "cinzas",
+      "name": "Cinzas",
+      "description": "Uma vez que o corpo se transforma em pó, não há retorno. Nenhuma ressurreição, nenhuma segunda chance. O Humano que morre, morre de verdade."
+    }
+  ],
+  "subtypes": [],
+  "notes": "Cultura dezenas/centenas de culturas humanas. Vidas de ~80 anos."
+}

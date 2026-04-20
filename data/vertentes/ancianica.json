@@ -1,0 +1,39 @@
+{
+  "id": "ancianica",
+  "name": "Anciânica",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente da Fonte Pura. Vertente mais poderosa e mais perigosa. O conjurador não filtra a Energia Cósmica por lente nenhuma — usa Census Aurea diretamente, a energia que o próprio Planeta produz. É como beber água bruta de um rio de lava: a potência é incomparável, mas o corpo mortal não foi feito para aguentar.",
+  "governingAttributes": ["FOC", "RES"],
+  "maxRankNormal": null,
+  "identity": "Census pura, catastrófico",
+  "tags": ["census", "catastrofico", "rara"],
+  "extraRules": [
+    {
+      "id": "sem-teto-de-custo",
+      "name": "Sem Teto de Custo",
+      "description": "Anciânica pode ultrapassar o limite de 4 pontos. Cada ponto acima de 4 causa 2d6 de dano ao conjurador (sem redução, sem resistência). É DANO DE CENSUS — não é fogo, não é necrótico. É a própria energia queimando o corpo."
+    },
+    {
+      "id": "faca-de-dois-gumes",
+      "name": "Faca de Dois Gumes",
+      "description": "Toda conjuração Anciânica tem um efeito colateral. O Mestre rola 1d6 após cada conjuração de custo 3+.",
+      "table": [
+        { "roll": "1-2", "effect": "Nenhum efeito colateral." },
+        { "roll": "3-4", "effect": "Efeito menor (flash de luz, tremor no chão, temperatura muda)." },
+        { "roll": "5", "effect": "Efeito moderado (conjurador fica Atordoado 1 turno, aliados próximos sofrem 1d6)." },
+        { "roll": "6", "effect": "Efeito severo (explosão descontrolada, terreno alterado permanentemente, visão do Mestre)." }
+      ]
+    },
+    {
+      "id": "ressonancia-planetaria",
+      "name": "Ressonância Planetária",
+      "description": "Em locais com Census Aurea forte (nexos, templos antigos), conjurações Anciânicas têm Intensidade +1 grau grátis. Mas efeitos colaterais também +1."
+    },
+    {
+      "id": "rara",
+      "name": "Rara",
+      "description": "Poucos sabem usar. Requer proficiência específica em Anciânica (não é ensinada em academias)."
+    }
+  ],
+  "conjurations": []
+}

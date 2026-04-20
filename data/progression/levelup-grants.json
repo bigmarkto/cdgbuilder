@@ -1,0 +1,189 @@
+{
+  "id": "levelup-grants",
+  "name": "Grants de Level-up",
+  "source": "niveis.json (destilado para consumo do engine)",
+  "description": "View normalizada por nível. `grants` são deterministas (aplicados automaticamente pelo engine). `choices` são escolhas do jogador (resolvidas no LevelUpWizard). Totais como HP e Usos de Magia são reconstruídos a partir das fórmulas em engine/derived.ts; este arquivo só descreve o delta de escolhas e unlocks discretos.",
+  "attributeCap": 8,
+  "maxRankByLevel": [
+    { "levelFrom": 1, "levelTo": 2, "maxRank": 1 },
+    { "levelFrom": 3, "levelTo": 4, "maxRank": 2 },
+    { "levelFrom": 5, "levelTo": 6, "maxRank": 3 },
+    { "levelFrom": 7, "levelTo": 8, "maxRank": 4 },
+    { "levelFrom": 9, "levelTo": 10, "maxRank": 5 },
+    { "levelFrom": 11, "levelTo": 12, "maxRank": 6 }
+  ],
+  "talentXpByLevel": [
+    { "level": 2, "xpGranted": 100, "totalXp": 100 },
+    { "level": 3, "xpGranted": 150, "totalXp": 250 },
+    { "level": 4, "xpGranted": 200, "totalXp": 450 },
+    { "level": 5, "xpGranted": 250, "totalXp": 700 },
+    { "level": 6, "xpGranted": 300, "totalXp": 1000 },
+    { "level": 7, "xpGranted": 350, "totalXp": 1350 },
+    { "level": 8, "xpGranted": 400, "totalXp": 1750 },
+    { "level": 9, "xpGranted": 450, "totalXp": 2200 },
+    { "level": 10, "xpGranted": 500, "totalXp": 2700 },
+    { "level": 11, "xpGranted": 550, "totalXp": 3250 },
+    { "level": 12, "xpGranted": 600, "totalXp": 3850 }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "xpRequired": 0,
+      "narrative": "Criação do personagem. Raça + distribuição inicial de atributos e proficiências.",
+      "grants": [
+        { "kind": "hitDieInitial", "formula": "CON x 5 + 10 + bonus racial" }
+      ],
+      "choices": []
+    },
+    {
+      "level": 2,
+      "xpRequired": 500,
+      "narrative": "Árvore de Talentos abre. Primeiro rank extra de proficiência.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 1 },
+        { "kind": "talentTierUnlock", "tier": 1 },
+        { "kind": "talentXp", "xp": 100 }
+      ],
+      "choices": [
+        { "kind": "proficiencyRank", "delta": 1, "label": "Suba 1 Rank em proficiência existente OU aprenda nova proficiência em Rank 1." }
+      ]
+    },
+    {
+      "level": 3,
+      "xpRequired": 1000,
+      "narrative": "Crescimento regular. Sem escolhas.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 1 },
+        { "kind": "energiaDelta", "formula": "+RES" },
+        { "kind": "talentXp", "xp": 150 }
+      ],
+      "choices": []
+    },
+    {
+      "level": 4,
+      "xpRequired": 1500,
+      "narrative": "MARCO: +1 atributo permanente.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 2 },
+        { "kind": "energiaDelta", "formula": "+RES" },
+        { "kind": "talentXp", "xp": 200 }
+      ],
+      "choices": [
+        { "kind": "proficiencyRank", "delta": 1, "label": "+1 Rank de proficiência." },
+        { "kind": "attributePoint", "delta": 1, "label": "Marco: +1 em um atributo (máx 8)." }
+      ]
+    },
+    {
+      "level": 5,
+      "xpRequired": 3000,
+      "narrative": "Acesso à Tier 2 de talentos.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 2 },
+        { "kind": "energiaDelta", "formula": "+RES" },
+        { "kind": "talentTierUnlock", "tier": 2 },
+        { "kind": "talentXp", "xp": 250 }
+      ],
+      "choices": []
+    },
+    {
+      "level": 6,
+      "xpRequired": 4500,
+      "narrative": "Consolidação mecânica.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 2 },
+        { "kind": "energiaDelta", "formula": "+RES" },
+        { "kind": "talentXp", "xp": 300 }
+      ],
+      "choices": [
+        { "kind": "proficiencyRank", "delta": 1, "label": "+1 Rank de proficiência." }
+      ]
+    },
+    {
+      "level": 7,
+      "xpRequired": 6000,
+      "narrative": "Versatilidade entre árvores.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 3 },
+        { "kind": "energiaDelta", "formula": "+RES" },
+        { "kind": "talentXp", "xp": 350 }
+      ],
+      "choices": []
+    },
+    {
+      "level": 8,
+      "xpRequired": 8000,
+      "narrative": "MARCO: +1 atributo. Acesso à Tier 3 de talentos.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 3 },
+        { "kind": "energiaDelta", "formula": "+RES" },
+        { "kind": "talentTierUnlock", "tier": 3 },
+        { "kind": "talentXp", "xp": 400 }
+      ],
+      "choices": [
+        { "kind": "proficiencyRank", "delta": 1, "label": "+1 Rank de proficiência." },
+        { "kind": "attributePoint", "delta": 1, "label": "Marco: +1 em um atributo (máx 8)." }
+      ]
+    },
+    {
+      "level": 9,
+      "xpRequired": 10000,
+      "narrative": "Salto de energia (+RES x 2).",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 3 },
+        { "kind": "energiaDelta", "formula": "+RES x 2" },
+        { "kind": "talentXp", "xp": 450 }
+      ],
+      "choices": []
+    },
+    {
+      "level": 10,
+      "xpRequired": 12000,
+      "narrative": "Acesso à Tier 4 de talentos.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 4 },
+        { "kind": "energiaDelta", "formula": "+RES" },
+        { "kind": "talentTierUnlock", "tier": 4 },
+        { "kind": "talentXp", "xp": 500 }
+      ],
+      "choices": [
+        { "kind": "proficiencyRank", "delta": 1, "label": "+1 Rank de proficiência." }
+      ]
+    },
+    {
+      "level": 11,
+      "xpRequired": 14000,
+      "narrative": "Capstone iminente.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 4 },
+        { "kind": "energiaDelta", "formula": "+RES" },
+        { "kind": "talentXp", "xp": 550 }
+      ],
+      "choices": []
+    },
+    {
+      "level": 12,
+      "xpRequired": 16000,
+      "narrative": "MARCO FINAL. Lenda.",
+      "grants": [
+        { "kind": "hitDieRoll", "formula": "+1d racial + CON/2" },
+        { "kind": "usosMagiaDelta", "delta": 5 },
+        { "kind": "energiaDelta", "formula": "+RES x 2" },
+        { "kind": "talentXp", "xp": 600 }
+      ],
+      "choices": [
+        { "kind": "proficiencyRank", "delta": 1, "label": "+1 Rank de proficiência." },
+        { "kind": "attributePoint", "delta": 1, "label": "Marco final: +1 em um atributo (máx 8)." }
+      ]
+    }
+  ]
+}

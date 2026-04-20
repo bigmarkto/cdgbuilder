@@ -1,0 +1,39 @@
+{
+  "id": "agouro",
+  "name": "Agouro",
+  "source": "CDG_RacasDef.md",
+  "description": "Herdeiros do Poder. Nascidos das sementes das árvores sagradas que cresceram das sepulturas dos Serafins. Seres de raízes divinas ainda enraizados na mortalidade — filhos de um processo que não se completou. Cada Agouro carrega mutações físicas: orelhas em espiral universais (que captam frequências impossíveis), às vezes braços extras, olhos adicionais, padrões na pele como constelações. Organizam-se em castas; desenvolvimento mágico, teológico e governamental proeminentes.",
+  "hitDie": "d8",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "variable",
+    "description": "Varia. Livro Core: +1 a +3 PER, +1-2 FOC. Criação v3: +1 PER, +1 FOC, +1 livre."
+  },
+  "traits": [
+    {
+      "id": "audicao-espiral",
+      "name": "Audição Espiral",
+      "description": "As orelhas em espiral captam frequências inaudíveis. Um Agouro treinado percebe mentiras, emoções reprimidas ou perigo iminente antes que outro sentido registre."
+    },
+    {
+      "id": "heranca-cosmica",
+      "name": "Herança Cósmica",
+      "description": "O sangue divino cria resistência natural aos efeitos da Census Aurea, EXCETO magias de controle mental derivadas dessa fonte."
+    },
+    {
+      "id": "mutacoes-funcionais",
+      "name": "Mutações Funcionais",
+      "description": "Braços adicionais concedem ações adicionais. Olhos adicionais tornam impossível o flanqueamento. Torso alongado confere flexibilidade que faz agarrões virarem exercícios em frustração para o oponente."
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "limitacoes-do-divino",
+      "name": "As Limitações do Divino",
+      "description": "O mundo mortal não foi feito para receber o divino. Quanto maior a mutação, mais difícil a navegação (social, física ou espiritual) em territórios desconhecidos."
+    }
+  ],
+  "subtypes": [],
+  "notes": "Livro Core menciona '4 níveis de mutação' como categoria. Tabela detalhada de mutações não está neste documento."
+}

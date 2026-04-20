@@ -1,0 +1,27 @@
+{
+  "name": "Cicatrizes do Gatilho — Builder & Wiki",
+  "short_name": "CDG Builder",
+  "description": "Criador de personagens e wiki interativa do RPG Cicatrizes do Gatilho.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#110c06",
+  "theme_color": "#110c06",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["games", "utilities", "productivity"]
+}

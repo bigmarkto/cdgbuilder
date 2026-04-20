@@ -1,0 +1,74 @@
+{
+  "id": "sistema-pactos",
+  "name": "Pactos & Dívidas com Anciões",
+  "source": "CDG_Pactos.md",
+  "description": "Os Anciões não são deuses — são Conceitos com consciência. Morte não reza; ela simplesmente é. Guerra não abençoa; ela consome. Quando um mortal se aproxima de um Ancião e pede poder, não está orando — está negociando com a personificação de uma força fundamental da existência. E toda negociação tem um preço.",
+  "fundamentalRules": [
+    "Anciões não mentem. Nunca. Mas falam em termos do seu Conceito, que mortais interpretam errado.",
+    "O preço é SEMPRE proporcional ao poder. Sem exceção.",
+    "Quebrar um Pacto é possível, mas as consequências são piores que o preço original.",
+    "Anciões não se importam com mortais individualmente. Você é uma ferramenta para expressar o Conceito.",
+    "Pactos concedem Corrupção (ver documento de Corrupção). Sempre."
+  ],
+  "tiposDePacto": [
+    {
+      "id": "favor-menor",
+      "name": "Favor Menor — A Faísca",
+      "description": "O mortal pede algo pequeno: informação, proteção temporária, um impulso de poder. O Ancião concede distraidamente, como alguém espantando uma mosca.",
+      "poderConcedido": "Efeito menor: +2 temporário em atributo, informação parcial, cura de 1 condição",
+      "preco": "Geas menor (tarefa simples alinhada ao Conceito) OU 5-10 de Corrupção",
+      "duracao": "Imediato ou até 24h",
+      "risco": "Baixo. Se o Geas não for cumprido em 30 dias, perde o dobro do que ganhou."
+    },
+    {
+      "id": "pacto-de-servico",
+      "name": "Pacto de Serviço — O Juramento",
+      "description": "O mortal jura servir o Conceito em troca de poder significativo. É o pacto mais comum — e o mais perigoso, porque parece razoável.",
+      "poderConcedido": "Significativo: +1 permanente em atributo, nova proficiência Rank 3, Dom Sombrio, resistência a dano, habilidade temática",
+      "preco": "Serviço contínuo ao Conceito. Missões regulares (1 por mês). +15-25 de Corrupção.",
+      "duracao": "Enquanto o serviço durar. O poder pode ser revogado pelo Ancião.",
+      "risco": "Alto. Recusar missão = dano direto (3d10 do domínio). 3 recusas = Pacto quebrado."
+    },
+    {
+      "id": "pacto-de-alma",
+      "name": "Pacto de Alma — O Sacrifício",
+      "description": "O mortal oferece parte de si — memórias, anos de vida, atributos, identidade — em troca de poder extraordinário. É irreversível.",
+      "poderConcedido": "Extraordinário: transformação permanente, poder de Conceito parcial, ressurreição de aliado, artefato pessoal, imunidade a um tipo de dano",
+      "preco": "Sacrifício permanente: -2 em atributo, perda de memórias (anos inteiros), redução de tempo de vida, transformação física irreversível. +25-40 de Corrupção.",
+      "duracao": "Permanente. Não pode ser revogado nem pelo Ancião.",
+      "risco": "Extremo. O sacrifício muda quem você é. Personagem pode se tornar irreconhecível."
+    },
+    {
+      "id": "pacto-de-conceito",
+      "name": "Pacto de Conceito — A Ascensão",
+      "description": "O mortal se oferece como Veículo do Conceito. É o pacto supremo — e o último.",
+      "poderConcedido": "Devastador: acesso parcial ao Conceito (1 habilidade de Ancião, poder temático de nível épico, capacidade semi-divina)",
+      "preco": "A alma pertence ao Conceito. Corrupção vai automaticamente para 75+. O personagem tem prazo (nível x 30 dias) antes de atingir 100 e se tornar Avatar.",
+      "duracao": "O tempo que restar de humanidade.",
+      "risco": "Quase certo de perder o personagem. Mas até lá, o poder é incomparável."
+    }
+  ],
+  "breakingPacts": {
+    "description": "É possível quebrar um Pacto. Mas um Ancião traído não esquece — e Conceitos são eternos.",
+    "consequencias": [
+      { "tipo": "Favor Menor", "imediata": "2d10 dano do domínio", "continua": "Desvantagem em testes relacionados ao Conceito por 30 dias" },
+      { "tipo": "Pacto de Serviço", "imediata": "5d10 dano + perda do poder concedido", "continua": "Marca visível (outros servos do Ancião reconhecem e são hostis). -2 PRE permanente." },
+      { "tipo": "Pacto de Alma", "imediata": "8d10 dano + Corrupção +25 imediata", "continua": "O sacrifício permanece mas o poder se vai. Pior dos dois mundos. Pesadelos eternos (-1 em Descanso Longo)." },
+      { "tipo": "Pacto de Conceito", "imediata": "Morte instantânea (sem teste)", "continua": "Se ressuscitado, o Conceito caça ativamente. Enviará servos e avatares até recuperar o que é seu." }
+    ],
+    "formasDeQuebrar": [
+      "Encontrar outro Ancião de Conceito oposto disposto a protegê-lo (Guerra protege de Paz, Morte de Vida, etc.). Isso geralmente requer um NOVO pacto.",
+      "Ritual de Desvinculação em uma Árvore Seráfica (requer Census Aurea, 3 dias, e um sacerdote ou Legado).",
+      "Cumprir o Pacto de forma tão absoluta que o Ancião o libera voluntariamente (raríssimo — requer ato que agrade profundamente o Conceito).",
+      "Morrer e ser ressuscitado por meio que não envolva o Ancião (reseta o Pacto, mas não a Corrupção)."
+    ]
+  },
+  "guiaDoMestre": [
+    "NUNCA force um Pacto. O jogador deve SEMPRE ter a opção de recusar.",
+    "Anciões não são vilões. São forças da natureza. Morte não é maldade — é necessidade.",
+    "O preço deve parecer justo NO MOMENTO. As consequências se revelam depois.",
+    "Pactos são oportunidades de roleplay extraordinárias. O momento da negociação deve ser ÉPICO.",
+    "Deixe o jogador negociar. Anciões podem ser convencidos a alterar termos — mas nunca a reduzir o preço total.",
+    "Quebradores de Pacto são ótimos ganchos de campanha. NPCs que quebraram pactos e agora fogem de Conceitos vingadores."
+  ]
+}

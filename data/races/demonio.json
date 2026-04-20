@@ -1,0 +1,58 @@
+{
+  "id": "demonio",
+  "name": "Demônio",
+  "source": "CDG_RacasDef.md",
+  "description": "Os Novos Ignatos. Os primeiros a sentir, a dominar, a se tornar o Fogo. O nome 'Demônio' veio de raças que os associaram à morte dos Serafins. Pele em tons de vermelho (rosado a carmesim), temperatura corporal elevada, olhos em âmbar/laranja/vermelho. Chifres que sentem o calor do mundo de uma forma única. Filosofia central: a Mudança é o estado natural de tudo que existe.",
+  "hitDie": "d8",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "mixed",
+    "description": "Livro Core: +1 CON, +1 PRE, +1 à escolha. Criação v3: +2 PRE, +1 CON. Dois textos divergem.",
+    "values": { "CON": 1, "PRE": 1 },
+    "notes": "Há conflito: Livro Core indica +1 CON, +1 PRE, +1 livre; Criação v3 indica +2 PRE, +1 CON."
+  },
+  "traits": [
+    {
+      "id": "sangue-do-fogo",
+      "name": "Sangue do Fogo",
+      "description": "Dano de fogo é reduzido pela metade — não por magia, mas por uma resistência inscrita no próprio DNA.",
+      "modifiers": [
+        { "type": "resistance", "damageType": "fogo", "value": "half" }
+      ]
+    },
+    {
+      "id": "visao-ignea",
+      "name": "Visão Ígnea",
+      "description": "Fumaça, névoa, chamas — ambientes que cegariam outras raças são lidos pelos olhos de um Demônio como texto. +2 em Navegação e Rastreamento em lugares com esses elementos.",
+      "modifiers": [
+        { "type": "custom", "text": "+2 em Navegação e Rastreamento em fumaça, névoa ou chamas." }
+      ]
+    },
+    {
+      "id": "presenca-intimidadora",
+      "name": "Presença Intimidadora",
+      "description": "Há algo no porte de um Demônio que faz certas perguntas desnecessárias. Presença física que comunica, sem palavras, que certas linhas não devem ser cruzadas."
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "vulnerabilidade-ao-gelo",
+      "name": "Vulnerabilidade ao Gelo",
+      "description": "Magia de gelo penetra com força adicional, como se o corpo reconhecesse seu antítese e capitulasse um pouco mais prontamente.",
+      "modifiers": [
+        { "type": "custom", "text": "Vulnerabilidade a dano de gelo." }
+      ]
+    },
+    {
+      "id": "marca-dos-serafins",
+      "name": "Marca dos Serafins",
+      "description": "Artefatos de origem primordial causam desconforto que os Demônios raramente admitem e nunca conseguem explicar completamente."
+    }
+  ],
+  "subtypes": [
+    { "id": "demonio-regalis", "name": "Regalis", "description": "Subtipo com PRE elevada." },
+    { "id": "demonio-inferis", "name": "Inferis", "description": "Subtipo listado em Criação v3." }
+  ],
+  "notes": "Livro Core menciona 5 subtipos; apenas Regalis e Inferis são nomeados nos documentos. Os outros 3 não são detalhados."
+}

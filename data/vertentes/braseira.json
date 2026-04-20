@@ -1,0 +1,39 @@
+{
+  "id": "braseira",
+  "name": "Braseira",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente do Fogo Negro. Dominação negativa da Energia Cósmica. O conjurador não canaliza a energia como ela é — a INVERTE, a CORROMPE, a COMPRIME até que se torne fogo. Não fogo comum. Fogo negro: chamas que ardem com propósito, que escolhem o que queimam, que concedem dádivas a quem as domina.",
+  "governingAttributes": ["PRE", "CON", "PER"],
+  "maxRankNormal": 4,
+  "identity": "Fogo negro, dominação negativa",
+  "tags": ["fogo", "sombrio"],
+  "extraRules": [
+    {
+      "id": "fogo-obrigatorio",
+      "name": "Fogo Obrigatório",
+      "description": "Todo dano de Braseira é dano de FOGO, independente do efeito original. Quer fazer Controle? A prisão é de chamas. Quer fazer Cura? Cauteriza com fogo negro que regenera."
+    },
+    {
+      "id": "dadivas-da-chama",
+      "name": "Dádivas da Chama",
+      "description": "Cada vez que causa dano de fogo, acumula 1 ponto de Dádiva (máx = PRE). Dádivas podem ser gastas para efeitos abaixo.",
+      "options": [
+        { "id": "dadiva-1", "name": "1 Dádiva", "description": "+1d6 de fogo num ataque ou conjuração." },
+        { "id": "dadiva-2", "name": "2 Dádivas", "description": "Resistência a fogo por 1h." },
+        { "id": "dadiva-3", "name": "3 Dádivas", "description": "Imolação (aura de fogo 3m, 1d6 pra quem se aproximar, 1 min)." },
+        { "id": "dadiva-5", "name": "5 Dádivas", "description": "Conflagração (explosão 9m, 4d10 fogo, 1x por descanso longo)." }
+      ]
+    },
+    {
+      "id": "chama-negra",
+      "name": "Chama Negra",
+      "description": "Pode gastar +1 Energia para tornar o fogo NEGRO. Fogo negro ignora resistência a fogo. Causa dano necrótico ALÉM do fogo. Não pode ser apagado por água. Só por Census Aurea ou Dogmática."
+    },
+    {
+      "id": "calor-interno",
+      "name": "Calor Interno",
+      "description": "Imune a frio. Temperatura corporal elevada. Toque aquece objetos."
+    }
+  ],
+  "conjurations": []
+}

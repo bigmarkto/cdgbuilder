@@ -1,0 +1,309 @@
+{
+  "id": "corpo",
+  "name": "Corpo",
+  "source": "CDG_Progressao_P1.md",
+  "description": "Combate Fisico, Resistencia & Atletismo — POT / CON. A arvore do guerreiro nato. Quem investe em Corpo se torna mais forte, mais resistente e mais letal com o proprio corpo. E a arvore mais direta: hit harder, take more hits.",
+  "atributoChave": "POT / CON",
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Fundacao Fisica",
+      "prerequisites": [],
+      "abilities": [
+        {
+          "id": "vigor",
+          "name": "Vigor",
+          "cost": 50,
+          "description": "HP maximo +5 permanente. Pode comprar ate 3 vezes (custos 50/75/100).",
+          "modifiers": [
+            { "type": "derived", "target": "HP_MAX", "value": 5 },
+            { "type": "custom", "text": "Pode comprar ate 3 vezes (custos 50/75/100)." }
+          ]
+        },
+        {
+          "id": "pancada",
+          "name": "Pancada",
+          "cost": 50,
+          "description": "Ataques desarmados causam 1d6 em vez de 1d4. Punhos contam como arma leve.",
+          "modifiers": [
+            { "type": "custom", "text": "Ataques desarmados causam 1d6 em vez de 1d4. Punhos contam como arma leve." }
+          ]
+        },
+        {
+          "id": "pele-grossa",
+          "name": "Pele Grossa",
+          "cost": 50,
+          "description": "+1 DP natural permanente. Nao acumula com armadura pesada.",
+          "modifiers": [
+            { "type": "derived", "target": "DP", "value": 1 },
+            { "type": "custom", "text": "Nao acumula com armadura pesada." }
+          ]
+        },
+        {
+          "id": "investida",
+          "name": "Investida",
+          "cost": 50,
+          "description": "Ao mover 3m+ em linha reta antes de atacar corpo-a-corpo: +1d6 dano. 1x/turno."
+        },
+        {
+          "id": "agarrao",
+          "name": "Agarrao",
+          "cost": 50,
+          "description": "Ao acertar ataque desarmado, pode iniciar agarrao (POT vs POT do alvo). Alvo agarrado: Restringido.",
+          "prerequisites": [
+            { "type": "attribute", "attr": "POT", "min": 3 }
+          ]
+        },
+        {
+          "id": "resistencia-fisica",
+          "name": "Resistencia Fisica",
+          "cost": 50,
+          "description": "Vantagem em testes de CON contra veneno, doenca e fadiga.",
+          "prerequisites": [
+            { "type": "attribute", "attr": "CON", "min": 3 }
+          ]
+        },
+        {
+          "id": "atleta",
+          "name": "Atleta",
+          "cost": 50,
+          "description": "+3m velocidade de movimento. Vantagem em testes de Atletismo.",
+          "modifiers": [
+            { "type": "speed", "value": 3 },
+            { "type": "custom", "text": "Vantagem em testes de Atletismo." }
+          ]
+        },
+        {
+          "id": "segundo-folego",
+          "name": "Segundo Folego",
+          "cost": 50,
+          "description": "1x/Descanso Longo, como Acao Bonus, recupere 1d10+CON HP."
+        },
+        {
+          "id": "empurrao",
+          "name": "Empurrao",
+          "cost": 50,
+          "description": "Ao acertar corpo-a-corpo, pode empurrar alvo 1,5m. Se bater em parede/obstaculo: +1d6 contundente.",
+          "prerequisites": [
+            { "type": "attribute", "attr": "POT", "min": 2 }
+          ]
+        },
+        {
+          "id": "fortitude",
+          "name": "Fortitude",
+          "cost": 50,
+          "description": "Reduz dano contundente recebido em 2 (minimo 1). Passivo.",
+          "prerequisites": [
+            { "type": "attribute", "attr": "CON", "min": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Combatente Forjado",
+      "prerequisites": [
+        { "type": "custom", "text": "3+ habilidades Tier 1 de Corpo" }
+      ],
+      "abilities": [
+        {
+          "id": "golpe-brutal",
+          "name": "Golpe Brutal",
+          "cost": 100,
+          "description": "Ataques desarmados passam para 1d8. Critico em 19-20 com desarmado.",
+          "prerequisites": [
+            { "type": "talent", "id": "pancada" }
+          ]
+        },
+        {
+          "id": "inquebravel",
+          "name": "Inquebravel",
+          "cost": 100,
+          "description": "+2 DP natural total. Resistencia a dano contundente (metade).",
+          "prerequisites": [
+            { "type": "talent", "id": "pele-grossa" },
+            { "type": "talent", "id": "fortitude" }
+          ]
+        },
+        {
+          "id": "carga-devastadora",
+          "name": "Carga Devastadora",
+          "cost": 100,
+          "description": "Investida agora causa +2d6 e alvo POT DT 14 ou Derrubado.",
+          "prerequisites": [
+            { "type": "talent", "id": "investida" }
+          ]
+        },
+        {
+          "id": "constituicao-de-ferro",
+          "name": "Constituicao de Ferro",
+          "cost": 100,
+          "description": "Imune a veneno nao-magico. Vantagem em testes contra doenca magica.",
+          "prerequisites": [
+            { "type": "talent", "id": "resistencia-fisica" }
+          ]
+        },
+        {
+          "id": "furia",
+          "name": "Furia",
+          "cost": 100,
+          "description": "Acao Bonus: entre em Furia por 1 minuto. +3 dano corpo-a-corpo, resist. dano fisico, nao pode conjurar. 1x/Descanso Longo.",
+          "prerequisites": [
+            { "type": "attribute", "attr": "POT", "min": 4 }
+          ]
+        },
+        {
+          "id": "corpo-fechado",
+          "name": "Corpo Fechado",
+          "cost": 100,
+          "description": "2x/Descanso Longo, ao ser reduzido a 0 HP, fique com 1 HP. Nao funciona contra dano massivo (2x HP max).",
+          "prerequisites": [
+            { "type": "talent", "id": "segundo-folego" }
+          ]
+        },
+        {
+          "id": "suplex",
+          "name": "Suplex",
+          "cost": 100,
+          "description": "Enquanto agarra criatura de tamanho igual ou menor: Acao para arremessa-la 3m. 2d8 contundente no alvo E em quem estiver no destino.",
+          "prerequisites": [
+            { "type": "talent", "id": "agarrao" }
+          ]
+        },
+        {
+          "id": "corrida-imparavel",
+          "name": "Corrida Imparavel",
+          "cost": 100,
+          "description": "Vel +3m adicional (total +6). Movimento nao provoca ataques de oportunidade.",
+          "prerequisites": [
+            { "type": "talent", "id": "atleta" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Maquina de Guerra",
+      "prerequisites": [
+        { "type": "custom", "text": "3+ habilidades Tier 2 de Corpo" }
+      ],
+      "abilities": [
+        {
+          "id": "golpe-de-execucao",
+          "name": "Golpe de Execucao",
+          "cost": 200,
+          "description": "Ao atacar criatura com <25% HP: dano maximizado (nao rola dado, usa valor maximo). 1x/turno.",
+          "prerequisites": [
+            { "type": "talent", "id": "golpe-brutal" }
+          ]
+        },
+        {
+          "id": "furia-eterna",
+          "name": "Furia Eterna",
+          "cost": 200,
+          "description": "Furia agora dura ate acabar o combate. +4 dano em vez de +3. 2x/Descanso Longo.",
+          "prerequisites": [
+            { "type": "talent", "id": "furia" }
+          ]
+        },
+        {
+          "id": "fortaleza-viva",
+          "name": "Fortaleza Viva",
+          "cost": 200,
+          "description": "+3 DP natural total. Resistencia a DOIS tipos de dano fisico (escolha: contundente, cortante, perfurante).",
+          "prerequisites": [
+            { "type": "talent", "id": "inquebravel" },
+            { "type": "talent", "id": "corpo-fechado" }
+          ]
+        },
+        {
+          "id": "regeneracao-brutal",
+          "name": "Regeneracao Brutal",
+          "cost": 200,
+          "description": "Recupera 2 HP no inicio de cada turno se tem mais de 0 HP. Nao funciona vs fogo ou acido.",
+          "prerequisites": [
+            { "type": "talent", "id": "constituicao-de-ferro" }
+          ]
+        },
+        {
+          "id": "tremor",
+          "name": "Tremor",
+          "cost": 200,
+          "description": "Acao: golpeia o chao. Criaturas em 3m: AGI DT (8+POT) ou Derrubadas + 2d8 contundente. 1x/Descanso Curto.",
+          "prerequisites": [
+            { "type": "talent", "id": "carga-devastadora" }
+          ]
+        },
+        {
+          "id": "titan",
+          "name": "Titan",
+          "cost": 200,
+          "description": "Tamanho conta como Grande para agarrao, empurrao e intimidacao. Pode carregar/empurrar objetos enormes.",
+          "prerequisites": [
+            { "type": "talent", "id": "atleta" },
+            { "type": "attribute", "attr": "POT", "min": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Colossus",
+      "prerequisites": [
+        { "type": "custom", "text": "3+ habilidades Tier 3 de Corpo" }
+      ],
+      "abilities": [
+        {
+          "id": "imortal",
+          "name": "Imortal",
+          "cost": 400,
+          "description": "1x/dia: ao sofrer dano que o mataria, reduza para 1 HP e reflita metade do dano de volta no atacante.",
+          "prerequisites": [
+            { "type": "talent", "id": "fortaleza-viva" }
+          ]
+        },
+        {
+          "id": "furia-do-colossus",
+          "name": "Furia do Colossus",
+          "cost": 400,
+          "description": "Em Furia: imune a Medo, Charme, Atordoamento. Ataques causam +2d6. Ao matar, recupere HP = dano causado.",
+          "prerequisites": [
+            { "type": "talent", "id": "furia-eterna" }
+          ]
+        },
+        {
+          "id": "ponto-de-ruptura",
+          "name": "Ponto de Ruptura",
+          "cost": 400,
+          "description": "Acao: concentre tudo em um unico golpe. Proximo ataque causa dano TRIPLO. Se errar, perde a acao do proximo turno. 1x/Descanso Longo.",
+          "prerequisites": [
+            { "type": "talent", "id": "golpe-de-execucao" },
+            { "type": "talent", "id": "tremor" }
+          ]
+        },
+        {
+          "id": "corpo-perfeito",
+          "name": "Corpo Perfeito",
+          "cost": 400,
+          "description": "HP maximo +30. Regeneracao sobe para 5 HP/turno. Imune a dano contundente nao-magico. Seu corpo e uma arma de cerco.",
+          "prerequisites": [
+            { "type": "talent", "id": "regeneracao-brutal" },
+            { "type": "talent", "id": "titan" }
+          ],
+          "modifiers": [
+            { "type": "derived", "target": "HP_MAX", "value": 30 },
+            { "type": "custom", "text": "Regeneracao sobe para 5 HP/turno. Imune a dano contundente nao-magico." }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "fase-3",
+  "name": "Fase 3: Oficio, Sobrevivencia & Besta — O Mundo Natural",
+  "source": "CDG_Progressao_P3.md",
+  "description": "Parte 3 do sistema de Progressao. Tres arvores focadas no mundo natural e na criacao/relacao com ele.",
+  "escopo": ["arvore-oficio", "arvore-sobrevivencia", "arvore-besta"],
+  "arvoresCobertas": [
+    { "arvore": "Oficio", "resumo": "Crafting, Engenharia & Alquimia. Enquanto outros destroem, o artesao cria. Num mundo onde recursos sao escassos e equipamento e sobrevivencia, quem sabe forjar, destilar e construir vale mais que dez espadachins." },
+    { "arvore": "Sobrevivencia", "resumo": "Caca, Rastreio, Clima & Resistencia. Num mundo onde Fome, Sede e Fadiga matam mais que espadas, quem domina a natureza domina a vida. Sobrevivencia e a arvore que mantem o grupo VIVO entre os combates." },
+    { "arvore": "Besta", "resumo": "Domar, Montar & Comunicar com Animais. Outros investem em armas, magia ou engenhosidade. Voce investiu na relacao mais antiga do mundo: a alianca entre ser senciente e besta. Seu companheiro nao e equipamento — e familia." }
+  ],
+  "regrasEspecificasOficio": {
+    "atributos": "ENG / INT",
+    "requisito": "ENG 2+ recomendado para Tier 1"
+  },
+  "regrasEspecificasSobrevivencia": {
+    "atributos": "PER / RES (documento usa PER / CON na tabela mas detalha PER / RES no corpo da arvore)"
+  },
+  "regrasEspecificasBesta": {
+    "atributos": "PER / PRE",
+    "companheiroAnimal": {
+      "obtencao": "Ao comprar 'Vinculo', voce ganha 1 companheiro animal.",
+      "regras": [
+        "Age no seu turno, apos sua acao. 1 comando por turno (Acao Livre).",
+        "HP e DP da ficha da criatura. Ganha +2 HP por nivel do domador.",
+        "Lealdade: 1-5. Comeca em 3. Maus tratos -1. Cuidado +1.",
+        "Lealdade 0: foge. Lealdade 5: sacrifica-se por voce.",
+        "Se morrer: 30 dias de luto antes de vincular novo companheiro.",
+        "ND maximo: seu nivel / 2 (arredondado para baixo)."
+      ]
+    }
+  },
+  "notes": "Consulte data/trees/oficio.json, data/trees/sobrevivencia.json e data/trees/besta.json para habilidades especificas."
+}

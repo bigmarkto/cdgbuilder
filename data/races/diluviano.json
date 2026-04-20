@@ -1,0 +1,58 @@
+{
+  "id": "diluviano",
+  "name": "Diluviano",
+  "source": "CDG_RacasDef.md",
+  "description": "Os que Vieram de Baixo. Civilização milenar das profundezas do oceano — cidades de coral vivo e pedra vulcânica iluminadas pela bioluminescência de seus habitantes. Chegaram à superfície há três séculos. Humanoides anfíbios com pele lisa ou escamosa sempre úmida, de azul-escuro a cinza-pálido, padrões de bioluminescência únicos como impressões digitais. Olhos grandes sem pupila visível. Sociedade matriarcal, lideradas pelas mais velhas e mais bioluminescentes. Propriedade individual é conceito alienígena — tudo pertence à Corrente.",
+  "hitDie": "d8",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "CON": 2, "PER": 1 },
+    "notes": "Livro Core e Criação v3 concordam em +2 CON, +1 PER. Livro Core lista dado d10 para Diluviano; Criação v3 lista d8. Mantive d8."
+  },
+  "traits": [
+    {
+      "id": "anfibio",
+      "name": "Anfíbio",
+      "description": "Respiração aquática e terrestre sem restrições. Velocidade de nado igual ao movimento normal. Sem penalidades em combate subaquático."
+    },
+    {
+      "id": "visao-abissal",
+      "name": "Visão Abissal",
+      "description": "36 metros de visão em escuridão total. Percepção de bioluminescência a 18 metros."
+    },
+    {
+      "id": "pressao-adaptada",
+      "name": "Pressão Adaptada",
+      "description": "Corpo construído para suportar altas pressões. Resistência a dano contundente.",
+      "modifiers": [
+        { "type": "resistance", "damageType": "contundente", "value": "custom", "text": "Resistência (não-quantificada) a dano contundente." }
+      ]
+    },
+    {
+      "id": "bioluminescencia",
+      "name": "Bioluminescência",
+      "description": "Ativar ou desativar o brilho corporal como ação bônus. Ilumina 6 metros. Comunica emoções básicas a outros Diluvianos."
+    },
+    {
+      "id": "sensor-de-corrente",
+      "name": "Sensor de Corrente",
+      "description": "Sente vibrações na água a 18 metros. Na superfície, detecta mudanças de pressão atmosférica como previsão de tempestades."
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "pele-umida",
+      "name": "Pele Úmida",
+      "description": "Hidratação completa a cada 48 horas, ou cada dia sem molhar causa penalidade crescente em todos os atributos. Em desertos, o prazo cai para 24 horas."
+    }
+  ],
+  "subtypes": [
+    { "id": "diluviano-abissal", "name": "Abissal", "description": "Subtipo das profundezas." },
+    { "id": "diluviano-recifal", "name": "Recifal", "description": "Subtipo dos recifes." },
+    { "id": "diluviano-pelagico", "name": "Pelágico", "description": "Subtipo de mar aberto." },
+    { "id": "diluviano-termal", "name": "Termal", "description": "Subtipo das fendas termais." }
+  ],
+  "notes": "Detalhes mecânicos dos subtipos não constam em CDG_RacasDef.md."
+}

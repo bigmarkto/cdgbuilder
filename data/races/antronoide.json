@@ -1,0 +1,45 @@
+{
+  "id": "antronoide",
+  "name": "Antronóide",
+  "source": "CDG_RacasDef.md",
+  "description": "Descendência e Evolução. Bestas que, em algum momento da história, ascenderam: desenvolveram consciência, ergueram-se sobre dois membros, passaram a nomear as coisas. Carregam dois mundos dentro de si — instinto animal e razão. Não existe um Antronóide 'típico'; a diversidade de linhagens (felina, canina, réptil, aviária, ursina etc.) é central à raça. O respeito pela linhagem ancestral é o valor universal; caçar a própria linhagem é o tabu mais profundo.",
+  "hitDie": "d10",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "variable",
+    "description": "Varia por linhagem. Livro Core: +PER/+POT. Criação v3: +2 PER, +1 AGI ou POT."
+  },
+  "traits": [
+    {
+      "id": "sentidos-apurados",
+      "name": "Sentidos Apurados",
+      "description": "Todo Antronóide possui ao menos um sentido afiado muito além do humano (olfato, visão ou audição). Este sentido primário é quase impossível de enganar."
+    },
+    {
+      "id": "instinto-ancestral",
+      "name": "Instinto Ancestral",
+      "description": "Quando o perigo chega sem aviso, algo antigo acorda. Uma vez por dia, mesmo pegos de surpresa, pode escolher ser o primeiro na Iniciativa.",
+      "modifiers": [
+        { "type": "custom", "text": "1x por dia: escolher ser o primeiro na ordem de Iniciativa." }
+      ]
+    },
+    {
+      "id": "garras-e-presas",
+      "name": "Garras e Presas",
+      "description": "Golpes desarmados causam dano real, não o tapa frustrado de outros humanoides.",
+      "modifiers": [
+        { "type": "custom", "text": "Garras/Presas: golpes desarmados causam 1d6 de dano (valor do Livro Core)." }
+      ]
+    }
+  ],
+  "weaknesses": [],
+  "subtypes": [
+    { "id": "antronoide-lupino", "name": "Lupino", "description": "Linhagem canina. Faro infalível." },
+    { "id": "antronoide-felino", "name": "Felino", "description": "Visão noturna perfeita, olhos como discos de âmbar no escuro." },
+    { "id": "antronoide-ursino", "name": "Ursino", "description": "Força hibernante dos ursinos." },
+    { "id": "antronoide-reptil", "name": "Réptil", "description": "Sangue frio, metabolismo lento, regeneração lenta mas constante, escamas que mudam de tom conforme a temperatura." },
+    { "id": "antronoide-aviario", "name": "Aviário", "description": "Capacidade de planar." }
+  ],
+  "notes": "Livro Core menciona 8 subtipos mas detalha apenas alguns. Criação v3: 'Lupino, Felino, Ursino, etc'. Lista acima preserva apenas os subtipos explicitamente citados nos documentos."
+}

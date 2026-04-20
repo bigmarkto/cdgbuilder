@@ -1,0 +1,38 @@
+{
+  "id": "alem",
+  "name": "Além",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente da Morte e das Leis. Vertente que opera sobre o que já morreu, sobre a forma dos seres e sobre as leis que moldam a realidade. Não é necromancia simples — é o entendimento profundo de que morte, matéria e lei são facetas da mesma Energia Cósmica. Quem domina o Além não cria nem destrói: REESCREVE.",
+  "governingAttributes": ["INT", "PER"],
+  "maxRankNormal": 4,
+  "identity": "Morte, forma, leis da realidade",
+  "tags": ["morte", "metafisica"],
+  "extraRules": [
+    {
+      "id": "dominio-dos-mortos",
+      "name": "Domínio dos Mortos",
+      "description": "Conjurações que afetam mortos-vivos, espíritos e ecos têm Intensidade +1 grau grátis. Pode comunicar-se com mortos recentes (até 7 dias) sem custo."
+    },
+    {
+      "id": "reescrita",
+      "name": "Reescrita",
+      "description": "Pode alterar propriedades físicas de objetos não-mágicos. Mudar peso, dureza, temperatura, cor. Custo: 1 Energia por propriedade. Duração: 1h. Não funciona em criaturas vivas (pra isso, use Sacrificial ou Anciânica)."
+    },
+    {
+      "id": "leitura-da-forma",
+      "name": "Leitura da Forma",
+      "description": "Pode ver a história de um objeto ou local ao tocá-lo. Quem fez, quando, o que aconteceu ali. Custo: 1 Energia. Quanto mais antigo, mais fragmentado."
+    },
+    {
+      "id": "ecos",
+      "name": "Ecos",
+      "description": "Pode invocar ecos de criaturas mortas — não ressurreição, mas impressões. O eco tem aparência e voz do original, mas não é o original. Dura FOC minutos."
+    },
+    {
+      "id": "fragilidade-vital",
+      "name": "Fragilidade Vital",
+      "description": "Conjurações de Cura pelo Além curam METADE (o Além entende morte, não vida)."
+    }
+  ],
+  "conjurations": []
+}

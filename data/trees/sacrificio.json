@@ -1,0 +1,243 @@
+{
+  "id": "sacrificio",
+  "name": "Sacrifício",
+  "source": "CDG_Progressao_P2.md",
+  "description": "Rituais de Sacrifício & Poder Proibido — FOC / CON. Magia custa Mana. Fe custa devocao. Sangue custa VOCE. Cada habilidade desta arvore arranca poder de dentro — do sangue, da carne, da propria essencia. E a arvore mais poderosa e mais perigosa do sistema.",
+  "atributoChave": "FOC / CON",
+  "alertaCorrupcao": {
+    "description": "Habilidades de Sangue Tier 2+ geram CORRUPCAO (ver documento de Corrupcao).",
+    "tier2": "1-3 Corrupcao por uso",
+    "tier3": "3-5 Corrupcao por uso",
+    "tier4": "5-10 Corrupcao por uso",
+    "intencionalidade": "Um personagem que investe pesado em Sangue INEVITAVELMENTE lida com Corrupcao. Isso e intencional. O poder tem preco."
+  },
+  "tags": ["proibida", "corrupcao"],
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Sangue Desperto",
+      "prerequisites": [],
+      "abilities": [
+        { "id": "preco-de-sangue", "name": "Preco de Sangue", "cost": 50, "description": "Pode usar HP em vez de Mana para qualquer habilidade. Taxa: 1 HP = 1 Mana. HP gasto assim nao pode ser curado por magia por 1h." },
+        { "id": "lamina-sangrenta", "name": "Lamina Sangrenta", "cost": 50, "description": "Acao Bonus: corte sua palma (1d4 dano). Arma ganha +1d6 necrotico por 1 min. Sangue na lamina." },
+        { "id": "sentir-vida", "name": "Sentir Vida", "cost": 50, "description": "Passivo: sinta criaturas vivas a 9m pelo calor do sangue. Funciona no escuro. Nao detecta mortos-vivos ou constructos." },
+        {
+          "id": "resistencia-masoquista",
+          "name": "Resistencia Masoquista",
+          "cost": 50,
+          "description": "Ao sofrer dano: proximo ataque no mesmo turno causa +dano recebido/4 (arredondado) como bonus. Dor vira forca.",
+          "prerequisites": [ { "type": "attribute", "attr": "CON", "min": 2 } ]
+        },
+        {
+          "id": "coagular",
+          "name": "Coagular",
+          "cost": 50,
+          "description": "Acao Bonus: estanque sangramento. Pare efeito de sangramento em si ou aliado tocado. Cure 1d4 HP.",
+          "prerequisites": [ { "type": "attribute", "attr": "CON", "min": 2 } ]
+        },
+        { "id": "sangue-corrosivo", "name": "Sangue Corrosivo", "cost": 50, "description": "Seu sangue e levemente toxico. Criaturas que mordem voce ou tocam seu sangue: 1d4 acido. Passivo." },
+        { "id": "cicatriz-de-poder", "name": "Cicatriz de Poder", "cost": 50, "description": "Escolha 1 cicatriz (narrativa). Ela brilha quando usa habilidades de Sangue. +1 no atributo associado a cicatriz (POT se cicatriz de combate, INT se de estudo, etc.). Permanente." },
+        { "id": "drenar-menor", "name": "Drenar Menor", "cost": 50, "description": "Ao acertar corpo-a-corpo: pode drenar 1d6 HP do alvo para si. 1x/turno. Custo: 2 HP proprio (a drenagem doi)." },
+        {
+          "id": "tolerancia-a-dor",
+          "name": "Tolerancia a Dor",
+          "cost": 50,
+          "description": "Reduz dano de QUALQUER fonte em 1 (minimo 1). Vantagem em testes contra Dor e Tortura. Passivo.",
+          "prerequisites": [ { "type": "attribute", "attr": "RES", "min": 2 } ]
+        },
+        { "id": "pacto-menor", "name": "Pacto Menor", "cost": 50, "description": "Faca promessa de sangue com outra criatura. Ambos sabem se o outro esta vivo e direcao aproximada. Quebrar causa 2d10 necrotico ao quebrador." }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Ritualista de Sangue",
+      "prerequisites": [
+        { "type": "custom", "text": "3+ habilidades Tier 1 de Sangue. GERA CORRUPCAO." }
+      ],
+      "abilities": [
+        {
+          "id": "lamina-sanguinaria",
+          "name": "Lamina Sanguinaria",
+          "cost": 100,
+          "description": "Arma absorve sangue dos inimigos. +2d6 necrotico. Cada morte com a arma: cure 1d8 HP. Corrupcao: 1 por combate.",
+          "prerequisites": [ { "type": "talent", "id": "lamina-sangrenta" } ]
+        },
+        {
+          "id": "drenar-maior",
+          "name": "Drenar Maior",
+          "cost": 100,
+          "description": "Ao acertar: drene 2d8 HP. Alcance 3m (nao precisa tocar). Excesso de cura vira HP temporario. Corrupcao: 2 por uso.",
+          "prerequisites": [ { "type": "talent", "id": "drenar-menor" } ]
+        },
+        {
+          "id": "frenesi-sangrento",
+          "name": "Frenesi Sangrento",
+          "cost": 100,
+          "description": "Ao cair abaixo de 50% HP: +3 acerto, +3 dano, imune a Medo. Dura ate curar acima de 50%. Corrupcao: 1 ao ativar.",
+          "prerequisites": [
+            { "type": "talent", "id": "resistencia-masoquista" },
+            { "type": "attribute", "attr": "CON", "min": 4 }
+          ]
+        },
+        {
+          "id": "sangue-vivo",
+          "name": "Sangue Vivo",
+          "cost": 100,
+          "description": "Pode controlar seu sangue derramado. Acao: sangue se move, forma tentaculos (1,5m), ataca (+FOC, 2d6 necrotico). Custo: 3 HP. Corrupcao: 1.",
+          "prerequisites": [ { "type": "talent", "id": "sangue-corrosivo" } ]
+        },
+        {
+          "id": "transfusao",
+          "name": "Transfusao",
+          "cost": 100,
+          "description": "Acao: transfira HP de si para aliado ou vice-versa. Taxa 1:1. Maximo: CON x 3 HP por uso. Corrupcao: 1.",
+          "prerequisites": [ { "type": "talent", "id": "coagular" } ]
+        },
+        {
+          "id": "marca-de-sangue",
+          "name": "Marca de Sangue",
+          "cost": 100,
+          "description": "Toque criatura: ela e MARCADA. Voce sabe localizacao exata. +2 acerto contra ela. Dura 7 dias. Corrupcao: 2.",
+          "prerequisites": [ { "type": "talent", "id": "pacto-menor" } ]
+        },
+        {
+          "id": "imolacao",
+          "name": "Imolacao",
+          "cost": 100,
+          "description": "Acao: sacrifique X HP. Cause X x 2 de dano necrotico em criatura a 9m. Sem teste. Dano garantido. Corrupcao: 2.",
+          "prerequisites": [
+            { "type": "talent", "id": "preco-de-sangue" },
+            { "type": "attribute", "attr": "RES", "min": 3 }
+          ]
+        },
+        {
+          "id": "cicatriz-maior",
+          "name": "Cicatriz Maior",
+          "cost": 100,
+          "description": "Escolha 2a cicatriz. +1 em outro atributo. Quando ambas brilham simultaneamente: +2 em vez de +1 cada (por 1 min). Corrupcao: 1 ao ativar dupla.",
+          "prerequisites": [ { "type": "talent", "id": "cicatriz-de-poder" } ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Apostata",
+      "prerequisites": [
+        { "type": "custom", "text": "3+ habilidades Tier 2 de Sangue. CORRUPCAO ALTA." }
+      ],
+      "abilities": [
+        {
+          "id": "explosao-de-sangue",
+          "name": "Explosao de Sangue",
+          "cost": 200,
+          "description": "Acao: todo sangue num raio de 6m (seu e dos inimigos) EXPLODE. 6d8 necrotico em area. CON DT (8+FOC) para metade. Custo: 10 HP. Corrupcao: 5.",
+          "prerequisites": [
+            { "type": "talent", "id": "sangue-vivo" },
+            { "type": "talent", "id": "imolacao" }
+          ]
+        },
+        {
+          "id": "roubar-essencia",
+          "name": "Roubar Essencia",
+          "cost": 200,
+          "description": "Ao matar criatura com Drenar: absorva 1 habilidade dela temporariamente (24h). Habilidade funciona 1x. Mestre decide qual. Corrupcao: 3.",
+          "prerequisites": [
+            { "type": "talent", "id": "drenar-maior" },
+            { "type": "attribute", "attr": "FOC", "min": 5 }
+          ]
+        },
+        {
+          "id": "imortalidade-profana",
+          "name": "Imortalidade Profana",
+          "cost": 200,
+          "description": "1x/dia: ao ser reduzido a 0 HP, fique com 1 HP e ganhe imunidade a dano por 1 turno. Corrupcao: 5.",
+          "prerequisites": [
+            { "type": "talent", "id": "frenesi-sangrento" },
+            { "type": "talent", "id": "tolerancia-a-dor" }
+          ]
+        },
+        {
+          "id": "ritual-de-sacrificio",
+          "name": "Ritual de Sacrificio",
+          "cost": 200,
+          "description": "10 min: sacrifique algo de valor (item magico, ano de vida, -1 atributo permanente). Ganhe efeito poderoso definido pelo Mestre (proporcional ao sacrificio). Corrupcao: 5-10.",
+          "prerequisites": [
+            { "type": "talent", "id": "transfusao" },
+            { "type": "talent", "id": "imolacao" }
+          ]
+        },
+        {
+          "id": "sangue-do-anciao",
+          "name": "Sangue do Anciao",
+          "cost": 200,
+          "description": "CROSS-TREE: Seu sangue se conecta ao Conceito. Habilidades de Sangue ganham dano radiance adicional (1d6). Corrupcao de Fe e Sangue se fundem (reduz total em 25%).",
+          "prerequisites": [
+            { "type": "talent", "id": "marca-de-sangue" },
+            { "type": "custom", "text": "Fe Tier 1 (Devocao)" }
+          ]
+        },
+        {
+          "id": "cascata-vermelha",
+          "name": "Cascata Vermelha",
+          "cost": 200,
+          "description": "Ao matar com arma sangrenta: TODOS os ataques no turno seguinte tem dano dobrado. Se matar de novo: continua. Cadeia infinita ate errar ou nao matar. Corrupcao: 3 por cadeia.",
+          "prerequisites": [ { "type": "talent", "id": "lamina-sanguinaria" } ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Senhor do Sangue",
+      "prerequisites": [
+        { "type": "custom", "text": "3+ habilidades Tier 3 de Sangue. CORRUPCAO EXTREMA." }
+      ],
+      "abilities": [
+        {
+          "id": "dominio-hematico",
+          "name": "Dominio Hematico",
+          "cost": 400,
+          "description": "Acao: controle o sangue de TODAS as criaturas a 9m. Alvo com menos HP que voce: POT DT (8+FOC) ou Paralisado 1 turno. Custo: 15 HP. Corrupcao: 8.",
+          "prerequisites": [
+            { "type": "talent", "id": "explosao-de-sangue" },
+            { "type": "talent", "id": "roubar-essencia" }
+          ]
+        },
+        {
+          "id": "ressurreicao-de-sangue",
+          "name": "Ressurreicao de Sangue",
+          "cost": 400,
+          "description": "Ao morrer: se tem 50+ de Corrupcao, ressuscite automaticamente em 1d4 turnos com 50% HP. Corrupcao: +15 ao ressuscitar. Pode ocorrer infinitas vezes ate atingir 100 de Corrupcao.",
+          "prerequisites": [
+            { "type": "talent", "id": "imortalidade-profana" },
+            { "type": "talent", "id": "ritual-de-sacrificio" }
+          ]
+        },
+        {
+          "id": "o-preco-final",
+          "name": "O Preco Final",
+          "cost": 400,
+          "description": "1x JAMAIS: sacrifique -3 permanente em atributo a escolha. Em troca: ganhe 1 habilidade Tier 4 de QUALQUER OUTRA ARVORE. Corrupcao: 15. O sangue compra tudo — ate o que nao deveria.",
+          "prerequisites": [ { "type": "talent", "id": "ritual-de-sacrificio" } ]
+        },
+        {
+          "id": "corpo-de-sangue",
+          "name": "Corpo de Sangue",
+          "cost": 400,
+          "description": "Passivo: seu corpo e parcialmente sangue liquido. Regenera 3 HP/turno. Pode se liquefazer (passar por frestas, esquivar ataques fisicos 1x/turno). Aparencia: grotesca. PRE -2 permanente. Corrupcao: +1 por dia (passivo).",
+          "prerequisites": [
+            { "type": "talent", "id": "cascata-vermelha" },
+            { "type": "talent", "id": "sangue-vivo" }
+          ]
+        }
+      ]
+    }
+  ]
+}

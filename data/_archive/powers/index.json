@@ -1,0 +1,559 @@
+{
+  "id": "poderes-originais",
+  "name": "Poderes Originais",
+  "source": "CDG_Poderes_Originais.md",
+  "description": "Cada personagem possui UM Poder Original — uma habilidade sobrenatural única, pessoal e intransferível. Não é magia aprendida em grimório nem técnica marcial; é uma expressão da alma do personagem manifestada como força no mundo real. Dois guerreiros podem usar a mesma espada, dois magos podem conjurar a mesma bola de fogo, mas dois Poderes Originais NUNCA são iguais.",
+  "principles": [
+    { "id": "unico", "name": "Único", "description": "Cada personagem tem exatamente 1 Poder Original. Não pode ser copiado, roubado ou transferido." },
+    { "id": "pessoal", "name": "Pessoal", "description": "O jogador INVENTA o poder do zero, com aprovação do Mestre. Não há lista pré-definida." },
+    { "id": "identidade", "name": "Identidade", "description": "O Poder reflete QUEM o personagem é — seus traumas, desejos, medos, natureza." },
+    { "id": "visceral", "name": "Visceral", "description": "Usar o poder custa algo do personagem. Não é grátis. O tipo de custo varia." },
+    { "id": "escalavel", "name": "Escalável", "description": "O Poder cresce com o personagem em 4 Ranks (Despertar → Transcendência)." },
+    { "id": "limitado", "name": "Limitado", "description": "Poderoso mas não onipotente. Tem escopo, fraquezas e condições de ativação." }
+  ],
+  "ranks": [
+    {
+      "rank": 1,
+      "id": "despertar",
+      "name": "Despertar",
+      "levelMin": 1,
+      "xpCost": 0,
+      "description": "O poder se manifesta pela primeira vez. Cru, instintivo, imprevisível.",
+      "mechanics": {
+        "efeitos": 1,
+        "danoMax": "2d8 ou equivalente",
+        "alcanceMax": "9m",
+        "areaMax": "nenhuma (alvo único)",
+        "duracaoMax": "1 minuto ou instantâneo",
+        "usos": "3x por Descanso Longo"
+      }
+    },
+    {
+      "rank": 2,
+      "id": "moldagem",
+      "name": "Moldagem",
+      "levelMin": 4,
+      "xpCost": 200,
+      "description": "O personagem entende melhor o poder. Aprende a moldá-lo, controlá-lo.",
+      "mechanics": {
+        "efeitos": 2,
+        "danoMax": "4d8 ou equivalente",
+        "alcanceMax": "18m",
+        "areaMax": "3m raio",
+        "duracaoMax": "10 minutos",
+        "usos": "5x por Descanso Longo"
+      }
+    },
+    {
+      "rank": 3,
+      "id": "dominio",
+      "name": "Domínio",
+      "levelMin": 7,
+      "xpCost": 400,
+      "description": "Maestria. O poder responde como extensão do corpo.",
+      "mechanics": {
+        "efeitos": 3,
+        "danoMax": "6d8 ou equivalente",
+        "alcanceMax": "30m",
+        "areaMax": "6m raio",
+        "duracaoMax": "1 hora",
+        "usos": "7x por Descanso Longo"
+      }
+    },
+    {
+      "rank": 4,
+      "id": "transcendencia",
+      "name": "Transcendência",
+      "levelMin": 10,
+      "xpCost": 800,
+      "description": "A forma final. O poder no auge absoluto.",
+      "mechanics": {
+        "efeitos": 4,
+        "danoMax": "10d8 ou equivalente",
+        "alcanceMax": "60m",
+        "areaMax": "12m raio",
+        "duracaoMax": "1 hora ou concentração",
+        "usos": "10x por Descanso Longo + 1 Uso Supremo",
+        "usoSupremo": "1x/Descanso Longo, use o poder no MÁXIMO absoluto. Efeito devastador definido com o Mestre. Sempre causa Sobrecarga Severa."
+      }
+    }
+  ],
+  "totalXpCost": 1400,
+  "creationSteps": [
+    {
+      "step": 1,
+      "name": "O Gatilho",
+      "description": "Todo Poder Original nasce de algo. Um momento, um trauma, uma natureza inata.",
+      "types": [
+        { "id": "trauma", "name": "Trauma", "description": "O poder nasceu de dor, perda ou quase-morte." },
+        { "id": "heranca", "name": "Herança", "description": "O poder está no sangue. Ancestral, racial, familiar." },
+        { "id": "exposicao", "name": "Exposição", "description": "Contato com Census Aurea, Ancião, Fenda, Artefato." },
+        { "id": "emocional", "name": "Emocional", "description": "Uma emoção tão forte que quebrou a barreira entre alma e mundo." },
+        { "id": "inato", "name": "Inato", "description": "Nasceu com o poder. Sem explicação. Simplesmente é." },
+        { "id": "pacto", "name": "Pacto", "description": "Um Ancião ou entidade plantou uma semente de poder." },
+        { "id": "mutacao", "name": "Mutação", "description": "Agouro ou exposição alterou o corpo de forma única." },
+        { "id": "morte", "name": "Morte", "description": "Morreu e voltou. Trouxe algo do outro lado." }
+      ]
+    },
+    { "step": 2, "name": "O Conceito", "description": "Resuma o poder em UMA FRASE. Se não cabe em uma frase, é complexo demais para Rank 1." },
+    {
+      "step": 3,
+      "name": "A Fonte de Custo",
+      "description": "Cada Poder Original custa algo para ser usado. O TIPO de custo é definido na criação e não muda.",
+      "sources": [
+        { "id": "hp", "name": "HP (Visceral)", "mechanic": "Gasta HP ao usar. Não pode ser curado por magia por 1h.", "best": "Poderes físicos, sangue, dor, corpo.", "risk": "Alto. Pode matar." },
+        { "id": "mana", "name": "Mana", "mechanic": "Gasta Pontos de Magia. Requer pool de Mana.", "best": "Poderes arcanos, elementais, mentais.", "risk": "Médio. Acaba e pronto." },
+        { "id": "foco", "name": "Foco", "mechanic": "Gasta Pontos de Foco. Requer pool de Foco.", "best": "Poderes marciais, naturais, instintivos.", "risk": "Médio. Esgotamento." },
+        { "id": "energia", "name": "Energia (RES)", "mechanic": "Gasta Energia do sistema de Energia.", "best": "Poderes de resistência, longa duração.", "risk": "Baixo-Médio." },
+        { "id": "sanidade", "name": "Sanidade", "mechanic": "Gasta pontos de sanidade. Recupera devagar.", "best": "Poderes mentais, cósmicos, proibidos.", "risk": "Alto. Loucura." },
+        { "id": "corrupcao", "name": "Corrupção", "mechanic": "Ganha Corrupção ao usar. Não gasta nada — paga depois.", "best": "Poderes sombrios, necróticos, de pacto.", "risk": "MUITO alto. Perda do personagem." },
+        { "id": "condicao", "name": "Condição", "mechanic": "Ao usar, ganha 1 condição temporária (Cego, Surdo, Exausto, etc).", "best": "Poderes extremos que custam sentidos.", "risk": "Variável." },
+        { "id": "misto", "name": "Misto", "mechanic": "2 fontes combinadas (ex: HP + Mana, Foco + Condição).", "best": "Poderes complexos ou duplamente temáticos.", "risk": "Depende da combinação." }
+      ],
+      "costByRank": {
+        "rank1": "Custo baixo. Ex: 1d6 HP, 4 Mana, 2 Foco, 1 Energia.",
+        "rank2": "Custo médio. Ex: 2d6 HP, 8 Mana, 4 Foco, 2 Energia.",
+        "rank3": "Custo alto. Ex: 3d6 HP, 12 Mana, 6 Foco, 3 Energia.",
+        "rank4": "Custo severo. Ex: 4d6 HP, 16 Mana, 8 Foco, 4 Energia.",
+        "usoSupremo": "Custo máximo + Sobrecarga Severa automática."
+      }
+    },
+    {
+      "step": 4,
+      "name": "Os Efeitos",
+      "description": "Defina o que o poder FAZ. Use a Tabela de Efeitos como referência para balancear.",
+      "categories": [
+        { "id": "dano-direto", "name": "Dano Direto", "examples": "Projétil, explosão, corte, impacto", "baseR1": "2d8", "scale": "3d8 / 5d8 / 8d8" },
+        { "id": "dano-area", "name": "Dano Área", "examples": "Cone, esfera, linha, aura", "baseR1": "1d8 (3m raio)", "scale": "2d8 (4,5m) / 3d8 (6m) / 5d8 (9m)" },
+        { "id": "dano-continuo", "name": "Dano Contínuo", "examples": "DoT, aura persistente", "baseR1": "1d6/turno (3 turnos)", "scale": "2d6/4t / 3d6/5t / 4d6/6t" },
+        { "id": "cura", "name": "Cura", "examples": "Restaurar HP aliado ou próprio", "baseR1": "2d6", "scale": "3d8 / 4d8 / 6d8" },
+        { "id": "buff", "name": "Buff", "examples": "Bônus temporário em atributo/DP/dano", "baseR1": "1 atributo +2", "scale": "2 atr +2 / +3 / +4 ou 3 atr" },
+        { "id": "debuff", "name": "Debuff", "examples": "Penalidade em inimigo", "baseR1": "1 atr -2 (1 turno)", "scale": "2 atr -2 / -3 / -4 ou área" },
+        { "id": "controle", "name": "Controle", "examples": "Empurrar, puxar, prender, derrubar", "baseR1": "1 alvo, 1 turno", "scale": "2 alvos / área / longa duração" },
+        { "id": "movimento", "name": "Movimento", "examples": "Teleporte, voo, velocidade, fases", "baseR1": "Teleporte 6m", "scale": "12m / 18m+voo / 30m+fase" },
+        { "id": "defesa", "name": "Defesa", "examples": "Escudo, barreira, absorver dano", "baseR1": "Absorve 10 dano", "scale": "20 / 30 / 50 ou área" },
+        { "id": "transformacao", "name": "Transformação", "examples": "Mudar corpo, forma, matéria", "baseR1": "1 membro, 1min", "scale": "corpo parcial / total / permanente" },
+        { "id": "sensorial", "name": "Sensorial", "examples": "Visão extra, detecção, leitura mental", "baseR1": "9m, 1 sentido", "scale": "18m / 30m / onisciência local" },
+        { "id": "invocacao", "name": "Invocação", "examples": "Criar objeto, criatura ou duplicata", "baseR1": "Objeto simples", "scale": "Criatura ND2 / ND4 / ND8" },
+        { "id": "utilitario", "name": "Utilitário", "examples": "Luz, reparo, comunicação, manipulação", "baseR1": "Efeito menor, toque", "scale": "Alcance / área / permanente" }
+      ]
+    },
+    {
+      "step": 5,
+      "name": "As Condições",
+      "description": "Todo Poder Original tem pelo menos 1 CONDIÇÃO — uma regra que limita quando/como pode ser usado. Mínimo 1, máximo 3.",
+      "types": [
+        { "id": "ativacao", "name": "Ativação", "description": "Precisa de algo específico para ativar.", "bonus": "Nenhum (cosmético)." },
+        { "id": "gatilho-emocional", "name": "Gatilho Emocional", "description": "Só funciona em estado emocional específico.", "bonus": "+1 dado de dano." },
+        { "id": "contato", "name": "Contato", "description": "Precisa tocar o alvo.", "bonus": "+2 dados de dano." },
+        { "id": "linha-de-visao", "name": "Linha de Visão", "description": "Precisa VER o alvo. Não funciona no escuro/cego.", "bonus": "Nenhum (padrão)." },
+        { "id": "material", "name": "Material", "description": "Precisa de material específico presente.", "bonus": "+1 efeito extra." },
+        { "id": "temporal", "name": "Temporal", "description": "Só funciona em momento específico.", "bonus": "+2 dados quando ativo." },
+        { "id": "posicional", "name": "Posicional", "description": "Precisa estar em posição específica.", "bonus": "+1 dado ou +alcance." },
+        { "id": "sacrificial", "name": "Sacrificial", "description": "Precisa sacrificar algo ao usar.", "bonus": "+1 efeito ou +área." },
+        { "id": "cooldown", "name": "Cooldown", "description": "Após usar, precisa esperar X turnos.", "bonus": "+1 dado por turno de cooldown." },
+        { "id": "concentracao", "name": "Concentração", "description": "Manter o efeito requer Concentração ativa.", "bonus": "+duração (enquanto concentrar)." }
+      ],
+      "tradeoff": {
+        "1-condicao": "Poder padrão.",
+        "2-condicoes": "+1 dado de dano OU +1 efeito OU +alcance em todos os Ranks.",
+        "3-condicoes": "+2 dados OU +2 efeitos OU o dobro de alcance. MAS o poder é muito situacional."
+      }
+    },
+    {
+      "step": 6,
+      "name": "As Fraquezas",
+      "description": "Separado das Condições. Fraquezas anulam ou enfraquecem o poder. Todo poder tem pelo menos 1.",
+      "types": [
+        { "id": "elemento-oposto", "name": "Elemento oposto", "example": "Fogo anula poder de gelo.", "effect": "Poder falha automaticamente contra o elemento." },
+        { "id": "material-especifico", "name": "Material específico", "example": "Prata bloqueia poder sombrio.", "effect": "DP +5 contra o poder se o alvo tem o material." },
+        { "id": "condicao-ambiental", "name": "Condição ambiental", "example": "Não funciona debaixo d'água.", "effect": "Poder desliga em ambiente específico." },
+        { "id": "autolesao", "name": "Autolesão", "example": "Dano ao usuário aumenta se o poder falha.", "effect": "Em falha crítica: dano do poder no próprio usuário." },
+        { "id": "detectavel", "name": "Detectável", "example": "O poder é visivelmente óbvio ao ser usado.", "effect": "Não pode ser usado discretamente. Inimigos sabem a fonte." },
+        { "id": "concentracao-fragil", "name": "Concentração frágil", "example": "Qualquer dano quebra o efeito.", "effect": "Sem teste — dano = fim do efeito." },
+        { "id": "esgotamento-rapido", "name": "Esgotamento rápido", "example": "Usos consecutivos custam mais.", "effect": "Cada uso após o 3º custa o DOBRO." },
+        { "id": "vulneravel-durante", "name": "Vulnerável durante", "example": "Enquanto usa, perde algo.", "effect": "DP -2 enquanto poder ativo. Ou vel -3m. Ou cego." }
+      ]
+    }
+  ],
+  "overuse": {
+    "description": "Quando um personagem EXCEDE o limite de usos do Poder Original (ou usa o Uso Supremo), sofre Sobrecarga. Condições temporárias que lembram que o corpo mortal não é recipiente perfeito para poder sobrenatural.",
+    "levels": [
+      { "cause": "Usar 1 vez ALÉM do limite", "level": "Leve", "conditions": "1 condição da Tabela Leve", "duration": "1d4 horas" },
+      { "cause": "Usar 2-3 vezes além", "level": "Moderada", "conditions": "1 condição Moderada + 1 Leve", "duration": "1d8 horas" },
+      { "cause": "Usar 4+ vezes além", "level": "Severa", "conditions": "1 condição Severa + 1 Moderada", "duration": "1d4 dias" },
+      { "cause": "Uso Supremo (R4)", "level": "Severa (auto)", "conditions": "1 condição Severa automática", "duration": "1d4 dias" },
+      { "cause": "Uso Supremo + já em Sobrecarga", "level": "Crítica", "conditions": "2 Severas + 1 Moderada", "duration": "1d4 SEMANAS" }
+    ],
+    "tables": {
+      "leve": [
+        { "d8": 1, "condicao": "Tontura", "efeito": "Desvantagem em testes de PER por 1d4 horas." },
+        { "d8": 2, "condicao": "Tremores", "efeito": "Desvantagem em testes que exigem mãos firmes por 1d4h." },
+        { "d8": 3, "condicao": "Epistaxe", "efeito": "Sangramento nasal constante. -2 em Concentração por 1d4h." },
+        { "d8": 4, "condicao": "Fadiga Súbita", "efeito": "1 nível de Exaustão por 1d4 horas. Recupera sem descanso." },
+        { "d8": 5, "condicao": "Visão Turva", "efeito": "-2 em ataques ranged e PER visual por 1d4h. Vê halos de luz." },
+        { "d8": 6, "condicao": "Zumbido", "efeito": "Zumbido constante. -2 PER auditivo. Não ouve sussurros." },
+        { "d8": 7, "condicao": "Dor de Cabeça", "efeito": "Não consegue se concentrar. Não pode manter Concentração por 1d4h." },
+        { "d8": 8, "condicao": "Sede Extrema", "efeito": "Precisa beber 3x mais água nas próximas 1d4h ou Desidratação rápida." }
+      ],
+      "moderada": [
+        { "d8": 1, "condicao": "Cegueira Temporária", "efeito": "Cego por 1d4 HORAS. Recupera gradualmente." },
+        { "d8": 2, "condicao": "Surdez Temporária", "efeito": "Surdo por 1d8 horas." },
+        { "d8": 3, "condicao": "Paralisia Parcial", "efeito": "1 membro paralisa por 1d8h." },
+        { "d8": 4, "condicao": "Febre Alta", "efeito": "40C+. -2 em TODOS os testes. Alucinações leves. 1d8h." },
+        { "d8": 5, "condicao": "Perda de Voz", "efeito": "Não consegue falar por 1d8h. Não pode conjurar verbais." },
+        { "d8": 6, "condicao": "Espasmos", "efeito": "-4 em AGI por 1d8h. Vel -3m." },
+        { "d8": 7, "condicao": "Amnésia Curta", "efeito": "Esquece as últimas 1d4 horas. Memórias voltam ao fim." },
+        { "d8": 8, "condicao": "Dor Crônica", "efeito": "-2 em todos os testes por 1d8h. Analgesia não funciona." }
+      ],
+      "severa": [
+        { "d8": 1, "condicao": "Cegueira Prolongada", "efeito": "Cego por 1d4 DIAS." },
+        { "d8": 2, "condicao": "Surdez + Mudez", "efeito": "Surdo E mudo por 1d4 dias." },
+        { "d8": 3, "condicao": "Membro Inoperante", "efeito": "1 membro para de funcionar por 1d4 dias." },
+        { "d8": 4, "condicao": "Hemorragia Interna", "efeito": "2d8 dano por dia por 1d4 dias. Só Medicina DT 18." },
+        { "d8": 5, "condicao": "Apagão", "efeito": "Inconsciente por 1d4 dias. Sonhos intensos." },
+        { "d8": 6, "condicao": "Descontrole Emocional", "efeito": "Emoção dominante por 1d4 dias." },
+        { "d8": 7, "condicao": "Envelhecimento", "efeito": "Envelhece 1d10 anos. Cosmético mas permanente." },
+        { "d8": 8, "condicao": "Marca", "efeito": "Marca PERMANENTE no corpo. Primeira Cicatriz do Gatilho." }
+      ]
+    }
+  },
+  "forbidden": [
+    { "tipo": "Controle mental total", "problema": "Tira agência de NPCs e jogadores.", "solucao": "Limitar a sugestão, não controle. Alvos fazem teste sempre." },
+    { "tipo": "Imortalidade/invulnerabilidade", "problema": "Remove tensão do jogo.", "solucao": "Mudar pra resistência parcial ou regeneração lenta." },
+    { "tipo": "Parar o tempo", "problema": "Desequilibra TUDO. Turnos infinitos.", "solucao": "Limitar a desacelerar (vantagem em iniciativa) ou 1 ação extra." },
+    { "tipo": "Copiar poderes de outros", "problema": "Torna o poder DOS OUTROS irrelevante.", "solucao": "Limitar a 1 poder copiado, versão mais fraca, por tempo limitado." },
+    { "tipo": "Onisciência", "problema": "Mata mistério e exploração.", "solucao": "Limitar a pistas (não respostas), alcance curto, custo alto." },
+    { "tipo": "Criação de matéria infinita", "problema": "Quebra economia e logística.", "solucao": "Material criado é temporário (1h) ou requer material base." },
+    { "tipo": "Cura infinita", "problema": "Torna combate trivial.", "solucao": "Limitar usos. Cura nunca maior que dano médio do nível." },
+    { "tipo": "Teletransporte irrestrito", "problema": "Ignora toda exploração e perigo.", "solucao": "Limitar alcance, requer conhecer destino, cooldown longo." }
+  ],
+  "examples": [
+    {
+      "id": "ferrocinese",
+      "name": "Ferrocinese",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Controlo metal com a mente.",
+      "gatilho": "Exposição (Census Aurea numa mina desmoronada)",
+      "cost": "foco",
+      "conditions": ["Precisa de metal no alcance de 9m"],
+      "weaknesses": ["Não funciona em madeira/pedra/orgânico"],
+      "ranks": [
+        { "rank": 1, "effect": "Mover 1 objeto metálico até 10kg, 9m. Ou moldar como argila (1 min). 2 Foco." },
+        { "rank": 2, "effect": "Mover até 50kg OU lançar estilhaços 3d8 perfurante 18m. 4 Foco." },
+        { "rank": 3, "effect": "Campo magnético 6m raio: armas metálicas voam da mão, armaduras pesam x2 (-3m vel, -2 AGI). 6 Foco." },
+        { "rank": 4, "effect": "Colosso: corpo revestido de metal ambiente. +6 DP, +3 POT, ataques 3d10, imune perfurante. 1 min. 8 Foco.", "supremo": "Tempestade de Metal — TUDO metálico em 18m obedece. 8d8 área." }
+      ]
+    },
+    {
+      "id": "sangue-corrosivo",
+      "name": "Sangue Corrosivo",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Meu sangue é ácido e posso projetá-lo.",
+      "gatilho": "Mutação (Agouro exposto a alquimia)",
+      "cost": "hp",
+      "conditions": ["Precisa se ferir pra projetar (1d4 auto-dano mínimo)"],
+      "weaknesses": ["Água dilui (chuva reduz eficácia -50%)"],
+      "ranks": [
+        { "rank": 1, "effect": "Projeta jato de sangue ácido: 2d8 ácido, 6m, alvo único. Custo: 1d4 HP + 2 HP." },
+        { "rank": 2, "effect": "Jato 3d8 a 12m OU Armadura Ácida (quem toca você sofre 1d6 ácido, 1 min). 2d4 HP." },
+        { "rank": 3, "effect": "Chuva Ácida: cone 6m, 4d8 ácido + objetos não-mágicos corroem. 3d4 HP." },
+        { "rank": 4, "effect": "Sangue Vivo: sangue se move independente. Cria tentáculos ácidos (3, 2d8 cada, 9m alcance, 1 min). 4d4 HP.", "supremo": "Dilúvio — 12m raio, 8d8, dissolve tudo não-mágico." }
+      ]
+    },
+    {
+      "id": "precognicao-tatica",
+      "name": "Precognição Tática",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Vejo 3 segundos no futuro.",
+      "gatilho": "Inato (nasceu assim)",
+      "cost": "mana",
+      "conditions": ["Concentração (1 ação pra manter)"],
+      "weaknesses": ["Excesso de estímulos (áreas lotadas: -2 por uso)"],
+      "ranks": [
+        { "rank": 1, "effect": "Reação: anula 1 ataque contra você (previu). 4 Mana. 1x/combate." },
+        { "rank": 2, "effect": "Vantagem permanente em Iniciativa. Reação 2x/combate. Pode avisar 1 aliado. 6 Mana." },
+        { "rank": 3, "effect": "Prever próxima ação de 1 inimigo (Mestre revela). Reação 3x/combate. 8 Mana." },
+        { "rank": 4, "effect": "Visão Completa: 1 turno inteiro com conhecimento do que TODOS os inimigos farão. +4 em tudo por 1 turno. 12 Mana.", "supremo": "Para subjetivo — 1 rodada extra completa só pra você." }
+      ]
+    },
+    {
+      "id": "masoquismo-sobrenatural",
+      "name": "Masoquismo Sobrenatural",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Dor se transforma em força.",
+      "gatilho": "Trauma (tortura prolongada na infância)",
+      "cost": "Nenhum direto (precisa RECEBER dano)",
+      "conditions": ["Precisa estar com menos de 75% HP pra ativar. Mais forte quanto mais ferido."],
+      "weaknesses": ["Cura DESATIVA o poder. Se curado acima de 75%, perde tudo."],
+      "ranks": [
+        { "rank": 1, "effect": "Abaixo de 75% HP: +2 dano corpo-a-corpo. Abaixo de 50%: +4. Passivo." },
+        { "rank": 2, "effect": "Abaixo de 50%: Resist. a 1 tipo de dano (o último que sofreu). Abaixo de 25%: +6 dano." },
+        { "rank": 3, "effect": "Abaixo de 25%: Imune a medo/charme. Ataques causam +2d6 necrótico. Regenera 1 HP/turno." },
+        { "rank": 4, "effect": "Abaixo de 10% HP: AVATAR DE DOR. +8 dano, +4 DP, imune a condições, vel +6m. Dura até ser curado ou cair a 0.", "supremo": "A 1 HP, próximo ataque causa dano TRIPLO automaticamente." }
+      ]
+    },
+    {
+      "id": "contra-forca",
+      "name": "Contra-Força",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Absorvo impactos e devolvo amplificados.",
+      "gatilho": "Exposição (atingido por raio de Census Aurea)",
+      "cost": "energia",
+      "conditions": ["Precisa ser ATINGIDO primeiro. Não funciona contra dano que não acertou."],
+      "weaknesses": ["Dano mágico não pode ser absorvido (só físico)."],
+      "ranks": [
+        { "rank": 1, "effect": "Reação ao ser atingido corpo-a-corpo: absorve até 10 dano. Próximo ataque causa +dano absorvido. 2 Energia." },
+        { "rank": 2, "effect": "Absorve até 20. Funciona contra ranged também. Pode segurar até 2 turnos. 3 Energia." },
+        { "rank": 3, "effect": "Absorve 30. Pode devolver como onda (cone 4,5m) em vez de ataque único. 5 Energia." },
+        { "rank": 4, "effect": "Absorve 50. Pode devolver como ESFERA 6m raio. Dano devolvido é x1,5. 7 Energia.", "supremo": "Absorve 1 ataque inteiro (qualquer dano) e devolve x2 em área 9m." }
+      ]
+    },
+    {
+      "id": "multiplicidade",
+      "name": "Multiplicidade",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Crio cópias ilusórias de mim.",
+      "gatilho": "Emocional (solidão extrema)",
+      "cost": "mana",
+      "conditions": ["Cópias somem se tocadas (1 toque = dissipa)"],
+      "weaknesses": ["Espelhos e água revelam que são falsas."],
+      "ranks": [
+        { "rank": 1, "effect": "1 cópia perfeita. Age independente (ataque ilusório: 0 dano, mas inimigo não sabe). 4 Mana. 1 min." },
+        { "rank": 2, "effect": "2 cópias. Cópias podem interagir com objetos leves. 6 Mana. 10 min." },
+        { "rank": 3, "effect": "3 cópias. 1 cópia pode causar dano REAL (2d8, usa seus stats). As outras são distração. 8 Mana." },
+        { "rank": 4, "effect": "5 cópias. 2 reais (3d8 cada). Pode trocar posição com cópia como Reação (teleporte aparente). 12 Mana.", "supremo": "EXÉRCITO — 20 cópias por 1 minuto. 5 reais." }
+      ]
+    },
+    {
+      "id": "aura-glacial",
+      "name": "Aura Glacial",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Congelo o ar ao meu redor.",
+      "gatilho": "Herança (mãe era Diluviana Termal inversa)",
+      "cost": "misto",
+      "costDetail": "HP + Condição",
+      "conditions": ["Ativação lenta (1 turno de preparo, vulnerável durante)"],
+      "weaknesses": ["Fogo anula (+100% dano fogo enquanto ativo). Calor extremo impede ativação."],
+      "ranks": [
+        { "rank": 1, "effect": "Aura 3m. Terreno escorregadio (AGI DT 12 ou cai). Toque causa 1d6 gelo. 1d6 HP. 1 min." },
+        { "rank": 2, "effect": "Aura 4,5m. 2d6 gelo/turno a quem entra. Armas congelam (chance de soltar). 2d6 HP. 10 min." },
+        { "rank": 3, "effect": "Aura 6m. 3d6/turno. Água congela instantaneamente. Criaturas de fogo sofrem +50%. 3d6 HP." },
+        { "rank": 4, "effect": "Inverno Pessoal: 9m raio. 4d6/turno. Neve cai. Visibilidade 3m. Você é imune a gelo totalmente. 4d6 HP.", "supremo": "Glaciação — 18m, TUDO congela. Criaturas CON DT 20 ou Presas em gelo (3 turnos)." }
+      ]
+    },
+    {
+      "id": "voz-devastadora",
+      "name": "Voz Devastadora",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Meu grito causa dano sônico.",
+      "gatilho": "Trauma (gritou quando família foi assassinada, janelas quebraram)",
+      "cost": "misto",
+      "costDetail": "Foco + Condição (perde voz por 1h após uso)",
+      "conditions": ["Precisa poder vocalizar. Silenciado = sem poder."],
+      "weaknesses": ["Surdez mágica imuniza. Aliados na área também sofrem efeito."],
+      "ranks": [
+        { "rank": 1, "effect": "Grito: cone 6m, 2d8 trovão. CON DT 12 ou Ensurdecido 1 turno. 3 Foco." },
+        { "rank": 2, "effect": "Cone 9m, 3d8. Ensurdecido 2 turnos. Objetos frágeis quebram. 5 Foco." },
+        { "rank": 3, "effect": "Cone 12m OU esfera 6m centrada em você. 5d8 trovão. Ensurdecido + Derrubado. 7 Foco." },
+        { "rank": 4, "effect": "Onda Sonora: linha 30m x 3m, 8d8, tudo no caminho é empurrado 9m + Ensurdecido 1 min. 10 Foco.", "supremo": "Grito de Silêncio — inverte. 18m raio, TODO som desaparece. Criaturas: 6d8 psíquico + não podem falar/conjurar 1 min." }
+      ]
+    },
+    {
+      "id": "umbramancia",
+      "name": "Umbramancia",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Controlo sombras como extensão do corpo.",
+      "gatilho": "Morte (morreu brevemente ao pôr do sol, voltou com sombra viva)",
+      "cost": "mana",
+      "conditions": ["Precisa de sombras (escuridão parcial mínimo). Sol direto sem sombras = não funciona."],
+      "weaknesses": ["Luz mágica intensa anula todas sombras. Vulnerável a dano radiance."],
+      "ranks": [
+        { "rank": 1, "effect": "Sombra se estende 3m. Pode agarrar (POT do personagem). Ou atacar: 2d6 necrótico. 4 Mana." },
+        { "rank": 2, "effect": "Sombra alcança 9m. Pode se teleportar entre sombras a 9m (Ação Bônus). 6 Mana." },
+        { "rank": 3, "effect": "3 tentáculos de sombra simultâneos (2d8 cada). Pode se tornar 2D (achatar na sombra, invisível). 8 Mana." },
+        { "rank": 4, "effect": "Avatar de Sombra: corpo se torna escuridão sólida. +4 DP, imune a não-mágico, 4d8 tentáculos, teleporte 30m entre sombras. 12 Mana. 1 min.", "supremo": "Noite Eterna — 30m raio, escuridão mágica total. Só você enxerga. 8d8 necrótico em tudo na área." }
+      ]
+    },
+    {
+      "id": "metamorfose-bestial",
+      "name": "Metamorfose Bestial",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Transformo meu corpo em animal.",
+      "gatilho": "Herança (pai Antronoide, poder dormiu até puberdade)",
+      "cost": "energia",
+      "conditions": ["Roupas e equipamento não transformam (fica nu ao reverter). 1 turno pra transformar."],
+      "weaknesses": ["Prata causa +50% dano na forma animal. Não pode falar ou usar itens."],
+      "ranks": [
+        { "rank": 1, "effect": "1 forma animal (escolhida na criação: lobo, águia, urso, cobra, etc). Stats mudam. 2 Energia. 10 min." },
+        { "rank": 2, "effect": "2 formas animais. Pode transformar parcialmente (só garras, só asas). 3 Energia. 1h." },
+        { "rank": 3, "effect": "3 formas. Transformação parcial livre. Forma Híbrida (humanoide com traços animais: +2 POT, +2 AGI, garras 2d6). 5 Energia." },
+        { "rank": 4, "effect": "Qualquer animal que já viu. Híbrida permanente se quiser. Forma Alfa: versão gigante do animal (Tamanho Grande). 7 Energia.", "supremo": "Quimera — combina 3 animais simultaneamente. Asas + garras + cauda venenosa + etc. 1 min." }
+      ]
+    },
+    {
+      "id": "erosao-temporal",
+      "name": "Erosão Temporal",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Envelheço/rejuvenesço matéria com toque.",
+      "gatilho": "Pacto (Anciã do Tempo sussurrou em sonho)",
+      "cost": "sanidade",
+      "conditions": ["Toque obrigatório. Não funciona em seres vivos acima do seu nível."],
+      "weaknesses": ["Usar em si mesmo causa 1d10 anos de envelhecimento real (cosmético permanente)."],
+      "ranks": [
+        { "rank": 1, "effect": "Toque: envelhece objeto (apodrecer madeira, enferrujar metal). Ou rejuvenesce (reparar). 2 Sanidade." },
+        { "rank": 2, "effect": "Alcance 3m (não precisa toque). Pode envelhecer criatura: 2d8 necrótico + -1 em atributo físico 1h. 4 Sanidade." },
+        { "rank": 3, "effect": "Área 3m. Envelhece TUDO (terreno se deteriora, estruturas racham, criaturas 4d8 + -2 atr 1h). 6 Sanidade." },
+        { "rank": 4, "effect": "Domínio Temporal: 6m raio, criaturas envelhecem décadas em segundos (6d8 + -3 em atr físicos 1h + Vel metade). Objetos viram pó. 8 Sanidade.", "supremo": "Reverter — escolha 1 evento dos últimos 6 segundos. Ele NÃO aconteceu." }
+      ]
+    },
+    {
+      "id": "ressonancia",
+      "name": "Ressonância",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Vibro na frequência certa pra destruir qualquer coisa.",
+      "gatilho": "Inato (sempre ouviu o 'tom' das coisas)",
+      "cost": "foco",
+      "conditions": ["Precisa ouvir o alvo (Surdo = não funciona). 1 turno de concentração pra 'sintonizar'."],
+      "weaknesses": ["Silêncio mágico anula totalmente. Caos sônico (muitos sons) atrapalha (-4)."],
+      "ranks": [
+        { "rank": 1, "effect": "Após sintonizar: vibra 1 objeto não-mágico até falha crítica (quebra). Ou 2d8 sônico em criatura. 3 Foco." },
+        { "rank": 2, "effect": "Sintoniza em 1 ação (era 1 turno). 3d8 sônico OU desintegra 1 objeto mágico (Arcano DT 18). 5 Foco." },
+        { "rank": 3, "effect": "5d8 sônico área 3m (onda de ressonância). Ou vibrar o CHÃO (tremor 6m, AGI DT 16 ou cai + 2d8). 7 Foco." },
+        { "rank": 4, "effect": "Frequência Perfeita: escolhe 1 material. TUDO desse material em 9m vibra e despedaça (8d8 se criatura feita/vestida desse material). 10 Foco.", "supremo": "Nota Final — frequência de destruição pura. 12m, 10d8 a tudo, estruturas colapsam." }
+      ]
+    },
+    {
+      "id": "cordas-de-destino",
+      "name": "Cordas de Destino",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Vejo e manipulo as conexões entre seres.",
+      "gatilho": "Emocional (perdeu todos que amava, começou a VER os laços)",
+      "cost": "misto",
+      "costDetail": "Mana + Sanidade",
+      "conditions": ["Precisa ver o alvo. Não funciona em Constructos/Motriz (não tem laços orgânicos)."],
+      "weaknesses": ["Usar em aliados pode acidentalmente revelar segredos deles (Mestre decide)."],
+      "ranks": [
+        { "rank": 1, "effect": "Vê laços entre criaturas a 9m (quem ama quem, quem odeia quem). Informação. 2 Mana + 1 Sanidade." },
+        { "rank": 2, "effect": "Puxa 1 laço: força 1 criatura a focar em outra (Taunt sobrenatural, PRE DT 14). 4 Mana + 2 San." },
+        { "rank": 3, "effect": "Corta 1 laço: 2 criaturas ligadas esquecem que se conhecem por 1h. OU fortalece: +4 em testes cooperativos. 6 Mana + 3 San." },
+        { "rank": 4, "effect": "Teia de Destino: vê TODOS os laços em 30m. Pode rearranjar 3 laços por combate. 8 Mana + 4 San.", "supremo": "Romper Destino — corta permanentemente 1 laço (alvo esquece a pessoa pra sempre, e vice-versa)." }
+      ]
+    },
+    {
+      "id": "forja-viva",
+      "name": "Forja Viva",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Modelo matéria com as mãos nuas.",
+      "gatilho": "Herança (ancestral Anão Legado + Census Aurea)",
+      "cost": "energia",
+      "costDetail": "Energia + material presente",
+      "conditions": ["Precisa de matéria-prima (não cria do nada). Mãos devem estar livres."],
+      "weaknesses": ["Material orgânico não pode ser forjado (só mineral, metal, cristal)."],
+      "ranks": [
+        { "rank": 1, "effect": "Modela metal/pedra como argila. Cria arma simples em 1 minuto (qualidade Comum). 2 Energia." },
+        { "rank": 2, "effect": "Cria arma Superior em 1 min OU armadura Comum em 10 min. Pode reparar equipamento instantaneamente. 3 Energia." },
+        { "rank": 3, "effect": "Cria arma Obra-Prima em 1 min. Pode fundir 2 materiais diferentes. Modela terreno (parede de pedra 3mx3m). 5 Energia." },
+        { "rank": 4, "effect": "Cria artefato mágico temporário (propriedade +1d6 dano, dura 24h). Modela ambiente livremente (escadas, pontes, muros). 7 Energia.", "supremo": "Castelo Instantâneo — em 1 minuto, ergue estrutura de pedra 18m x 18m x 9m. Permanente." }
+      ]
+    },
+    {
+      "id": "devorador-de-memorias",
+      "name": "Devorador de Memórias",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Absorvo memórias por toque e as uso.",
+      "gatilho": "Mutação (Agouro com Audição Espiral descontrolada)",
+      "cost": "sanidade",
+      "conditions": ["Toque obrigatório (pele a pele). Alvo faz FOC pra resistir."],
+      "weaknesses": ["Memórias absorvidas podem causar confusão de identidade (FOC DT 14 ou confunde suas memórias com as do alvo 1h)."],
+      "ranks": [
+        { "rank": 1, "effect": "Toque: absorve 1 memória recente (últimas 24h). Sabe o que o alvo sabe. Alvo esquece. 3 Sanidade." },
+        { "rank": 2, "effect": "Memórias de até 1 ano. Pode absorver habilidades (ganha 1 proficiência R2 do alvo por 1h). 5 Sanidade." },
+        { "rank": 3, "effect": "Memórias de toda vida. Pode IMPLANTAR memórias falsas. 7 Sanidade." },
+        { "rank": 4, "effect": "Absorve PERSONALIDADE temporariamente (+2 em todos atributos do alvo por 1h, alvo fica catatônico). 10 Sanidade.", "supremo": "Apagar — remove completamente a identidade do alvo. Permanente (só reversível por Ancião)." }
+      ]
+    },
+    {
+      "id": "pulso-vital",
+      "name": "Pulso Vital",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Manipulo a energia vital de seres próximos.",
+      "gatilho": "Exposição (sobreviveu a explosão de Census Aurea pura)",
+      "cost": "misto",
+      "costDetail": "HP pra curar, Mana pra atacar",
+      "conditions": ["Alcance 6m. Vê a 'aura vital' dos seres."],
+      "weaknesses": ["Mortos-vivos e Constructos são imunes (não têm energia vital). Usar em Motriz drena a Caldeira."],
+      "ranks": [
+        { "rank": 1, "effect": "Cura 2d8 em aliado a 6m (custo: 1d6 HP próprio). OU drena 2d8 necrótico de inimigo (custo: 4 Mana)." },
+        { "rank": 2, "effect": "Cura 3d8 ou Drena 3d8. Pode transferir HP entre 2 criaturas tocáveis. 2d6 HP ou 6 Mana." },
+        { "rank": 3, "effect": "Cura/Drena 5d8. Área 3m (cura OU dano, não ambos). Pode estabilizar criatura a 0 HP a distância. 3d6 HP ou 8 Mana." },
+        { "rank": 4, "effect": "Pulso 6m raio: cura aliados 6d8 E causa 6d8 necrótico em inimigos simultaneamente. 4d6 HP + 10 Mana.", "supremo": "Ressurreição de Campo — 1 criatura morta (até 1 min) volta com 1 HP." }
+      ]
+    },
+    {
+      "id": "mente-cristalina",
+      "name": "Mente Cristalina",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Projeto construções mentais sólidas no mundo real.",
+      "gatilho": "Inato (Inarcano com anomalia — O Silêncio falhou parcialmente)",
+      "cost": "mana",
+      "conditions": ["Concentração. Dano quebra concentração = construção some."],
+      "weaknesses": ["Não funciona em áreas de anti-magia ou Silêncio Inarcano."],
+      "ranks": [
+        { "rank": 1, "effect": "Cria 1 objeto simples de força mental (escudo, plataforma, parede 1,5mx1,5m). Translúcido, azul. 10 HP. 4 Mana." },
+        { "rank": 2, "effect": "Objetos maiores (parede 3mx3m, ponte 6m). 20 HP. Pode criar arma mental (2d8 força, não pode ser desarmado). 6 Mana." },
+        { "rank": 3, "effect": "Construções complexas (gaiola em torno de inimigo, escada espiral, cúpula protetora 3m raio). 30 HP. 8 Mana." },
+        { "rank": 4, "effect": "Arquitetura Mental: cria estrutura complexa (sala inteira, labirinto 6mx6m, fortaleza temporária). 50 HP. Arma mental 4d8. 12 Mana.", "supremo": "Prisão Psíquica — prende alvo dentro de construção mental inescapável por 1 min (FOC DT 22 pra escapar)." }
+      ]
+    },
+    {
+      "id": "marca-do-predador",
+      "name": "Marca do Predador",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Marco presas e as caço sem falhar.",
+      "gatilho": "Herança (ancestral Antronoide Lupino + pacto com Anciã de Natureza)",
+      "cost": "foco",
+      "conditions": ["Precisa marcar o alvo (1 ação olhando fixamente). Só 1 marca por vez."],
+      "weaknesses": ["Se a presa fugir além de 1km, marca se perde. Não funciona em Anciões."],
+      "ranks": [
+        { "rank": 1, "effect": "Marca: sabe direção e distância da presa (até 1km). +2 em ataques contra ela. 2 Foco." },
+        { "rank": 2, "effect": "+4 contra presa. Visão térmica da presa através de paredes a 30m. Vel +3m perseguindo. 3 Foco." },
+        { "rank": 3, "effect": "+6 contra presa. Primeiro ataque contra presa no combate tem Vantagem. Sente emoções da presa. 5 Foco." },
+        { "rank": 4, "effect": "+8 contra presa. Teleporte 18m pra ATRÁS da presa 1x/combate. Presa não pode se esconder. 7 Foco.", "supremo": "Execução — se presa está abaixo de 25% HP, próximo ataque é kill automático." }
+      ]
+    },
+    {
+      "id": "espelho-vivo",
+      "name": "Espelho Vivo",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Reflito habilidades usadas contra mim.",
+      "gatilho": "Emocional (cresceu imitando outros pra sobreviver, tornou-se poder)",
+      "cost": "misto",
+      "costDetail": "Energia + Reação",
+      "conditions": ["Precisa ver a habilidade sendo usada (Reação). Só funciona 1x por habilidade por combate."],
+      "weaknesses": ["Poderes Originais não podem ser refletidos (únicos demais). Só funciona contra magia/habilidades de criaturas."],
+      "ranks": [
+        { "rank": 1, "effect": "Reação: reflete 1 magia/habilidade de volta pro usuário. Usa os stats DELE. 3 Energia." },
+        { "rank": 2, "effect": "Pode guardar a habilidade refletida por 2 turnos antes de devolver. Ou usar em alvo diferente. 4 Energia." },
+        { "rank": 3, "effect": "Pode copiar (não refletir) — usa a habilidade 1x com seus próprios stats, sem devolver a original. 6 Energia." },
+        { "rank": 4, "effect": "Pode armazenar até 3 habilidades simultaneamente e usar quando quiser nas próximas 24h. 8 Energia.", "supremo": "Espelho Perfeito — por 1 turno, TODA habilidade usada contra você é automaticamente refletida." }
+      ]
+    },
+    {
+      "id": "gravidade-pessoal",
+      "name": "Gravidade Pessoal",
+      "source": "CDG_Poderes_Originais.md",
+      "concept": "Altero a gravidade ao meu redor.",
+      "gatilho": "Exposição (caiu num campo de Census Aurea zero-g)",
+      "cost": "mana",
+      "conditions": ["Área centrada em você (não pode projetar longe). Afeta aliados também se não cuidar."],
+      "weaknesses": ["Interiores limitam utilidade (teto). Em espaços abertos é MUITO mais forte."],
+      "ranks": [
+        { "rank": 1, "effect": "Zona 3m: alivia gravidade (queda lenta, salto x2) OU aumenta (criaturas -3m vel, desvantagem pular). 4 Mana. 1 min." },
+        { "rank": 2, "effect": "Zona 6m. Pode inverter pra 1 alvo (cai pro cima, 2d8 ao atingir teto). 6 Mana." },
+        { "rank": 3, "effect": "Zona 6m com controle seletivo (escolhe quem afeta). Pode andar em paredes/teto. 8 Mana." },
+        { "rank": 4, "effect": "Zona 12m. Controle total. Zona Zero-G (tudo flutua), Zona Esmagamento (gravidade x10, 4d8 contundente/turno), ou Zona Seletiva. 12 Mana.", "supremo": "Singularidade — 3m raio, gravidade infinita por 1 turno. Tudo na área: 10d8 + preso + não pode agir." }
+      ]
+    }
+  ]
+}

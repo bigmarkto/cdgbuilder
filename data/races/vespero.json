@@ -1,0 +1,62 @@
+{
+  "id": "vespero",
+  "name": "Véspero",
+  "source": "CDG_RacasDef.md",
+  "description": "Os Esquecidos pela Morte. Não são raça no sentido convencional — são condição. Qualquer ser senciente pode se tornar Véspero: morrer e a Morte não vir buscar. Almas perdidas no trânsito. Parecem a raça original, mas algo está errado: pele um tom mais pálida, olhos com brilho que não deveria estar lá, sombra que se comporta com agenda própria. São frios ao toque; a sala esfria quando entram. Podem comer, mas comida não tem sabor. Não envelhecem — sofrem Erosão, desgaste mental reduzido por laços emocionais genuínos.",
+  "hitDie": "d8",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "FOC": 2, "RES": 1 }
+  },
+  "traits": [
+    {
+      "id": "forma-eterea",
+      "name": "Forma Etérea",
+      "description": "1x por descanso curto, intangibilidade por 1 turno. Atravessa paredes até 1,5m de espessura. Imune a dano físico nesse estado, mas também incapaz de atacar."
+    },
+    {
+      "id": "visao-do-limbo",
+      "name": "Visão do Limbo",
+      "description": "Vê criaturas invisíveis e etéreas naturalmente. Vê fantasmas e espíritos."
+    },
+    {
+      "id": "toque-gelido",
+      "name": "Toque Gélido",
+      "description": "Ataques desarmados causam dano necrótico — o frio da morte canalizado. Criaturas vivas tocadas precisam resistir ao reflexo de soltar o que seguram.",
+      "modifiers": [
+        { "type": "custom", "text": "Ataques desarmados: dano necrótico." }
+      ]
+    },
+    {
+      "id": "percepcao-do-alem",
+      "name": "Percepção do Além",
+      "description": "Sente portais para o plano dos mortos. Comunica-se com mortos recentes por toque — sem ritual, sem magia elaborada."
+    },
+    {
+      "id": "ancora-de-alma",
+      "name": "Âncora de Alma",
+      "description": "Mencionado em Criação v3 e Livro Core como traço Véspero. Detalhes mecânicos não constam no documento de raças."
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "memoria-da-morte",
+      "name": "Memória da Morte",
+      "description": "Revive a morte original todas as noites. Descanso longo não remove exaustão normalmente — são necessários dois descansos para o equivalente de um."
+    },
+    {
+      "id": "frio-constante",
+      "name": "Frio Constante",
+      "description": "Vulnerável a dano de Energia Cósmica Pura. Plantas murcham ao toque prolongado."
+    },
+    {
+      "id": "erosao",
+      "name": "Erosão",
+      "description": "A mente, privada do fluxo natural de tempo, começa a se desgastar. Laços emocionais genuínos reduzem a Erosão."
+    }
+  ],
+  "subtypes": [],
+  "notes": "Qualquer raça de origem pode virar Véspero (Criação v3: 'qualquer raça de origem')."
+}

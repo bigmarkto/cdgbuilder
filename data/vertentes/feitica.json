@@ -1,0 +1,34 @@
+{
+  "id": "feitica",
+  "name": "Feitiça",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente do Conhecimento. Vertente acadêmica: o conjurador estuda fórmulas, memoriza padrões de energia e replica efeitos com precisão matemática. Não há fé nem instinto — há método. Um feiticeiro monta conjurações como um engenheiro projeta pontes: com cálculo, previsão e redundância.",
+  "governingAttributes": ["INT", "FOC"],
+  "maxRankNormal": 4,
+  "identity": "Estudo, fórmulas, grimórios",
+  "tags": ["magica", "academica"],
+  "extraRules": [
+    {
+      "id": "grimorio",
+      "name": "Grimório",
+      "description": "O feiticeiro pode montar conjurações e salvá-las como Receitas. Capacidade: INT x 3 receitas. Usar uma receita salva não exige montar na hora."
+    },
+    {
+      "id": "metamagia",
+      "name": "Metamagia",
+      "description": "Ao conjurar, pode gastar +1 de Energia para aplicar um modificador.",
+      "options": [
+        { "id": "maximizar", "name": "Maximizar", "description": "Dados de dano/cura no valor máximo (não rola, usa o máximo)." },
+        { "id": "estender", "name": "Estender", "description": "Duração dobrada." },
+        { "id": "silenciar", "name": "Silenciar", "description": "Sem componente verbal (conjuração invisível)." },
+        { "id": "dividir", "name": "Dividir", "description": "Atinge 2 alvos em vez de 1 (dano dividido entre ambos)." }
+      ]
+    },
+    {
+      "id": "contra-feitico",
+      "name": "Contra-Feitiço",
+      "description": "Reação. Ao ver conjuração sendo montada a 18m, teste INT vs INT do conjurador. Sucesso: cancela. Custo: Energia igual ao custo da conjuração alvo."
+    }
+  ],
+  "conjurations": []
+}

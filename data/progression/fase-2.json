@@ -1,0 +1,46 @@
+{
+  "id": "fase-2",
+  "name": "Fase 2: Magia, Fe & Sangue — Os Poderes Sobrenaturais",
+  "source": "CDG_Progressao_P2.md",
+  "description": "Parte 2 do sistema de Progressao. Estas tres arvores lidam com forcas alem do mundano.",
+  "escopo": ["arvore-magia", "arvore-fe", "arvore-sangue"],
+  "arvoresCobertas": [
+    { "arvore": "Magia", "resumo": "Energia Cosmica canalizada com conhecimento e disciplina. Academica, controlada, versatil." },
+    { "arvore": "Fe", "resumo": "Poder concedido por Conceitos/Ancioes. Emocional, divina, restrita ao Conceito." },
+    { "arvore": "Sangue", "resumo": "Poder arrancado do proprio corpo. Visceral, proibida, sem limites exceto o preco." }
+  ],
+  "regrasSobrenaturais": {
+    "recursoPrincipal": "As tres usam MANA como recurso (exceto Sangue, que usa HP/sacrificio).",
+    "manaMaxima": "(INT + FOC) x 5",
+    "recuperacao": "Recupera em Descanso Longo"
+  },
+  "crossTree": "Muitas habilidades destas arvores combinam entre si E com arvores mundanas. Exemplo: Fe + Tatica = Paladino. Magia + Sombra = Feiticeiro assassino. Sacrifício + Corpo = Berserker sangrento.",
+  "regrasEspecificasMagia": {
+    "description": "Magia no CDG nao e poder inato — e conhecimento. Estudado em grimórios, praticado com disciplina, canalizado pela mente. Quem investe em Magia se torna versatil e poderoso, mas depende de Mana e concentracao.",
+    "atributos": "INT / FOC",
+    "requisitoBase": "INT 2+ recomendado. 'Canalizar' (Tier 1) e pre-requisito para acessar qualquer magia."
+  },
+  "regrasEspecificasFe": {
+    "description": "Fe nao e rezar — e SERVIR um Conceito. A Ancia da Guerra nao abencoa quem reza; abencoa quem luta. O Anciao da Morte nao cura quem pede; cura quem respeita o ciclo. Fe e um PACTO implicito: voce vive pelo Conceito, e o Conceito vive atraves de voce.",
+    "atributos": "FOC / PRE",
+    "conceitoEscolhido": "Na primeira habilidade de Fe, escolha 1 CONCEITO (Morte, Guerra, Natureza, Tempo, Fogo, Conhecimento, etc.). Todas as habilidades de Fe sao TEMATICAS ao Conceito escolhido.",
+    "exemplosTematicos": [
+      "Cura Divina de um devoto da GUERRA cura com dor (o corpo e reparado a forca, o ferido grita)",
+      "Cura Divina de um devoto da NATUREZA cura com crescimento (plantas brotam na ferida, selando-a)",
+      "Cura Divina de um devoto da MORTE cura tirando vida de outro lugar (algo proximo morre para o alvo viver)"
+    ],
+    "regra": "O EFEITO MECANICO e o mesmo. A ESTETICA muda tudo."
+  },
+  "regrasEspecificasSacrificio": {
+    "description": "Magia custa Mana. Fe custa devocao. Sacrifício custa VOCE. Cada habilidade desta arvore arranca poder de dentro — do sangue, da carne, da propria essencia. E a arvore mais poderosa e mais perigosa do sistema.",
+    "atributos": "FOC / CON",
+    "alertaCorrupcao": {
+      "description": "Habilidades de Sacrifício Tier 2+ geram CORRUPCAO (ver documento de Corrupcao).",
+      "tier2": "1-3 Corrupcao por uso",
+      "tier3": "3-5 Corrupcao por uso",
+      "tier4": "5-10 Corrupcao por uso",
+      "intencionalidade": "Um personagem que investe pesado em Sacrifício INEVITAVELMENTE lida com Corrupcao. Isso e intencional. O poder tem preco."
+    }
+  },
+  "notes": "Consulte data/trees/magia.json, data/trees/fe.json e data/trees/sacrificio.json para habilidades especificas."
+}

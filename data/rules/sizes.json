@@ -1,0 +1,27 @@
+{
+  "id": "tamanhos",
+  "name": "Categorias de Tamanho",
+  "source": "CDG Vale Desperto v2.0 (port)",
+  "description": "Escada canônica de tamanhos para criaturas e equipamentos. Estende os dois tamanhos declarados em meta/system.json (medio, grande) sem conflitar com eles.",
+  "sizes": [
+    { "id": "miudo", "name": "Miúdo", "order": -2, "spaceMeters": 0.6, "reachMeters": 0, "attackMod": 2, "stealthMod": 2, "carryMult": 0.5, "examples": ["duende doméstico", "rato ancião", "espírito menor encarnado"] },
+    { "id": "pequeno", "name": "Pequeno", "order": -1, "spaceMeters": 0.9, "reachMeters": 1.5, "attackMod": 1, "stealthMod": 1, "carryMult": 0.75, "examples": ["anão jovem", "criança humana", "halfling"] },
+    { "id": "medio", "name": "Médio", "order": 0, "spaceMeters": 1.5, "reachMeters": 1.5, "attackMod": 0, "stealthMod": 0, "carryMult": 1, "examples": ["humano", "anão adulto", "demônio comum", "vespero"] },
+    { "id": "grande", "name": "Grande", "order": 1, "spaceMeters": 3, "reachMeters": 3, "attackMod": -1, "stealthMod": -2, "carryMult": 2, "examples": ["nefilim", "cavalo", "constructo pesado", "troll"] },
+    { "id": "enorme", "name": "Enorme", "order": 2, "spaceMeters": 4.5, "reachMeters": 4.5, "attackMod": -2, "stealthMod": -4, "carryMult": 4, "examples": ["elefante", "troll-mãe", "motriz de cerco"] },
+    { "id": "gigantesco", "name": "Gigantesco", "order": 3, "spaceMeters": 6, "reachMeters": 6, "attackMod": -3, "stealthMod": -6, "carryMult": 8, "examples": ["dragão juvenil", "golem imperial", "abissal superior"] },
+    { "id": "colossal", "name": "Colossal", "order": 4, "spaceMeters": 9, "reachMeters": 9, "attackMod": -4, "stealthMod": -8, "carryMult": 16, "examples": ["Ancião manifesto", "kaiju oceânico", "dragão-imperador"] }
+  ],
+  "rules": [
+    { "id": "bonus-por-diferenca", "name": "Bônus por Diferença", "description": "Atacante soma +1 no ataque por categoria maior que o alvo (máx +3); -1 por categoria menor (mín -3)." },
+    { "id": "agarrao", "name": "Agarrão", "description": "Só é possível agarrar alvo até 1 categoria maior ou menor. Fora dessa janela, requer habilidade dedicada (ex: Árvore Corpo T3 'Gigante-Killer')." },
+    { "id": "arma-grande", "name": "Arma de Tamanho Maior", "description": "Empunhar arma 1 categoria maior eleva o dado de dano em 1 passo (d6→d8→d10→d12→d20). Exige POT +2 acima do mínimo; com POT insuficiente, dá desvantagem." },
+    { "id": "carga", "name": "Carga", "description": "Carga base (POT × 10) é multiplicada pelo carryMult da categoria do portador." },
+    { "id": "espaco", "name": "Espaço em Grade", "description": "spaceMeters define o quadrado ocupado. Criaturas menores que Médio podem compartilhar espaço com aliados (até 2 Miúdos ou 1 Pequeno por quadrado Médio)." },
+    { "id": "alcance", "name": "Alcance Natural", "description": "reachMeters é o alcance melee sem arma. Armas somam ao reach apenas se maiores que o tamanho do portador (ex: lança longa para Médio = 3m)." }
+  ],
+  "notes": [
+    "As duas entradas 'medio' e 'grande' aqui replicam as de meta/system.json mas com dados mecânicos completos. Consumidores devem preferir data/rules/sizes.json para regras; system.json fica como lista curta para UI.",
+    "attackMod simétrico (+N/-N) evita que o mapa vire uma vantagem absoluta de gigantes."
+  ]
+}

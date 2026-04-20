@@ -1,0 +1,103 @@
+{
+  "id": "valores-derivados",
+  "name": "Valores Derivados",
+  "source": "CDG_Livro_Core.md + CDG_Criacao_v3.md + BasedaFicha.md",
+  "description": "Fórmulas dos atributos derivados do CDG: HP, DP, Iniciativa, Pool de Energia Cósmica, Usos de Energia, Carga, Movimento, PER Passiva e pools de recurso por Fonte de Poder.",
+  "derived": [
+    {
+      "id": "HP_MAX",
+      "name": "HP Máximo",
+      "formula": "CON x 5 + 10 + bônusRacial",
+      "notes": "Fórmula oficial de Livro Core. Bônus racial pode vir de traços específicos (ex: Nefilim +15 por tamanho)."
+    },
+    {
+      "id": "DP",
+      "name": "Defesa Passiva",
+      "formula": "10 + AGI + Armadura + Escudo + bônusNatural",
+      "alternateFormula": "8 + AGI + bônusArmadura (CDG_Criacao_v3)",
+      "notes": "BasedaFicha.md e Livro Core usam 10 + AGI + Armadura. CDG_Criacao_v3.md usa 8 + AGI + Armadura. Valor autoritativo: 10 + AGI + Armadura (ficha oficial v2.0)."
+    },
+    {
+      "id": "INICIATIVA",
+      "name": "Iniciativa",
+      "formula": "d20 + AGI + PER",
+      "notes": "Empate: maior AGI vence. Se ainda empatar, rolam novamente entre si."
+    },
+    {
+      "id": "POOL_ENERGIA_COSMICA",
+      "name": "Pool de Energia Cósmica",
+      "formula": "maiorAtribuPrincipal + Nivel + bonusArvore",
+      "notes": "Pool máximo usado pelas Vertentes de Poder. O 'maior atributo principal' é o atributo governante da vertente escolhida."
+    },
+    {
+      "id": "USOS_ENERGIA",
+      "name": "Usos de Energia",
+      "formula": "RES x 3",
+      "notes": "Recurso universal. Habilidades de Árvore não-mágicas (manobras, técnicas, inspirações, poderes de sangue) consomem Usos."
+    },
+    {
+      "id": "MANA_ARCANA",
+      "name": "Mana Arcana",
+      "formula": "(INT + FOC) x 5",
+      "alternateFormula": "(INT + FOC) x 4 + Nivel x 2",
+      "notes": "Livro Core: (INT+FOC) x 5. Criação v3 / SubProf: (INT+FOC) x 4 + Nivel x 2. Conflito entre documentos. Preferir a fórmula de Criação v3 (inclui progressão por nível)."
+    },
+    {
+      "id": "MANA_DIVINA",
+      "name": "Mana Divina",
+      "formula": "(FOC + PRE) x 4 + Devocao",
+      "alternateFormula": "(FOC + PRE) x 4 + Nivel x 2",
+      "notes": "Livro Core: (FOC+PRE) x 4 + Devoção. Criação v3: (FOC+PRE) x 4 + Nivel x 2."
+    },
+    {
+      "id": "FOCO_CORPO",
+      "name": "Foco (Fonte Corpo)",
+      "formula": "(POTouAGI + RES) x 3 + Nivel x 2",
+      "notes": "Recurso da Fonte Corpo (marcial)."
+    },
+    {
+      "id": "FOCO_PRIMAL",
+      "name": "Foco (Fonte Primal)",
+      "formula": "(PER + RES) x 3 + Nivel x 2",
+      "notes": "Recurso da Fonte Primal."
+    },
+    {
+      "id": "MANA_MAGITECH",
+      "name": "Mana (Magitech)",
+      "formula": "(ENG + INT) x 3 + Nivel x 2",
+      "alternateFormula": "(ENG + INT) x 4 + Nivel x 2",
+      "notes": "Criação v3 lista x3; SubProficiências lista x4. Conflito documentado."
+    },
+    {
+      "id": "CARGA",
+      "name": "Carga",
+      "formula": "POT x 10",
+      "notes": "Espaços de inventário."
+    },
+    {
+      "id": "MOVIMENTO",
+      "name": "Movimento",
+      "formula": "9 (base) + modificador racial",
+      "unit": "metros",
+      "notes": "Padrão 9m. Raciais alteram. Zenitas voam a 1,5x o movimento normal."
+    },
+    {
+      "id": "PER_PASSIVA",
+      "name": "Percepção Passiva",
+      "formula": "10 + PER",
+      "notes": "Se uma ameaça não superar esse valor, o personagem a nota."
+    },
+    {
+      "id": "GRIMORIO",
+      "name": "Capacidade de Grimório",
+      "formula": "INT",
+      "notes": "Número de magias arcanas que podem ser registradas no grimório. Quanto mais INT, mais magias."
+    },
+    {
+      "id": "ESPACOS_CONJURACAO",
+      "name": "Espaços de Conjuração",
+      "formula": "0 + (INT x 2)",
+      "notes": "Quantidade de magias que o personagem sabe/pode ter preparadas. Escala com Intelecto."
+    }
+  ]
+}

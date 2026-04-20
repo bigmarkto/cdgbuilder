@@ -1,0 +1,59 @@
+{
+  "id": "anao",
+  "name": "Anão",
+  "source": "CDG_RacasDef.md",
+  "description": "Forjadores de Mundos. Tecnicamente, parentes dos Inarcanos — separados há pelo menos 6 séculos por diferença filosófica (progredir vs. construir). Corpos moldados com matéria inorgânica, como se um mineral de repente tivesse vida, carne e ossos de rocha. Estatura ~1,35m. Cultura construída sobre aprendizado prático constante e rede de comércio conectando o mundo. 'Se você quer algo, pergunte a um Anão'.",
+  "hitDie": "d10",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "mixed",
+    "values": { "CON": 1, "INT": 1 },
+    "notes": "Livro Core: +1 CON, +1 INT, +1 à escolha. Criação v3: +2 ENG, +1 CON. Conflito documentado."
+  },
+  "traits": [
+    {
+      "id": "aprendiz-rapido",
+      "name": "Aprendiz Rápido",
+      "description": "A velocidade com que Anões absorvem novas habilidades desafia a lógica. Ganha +2 Pontos de Proficiência para gastar e o limite de nível 1 aumenta para 3.",
+      "modifiers": [
+        { "type": "custom", "text": "+2 Pontos de Proficiência na criação; máx Rank inicial = 3 (em vez de 2)." },
+        { "type": "custom", "text": "Livro Core também cita -10% XP ('Aprendiz Rápido')." }
+      ]
+    },
+    {
+      "id": "trabalho-em-equipe",
+      "name": "Trabalho em Equipe",
+      "description": "Quando um Anão ajuda um aliado, o bônus concedido é maior do que o de qualquer outra raça."
+    },
+    {
+      "id": "avaliador-nato",
+      "name": "Avaliador Nato",
+      "description": "Um único olhar é o que um Anão experiente precisa para determinar o valor aproximado de um item."
+    },
+    {
+      "id": "corpo-robusto",
+      "name": "Corpo Robusto",
+      "description": "Todo anão possui um corpo mais resistente devido ao seu fator inorgânico. +4 de armadura natural.",
+      "modifiers": [
+        { "type": "derived", "target": "DP", "value": 4, "sub": "natural" }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "estatura-baixa",
+      "name": "Estatura Baixa",
+      "description": "1,35m de média significa velocidade de movimento reduzida.",
+      "modifiers": [
+        { "type": "custom", "text": "Velocidade de movimento reduzida (valor específico não listado)." }
+      ]
+    },
+    {
+      "id": "dependencia-social",
+      "name": "Dependência Social",
+      "description": "Anões prosperam em comunidade. Isolamento prolongado produz leve mas real degradação em testes de concentração e julgamento."
+    }
+  ],
+  "subtypes": []
+}

@@ -1,0 +1,233 @@
+{
+  "id": "tatica",
+  "name": "Tatica",
+  "source": "CDG_Progressao_P1.md",
+  "description": "Manobras, Posicionamento & Lideranca — INT / PER. Corpo e forca. Armamento e tecnica. Tatica e INTELIGENCIA em combate. Quem investe aqui nao bate mais forte — faz os outros baterem mais forte, controla o campo de batalha e transforma caos em estrategia.",
+  "atributoChave": "INT / PER",
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Fundacao Estrategica",
+      "prerequisites": [],
+      "abilities": [
+        { "id": "olho-tatico", "name": "Olho Tatico", "cost": 50, "description": "Acao Bonus: estude 1 criatura. Aprenda DP e HP aproximado (faixas de 10)." },
+        { "id": "flanquear", "name": "Flanquear", "cost": 50, "description": "Quando voce e aliado estao em lados opostos de um inimigo: +2 acerto para ambos." },
+        {
+          "id": "comando-rapido",
+          "name": "Comando Rapido",
+          "cost": 50,
+          "description": "Acao Bonus: 1 aliado a 9m pode usar Reacao para mover metade da velocidade.",
+          "prerequisites": [ { "type": "attribute", "attr": "PRE", "min": 2 } ]
+        },
+        { "id": "posicionamento", "name": "Posicionamento", "cost": 50, "description": "Apos acertar corpo-a-corpo, pode mover 1,5m sem provocar oportunidade." },
+        {
+          "id": "emboscada",
+          "name": "Emboscada",
+          "cost": 50,
+          "description": "Se o grupo surpreende inimigos, aliados ganham +2 acerto no primeiro turno.",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 3 } ]
+        },
+        { "id": "proteger-aliado", "name": "Proteger Aliado", "cost": 50, "description": "Reacao: quando aliado adjacente e atacado, pode se tornar o alvo do ataque." },
+        {
+          "id": "explorar-fraqueza",
+          "name": "Explorar Fraqueza",
+          "cost": 50,
+          "description": "Ao estudar criatura (Olho Tatico), proximos ataques do grupo contra ela tem +1 dano por 1 turno.",
+          "prerequisites": [ { "type": "attribute", "attr": "INT", "min": 3 } ]
+        },
+        { "id": "retirada-organizada", "name": "Retirada Organizada", "cost": 50, "description": "Aliados a 9m podem usar Desengajar como Acao Bonus enquanto voce esta consciente." },
+        { "id": "primeira-linha", "name": "Primeira Linha", "cost": 50, "description": "+2 Iniciativa. No primeiro turno de combate, pode trocar posicao com aliado a 3m." },
+        {
+          "id": "avaliar-terreno",
+          "name": "Avaliar Terreno",
+          "cost": 50,
+          "description": "Ao entrar em area nova: Mestre revela cobertura, terreno dificil e pontos estrategicos automaticamente.",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 2 } ]
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Oficial de Campo",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Tatica" } ],
+      "abilities": [
+        {
+          "id": "diretiva",
+          "name": "Diretiva",
+          "cost": 100,
+          "description": "Acao Bonus: 1 aliado a 9m pode fazer 1 ataque como Reacao. Seu bonus de INT aplica ao dano desse ataque.",
+          "prerequisites": [ { "type": "talent", "id": "comando-rapido" } ]
+        },
+        {
+          "id": "cerco",
+          "name": "Cerco",
+          "cost": 100,
+          "description": "3+ aliados ao redor de 1 inimigo: +4 acerto total (em vez de +2) e alvo nao pode usar Reacoes.",
+          "prerequisites": [ { "type": "talent", "id": "flanquear" } ]
+        },
+        {
+          "id": "contra-estrategia",
+          "name": "Contra-Estrategia",
+          "cost": 100,
+          "description": "Apos estudar criatura 2 turnos: revele TODAS as resistencias, imunidades, fraquezas e habilidades. Grupo ganha +2 acerto contra ela por todo o combate.",
+          "prerequisites": [
+            { "type": "talent", "id": "olho-tatico" },
+            { "type": "talent", "id": "explorar-fraqueza" }
+          ]
+        },
+        {
+          "id": "escudo-humano",
+          "name": "Escudo Humano",
+          "cost": 100,
+          "description": "Ao proteger aliado, reduza dano recebido em seu bonus de CON. Se usar escudo: reduza em DP do escudo.",
+          "prerequisites": [ { "type": "talent", "id": "proteger-aliado" } ]
+        },
+        {
+          "id": "emboscada-perfeita",
+          "name": "Emboscada Perfeita",
+          "cost": 100,
+          "description": "Surpresa: aliados ganham turno extra inteiro (nao so +2 acerto). 1x/dia.",
+          "prerequisites": [ { "type": "talent", "id": "emboscada" } ]
+        },
+        {
+          "id": "reagrupar",
+          "name": "Reagrupar",
+          "cost": 100,
+          "description": "1x/Descanso Curto: aliados a 9m recuperam 1d6+INT HP e podem reposicionar 6m.",
+          "prerequisites": [ { "type": "talent", "id": "retirada-organizada" } ]
+        },
+        {
+          "id": "ponto-fraco",
+          "name": "Ponto Fraco",
+          "cost": 100,
+          "description": "Ao identificar fraqueza: proximo ataque de qualquer aliado contra alvo e automaticamente critico se acertar.",
+          "prerequisites": [
+            { "type": "talent", "id": "explorar-fraqueza" },
+            { "type": "attribute", "attr": "INT", "min": 4 }
+          ]
+        },
+        {
+          "id": "formacao",
+          "name": "Formacao",
+          "cost": 100,
+          "description": "Enquanto 3+ aliados estao a 3m uns dos outros: todos ganham +1 DP e +1 acerto (formacao coesa).",
+          "prerequisites": [
+            { "type": "talent", "id": "primeira-linha" },
+            { "type": "custom", "text": "2 aliados com Tatica Tier 1" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Estrategista",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Tatica" } ],
+      "abilities": [
+        {
+          "id": "general-de-campo",
+          "name": "General de Campo",
+          "cost": 200,
+          "description": "Acao: de 3 comandos simultaneos (3 aliados podem fazer 1 ataque, mover, ou usar habilidade como Reacao). 1x/Descanso Curto.",
+          "prerequisites": [
+            { "type": "talent", "id": "diretiva" },
+            { "type": "talent", "id": "formacao" }
+          ]
+        },
+        {
+          "id": "mente-inquebravel",
+          "name": "Mente Inquebravel",
+          "cost": 200,
+          "description": "Imune a surpresa, Charme e Confusao. +4 em testes de INT para detectar emboscadas e armadilhas.",
+          "prerequisites": [ { "type": "talent", "id": "contra-estrategia" } ]
+        },
+        {
+          "id": "sacrificio-calculado",
+          "name": "Sacrificio Calculado",
+          "cost": 200,
+          "description": "Ao proteger aliado de ataque que mataria: absorva TODO o dano. Se sobreviver: proximo ataque tem dano triplicado (furia controlada).",
+          "prerequisites": [ { "type": "talent", "id": "escudo-humano" } ]
+        },
+        {
+          "id": "cerco-total",
+          "name": "Cerco Total",
+          "cost": 200,
+          "description": "Quando 3+ aliados cercam 1 inimigo: alvo nao pode se mover, usar Reacoes, e sofre -2 DP.",
+          "prerequisites": [
+            { "type": "talent", "id": "cerco" },
+            { "type": "talent", "id": "ponto-fraco" }
+          ]
+        },
+        {
+          "id": "adaptar",
+          "name": "Adaptar",
+          "cost": 200,
+          "description": "1x/combate: ao ver aliado cair ou plano falhar, TODOS os aliados ganham +2 acerto e +2 dano por 2 turnos (adaptacao ao caos).",
+          "prerequisites": [
+            { "type": "custom", "text": "Qualquer 4 Tier 2 de Tatica" }
+          ]
+        },
+        {
+          "id": "mestre-emboscador",
+          "name": "Mestre Emboscador",
+          "cost": 200,
+          "description": "Pode preparar emboscadas em 10 minutos (em vez de 30). Aliados na emboscada comecam invisiveis ate atacarem.",
+          "prerequisites": [ { "type": "talent", "id": "emboscada-perfeita" } ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Lenda da Guerra",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Tatica" } ],
+      "abilities": [
+        {
+          "id": "xeque-mate",
+          "name": "Xeque-Mate",
+          "cost": 400,
+          "description": "1x/Descanso Longo: declare uma estrategia. Nos proximos 3 turnos, TODOS os aliados a 9m ganham +4 acerto, +4 dano, +2 DP. Voce nao pode atacar durante esse tempo (concentracao total).",
+          "prerequisites": [
+            { "type": "talent", "id": "general-de-campo" },
+            { "type": "talent", "id": "mente-inquebravel" }
+          ]
+        },
+        {
+          "id": "ninguem-morre-hoje",
+          "name": "Ninguem Morre Hoje",
+          "cost": 400,
+          "description": "1x/dia: quando aliado cairia a 0 HP, ele fica com 1 HP e ganha turno imediato. Funciona para CADA aliado 1x por combate.",
+          "prerequisites": [
+            { "type": "talent", "id": "sacrificio-calculado" },
+            { "type": "talent", "id": "reagrupar" }
+          ]
+        },
+        {
+          "id": "o-plano-perfeito",
+          "name": "O Plano Perfeito",
+          "cost": 400,
+          "description": "1x/dia: antes de um combate, declare um plano detalhado. Nas primeiras 3 rodadas: todos os aliados agem como se tivessem +6 Iniciativa, criticos em 18-20, e inimigos tem -2 DP.",
+          "prerequisites": [
+            { "type": "talent", "id": "adaptar" },
+            { "type": "talent", "id": "mestre-emboscador" }
+          ]
+        },
+        {
+          "id": "presenca-do-comandante",
+          "name": "Presenca do Comandante",
+          "cost": 400,
+          "description": "Aura 9m passiva: aliados ganham +2 acerto, +1 DP, imunidade a Medo. Se voce cair inconsciente: aliados ganham Furia (como Corpo Tier 2) por 2 turnos por RAIVA.",
+          "prerequisites": [
+            { "type": "custom", "text": "Qualquer 3 Tier 3" }
+          ]
+        }
+      ]
+    }
+  ]
+}

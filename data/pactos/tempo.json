@@ -1,0 +1,29 @@
+{
+  "id": "tempo",
+  "name": "Pacto de Tempo",
+  "source": "CDG_Pactos.md",
+  "patron": "Ancião/Anciã do Tempo",
+  "description": "Pacto firmado com o Conceito de Tempo. Oferece reflexos impossíveis e visão do futuro imediato em troca de memórias e envelhecimento errático.",
+  "boons": [
+    {
+      "id": "dominio-temporal",
+      "name": "Domínio Temporal",
+      "description": "Reflexos impossíveis (+4 Iniciativa), envelhecer/rejuvenescer objetos, visão do futuro imediato (1 rerroll/combate), parar o tempo 1x/dia por 6 segundos.",
+      "modifiers": [
+        { "type": "custom", "text": "+4 Iniciativa; envelhecer/rejuvenescer objetos; 1 rerroll/combate por visão do futuro imediato; 1x/dia pode parar o tempo por 6 segundos." }
+      ]
+    }
+  ],
+  "costs": [
+    {
+      "id": "memorias",
+      "name": "Memórias",
+      "description": "Cada uso poderoso apaga uma memória. O pactuante envelhece em ritmo aleatório (às vezes jovem, às vezes velho no mesmo dia)."
+    }
+  ],
+  "missions": [
+    "Corrigir anomalias temporais.",
+    "Garantir que eventos-destino aconteçam.",
+    "Destruir artefatos que manipulam o tempo."
+  ]
+}

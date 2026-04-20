@@ -1,0 +1,85 @@
+{
+  "id": "nefilim",
+  "name": "Nefilim",
+  "source": "CDG_RacasDef.md",
+  "description": "Filhos do Rugido dos Montes. Ignatos e Serafins se cruzaram; os filhos foram considerados abominação e enterrados nos subterrâneos mais profundos dos Montes Nublados. Milênios de exposição à Census Aurea do minério os transformaram: maiores, mais fortes, cobertos de runas vivas que brilham como ouro. Gigantes de 2,5 a 6 metros, chifres de energia cristalizada, asas vestigiais, voz que faz os ossos vibrarem. Sem hierarquia formal — liderança por respeito.",
+  "hitDie": "d10",
+  "baseSpeed": 10.5,
+  "size": "grande",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "POT": 2, "CON": 1 },
+    "notes": "Criação v3: +2 POT, +1 CON. d10 + 15 HP bônus de tamanho."
+  },
+  "hpBonus": 15,
+  "traits": [
+    {
+      "id": "corpo-colossal",
+      "name": "Corpo Colossal",
+      "description": "Vantagem em testes de Atletismo, Empurrão e Agarrão. Carrega o dobro do que uma criatura Média carregaria. Armas de tamanho Grande aumentam em +1d de dano. A presença física é, por si só, argumento.",
+      "modifiers": [
+        { "type": "custom", "text": "Vantagem em Atletismo, Empurrão e Agarrão." },
+        { "type": "custom", "text": "Carga dobrada." },
+        { "type": "custom", "text": "Armas Grandes: +1d de dano." }
+      ]
+    },
+    {
+      "id": "marcas-de-census-aurea",
+      "name": "Marcas de Census Aurea",
+      "description": "Runas vivas que funcionam como Detectar Magia passivo a 9 metros. Podem ser usadas como fonte de luz controlável. Brilham intensamente perto de Anciões e fontes poderosas de Census Aurea."
+    },
+    {
+      "id": "voz-ressonante",
+      "name": "Voz Ressonante",
+      "description": "+4 em Intimidação. O grito aterroriza criaturas menores em raio de 3 metros. O sussurro ainda ecoa — -2 em tentativas de falar discretamente.",
+      "modifiers": [
+        { "type": "proficiency", "id": "intimidacao", "rankDelta": 4 },
+        { "type": "custom", "text": "Grito aterroriza criaturas menores em 3m." },
+        { "type": "custom", "text": "-2 para falar discretamente." }
+      ]
+    },
+    {
+      "id": "chifres-de-energia",
+      "name": "Chifres de Energia",
+      "description": "Cabeçada como ação bônus — 1d8 + POT. Não podem ser desarmados. Regeneram em semanas se quebrados, com dor proporcional.",
+      "modifiers": [
+        { "type": "custom", "text": "Ação bônus: cabeçada 1d8 + POT." }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "desconfianca-social",
+      "name": "Desconfiança Social",
+      "description": "-2 em Persuasão e Negociação com desconhecidos. A primeira impressão é quase sempre hostil ou amedrontada.",
+      "modifiers": [
+        { "type": "proficiency", "id": "persuasao", "rankDelta": -2 },
+        { "type": "proficiency", "id": "negociacao", "rankDelta": -2 }
+      ]
+    },
+    {
+      "id": "nao-cabe",
+      "name": "Não Cabe",
+      "description": "Estruturas feitas para criaturas Médias simplesmente não funcionam. Equipamento sob medida custa o dobro. Furtividade -4 em ambientes fechados.",
+      "modifiers": [
+        { "type": "custom", "text": "Equipamento sob medida custa o dobro." },
+        { "type": "custom", "text": "Furtividade -4 em ambientes fechados." }
+      ]
+    },
+    {
+      "id": "marcas-visiveis",
+      "name": "Marcas Visíveis",
+      "description": "Impossível esconder a natureza no escuro. Você é a luz. Nenhum bônus de escuridão em Furtividade."
+    }
+  ],
+  "subtypes": [
+    { "id": "nefilim-ignatiano", "name": "Ignatiano", "description": "Subtipo ligado ao Fogo." },
+    { "id": "nefilim-serafino", "name": "Serafino", "description": "Subtipo ligado aos Serafins." },
+    { "id": "nefilim-equilibrado", "name": "Equilibrado" },
+    { "id": "nefilim-aureo", "name": "Áureo" },
+    { "id": "nefilim-petreo", "name": "Pétreo", "description": "Mencionado em Livro Core." },
+    { "id": "nefilim-abissal", "name": "Abissal", "description": "Mencionado em Livro Core." },
+    { "id": "nefilim-nublado", "name": "Nublado", "description": "Mencionado em Livro Core." }
+  ],
+  "notes": "Subtipos variam entre documentos: Livro Core lista Ignatiano, Pétreo, Abissal, Nublado. Criação v3 lista Ignatiano, Serafino, Equilibrado, Áureo. Mantive ambos os conjuntos."
+}

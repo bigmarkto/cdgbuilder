@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: #110c06;
+  color: #efe9dd;
+  font-family: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+}
+
+body {
+  background-image:
+    radial-gradient(1100px 600px at 10% -10%, rgba(138, 77, 18, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(138, 38, 38, 0.15), transparent 60%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .prose-cdg {
+    @apply text-ink-100 leading-relaxed;
+  }
+  .prose-cdg h1 {
+    @apply font-serif text-3xl md:text-4xl text-ink-50 mb-4 tracking-tight;
+  }
+  .prose-cdg h2 {
+    @apply font-serif text-2xl text-ink-100 mt-6 mb-3 border-b border-ink-700/70 pb-1;
+  }
+  .prose-cdg h3 {
+    @apply font-serif text-xl text-ember-400 mt-4 mb-2;
+  }
+  .prose-cdg p { @apply mb-3; }
+  .prose-cdg ul { @apply list-disc pl-6 mb-3; }
+  .prose-cdg code { @apply font-mono text-xs text-ember-400 bg-ink-800/60 px-1 py-0.5 rounded; }
+
+  .card {
+    @apply block rounded-lg border border-ink-700 bg-ink-800/60 hover:bg-ink-800 hover:border-ink-500 transition-colors p-4;
+  }
+  .card-title {
+    @apply font-serif text-lg text-ink-50 mb-1;
+  }
+  .card-meta {
+    @apply text-xs text-ink-300 uppercase tracking-wider;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-ink-700 bg-ink-800/80 px-2 py-0.5 text-xs text-ink-200;
+  }
+
+  .sidebar-link {
+    @apply block rounded px-3 py-1.5 text-sm text-ink-200 hover:bg-ink-800 hover:text-ink-50 transition-colors;
+  }
+  .sidebar-link-active {
+    @apply bg-ink-800 text-ember-400 border-l-2 border-ember-400;
+  }
+
+  .kbd {
+    @apply font-mono text-[10px] bg-ink-800 border border-ink-600 rounded px-1 py-[1px];
+  }
+
+  .stat-box {
+    @apply flex flex-col items-center rounded border border-ink-700 bg-ink-900/60 p-2 min-w-[4rem];
+  }
+  .stat-box-label { @apply text-[10px] uppercase text-ink-300 tracking-wider; }
+  .stat-box-value { @apply text-xl font-serif text-ember-400; }
+
+  /* Ficha (tela e impressão). As classes sheet-* abstraem as cores
+     para que @media print possa inverter paleta facilmente. */
+  .sheet-heading { @apply text-ink-50; }
+  .sheet-body { @apply text-ink-100; }
+  .sheet-muted { @apply text-ink-300; }
+  .sheet-accent { @apply text-ember-400; }
+}
+
+@media print {
+  html, body {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #111111 !important;
+  }
+  header.border-b,
+  .print\:hidden {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .sheet-heading { color: #111 !important; }
+  .sheet-body { color: #222 !important; }
+  .sheet-muted { color: #555 !important; }
+  .sheet-accent { color: #7a3b0a !important; }
+  .sheet [class*="border-"] { border-color: #333 !important; }
+  @page { margin: 12mm; }
+}

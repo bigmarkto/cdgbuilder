@@ -1,0 +1,65 @@
+{
+  "id": "zenita",
+  "name": "Zenita",
+  "source": "CDG_RacasDef.md",
+  "description": "Os que Tocam o Céu. Ar puro e fios dourados de Census Aurea atmosférica concentrados em correntes produziram vida espontânea: criaturas de ossos ocos, pele translúcida e asas de membrana luminosa. 30-50kg. Um soco de Mandragora é 'como ser acertado por uma montanha'. Olhos sempre claros, pupila vertical, detalhes a 1km de distância.",
+  "hitDie": "d6",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "AGI": 2, "PER": 1 }
+  },
+  "traits": [
+    {
+      "id": "voo",
+      "name": "Voo",
+      "description": "Velocidade de voo de 1,5x o movimento normal.",
+      "modifiers": [
+        { "type": "speed", "value": 13.5, "text": "Voo a 13,5m (1,5 x 9m base)." }
+      ]
+    },
+    {
+      "id": "visao-do-zenite",
+      "name": "Visão do Zênite",
+      "description": "Clareza visual a 1 km. Detecção de correntes de Census Aurea a 30m, visíveis como fios dourados."
+    },
+    {
+      "id": "graca-aerea",
+      "name": "Graça Aérea",
+      "description": "No ar, um Zenita é difícil de acertar e quase impossível de derrubar. Asas freiam instintivamente quedas — dano apenas acima de 30 metros de altura."
+    },
+    {
+      "id": "sussurro-do-vento",
+      "name": "Sussurro do Vento",
+      "description": "Mensagens viajam pelo ar até 1 km, chegando em minutos a destinatários conhecidos. 1x por descanso curto."
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "ossos-ocos",
+      "name": "Ossos Ocos",
+      "description": "O preço do voo. Dano contundente aumentado em +1 dado.",
+      "modifiers": [
+        { "type": "custom", "text": "Dano contundente recebido: +1 dado de dano extra." }
+      ]
+    },
+    {
+      "id": "sensibilidade-a-pressao",
+      "name": "Sensibilidade à Pressão",
+      "description": "Ambientes sem céu aberto (cavernas, masmorras, cidades com teto) causam desconforto funcional: -4 em todos os testes."
+    },
+    {
+      "id": "dissolucao",
+      "name": "Dissolução",
+      "description": "Sem corpo após a morte. Ressurreição requer captura da Energia dispersa em 5 rodadas. Sem frasco adequado, e raro, é impossível."
+    }
+  ],
+  "subtypes": [
+    { "id": "zenita-cirrostrato", "name": "Cirrostrato" },
+    { "id": "zenita-cumulonimbo", "name": "Cumulonimbo" },
+    { "id": "zenita-brisa", "name": "Brisa" },
+    { "id": "zenita-termal", "name": "Termal" }
+  ],
+  "notes": "Subtipos mencionados em Criação v3 sem detalhes mecânicos."
+}

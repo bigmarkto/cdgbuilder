@@ -1,0 +1,32 @@
+{
+  "id": "graus-de-sucesso",
+  "name": "Graus de Sucesso",
+  "source": "CDG Vale Desperto v2.0 (port)",
+  "description": "Estende a regra básica (sucesso/falha com DT) em quatro graus, mantendo 20/1 naturais como deslocamento. Usada por testes dramáticos, magias de salvamento, ataques narrativos e conflitos sociais. A margem é (d20 + modificadores) − DT.",
+  "baseFormula": "d20 + Atributo + Proficiência vs DT",
+  "degrees": [
+    { "id": "falha-critica", "name": "Falha Crítica", "order": -2, "rule": "margin <= -10", "narrative": "Algo dá errado além do esperado. Efeito oposto ou custo adicional. Narração de consequência pesada." },
+    { "id": "falha", "name": "Falha", "order": -1, "rule": "margin < 0 AND margin > -10", "narrative": "Não passa. Pode haver custo menor, mas sem benefício." },
+    { "id": "sucesso", "name": "Sucesso", "order": 1, "rule": "margin >= 0 AND margin < 10", "narrative": "Passa limpo. Efeito padrão." },
+    { "id": "sucesso-critico", "name": "Sucesso Crítico", "order": 2, "rule": "margin >= 10", "narrative": "Efeito maximizado. Ataques dobram dado extra; magias aplicam efeito secundário; perícias extraem informação adicional." }
+  ],
+  "naturalShift": {
+    "nat20": { "delta": 1, "note": "20 natural eleva um grau (cap: sucesso-critico). Independe de margem." },
+    "nat1":  { "delta": -1, "note": "1 natural rebaixa um grau (piso: falha-critica). Independe de margem." }
+  },
+  "margins": {
+    "criticalUpper": 10,
+    "criticalLower": -10,
+    "note": "A janela de ±10 mantém o sistema simétrico. Ajuste por habilidades de Árvore pode alterar esses thresholds (ex: Armamento T3 reduz criticalUpper para 8)."
+  },
+  "applicabilityHints": [
+    { "id": "ataque", "name": "Ataque", "description": "Ataque: crítico = dano maximizado + 1 dado extra; falha crítica = desequilíbrio/arma escorrega/aliado atingido." },
+    { "id": "magia-salvamento", "name": "Magia com Salvamento", "description": "Magia com salvamento: defensor rola contra DT da magia. Sucesso crítico do defensor anula; falha crítica aplica efeito reforçado." },
+    { "id": "pericia", "name": "Perícia", "description": "Perícia: sucesso crítico extrai pista extra/ganha tempo; falha crítica denuncia o personagem ou quebra ferramenta." },
+    { "id": "social", "name": "Social", "description": "Social: sucesso crítico move atitude em +2 passos; falha crítica move em -2 passos." }
+  ],
+  "notes": [
+    "Em combate rápido, o Mestre pode ignorar a margem ±10 e usar apenas nat20/nat1.",
+    "Não empilhar nat20 + margem ≥10: já considera-se crítico uma vez."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "fogo",
+  "name": "Pacto de Fogo",
+  "source": "CDG_Pactos.md",
+  "patron": "Ancião do Fogo",
+  "description": "Pacto firmado com o Conceito de Fogo. Concede imunidade a fogo e capacidades ígneas em troca de vulnerabilidade total a gelo e impulsividade.",
+  "boons": [
+    {
+      "id": "dominio-do-fogo",
+      "name": "Domínio do Fogo",
+      "description": "Imunidade a fogo, lançar chamas (4d6), arma flamejante, aura de calor 3m, derreter metal ao toque.",
+      "modifiers": [
+        { "type": "immunity", "damageType": "fogo" },
+        { "type": "custom", "text": "Lançar chamas 4d6; arma flamejante; aura de calor 3m; derreter metal ao toque." }
+      ]
+    }
+  ],
+  "costs": [
+    {
+      "id": "frio",
+      "name": "Frio",
+      "description": "O pactuante sofre vulnerabilidade total a gelo (+100% dano). Temperatura emocional muda — torna-se impulsivo, apaixonado, incapaz de paciência.",
+      "modifiers": [
+        { "type": "custom", "text": "Vulnerabilidade total a gelo (+100% dano). Impulsividade narrativa." }
+      ]
+    }
+  ],
+  "missions": [
+    "Queimar o que é estagnado.",
+    "Incendiar complacência.",
+    "Ser catalisador de mudança — nem sempre destruição."
+  ]
+}

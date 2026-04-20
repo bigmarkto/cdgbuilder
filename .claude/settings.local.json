@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import docx; print\\(docx.__version__\\)\")",
+      "Bash(pip install *)",
+      "Bash(node extract.js)",
+      "Bash(node data/validate.js)",
+      "Bash(node -e ' *)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(curl -sI http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000__TRACKED_VAR__)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(PORT=3002 npx next dev --port 3002)",
+      "Bash(echo \"PID=$!\")",
+      "Bash(curl -s -o /tmp/builder-response.html -w \"HTTP=%{http_code}\\\\nSIZE=%{size_download}\\\\n\" http://localhost:3002/builder)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3002__TRACKED_VAR__)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3003__TRACKED_VAR__)",
+      "Bash(curl -s http://localhost:3003/manifest.webmanifest)",
+      "PowerShell(npx tsc --noEmit 2>&1)",
+      "PowerShell($out = npx tsc --noEmit; Write-Output \"EXIT: $LASTEXITCODE\"; Write-Output $out)",
+      "PowerShell(Get-Content \"data\\\\proficiencies\\\\index.json\" -Raw | ConvertFrom-Json | ForEach-Object { \"OK: \" + $_.proficiencies.Count + \" profs, \" + $_.subProficiencies.Count + \" subs\" })",
+      "PowerShell(Get-Content \"data\\\\progression\\\\niveis.json\" -Raw | ConvertFrom-Json | ForEach-Object { \"OK: \" + $_.levels.Count + \" levels, xpN12=\" + $_.levels[-1].xpRequired })",
+      "Bash(pdfinfo \"C:\\\\Users\\\\Marco Antônio\\\\Downloads\\\\SISTEMA O VAZIO DO VALE DESPERTO – V2.0 \\(1\\).pdf\")",
+      "Bash(pdfinfo \"C:\\\\Users\\\\Marco Antônio\\\\Nekstein\\\\Cicatrizes do Gatilho\\\\fichas\\\\CDG_Ficha_Editavel2.pdf\")",
+      "Bash(pdftotext -layout \"C:\\\\Users\\\\Marco Antônio\\\\Downloads\\\\SISTEMA O VAZIO DO VALE DESPERTO – V2.0 \\(1\\).pdf\" -)",
+      "Bash(pdftotext -layout \"/c/Users/Marco Antônio/Downloads/SISTEMA O VAZIO DO VALE DESPERTO – V2.0 \\(1\\).pdf\" /tmp/vd.txt)",
+      "Read(//tmp/**)",
+      "Bash(pdftotext -layout \"/c/Users/Marco Antônio/Downloads/SISTEMA O VAZIO DO VALE DESPERTO – V2.0 \\(1\\).pdf\" \"/c/Users/Marco Antônio/cdgbuilder/.vd.txt\")",
+      "Bash(git mv *)",
+      "Bash(npm run *)",
+      "Bash(npm test *)",
+      "Bash(npx vitest *)"
+    ]
+  }
+}

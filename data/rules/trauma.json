@@ -1,0 +1,47 @@
+{
+  "id": "trauma",
+  "name": "Trauma",
+  "source": "CDG Vale Desperto v2.0 (port)",
+  "description": "Trilha de desgaste psicológico e espiritual paralela a HP/Energia. Diferente de Cicatrizes (permanentes) e de Condições (temporárias de combate). Trauma se acumula em eventos de horror cósmico, sacrifícios e contato com o proibido; e se dissolve com descanso protegido e cuidado ritual.",
+  "attribute": "RES",
+  "saveDC": "Teste de Fortitude Mental (RES) contra DT do evento.",
+  "track": [
+    { "level": 0, "id": "estavel", "name": "Estável", "effects": [] },
+    { "level": 1, "id": "abalado", "name": "Abalado", "effects": [
+      { "type": "custom", "text": "Desvantagem em testes de Foco sob pressão (combate, magia hostil, confrontos)." }
+    ] },
+    { "level": 2, "id": "traumatizado", "name": "Traumatizado", "effects": [
+      { "type": "custom", "text": "-1 em todos os testes Mentais e Espirituais." },
+      { "type": "custom", "text": "Pesadelos recorrentes: descanso longo recupera apenas metade do HP/Energia a menos que acompanhado por aliado." }
+    ] },
+    { "level": 3, "id": "fragmentado", "name": "Fragmentado", "effects": [
+      { "type": "custom", "text": "-2 em testes Mentais e Espirituais." },
+      { "type": "attribute", "attr": "FOC", "value": -1 },
+      { "type": "custom", "text": "Ao sofrer dano psíquico/espiritual, rola FOC DT 12 ou entra em pânico 1 rodada." }
+    ] },
+    { "level": 4, "id": "quebrado", "name": "Quebrado", "effects": [
+      { "type": "custom", "text": "-3 em testes Mentais e Espirituais." },
+      { "type": "attribute", "attr": "FOC", "value": -1 },
+      { "type": "attribute", "attr": "RES", "value": -1 },
+      { "type": "custom", "text": "Ao terminar o próximo descanso longo, rolar na Tabela de Cicatrizes Psíquicas. A Cicatriz é permanente." }
+    ] }
+  ],
+  "triggers": [
+    { "id": "anciao-manifesto", "name": "Testemunhar Ancião manifesto", "gain": 2, "save": "RES DT 18 reduz para 1." },
+    { "id": "sacrificio-aliado", "name": "Sacrifício de aliado próximo", "gain": 1, "save": "RES DT 14 reduz para 0 (com tempo de luto apropriado)." },
+    { "id": "corrupcao-cosmica", "name": "Contato direto com corrupção cósmica", "gain": 2, "save": "RES DT 16 reduz para 1." },
+    { "id": "ressurreicao", "name": "Voltar da morte", "gain": 1, "save": "Sem save — sempre acumula." },
+    { "id": "poder-proibido", "name": "Usar poder proibido/ritual abissal", "gain": 1, "save": "RES DT 15 reduz para 0." },
+    { "id": "pesadelo-profetico", "name": "Pesadelo profético não-interpretado", "gain": 1, "save": "Só acumula se o sonho ficar sem leitura." }
+  ],
+  "recovery": [
+    { "id": "descanso-protegido", "name": "Descanso Protegido", "description": "Descanso longo em local seguro com aliado vigiando: −1 trauma." },
+    { "id": "ritual-cura", "name": "Ritual de Cura Mental", "description": "Ritual de Cura Mental (Rituais DT 15 ou Meditação DT 12) por sessão: −1 trauma adicional, máx 1/semana." },
+    { "id": "vinculo", "name": "Vínculo Profundo", "description": "Conversar com aliado de vínculo profundo sobre o evento: −1 trauma uma vez por evento." },
+    { "id": "cicatriz", "name": "Reset por Cicatriz", "description": "Ao atingir nível 4 e rolar Cicatriz Psíquica, trauma reseta para 0. A Cicatriz fica como marca permanente da experiência." }
+  ],
+  "notes": [
+    "Trauma NUNCA empilha além de 4. Ao atingir 4, o próximo gain força a Cicatriz Psíquica imediatamente.",
+    "Classes/Árvores com foco mental (Mente, Espírito, Magia) podem ter habilidades que mitigam trauma — modelar como modifiers."
+  ]
+}

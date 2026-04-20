@@ -1,0 +1,295 @@
+{
+  "id": "tecnomagia",
+  "name": "Tecnomagia",
+  "source": "CDG_Progressao_P4.md",
+  "description": "Constructos, Motriz, Engenharia Arcana & Automatos — ENG / INT. Onde Oficio cria com martelo e bigorna, Tecnomagia cria com runas e Census Aurea. Onde Magia canaliza energia em feiticos, Magitech canaliza em MAQUINAS. Esta e a arvore da revolucao industrial magica — e das perguntas eticas que ela traz.",
+  "atributoChave": "ENG / INT",
+  "crossTreePesado": {
+    "description": "Magitech e a arvore mais dependente de outras.",
+    "dependencias": [
+      "Requer Oficio T1 (Maos Habeis ou Engenharia) para MUITAS habilidades",
+      "Combina com Magia (Canalizar) para encantamentos tecnologicos",
+      "Se conecta com Sangue para tecnologia Motriz",
+      "Liga com Fe para tecnologia de Census Aurea"
+    ],
+    "nota": "Investir em Magitech sem pelo menos 3 habilidades de outra arvore e ineficiente."
+  },
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Tecnico Arcano",
+      "prerequisites": [ { "type": "attribute", "attr": "ENG", "min": 2 } ],
+      "abilities": [
+        {
+          "id": "entender-mecanismo",
+          "name": "Entender Mecanismo",
+          "cost": 50,
+          "description": "Pode analisar qualquer dispositivo magico ou mecanico. ENG DT 12: entenda funcionamento, ponto fraco e como desativar.",
+          "prerequisites": [ { "type": "attribute", "attr": "ENG", "min": 2 } ]
+        },
+        {
+          "id": "runas-basicas",
+          "name": "Runas Basicas",
+          "cost": 50,
+          "description": "Pode inscrever runas funcionais em objetos: Luz (brilha), Calor (aquece), Alarme (som ao toque). Custo: 1h + materiais basicos.",
+          "prerequisites": [
+            { "type": "custom", "text": "ENG 2+ ou INT 2+" }
+          ]
+        },
+        {
+          "id": "ferramenta-runica",
+          "name": "Ferramenta Runica",
+          "cost": 50,
+          "description": "CROSS-TREE: Pode criar ferramentas com runas embutidas. +2 em testes de Crafting quando usa ferramenta runica propria.",
+          "prerequisites": [
+            { "type": "custom", "text": "Oficio T1 (Maos Habeis)" }
+          ]
+        },
+        {
+          "id": "reparo-arcano",
+          "name": "Reparo Arcano",
+          "cost": 50,
+          "description": "Pode reparar itens magicos e Constructos/Motriz. ENG DT 14. Cura 2d6 HP em constructos. Restaura funcionalidade de itens encantados.",
+          "prerequisites": [ { "type": "attribute", "attr": "ENG", "min": 2 } ]
+        },
+        {
+          "id": "drone-explorador",
+          "name": "Drone Explorador",
+          "cost": 50,
+          "description": "CROSS-TREE: Crie drone mecanico minusculo. Voa ate 30m. Ve e ouve pelo drone (Acao, concentracao). HP 5, DP 14, Tamanho Minusculo.",
+          "prerequisites": [
+            { "type": "custom", "text": "Engenharia Basica (Oficio)" }
+          ]
+        },
+        {
+          "id": "cristal-de-mana",
+          "name": "Cristal de Mana",
+          "cost": 50,
+          "description": "CROSS-TREE: Pode armazenar Mana em cristais. Cristal armazena ate 10 Mana. Pode usar Mana do cristal em vez da propria. Custo: cristal + 1h.",
+          "prerequisites": [
+            { "type": "custom", "text": "Magia T1 (Canalizar)" }
+          ]
+        },
+        { "id": "interface-constructo", "name": "Interface Constructo", "cost": 50, "description": "Pode se comunicar com Constructos e Motriz por toque (download de informacao). Entende linguagem Mecanica basica." },
+        {
+          "id": "armadilha-runica",
+          "name": "Armadilha Runica",
+          "cost": 50,
+          "description": "Pode criar armadilhas que ativam runas: Explosao (2d6 fogo, 3m), Paralisia (RES DT 12, 1 turno), Alarme Silencioso (apenas voce ouve).",
+          "prerequisites": [ { "type": "talent", "id": "runas-basicas" } ]
+        },
+        {
+          "id": "protese-mecanica",
+          "name": "Protese Mecanica",
+          "cost": 50,
+          "description": "Pode criar e instalar proteses funcionais (braco, perna, olho). Funcionalidade 90% do membro original. Pode ser melhorada com upgrades.",
+          "prerequisites": [ { "type": "attribute", "attr": "ENG", "min": 2 } ]
+        },
+        { "id": "bateria-de-census", "name": "Bateria de Census", "cost": 50, "description": "Pode extrair e armazenar Census Aurea em recipientes especiais. 1 unidade por dia de trabalho em local com Census disponivel. Base para tudo avancado." }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Engenheiro Arcano",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Magitech" } ],
+      "abilities": [
+        {
+          "id": "automato-de-combate",
+          "name": "Automato de Combate",
+          "cost": 100,
+          "description": "CROSS-TREE: Crie automato de combate: HP 30, DP 14, Ataque +4, 1d8 dano. Obedece 5 comandos. Maximo: 1 ativo. Custo: 200 Dracmas + Census Aurea.",
+          "prerequisites": [
+            { "type": "talent", "id": "drone-explorador" },
+            { "type": "custom", "text": "Oficio T2 (Engenharia)" }
+          ]
+        },
+        {
+          "id": "arma-runica",
+          "name": "Arma Runica",
+          "cost": 100,
+          "description": "Pode inscrever runas de combate em armas: +1d6 dano elemental (escolha) permanente. Maximo: ENG armas runicas ativas.",
+          "prerequisites": [
+            { "type": "talent", "id": "runas-basicas" },
+            { "type": "talent", "id": "ferramenta-runica" }
+          ]
+        },
+        {
+          "id": "armadura-potenciada",
+          "name": "Armadura Potenciada",
+          "cost": 100,
+          "description": "Pode criar armadura com servomotores runicos: +2 DP, +1 POT enquanto vestida, penalidade de armadura reduzida a 0. Custo: 500 Dracmas.",
+          "prerequisites": [
+            { "type": "talent", "id": "protese-mecanica" },
+            { "type": "attribute", "attr": "ENG", "min": 4 }
+          ]
+        },
+        {
+          "id": "canhao-de-mana",
+          "name": "Canhao de Mana",
+          "cost": 100,
+          "description": "CROSS-TREE: Crie dispositivo que dispara Mana concentrada: +ENG acerto, 24m, 3d6 dano magico. Usa Mana de cristal (3 Mana por tiro). Pode ser montado em tripe.",
+          "prerequisites": [
+            { "type": "talent", "id": "cristal-de-mana" },
+            { "type": "custom", "text": "Magia T1" }
+          ]
+        },
+        {
+          "id": "runas-de-protecao",
+          "name": "Runas de Protecao",
+          "cost": 100,
+          "description": "Inscreva runas defensivas em area 6m: criaturas hostis: -2 em acerto dentro da area. Dura 8h. Custo: 2h + materiais.",
+          "prerequisites": [
+            { "type": "talent", "id": "runas-basicas" },
+            { "type": "talent", "id": "armadilha-runica" }
+          ]
+        },
+        {
+          "id": "upgrade-avancado",
+          "name": "Upgrade Avancado",
+          "cost": 100,
+          "description": "Pode instalar upgrades em Constructos e Motriz (ver documentos de raca). Teste: ENG DT varia. Pode melhorar proteses alem de funcionalidade normal.",
+          "prerequisites": [
+            { "type": "talent", "id": "reparo-arcano" },
+            { "type": "attribute", "attr": "ENG", "min": 4 }
+          ]
+        },
+        {
+          "id": "motor-de-sangue",
+          "name": "Motor de Sangue",
+          "cost": 100,
+          "description": "CROSS-TREE: Pode criar dispositivos alimentados por sangue (tecnologia Motriz). Motor basico: funciona por 24h com 1 litro de sangue. Pode alimentar veiculos, armas, defesas.",
+          "prerequisites": [
+            { "type": "custom", "text": "Sacrifício T1 (Preço de Sangue)" }
+          ]
+        },
+        {
+          "id": "rede-runica",
+          "name": "Rede Runica",
+          "cost": 100,
+          "description": "Pode conectar ate ENG dispositivos runicos em rede. Ativacao simultanea. Comunicacao entre dispositivos. Base para automacao.",
+          "prerequisites": [
+            { "type": "talent", "id": "interface-constructo" },
+            { "type": "talent", "id": "runas-basicas" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Mestre Tecno",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Magitech" } ],
+      "abilities": [
+        {
+          "id": "esquadrao-de-automatos",
+          "name": "Esquadrao de Automatos",
+          "cost": 200,
+          "description": "Pode ter ate 3 automatos simultaneos. Comando coletivo como Acao Livre. Podem ser especializados (combate, reconhecimento, reparo).",
+          "prerequisites": [ { "type": "talent", "id": "automato-de-combate" } ]
+        },
+        {
+          "id": "exoesqueleto",
+          "name": "Exoesqueleto",
+          "cost": 200,
+          "description": "Armadura completa com potencia total: +4 DP, +2 POT, +2 CON, Vel +3m. Requer Census Aurea para funcionar (1 unidade/24h). Custo: 1500 Dracmas.",
+          "prerequisites": [
+            { "type": "talent", "id": "armadura-potenciada" },
+            { "type": "attribute", "attr": "ENG", "min": 5 }
+          ]
+        },
+        {
+          "id": "artilharia-runica",
+          "name": "Artilharia Runica",
+          "cost": 200,
+          "description": "Pode criar artilharia fixa: 6d6 dano em area 6m, alcance 60m. Requer 2 turnos de recarga. Ou criar versao portatil menor: 4d6, 30m, 1 turno recarga.",
+          "prerequisites": [ { "type": "talent", "id": "canhao-de-mana" } ]
+        },
+        {
+          "id": "despertar",
+          "name": "Despertar",
+          "cost": 200,
+          "description": "CROSS-TREE TRIPLO: Pode tentar despertar consciencia em constructo/automato. ENG DT 22 + Census Aurea. Sucesso: cria ser senciente (Constructo). Falha: explosao de energia (4d6 area). Implicacoes eticas enormes.",
+          "prerequisites": [
+            { "type": "talent", "id": "interface-constructo" },
+            { "type": "talent", "id": "bateria-de-census" },
+            { "type": "custom", "text": "Fe T1 (Devocao)" }
+          ]
+        },
+        {
+          "id": "veiculo-magitech",
+          "name": "Veiculo Magitech",
+          "cost": 200,
+          "description": "Pode projetar e construir veiculos: carruagem automatizada, barco a vapor runico, planador mecanico. Custo e tempo variam. Vel ate 3x montaria normal.",
+          "prerequisites": [
+            { "type": "talent", "id": "motor-de-sangue" },
+            { "type": "talent", "id": "rede-runica" }
+          ]
+        },
+        {
+          "id": "campo-de-forca",
+          "name": "Campo de Forca",
+          "cost": 200,
+          "description": "Dispositivo portatil: cria bolha protetora 3m raio. Absorve 40 pontos de dano. Custo: 5 Mana do cristal. Recarga: 1 min. Requer Acao para ativar.",
+          "prerequisites": [
+            { "type": "talent", "id": "runas-de-protecao" },
+            { "type": "talent", "id": "cristal-de-mana" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Visionario",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Magitech" } ],
+      "abilities": [
+        {
+          "id": "colossus-mecanico",
+          "name": "Colossus Mecanico",
+          "cost": 400,
+          "description": "Pode construir maquina de guerra Enorme: HP 150, DP 20, 2 ataques 4d10, tripulacao 2. Custo: 5000 Dracmas + Census Aurea + 1 mes. Arma de cerco viva.",
+          "prerequisites": [
+            { "type": "talent", "id": "esquadrao-de-automatos" },
+            { "type": "talent", "id": "exoesqueleto" }
+          ]
+        },
+        {
+          "id": "fabrica-pessoal",
+          "name": "Fabrica Pessoal",
+          "cost": 400,
+          "description": "Crie oficina autossuficiente: automatos fazem crafting autonomo. Producao: 1 item Comum/dia, 1 Superior/semana. Custo: 3000 Dracmas + espaco. A revolucao industrial comeca aqui.",
+          "prerequisites": [
+            { "type": "talent", "id": "esquadrao-de-automatos" },
+            { "type": "talent", "id": "rede-runica" }
+          ]
+        },
+        {
+          "id": "arma-do-juizo",
+          "name": "Arma do Juizo",
+          "cost": 400,
+          "description": "Crie 1 arma suprema: 10d6 dano, alcance 120m, area 9m. Recarga: 3 turnos. Portatil (tamanho Grande). Custo: 2000 Dracmas + Census Aurea. 1 existente por vez.",
+          "prerequisites": [
+            { "type": "talent", "id": "artilharia-runica" },
+            { "type": "talent", "id": "campo-de-forca" }
+          ]
+        },
+        {
+          "id": "transcendencia",
+          "name": "Transcendencia",
+          "cost": 400,
+          "description": "Pode transferir consciencia propria para corpo de constructo permanentemente. Ganha: Corpo Forjado, +4 CON, +2 POT, imune a veneno/doenca/fadiga/fome. Perde: cura magica, emocoes plenas (desligam lentamente), capacidade reprodutiva. IRREVERSIVEL. Voce se torna a maquina.",
+          "prerequisites": [
+            { "type": "talent", "id": "despertar" },
+            { "type": "talent", "id": "exoesqueleto" }
+          ]
+        }
+      ]
+    }
+  ]
+}

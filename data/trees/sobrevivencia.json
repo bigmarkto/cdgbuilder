@@ -1,0 +1,241 @@
+{
+  "id": "sobrevivencia",
+  "name": "Sobrevivencia",
+  "source": "CDG_Progressao_P3.md",
+  "description": "Caca, Rastreio, Clima & Resistencia — PER / RES. Num mundo onde Fome, Sede e Fadiga matam mais que espadas, quem domina a natureza domina a vida. Sobrevivencia e a arvore que mantem o grupo VIVO entre os combates.",
+  "atributoChave": "PER / RES",
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Sobrevivente",
+      "prerequisites": [],
+      "abilities": [
+        {
+          "id": "rastreador",
+          "name": "Rastreador",
+          "cost": 50,
+          "description": "Pode rastrear criaturas por pegadas/sinais. PER DT 12 (varia com terreno). Sabe direcao, numero e tamanho da presa.",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 2 } ]
+        },
+        { "id": "forragear", "name": "Forragear", "cost": 50, "description": "Vantagem em testes para encontrar comida e agua. Em biomas conhecidos: automatico para 1 pessoa." },
+        { "id": "abrigo", "name": "Abrigo", "cost": 50, "description": "Pode construir abrigo funcional em 1h (em vez de 4). Abrigo protege contra clima e concede bonus em Descanso." },
+        {
+          "id": "resistencia-ao-clima",
+          "name": "Resistencia ao Clima",
+          "cost": 50,
+          "description": "Ignora efeitos de clima Moderado (calor/frio leve). Testes contra clima Severo com Vantagem.",
+          "prerequisites": [ { "type": "attribute", "attr": "RES", "min": 2 } ]
+        },
+        {
+          "id": "cacador",
+          "name": "Cacador",
+          "cost": 50,
+          "description": "+2 dano contra Bestas. Sabe pontos fracos de animais comuns automaticamente.",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 2 } ]
+        },
+        {
+          "id": "herbologia",
+          "name": "Herbologia",
+          "cost": 50,
+          "description": "Identifica plantas uteis e venenosas. Pode criar remedios naturais: cura 1d6, antidoto basico, repelente.",
+          "prerequisites": [ { "type": "attribute", "attr": "INT", "min": 2 } ]
+        },
+        {
+          "id": "navegacao",
+          "name": "Navegacao",
+          "cost": 50,
+          "description": "Nunca se perde em terreno aberto. Pode determinar direcao e hora pelo sol/estrelas. +2 em testes de viagem.",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 2 } ]
+        },
+        {
+          "id": "resistencia-a-fome",
+          "name": "Resistencia a Fome",
+          "cost": 50,
+          "description": "Precisa de metade da comida/agua normal. Efeitos de Fome/Sede progridem 50% mais devagar.",
+          "prerequisites": [ { "type": "attribute", "attr": "RES", "min": 2 } ]
+        },
+        { "id": "vigilia", "name": "Vigilia", "cost": 50, "description": "Precisa de apenas 4h de sono (em vez de 6-8). Percepcao nao reduz durante vigilia noturna." },
+        { "id": "primeiros-socorros", "name": "Primeiros Socorros", "cost": 50, "description": "Acao: estabilize criatura a 0 HP automaticamente (sem teste). Com kit medico: cure 1d6+PER." }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Desbravador",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Sobrevivencia" } ],
+      "abilities": [
+        {
+          "id": "rastreio-implacavel",
+          "name": "Rastreio Implacavel",
+          "cost": 100,
+          "description": "Pode rastrear criaturas por cheiro, calor residual e perturbacao magica. Rastros de ate 7 dias. Pode rastrear invisiveis.",
+          "prerequisites": [ { "type": "talent", "id": "rastreador" } ]
+        },
+        {
+          "id": "terreno-favorito",
+          "name": "Terreno Favorito",
+          "cost": 100,
+          "description": "Escolha 1 bioma. Nele: +3 em todos os testes de Sobrevivencia, viagem 50% mais rapida, nao pode ser surpreendido.",
+          "prerequisites": [ { "type": "talent", "id": "navegacao" } ]
+        },
+        {
+          "id": "cacador-supremo",
+          "name": "Cacador Supremo",
+          "cost": 100,
+          "description": "Acao Bonus: marque 1 Besta. +1d6 dano contra ela. Saiba HP, resistencias e comportamento. Dura ate morrer.",
+          "prerequisites": [
+            { "type": "talent", "id": "cacador" },
+            { "type": "attribute", "attr": "PER", "min": 4 }
+          ]
+        },
+        {
+          "id": "medicina-natural",
+          "name": "Medicina Natural",
+          "cost": 100,
+          "description": "Pode tratar doencas e venenos com plantas. Cura 2d8. Remove 1 condicao com ervas certas. Pode criar pocao natural (sem alquimia).",
+          "prerequisites": [
+            { "type": "talent", "id": "herbologia" },
+            { "type": "talent", "id": "primeiros-socorros" }
+          ]
+        },
+        {
+          "id": "imunidade-climatica",
+          "name": "Imunidade Climatica",
+          "cost": 100,
+          "description": "Imune a efeitos de clima ate Severo. Clima Extremo: Vantagem. Pode dormir na neve ou no deserto sem penalidade.",
+          "prerequisites": [
+            { "type": "talent", "id": "resistencia-ao-clima" },
+            { "type": "attribute", "attr": "RES", "min": 4 }
+          ]
+        },
+        {
+          "id": "provisoes",
+          "name": "Provisoes",
+          "cost": 100,
+          "description": "Pode forragear para grupo inteiro (ate 6 pessoas) automaticamente em biomas Moderados. Em biomas Hostis: teste PER DT 14.",
+          "prerequisites": [
+            { "type": "talent", "id": "forragear" },
+            { "type": "talent", "id": "resistencia-a-fome" }
+          ]
+        },
+        { "id": "camuflagem", "name": "Camuflagem", "cost": 100, "description": "Acao (1 min): camufle-se no terreno. Furtividade +4 enquanto imovel. Movimento lento (metade vel) mantem camuflagem." },
+        {
+          "id": "sentidos-selvagens",
+          "name": "Sentidos Selvagens",
+          "cost": 100,
+          "description": "Nao pode ser surpreendido enquanto consciente. Sente criaturas hostis a 18m (sexto sentido). +2 Iniciativa em ambientes naturais.",
+          "prerequisites": [
+            { "type": "talent", "id": "vigilia" },
+            { "type": "attribute", "attr": "PER", "min": 4 }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Mestre da Natureza",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Sobrevivencia" } ],
+      "abilities": [
+        {
+          "id": "adaptacao-total",
+          "name": "Adaptacao Total",
+          "cost": 200,
+          "description": "Escolha 2o Terreno Favorito. Imune a TODOS os efeitos de clima. Pode sobreviver sem comida por 7 dias, sem agua por 3.",
+          "prerequisites": [
+            { "type": "talent", "id": "imunidade-climatica" },
+            { "type": "talent", "id": "terreno-favorito" }
+          ]
+        },
+        {
+          "id": "predador-alfa",
+          "name": "Predador Alfa",
+          "cost": 200,
+          "description": "Bestas de ND inferior ao seu nivel nao atacam voce (instinto de predador). Pode intimidar Bestas com olhar (PER DT vs RES da Besta). +2d6 dano contra Bestas.",
+          "prerequisites": [ { "type": "talent", "id": "cacador-supremo" } ]
+        },
+        {
+          "id": "farmacologista",
+          "name": "Farmacologista",
+          "cost": 200,
+          "description": "Pode criar curas para doencas magicas e venenos sobrenaturais. Pode criar pocoes que replicam magias de Tier 1 (efeito em frasco). 1x/Descanso Longo por pocao.",
+          "prerequisites": [
+            { "type": "talent", "id": "medicina-natural" },
+            { "type": "attribute", "attr": "INT", "min": 4 }
+          ]
+        },
+        {
+          "id": "fantasma-do-mato",
+          "name": "Fantasma do Mato",
+          "cost": 200,
+          "description": "Em ambiente natural: pode se tornar praticamente invisivel (Furtividade +8 imovel). Movimento lento mantem +4. Pode emboscar com Vantagem garantida.",
+          "prerequisites": [
+            { "type": "talent", "id": "camuflagem" },
+            { "type": "talent", "id": "sentidos-selvagens" }
+          ]
+        },
+        {
+          "id": "ler-a-terra",
+          "name": "Ler a Terra",
+          "cost": 200,
+          "description": "Ao tocar o chao: saiba tudo que passou num raio de 30m nas ultimas 24h (criaturas, numero, tamanho, direcao). PER DT 16. 1x/Descanso Curto.",
+          "prerequisites": [ { "type": "talent", "id": "rastreio-implacavel" } ]
+        },
+        {
+          "id": "resistencia-primordial",
+          "name": "Resistencia Primordial",
+          "cost": 200,
+          "description": "Resistencia a veneno, doenca e dano de frio/calor. Recupera 1 HP/hora naturalmente em ambiente natural.",
+          "prerequisites": [ { "type": "attribute", "attr": "RES", "min": 5 } ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Lenda Selvagem",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Sobrevivencia" } ],
+      "abilities": [
+        {
+          "id": "um-com-a-terra",
+          "name": "Um com a Terra",
+          "cost": 400,
+          "description": "Passivo: o Planeta Vivo te reconhece. Plantas se afastam do seu caminho. Animais nao te atacam. Pode 'pedir' a terra (efeitos menores: abrir passagem, criar abrigo natural, revelar agua). 3x/dia.",
+          "prerequisites": [
+            { "type": "talent", "id": "adaptacao-total" },
+            { "type": "talent", "id": "ler-a-terra" }
+          ]
+        },
+        {
+          "id": "imortal-selvagem",
+          "name": "Imortal Selvagem",
+          "cost": 400,
+          "description": "Em ambiente natural: nao pode morrer por meios mundanos. Ao cair a 0 HP, a terra o engole e regenera (retorna com 50% HP apos 1d4 horas). So funciona ao ar livre/caverna natural.",
+          "prerequisites": [ { "type": "talent", "id": "resistencia-primordial" } ]
+        },
+        {
+          "id": "cura-suprema",
+          "name": "Cura Suprema",
+          "cost": 400,
+          "description": "1x/semana: crie um unico remedio que cura QUALQUER doenca, veneno, maldicao ou condicao (incluindo Corrupcao: -10). Custo: ingredientes de 3 biomas + 8h.",
+          "prerequisites": [ { "type": "talent", "id": "farmacologista" } ]
+        },
+        {
+          "id": "predador-lendario",
+          "name": "Predador Lendario",
+          "cost": 400,
+          "description": "Em ambiente natural: +4 acerto, +4 dano, +4 Furtividade. Primeira ataque de emboscada e automaticamente critico. Bestas fogem instintivamente de voce ate ND 8.",
+          "prerequisites": [
+            { "type": "talent", "id": "predador-alfa" },
+            { "type": "talent", "id": "fantasma-do-mato" }
+          ]
+        }
+      ]
+    }
+  ]
+}

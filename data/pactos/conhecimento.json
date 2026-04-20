@@ -1,0 +1,29 @@
+{
+  "id": "conhecimento",
+  "name": "Pacto de Conhecimento",
+  "source": "CDG_Pactos.md",
+  "patron": "Ancião do Conhecimento",
+  "description": "Pacto firmado com o Conceito de Conhecimento. Concede acesso a qualquer fato e idioma em troca da incapacidade de guardar segredos.",
+  "boons": [
+    {
+      "id": "dominio-do-saber",
+      "name": "Domínio do Saber",
+      "description": "Saber qualquer fato (+10 em testes de INT 1x/dia), ler qualquer idioma, detectar mentiras automaticamente, acessar memórias de objetos.",
+      "modifiers": [
+        { "type": "custom", "text": "+10 em testes de INT 1x/dia; ler qualquer idioma; detectar mentiras automaticamente; acessar memórias de objetos." }
+      ]
+    }
+  ],
+  "costs": [
+    {
+      "id": "segredos",
+      "name": "Segredos",
+      "description": "O pactuante não consegue guardar segredos — compulsão de revelar verdades. Além disso, saber demais dói (1 psíquico por fato aprendido com o poder)."
+    }
+  ],
+  "missions": [
+    "Preservar conhecimento.",
+    "Destruir quem oculta verdade.",
+    "Registrar eventos."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "id": "fase-1",
+  "name": "Fase 1: Regras Core + Corpo, Armamento, Tatica",
+  "source": "CDG_Progressao_P1.md",
+  "description": "Parte 1 do sistema de Progressao. Voce nao e o que nasceu. Voce e o que comprou com suor e sangue. No CDG, nao existem classes. Existe o que voce INVESTIU. Dois personagens nivel 8 podem ser completamente diferentes — um monstro corpo-a-corpo com rituais de sangue, ou um diplomata que sabe domar bestas e fazer venenos. O sistema funciona assim: voce ganha XP, gasta XP para comprar habilidades de 12 Arvores diferentes. Cada Arvore tem 4 Tiers com quantidades decrescentes de habilidades (10/8/6/4). Quanto mais fundo numa Arvore, mais poderoso mas mais especializado.",
+  "escopo": ["regras-core", "arvore-corpo", "arvore-armamento", "arvore-tatica"],
+  "as12Arvores": [
+    { "arvore": "Corpo", "foco": "Combate fisico, resistencia, atletismo", "atributoChave": "POT / CON" },
+    { "arvore": "Armamento", "foco": "Especializacao em tipos de arma", "atributoChave": "AGI / POT" },
+    { "arvore": "Tatica", "foco": "Manobras, posicionamento, lideranca", "atributoChave": "INT / PER" },
+    { "arvore": "Magia", "foco": "Escolas magicas, conjuracao, rituais", "atributoChave": "INT / FOC" },
+    { "arvore": "Oficio", "foco": "Crafting, engenharia, alquimia", "atributoChave": "ENG / INT" },
+    { "arvore": "Sobrevivencia", "foco": "Caca, rastreio, clima, fome", "atributoChave": "PER / CON" },
+    { "arvore": "Sombra", "foco": "Furtividade, assassinato, venenos", "atributoChave": "AGI / PER" },
+    { "arvore": "Social", "foco": "Persuasao, comercio, lideranca", "atributoChave": "PRE / INT" },
+    { "arvore": "Fe", "foco": "Conceitos, Ancioes, cura divina", "atributoChave": "FOC / PRE" },
+    { "arvore": "Sangue", "foco": "Rituais de sangue, sacrificio, proibido", "atributoChave": "FOC / CON" },
+    { "arvore": "Besta", "foco": "Domar, montar, comunicar animais", "atributoChave": "PER / PRE" },
+    { "arvore": "Magitech", "foco": "Constructos, motriz, engenharia arcana", "atributoChave": "ENG / INT" }
+  ],
+  "regrasDeProgressao": {
+    "nivel1": {
+      "nome": "O Generico",
+      "description": "Todo personagem nivel 1 e igual mecanicamente. O nivel 1 e a FUNDACAO. O que voce se torna comeca no nivel 2.",
+      "regras": [
+        "Atributos distribuidos (15 pontos)",
+        "Raca escolhida (com tracos raciais)",
+        "Proficiencias iniciais",
+        "HP base: CON x 5 + 10",
+        "0 habilidades de Arvore",
+        "0 XP acumulado"
+      ]
+    },
+    "ganhoXP": {
+      "fontes": [
+        { "fonte": "Combate", "xp": "ND da criatura x 10 XP (dividido pelo grupo)" },
+        { "fonte": "Missoes", "xp": "50-500 XP dependendo da complexidade" },
+        { "fonte": "Descoberta", "xp": "Explorar local novo, desvendar misterio = 25-100 XP" },
+        { "fonte": "Roleplay", "xp": "Momentos significativos de personagem = 25-50 XP" },
+        { "fonte": "Sobrevivencia", "xp": "Sobreviver situacao extrema = 25-75 XP" }
+      ],
+      "mediaPorSessao": "100-200 XP por jogador",
+      "notaN12": "Um personagem nivel 12 tera acumulado ~3000-4000 XP total gasto em habilidades."
+    },
+    "comprandoHabilidades": {
+      "passos": [
+        "Tenha o nivel minimo (Tier 1 = nivel 2+, Tier 2 = nivel 5+, Tier 3 = nivel 8+, Tier 4 = nivel 10+)",
+        "Cumpra os pre-requisitos (se houver)",
+        "Cumpra o requisito de Tier (precisa de X habilidades do Tier anterior NA MESMA ARVORE)",
+        "Pague o custo em XP",
+        "A habilidade e sua permanentemente"
+      ],
+      "custoBase": {
+        "tier1": 50,
+        "tier2": 100,
+        "tier3": 200,
+        "tier4": 400
+      },
+      "requisitosTier": {
+        "tier2": "3+ habilidades Tier 1 NA MESMA ARVORE",
+        "tier3": "3+ habilidades Tier 2 NA MESMA ARVORE",
+        "tier4": "3+ habilidades Tier 3 NA MESMA ARVORE"
+      },
+      "crossTree": "Algumas habilidades exigem habilidades de OUTRA Arvore como pre-req. Exemplo: 'Lamina Envenenada' (Armamento Tier 2) exige 'Alquimia Basica' (Oficio Tier 1). Isso incentiva builds hibridas e evita especializacao cega."
+    }
+  },
+  "nivelamento": {
+    "tabelaAproximada": [
+      { "nivel": 1, "xpGastoAprox": "0", "tiersDisp": "Nenhum", "personagem": "Generico. Fundacao." },
+      { "nivel": 2, "xpGastoAprox": "50-100", "tiersDisp": "Tier 1", "personagem": "Comecando a se definir." },
+      { "nivel": 3, "xpGastoAprox": "150-250", "tiersDisp": "Tier 1", "personagem": "Primeiras habilidades. Direcao clara." },
+      { "nivel": 4, "xpGastoAprox": "300-450", "tiersDisp": "Tier 1", "personagem": "Base solida em 1-2 arvores." },
+      { "nivel": 5, "xpGastoAprox": "500-700", "tiersDisp": "Tier 1 + Tier 2", "personagem": "Especializacao comeca. Habilidades intermediarias." },
+      { "nivel": 6, "xpGastoAprox": "750-1000", "tiersDisp": "Tier 1 + Tier 2", "personagem": "Identidade mecanica definida." },
+      { "nivel": 7, "xpGastoAprox": "1000-1300", "tiersDisp": "Tier 1 + Tier 2", "personagem": "Combinacoes entre arvores surgem." },
+      { "nivel": 8, "xpGastoAprox": "1400-1800", "tiersDisp": "Tier 1-3", "personagem": "Poder significativo. Habilidades avancadas." },
+      { "nivel": 9, "xpGastoAprox": "1900-2300", "tiersDisp": "Tier 1-3", "personagem": "Quase no pico. Builds complexas." },
+      { "nivel": 10, "xpGastoAprox": "2400-2800", "tiersDisp": "Tier 1-4", "personagem": "Acesso ao Tier 4. Poder maximo comeca." },
+      { "nivel": 11, "xpGastoAprox": "2900-3400", "tiersDisp": "Tier 1-4", "personagem": "Capstone. Habilidades definidoras." },
+      { "nivel": 12, "xpGastoAprox": "3500-4000", "tiersDisp": "Tier 1-4", "personagem": "Lenda. Pico de poder mortal." }
+    ],
+    "nivelVsXP": {
+      "description": "O nivel NAO e determinado por XP acumulado. E determinado pelo Mestre baseado em progresso da campanha. XP e a MOEDA. Nivel e a PERMISSAO.",
+      "nota": "Voce pode ter 500 XP acumulado mas ainda ser nivel 3 se o Mestre nao subiu o nivel. Voce pode ser nivel 6 com pouco XP se nao encontrou muitos combates (mas tera menos habilidades). Isso impede power-leveling: nao adianta farmear XP se o Mestre nao libera o nivel pra acessar Tiers superiores."
+    },
+    "subirDeNivel": "O Mestre decide quando, baseado em marcos narrativos. Sugestao: a cada 2-3 sessoes."
+  },
+  "notes": "Nesta Fase 1, as Arvores detalhadas sao Corpo, Armamento e Tatica. Consulte data/trees/corpo.json, data/trees/armamento.json e data/trees/tatica.json para habilidades especificas."
+}

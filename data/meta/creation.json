@@ -1,0 +1,114 @@
+{
+  "id": "criacao",
+  "name": "Criação de Personagem",
+  "source": "CDG_Criacao_v3.md",
+  "description": "Regras de criação de personagem do CDG. 10 passos: Conceito, Raça, Atributos, Proficiências, Poder Original, Fonte de Poder, Valores Derivados, Equipamento, Cicatrizes, Personalidade.",
+  "steps": [
+    { "step": 1, "id": "conceito", "name": "Conceito", "summary": "Quem é seu personagem? Ideia central antes de números." },
+    { "step": 2, "id": "raca", "name": "Raça", "summary": "13 raças jogáveis + 89 mixes. Define bônus, traços, fraquezas." },
+    { "step": 3, "id": "atributos", "name": "Atributos", "summary": "18 pontos em 9 atributos (CON/POT/AGI + PER/INT/ENG + RES/FOC/PRE)." },
+    { "step": 4, "id": "proficiencias", "name": "Proficiências", "summary": "12 pontos em 50 proficiências básicas. Máx Rank 2 no nível 1." },
+    { "step": 5, "id": "poder-original", "name": "Poder Original", "summary": "Crie seu poder único. Rank 1 grátis. Conceito + Custo + Efeito + Condição + Fraqueza." },
+    { "step": 6, "id": "fonte-de-poder", "name": "Fonte de Poder", "summary": "Escolha 1 Fonte principal (Arcana, Fé, Corpo, Sangue, Magitech, Primal). Define pool." },
+    { "step": 7, "id": "valores-derivados", "name": "Valores Derivados", "summary": "HP, Energia, Mana/Foco, DP, Velocidade, Iniciativa. Calcule." },
+    { "step": 8, "id": "equipamento", "name": "Equipamento", "summary": "Armas, armadura, kit inicial. Pacotes por arquétipo." },
+    { "step": 9, "id": "cicatrizes", "name": "Cicatrizes", "summary": "Começa com 0. Registre espaço na ficha." },
+    { "step": 10, "id": "personalidade", "name": "Personalidade", "summary": "Nome, história, motivação, laços." }
+  ],
+  "attributePointBuy": {
+    "id": "distribuicao-atributos",
+    "name": "Distribuição de Atributos",
+    "totalPoints": 18,
+    "minPerAttribute": 0,
+    "maxPerAttributeBase": 6,
+    "maxAbsoluteLevel1": 8,
+    "notes": [
+      "18 PONTOS totais para distribuir livremente entre os 9 atributos.",
+      "Mínimo: 0 em qualquer atributo.",
+      "Máximo base: 6 antes de bônus raciais.",
+      "Bônus raciais são adicionados APÓS a distribuição e podem ultrapassar 6.",
+      "Máximo ABSOLUTO no nível 1: 8 (6 base + 2 racial).",
+      "Atributo 0 não é incapacidade — é falta de treinamento. -4 em testes relacionados.",
+      "Ficha v2.0 lista 27 pontos (point-buy escalonado); a regra v3 usa 18 pontos lineares. Esta coleção segue CDG_Criacao_v3.md (18 pontos)."
+    ],
+    "conflictNote": "BasedaFicha.md menciona '27 pontos — Point-Buy Escalonado' no cabeçalho da ficha, enquanto CDG_Criacao_v3.md especifica 18 pontos lineares. Valor autoritativo: 18 (documento de criação v3)."
+  },
+  "proficiencyBudget": {
+    "id": "pontos-proficiencia",
+    "name": "Pontos de Proficiência",
+    "initialPoints": 12,
+    "maxRankAtCreation": 2,
+    "maxRankFormula": "nivel/2 arredondado para cima",
+    "notes": [
+      "12 pontos de Proficiência distribuídos livremente na criação.",
+      "Limite inicial: Rank 2 por proficiência.",
+      "Rank máximo geral: nível/2 arredondado para cima.",
+      "Cada raça concede 1-2 proficiências raciais gratuitas com Rank 1."
+    ]
+  },
+  "subProficiencyRules": {
+    "id": "sub-proficiencias-criacao",
+    "name": "Sub-Proficiências na Criação",
+    "initialPointsLevel1": 0,
+    "levelUnlock": 2,
+    "firstFreeSubAtLevel2": true,
+    "costXP": { "R1": 100, "R2": 300, "R3": 600, "R4": 1200, "R5": 2000 },
+    "levelRequirements": { "R1": 2, "R2": 4, "R3": 6, "R4": 8, "R5": 10 },
+    "prerequisiteRule": "Sub Rank N requer Prof Básica Rank N+1 (quando há pré-req). R5 (Ancião) requer Prof Básica R5.",
+    "notes": [
+      "Sub-Proficiências começam no nível 2.",
+      "Nível 2 ganha 1 Sub-Proficiência em Rank 1 (grátis, da Fonte escolhida).",
+      "XP vem da metade dedicada a Fontes de Poder (~1925 total até nível 12)."
+    ]
+  },
+  "originalPowerRules": {
+    "id": "poder-original-criacao",
+    "name": "Poder Original — Criação",
+    "freeRankAtLevel1": 1,
+    "ranks": [
+      { "rank": 1, "name": "Despertar", "levelMin": 1, "xp": 0, "effects": "1 efeito, 2d8 max", "usesPerLongRest": 3 },
+      { "rank": 2, "name": "Moldagem", "levelMin": 4, "xp": 200, "effects": "2 efeitos, 4d8 max", "usesPerLongRest": 5 },
+      { "rank": 3, "name": "Domínio", "levelMin": 7, "xp": 400, "effects": "3 efeitos, 6d8 max", "usesPerLongRest": 7 },
+      { "rank": 4, "name": "Transcendência", "levelMin": 10, "xp": 800, "effects": "4 efeitos, 10d8 max + Uso Supremo", "usesPerLongRest": 11 }
+    ],
+    "creationSteps": [
+      "GATILHO: Por que o poder existe? (Trauma, Herança, Exposição, Emocional, Inato, Pacto, Mutação, Morte).",
+      "CONCEITO: Resuma em 1 FRASE. Ex: 'Controlo metal com a mente.'",
+      "FONTE DE CUSTO: O que gasta? (HP, Mana, Foco, Energia, Sanidade, Corrupção, Condição, Misto).",
+      "EFEITO R1: 1 efeito. Máx 2d8 dano, 9m alcance, alvo único, 1 min duração.",
+      "CONDIÇÃO: Min 1. (Ativação, Gatilho Emocional, Contato, Linha de Visão, Material).",
+      "FRAQUEZA: Min 1. (Elemento oposto, Material específico, Autolesão, Detectável)."
+    ],
+    "approvalRequired": true
+  },
+  "initialEquipment": {
+    "startingCoins": 150,
+    "currency": "Dracmas",
+    "packages": [
+      { "id": "guerreiro", "name": "Guerreiro", "contents": "Espada longa, escudo, cota de malha, mochila, ração 5 dias, corda 15m, pederneira", "value": 140 },
+      { "id": "explorador", "name": "Explorador", "contents": "Arco curto, 20 flechas, armadura de couro, mochila, kit sobrevivência, mapa, tocha x5", "value": 130 },
+      { "id": "mago", "name": "Mago", "contents": "Cajado/varinha, túnica, grimório em branco, tinta, mochila, componentes básicos, vela x10", "value": 120 },
+      { "id": "artifice", "name": "Artífice", "contents": "Kit de ferramentas (escolha prof), armadura leve, arma simples, mochila, materiais básicos", "value": 140 },
+      { "id": "social", "name": "Social", "contents": "Roupas finas, adaga escondida, kit disfarce, perfume, 50 Dracmas extras em ouro", "value": 150 },
+      { "id": "devoto", "name": "Devoto", "contents": "Símbolo sagrado, maça, armadura de couro, kit cura, água benta x3, texto sagrado", "value": 130 }
+    ],
+    "notes": ["Constructos e Motriz NÃO usam armadura. Seu corpo É a armadura. Gastam Dracmas em Upgrades/Modificações."]
+  },
+  "mixingSources": {
+    "id": "misturar-fontes",
+    "name": "Mistura de Fontes",
+    "description": "1 Fonte principal (custo normal) + Fontes secundárias custam +50% XP.",
+    "primaryCostMultiplier": 1.0,
+    "secondaryCostMultiplier": 1.5
+  },
+  "archetypeExamples": [
+    { "id": "guerreiro-brutal", "name": "Guerreiro Brutal", "attributes": { "CON": 4, "POT": 5, "AGI": 3, "PER": 2, "INT": 0, "ENG": 0, "RES": 2, "FOC": 0, "PRE": 2 } },
+    { "id": "mago-arcano", "name": "Mago Arcano", "attributes": { "CON": 2, "POT": 0, "AGI": 2, "PER": 2, "INT": 5, "ENG": 1, "RES": 1, "FOC": 4, "PRE": 1 } },
+    { "id": "explorador", "name": "Explorador", "attributes": { "CON": 3, "POT": 2, "AGI": 3, "PER": 5, "INT": 1, "ENG": 1, "RES": 2, "FOC": 1, "PRE": 0 } },
+    { "id": "artifice", "name": "Artífice", "attributes": { "CON": 3, "POT": 2, "AGI": 1, "PER": 1, "INT": 3, "ENG": 5, "RES": 1, "FOC": 1, "PRE": 1 } },
+    { "id": "lider-social", "name": "Líder Social", "attributes": { "CON": 2, "POT": 1, "AGI": 2, "PER": 2, "INT": 2, "ENG": 0, "RES": 2, "FOC": 2, "PRE": 5 } },
+    { "id": "devoto", "name": "Devoto", "attributes": { "CON": 3, "POT": 1, "AGI": 1, "PER": 1, "INT": 1, "ENG": 0, "RES": 3, "FOC": 5, "PRE": 3 } },
+    { "id": "predador", "name": "Predador", "attributes": { "CON": 3, "POT": 4, "AGI": 4, "PER": 3, "INT": 0, "ENG": 0, "RES": 2, "FOC": 1, "PRE": 1 } },
+    { "id": "generalista", "name": "Generalista", "attributes": { "CON": 2, "POT": 2, "AGI": 2, "PER": 2, "INT": 2, "ENG": 2, "RES": 2, "FOC": 2, "PRE": 2 } }
+  ]
+}

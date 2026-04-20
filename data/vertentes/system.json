@@ -1,0 +1,162 @@
+{
+  "id": "sistema-energia-cosmica",
+  "name": "Lei Universal da Energia Cósmica",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "Todo conjurador segue a mesma estrutura: Escolha a Vertente (lente) → Monte a Conjuração (Efeito + Forma + Alcance + Intensidade) → Pague o Custo → Resolva o Efeito. O que muda entre as vertentes é o atributo, a estética e as regras extras; a mecânica base é idêntica.",
+  "conjuringSteps": [
+    "Declare a vertente (ou vertentes, se híbrida).",
+    "Escolha o efeito: Dano, Cura, Controle, Buff, Debuff, Utilidade ou Invocação.",
+    "Escolha a forma: Projétil, Cone, Explosão, Aura, Toque, Self, Marca ou Corrente.",
+    "Escolha o alcance: Toque, Curto, Médio, Longo ou Extremo.",
+    "Escolha a intensidade: Leve, Moderado, Forte ou Devastador.",
+    "Some os custos extras de Forma + Alcance + Intensidade.",
+    "Aplique regras extras da vertente.",
+    "Pague o custo do pool de Energia Cósmica.",
+    "Role o teste (d20 + Atributo + Proficiência) se necessário.",
+    "Resolva o efeito. Aplique consequências."
+  ],
+  "effects": [
+    { "id": "dano-direto", "name": "Dano Direto", "description": "Causa dano a um ou mais alvos.", "test": "Acerto: d20 + Atrib + Prof vs DP" },
+    { "id": "cura", "name": "Cura", "description": "Restaura HP de um ou mais alvos.", "test": "Automático (sem teste de acerto)" },
+    { "id": "controle", "name": "Controle", "description": "Imobiliza, empurra, atrai, silencia.", "test": "Alvo testa RES/AGI vs DT do efeito" },
+    { "id": "buff", "name": "Buff", "description": "Fortalece aliado (bônus a atributo, DP, dano).", "test": "Automático no alvo" },
+    { "id": "debuff", "name": "Debuff", "description": "Enfraquece inimigo (penalidade, condição).", "test": "Alvo testa RES/FOC vs DT do efeito" },
+    { "id": "utilidade", "name": "Utilidade", "description": "Luz, detecção, comunicação, tradução etc.", "test": "Automático ou teste situacional" },
+    { "id": "invocacao", "name": "Invocação", "description": "Cria algo temporário (criatura, objeto, barreira).", "test": "Automático; criatura tem estatísticas" }
+  ],
+  "forms": [
+    { "id": "projetil", "name": "Projétil", "description": "Linha reta, um alvo. Requer teste de acerto.", "costModifier": 0 },
+    { "id": "cone", "name": "Cone", "description": "Área em leque, 3m de largura por ponto de alcance. Todos na área testam esquiva.", "costModifier": 1 },
+    { "id": "explosao", "name": "Explosão", "description": "Área circular a partir de um ponto. Raio = 3m base, +1m por Intensidade.", "costModifier": 1 },
+    { "id": "aura", "name": "Aura", "description": "Área ao redor do conjurador. Raio fixo 3m. Afeta aliados e inimigos.", "costModifier": 0, "ignoresRange": true },
+    { "id": "toque", "name": "Toque", "description": "Contato físico direto. Requer adjacência. Sem teste de acerto.", "costModifier": 0 },
+    { "id": "self", "name": "Self", "description": "No próprio conjurador. Buffs e utilidades pessoais.", "costModifier": 0, "ignoresRange": true },
+    { "id": "marca", "name": "Marca", "description": "Efeito plantado num alvo, ativa depois. Ativa por condição ou tempo (máx 1h).", "costModifier": 1 },
+    { "id": "corrente", "name": "Corrente", "description": "Salta de alvo em alvo. Até 3 alvos. -1 dado por salto.", "costModifier": 2 }
+  ],
+  "ranges": [
+    { "id": "toque", "name": "Toque", "meters": 0, "costModifier": 0, "note": "Adjacente. Forma Toque só funciona com Alcance Toque." },
+    { "id": "curto", "name": "Curto", "meters": 9, "costModifier": 0 },
+    { "id": "medio", "name": "Médio", "meters": 18, "costModifier": 1 },
+    { "id": "longo", "name": "Longo", "meters": 36, "costModifier": 2 },
+    { "id": "extremo", "name": "Extremo", "meters": 72, "costModifier": 3, "note": "72m+" }
+  ],
+  "intensities": [
+    { "id": "leve", "name": "Leve", "dice": "1d6", "buffValue": 2, "debuffValue": -2, "controlDT": 10, "costModifier": 0 },
+    { "id": "moderado", "name": "Moderado", "dice": "2d8", "buffValue": 4, "debuffValue": -4, "controlDT": 14, "costModifier": 1 },
+    { "id": "forte", "name": "Forte", "dice": "3d10", "buffValue": 6, "debuffValue": -6, "controlDT": 18, "costModifier": 2 },
+    { "id": "devastador", "name": "Devastador", "dice": "4d12", "buffValue": 8, "debuffValue": -8, "controlDT": 22, "costModifier": 3 }
+  ],
+  "costFormula": "Custo = Forma(costModifier) + Alcance(costModifier) + Intensidade(costModifier). O Efeito não tem custo.",
+  "caps": {
+    "normal": { "max": 4, "requirement": "1 vertente" },
+    "dupla": { "max": 5, "requirement": "2 vertentes (Rank 2+ cada)" },
+    "tripla": { "max": 6, "requirement": "3 vertentes (Rank 3+ cada)" },
+    "ancianica": { "max": null, "requirement": "Sem teto. Cada ponto acima de 4 causa 2d6 dano de Census ao conjurador (sem redução, sem resistência)." },
+    "abissal": { "max": null, "requirement": "Sem teto. Cada ponto acima de 4 causa 1d6 psíquico + 1 Corrupção ao conjurador." },
+    "sacrificial": { "max": null, "requirement": "Sem teto prático. Paga o excesso com perda permanente." }
+  },
+  "pool": {
+    "formula": "maiorAtributoPrincipalDasVertentes + nivel + bonusArvore",
+    "shared": true,
+    "description": "O pool é único e compartilhado entre todas as vertentes do personagem. Se múltiplas vertentes, usa o MAIOR atributo principal. Não soma.",
+    "recovery": {
+      "descansoLongo": "100% do pool",
+      "descansoCurto": "25% (arredondado pra baixo)",
+      "meditacao": "+FOC extra (requer Árvore Fé ou proficiência Meditação)"
+    },
+    "sampleTable": [
+      { "nivel": 1, "atrib3": 4, "atrib5": 6, "atrib7": 8, "conjuracoesEstimadas": "2-8" },
+      { "nivel": 3, "atrib3": 6, "atrib5": 8, "atrib7": 10, "conjuracoesEstimadas": "3-10" },
+      { "nivel": 5, "atrib3": 8, "atrib5": 10, "atrib7": 12, "conjuracoesEstimadas": "3-12" },
+      { "nivel": 8, "atrib3": 11, "atrib5": 13, "atrib7": 15, "conjuracoesEstimadas": "4-15" },
+      { "nivel": 10, "atrib3": 13, "atrib5": 15, "atrib7": 17, "conjuracoesEstimadas": "4-17" },
+      { "nivel": 12, "atrib3": 15, "atrib5": 17, "atrib7": 19, "conjuracoesEstimadas": "5-19" }
+    ]
+  },
+  "hybrids": {
+    "dupla": {
+      "costCap": 5,
+      "prerequisites": [
+        { "type": "custom", "text": "Proficiência em ambas as vertentes (mínimo Rank 2 em cada)." }
+      ],
+      "rules": [
+        "Usa o MAIOR atributo entre as duas vertentes pro teste.",
+        "Ganha o efeito especial listado na combinação.",
+        "Não pode combinar com Tecnomagia (exceto Tecnomagia + Braseira)."
+      ],
+      "combinations": [
+        { "vertentes": ["feitica", "dogmatica"], "name": "Teurgia", "effect": "Conjuração busca o alvo (projétil teleguiado, cura prioriza o mais ferido)." },
+        { "vertentes": ["feitica", "sacrificial"], "name": "Pacto Arcano", "effect": "Pode sacrificar receitas do grimório como pagamento (1 receita = 1 ponto)." },
+        { "vertentes": ["feitica", "primal"], "name": "Elementalismo", "effect": "Escolhe tipo de dano elemental + terreno alterado por 1 min." },
+        { "vertentes": ["feitica", "braseira"], "name": "Piromântica", "effect": "Fogo arcano: dados de dano maximizados mas custo +1 extra." },
+        { "vertentes": ["feitica", "ancianica"], "name": "Cosmogonia", "effect": "Efeitos de área dobrados em tamanho. Efeito colateral garantido." },
+        { "vertentes": ["feitica", "alem"], "name": "Codex Mortuário", "effect": "Pode ler e copiar conjurações de criaturas mortas." },
+        { "vertentes": ["feitica", "abissal"], "name": "Geometria Proibida", "effect": "Teleporte, portais, distorção espacial. Forma: qualquer ângulo." },
+        { "vertentes": ["dogmatica", "sacrificial"], "name": "Martírio", "effect": "HP sacrificado vira cura em aliado na proporção 1:2." },
+        { "vertentes": ["dogmatica", "primal"], "name": "Xamanismo", "effect": "Invoca ecos ancestrais de animais/espíritos da natureza." },
+        { "vertentes": ["dogmatica", "braseira"], "name": "Inquisição", "effect": "Fogo divino: dano dobrado contra seres de outra fé/dogma." },
+        { "vertentes": ["dogmatica", "ancianica"], "name": "Verbo Divino", "effect": "Palavra do Ancião: uma ordem que a realidade obedece (1x/dia)." },
+        { "vertentes": ["dogmatica", "alem"], "name": "Liturgia Fúnebre", "effect": "Ressurreição parcial: eco com personalidade do morto por 1h." },
+        { "vertentes": ["dogmatica", "abissal"], "name": "Heresia", "effect": "Poder imenso. O dogma se inverte. Consequências narrativas graves." },
+        { "vertentes": ["sacrificial", "primal"], "name": "Totemismo", "effect": "Sacrifício de sangue cria vínculo bestial. Transformação parcial." },
+        { "vertentes": ["sacrificial", "braseira"], "name": "Imolação", "effect": "Sacrifício do corpo = explosão de fogo proporcional ao HP dado." },
+        { "vertentes": ["sacrificial", "ancianica"], "name": "Oblação", "effect": "Oferenda a Census: resultado GARANTIDO mas preço definido pelo Planeta." },
+        { "vertentes": ["sacrificial", "alem"], "name": "Necropacto", "effect": "Pacto com mortos. Serviço em troca de informação/poder além-túmulo." },
+        { "vertentes": ["sacrificial", "abissal"], "name": "Pacto de Carne", "effect": "O mais perigoso. Sem teto. Sacrifício oferecido ao Abismo." },
+        { "vertentes": ["primal", "braseira"], "name": "Fera Ardente", "effect": "Forma Selvagem envolta em fogo. +1d6 fogo em cada ataque bestial." },
+        { "vertentes": ["primal", "ancianica"], "name": "Fúria Planetária", "effect": "Desastres naturais localizados. Terremoto, tempestade, inundação." },
+        { "vertentes": ["primal", "alem"], "name": "Ciclo Natural", "effect": "Controle sobre vida E morte na natureza. Apodrecer/florescer." },
+        { "vertentes": ["primal", "abissal"], "name": "Corrupção Selvagem", "effect": "Natureza distorcida. Plantas pensam. Animais com geometria errada." },
+        { "vertentes": ["braseira", "ancianica"], "name": "Sol Negro", "effect": "Fogo de Census. Dano massivo. Ilumina E queima tudo no raio." },
+        { "vertentes": ["braseira", "alem"], "name": "Cinzas Vivas", "effect": "Fogo que ressuscita: o que queima renasce como eco de fogo." },
+        { "vertentes": ["braseira", "abissal"], "name": "Chama do Abismo", "effect": "Fogo que queima a realidade. Buracos no espaço onde a chama toca." },
+        { "vertentes": ["ancianica", "alem"], "name": "Lei Reescrita", "effect": "Altera temporariamente uma lei física local (gravidade, tempo, etc.)." },
+        { "vertentes": ["ancianica", "abissal"], "name": "Singularidade", "effect": "Census + Abismo = implosão. O ponto onde ordem e caos se anulam." },
+        { "vertentes": ["alem", "abissal"], "name": "Void", "effect": "Apaga coisas da existência. Não destrói — faz nunca ter existido." },
+        { "vertentes": ["tecnomagia", "braseira"], "name": "Caldeira de Fogo", "effect": "Dispositivos movidos a fogo negro. Única híbrida da Tecnomagia." }
+      ]
+    },
+    "tripla": {
+      "costCap": 6,
+      "prerequisites": [
+        { "type": "custom", "text": "Proficiência em três vertentes (mínimo Rank 3 em cada)." }
+      ],
+      "rules": [
+        "Usa o MAIOR atributo entre as três.",
+        "Sempre causa 1 efeito colateral (sem rolagem — garantido).",
+        "Limite: 1 conjuração tripla por descanso longo.",
+        "Conjurações triplas são eventos narrativos, não ferramentas de combate. Usar uma tripla muda o mundo ao redor."
+      ],
+      "combinations": [
+        { "vertentes": ["feitica", "dogmatica", "ancianica"], "name": "Decreto Cósmico", "effect": "Uma ordem que a realidade obedece completamente. 1 frase. O universo executa." },
+        { "vertentes": ["feitica", "sacrificial", "abissal"], "name": "Pacto Impossível", "effect": "Sacrifica algo que não deveria ser sacrificável (um conceito, uma lei, uma cor)." },
+        { "vertentes": ["feitica", "primal", "alem"], "name": "Gênesis", "effect": "Cria vida temporária do nada. Criatura com vontade própria. Dura 1h." },
+        { "vertentes": ["feitica", "braseira", "alem"], "name": "Fênix", "effect": "Morre em explosão de fogo. Renasce em 1d4 turnos com 50% HP. 1x TOTAL." },
+        { "vertentes": ["dogmatica", "sacrificial", "ancianica"], "name": "Ascensão", "effect": "O conjurador se torna avatar do Conceito. 1 min. Poder de semideus. Depois: vazio." },
+        { "vertentes": ["dogmatica", "primal", "braseira"], "name": "Juízo Selvagem", "effect": "Fogo sagrado que só queima os impuros (definido pelo dogma). Aliados imunes." },
+        { "vertentes": ["dogmatica", "alem", "abissal"], "name": "Apocalipse", "effect": "Invoca a morte E o caos na mesma área. Tudo morre e a realidade racha." },
+        { "vertentes": ["sacrificial", "primal", "braseira"], "name": "Autoimolação Bestial", "effect": "Transforma-se em besta de fogo. Poder imenso. O corpo original se perde." },
+        { "vertentes": ["sacrificial", "ancianica", "abissal"], "name": "O Preço Final", "effect": "Sacrifica a existência. Efeito sem limite. O personagem deixa de existir." },
+        { "vertentes": ["sacrificial", "alem", "abissal"], "name": "Nada Absoluto", "effect": "Apaga uma coisa da realidade permanentemente. Custo: parte da alma do conjurador." },
+        { "vertentes": ["primal", "ancianica", "alem"], "name": "Ciclo Perfeito", "effect": "Controle total sobre vida, morte e renascimento numa área. Duração: 1 min." },
+        { "vertentes": ["primal", "braseira", "abissal"], "name": "Inferno Vivo", "effect": "A natureza pega fogo com consciência. Floresta que caça. Pesadelo ecológico." },
+        { "vertentes": ["braseira", "ancianica", "abissal"], "name": "Estrela Negra", "effect": "Cria um sol miniatura de fogo abissal. Destrói tudo em 30m. Incluindo o conjurador." },
+        { "vertentes": ["braseira", "ancianica", "alem"], "name": "Purgatório", "effect": "Zona onde ninguém morre mas todos queimam. Cura E dano simultâneos. Loop de agonia." },
+        { "vertentes": ["feitica", "dogmatica", "sacrificial"], "name": "Contrato Divino", "effect": "Pacto escrito com fé como testemunha. Inquebrável. Consequências cósmicas." },
+        { "vertentes": ["feitica", "abissal", "alem"], "name": "Reescrever a Morte", "effect": "Traz alguém de volta. De verdade. Custo: a realidade ao redor se distorce." }
+      ]
+    }
+  },
+  "sampleConjurations": [
+    { "name": "Projétil básico", "effect": "dano-direto", "form": "projetil", "range": "curto", "intensity": "leve", "cost": 0 },
+    { "name": "Bola de fogo", "effect": "dano-direto", "form": "explosao", "range": "medio", "intensity": "moderado", "cost": 3 },
+    { "name": "Escudo pessoal", "effect": "buff", "form": "self", "range": "self", "intensity": "moderado", "cost": 1, "note": "+4 DP" },
+    { "name": "Cura de toque", "effect": "cura", "form": "toque", "range": "toque", "intensity": "forte", "cost": 2 },
+    { "name": "Aprisionar", "effect": "controle", "form": "marca", "range": "longo", "intensity": "forte", "cost": 5, "note": "Híbrida dupla" },
+    { "name": "Aura de medo", "effect": "debuff", "form": "aura", "range": "self", "intensity": "leve", "cost": 0 },
+    { "name": "Bombardeio arcano", "effect": "dano-direto", "form": "explosao", "range": "extremo", "intensity": "devastador", "cost": 7, "note": "Abissal (excedente gera dano/corrupção)" },
+    { "name": "Cura em área", "effect": "cura", "form": "aura", "range": "self", "intensity": "moderado", "cost": 1 },
+    { "name": "Corrente relâmpago", "effect": "dano-direto", "form": "corrente", "range": "medio", "intensity": "moderado", "cost": 4 }
+  ]
+}

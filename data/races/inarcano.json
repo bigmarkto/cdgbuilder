@@ -1,0 +1,52 @@
+{
+  "id": "inarcano",
+  "name": "Inarcano",
+  "source": "CDG_RacasDef.md",
+  "description": "Mestres da Criação. Descendentes diretos de uma linhagem que não tem conexão com energia cósmica; em vez de chorar, inventaram. Seres de adaptação radical. Criaram motores a vapor, lentes ópticas, autômatos e Tecnomagia. Orelhas pontudas, traços delicados, estatura esguia; olhos em tons metálicos. Vivem até 200 anos.",
+  "hitDie": "d6",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "INT": 2, "ENG": 1 }
+  },
+  "traits": [
+    {
+      "id": "mente-analitica",
+      "name": "Mente Analítica",
+      "description": "Diante de um problema — mecanismo trancado, puzzle lógico, crise — a mente Inarcana acessa ângulos que outras raças raramente consideram."
+    },
+    {
+      "id": "artifice-nato",
+      "name": "Artífice Nato",
+      "description": "Itens criados por Inarcanos possuem 1 qualidade acima do padrão.",
+      "modifiers": [
+        { "type": "custom", "text": "Crafting: itens produzidos têm +1 nível de qualidade." }
+      ]
+    },
+    {
+      "id": "resistencia-arcana",
+      "name": "Resistência Arcana",
+      "description": "Séculos de convivência com a ausência de magia direta produziram resistência inesperada: efeitos mágicos encontram mais dificuldade para se fixar em um corpo Inarcano.",
+      "modifiers": [
+        { "type": "custom", "text": "Vantagem ou bônus para resistir a efeitos mágicos que tentam se fixar no corpo." }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "o-silencio",
+      "name": "O Silêncio",
+      "description": "A magia que toca o próprio corpo simplesmente não funciona da mesma forma. Não é negação, é uma lacuna fundamental que nenhuma tecnologia preencheu completamente."
+    },
+    {
+      "id": "cura-reduzida",
+      "name": "Cura Reduzida",
+      "description": "Feitiços de cura operam com metade de sua eficácia normal.",
+      "modifiers": [
+        { "type": "custom", "text": "Feitiços de cura: 50% de eficácia." }
+      ]
+    }
+  ],
+  "subtypes": []
+}

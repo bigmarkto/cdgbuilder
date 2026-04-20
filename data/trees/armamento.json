@@ -1,0 +1,205 @@
+{
+  "id": "armamento",
+  "name": "Armamento",
+  "source": "CDG_Progressao_P1.md",
+  "description": "Especializacao em Armas — AGI / POT. Enquanto Corpo e sobre o guerreiro desarmado, Armamento e sobre a extensao mortal. Espadas, arcos, machados, martelos — cada arma e uma filosofia de combate diferente.",
+  "atributoChave": "AGI / POT",
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Fundacao Marcial",
+      "prerequisites": [],
+      "abilities": [
+        { "id": "espadachim", "name": "Espadachim", "cost": 50, "description": "+1 dano com espadas. Pode sacar/embainhar como acao livre." },
+        { "id": "machador", "name": "Machador", "cost": 50, "description": "+1 dano com machados. Machados ignoram 1 ponto de DP do alvo." },
+        { "id": "marteleiro", "name": "Marteleiro", "cost": 50, "description": "+1 dano com martelos/contundentes. Chance de Atordoar: em critico, alvo CON DT 12 ou Atordoado 1 turno." },
+        { "id": "hasteiro", "name": "Hasteiro", "cost": 50, "description": "+1 dano com armas de haste. Alcance efetivo +1,5m." },
+        { "id": "arqueiro", "name": "Arqueiro", "cost": 50, "description": "+1 dano com arcos. Sem desvantagem em alcance medio." },
+        { "id": "besteiro", "name": "Besteiro", "cost": 50, "description": "+1 dano com bestas. Ignore 2 pontos de DP do alvo (penetracao)." },
+        { "id": "arremessador", "name": "Arremessador", "cost": 50, "description": "+1 dano com armas de arremesso. Alcance +50%." },
+        {
+          "id": "dualista",
+          "name": "Dualista",
+          "cost": 50,
+          "description": "Pode lutar com arma em cada mao sem penalidade (ambas devem ser leves).",
+          "prerequisites": [ { "type": "attribute", "attr": "AGI", "min": 3 } ]
+        },
+        { "id": "escudeiro", "name": "Escudeiro", "cost": 50, "description": "+1 DP com escudo equipado. Pode usar escudo para empurrar (1d4 contundente + empurrar 1,5m)." },
+        {
+          "id": "saque-rapido",
+          "name": "Saque Rapido",
+          "cost": 50,
+          "description": "Sacar arma nao custa acao. +2 Iniciativa quando arma esta embainhada no inicio do combate.",
+          "prerequisites": [ { "type": "attribute", "attr": "AGI", "min": 2 } ]
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Mestre de Armas",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Armamento" } ],
+      "abilities": [
+        {
+          "id": "corte-letal",
+          "name": "Corte Letal",
+          "cost": 100,
+          "description": "Espadas: critico em 19-20. Em critico: +2d6 dano adicional.",
+          "prerequisites": [ { "type": "talent", "id": "espadachim" } ]
+        },
+        {
+          "id": "rachar",
+          "name": "Rachar",
+          "cost": 100,
+          "description": "Machados: ao acertar, pode gastar Acao Bonus pra tentar destruir escudo/armadura do alvo (POT DT 15).",
+          "prerequisites": [ { "type": "talent", "id": "machador" } ]
+        },
+        {
+          "id": "impacto-sismico",
+          "name": "Impacto Sismico",
+          "cost": 100,
+          "description": "Martelos: ao acertar, criaturas a 1,5m do alvo fazem AGI DT 12 ou sofrem metade do dano (onda de choque).",
+          "prerequisites": [ { "type": "talent", "id": "marteleiro" } ]
+        },
+        {
+          "id": "muralha-de-hastes",
+          "name": "Muralha de Hastes",
+          "cost": 100,
+          "description": "Armas de haste: ataques de oportunidade tem alcance de 3m. +1d6 dano em ataques de oportunidade.",
+          "prerequisites": [ { "type": "talent", "id": "hasteiro" } ]
+        },
+        {
+          "id": "tiro-preciso",
+          "name": "Tiro Preciso",
+          "cost": 100,
+          "description": "Arcos: pode mirar (Acao). Proximo ataque: +4 acerto, +1d8 dano, ignora cobertura parcial.",
+          "prerequisites": [ { "type": "talent", "id": "arqueiro" } ]
+        },
+        {
+          "id": "perfurar-blindagem",
+          "name": "Perfurar Blindagem",
+          "cost": 100,
+          "description": "Bestas: ignore 4 pontos de DP total. Eficaz contra armadura pesada.",
+          "prerequisites": [ { "type": "talent", "id": "besteiro" } ]
+        },
+        {
+          "id": "chuva-de-laminas",
+          "name": "Chuva de Laminas",
+          "cost": 100,
+          "description": "1x/Descanso Curto: arremesse 3 armas em um unico turno (uma acao, tres ataques separados).",
+          "prerequisites": [ { "type": "talent", "id": "arremessador" } ]
+        },
+        {
+          "id": "danca-das-laminas",
+          "name": "Danca das Laminas",
+          "cost": 100,
+          "description": "Dual wield: ao acertar com arma principal, ataque com a segunda e acao livre (nao bonus). Total 3 ataques/turno possivel.",
+          "prerequisites": [ { "type": "talent", "id": "dualista" } ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Arsenal Vivo",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Armamento" } ],
+      "abilities": [
+        {
+          "id": "execucao-de-lamina",
+          "name": "Execucao de Lamina",
+          "cost": 200,
+          "description": "Espadas: contra alvo <33% HP, dano dobrado. Matar com isso e silencioso e limpo (Intimidacao +4 a quem viu).",
+          "prerequisites": [ { "type": "talent", "id": "corte-letal" } ]
+        },
+        {
+          "id": "tiro-impossivel",
+          "name": "Tiro Impossivel",
+          "cost": 200,
+          "description": "Arcos: alcance maximo dobrado. Pode acertar alvos atras de cobertura total (curvar a flecha, 1x/Descanso Curto).",
+          "prerequisites": [ { "type": "talent", "id": "tiro-preciso" } ]
+        },
+        {
+          "id": "moinho-de-laminas",
+          "name": "Moinho de Laminas",
+          "cost": 200,
+          "description": "Dual wield: 1x/Descanso Curto, faca 4 ataques em um turno. Cada acerto em alvo diferente da +1 dano ao proximo.",
+          "prerequisites": [ { "type": "talent", "id": "danca-das-laminas" } ]
+        },
+        {
+          "id": "destruidor",
+          "name": "Destruidor",
+          "cost": 200,
+          "description": "Machados/Martelos: ataques causam dano a objetos/estruturas como se fossem criticos. Pode destruir portas, paredes finas, equipamento em 1 golpe.",
+          "prerequisites": [
+            { "type": "talent", "id": "rachar" },
+            { "type": "talent", "id": "impacto-sismico" }
+          ]
+        },
+        {
+          "id": "contra-ataque-perfeito",
+          "name": "Contra-Ataque Perfeito",
+          "cost": 200,
+          "description": "Reacao: ao ser atacado e o atacante errar, faca um ataque imediato com +4 de bonus e +1d8 dano.",
+          "prerequisites": [
+            { "type": "custom", "text": "Qualquer 3 especializacoes Tier 2" }
+          ]
+        },
+        {
+          "id": "arma-lendaria",
+          "name": "Arma Lendaria",
+          "cost": 200,
+          "description": "Escolha 1 arma especifica (nomeie-a). Essa arma ganha +2 acerto, +2 dano permanente nas suas maos. Se perdida, pode ser 'chamada' a 30m (1x/dia).",
+          "prerequisites": [
+            { "type": "custom", "text": "Qualquer especializacao Tier 2" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Grau-Mestre",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Armamento" } ],
+      "abilities": [
+        {
+          "id": "um-com-a-arma",
+          "name": "Um Com a Arma",
+          "cost": 400,
+          "description": "Arma Lendaria ganha +4/+4 total. Critico em 18-20. A arma e indestrutivel e retorna a mao de qualquer distancia.",
+          "prerequisites": [ { "type": "talent", "id": "arma-lendaria" } ]
+        },
+        {
+          "id": "tempestade-de-aco",
+          "name": "Tempestade de Aco",
+          "cost": 400,
+          "description": "1x/Descanso Longo: faca 6 ataques em um turno contra qualquer combinacao de alvos em alcance. Cada acerto mantem o momentum (+1 cumulativo).",
+          "prerequisites": [
+            { "type": "custom", "text": "Requer Moinho de Laminas ou Chuva de Laminas" }
+          ]
+        },
+        {
+          "id": "tiro-que-mata-deuses",
+          "name": "Tiro que Mata Deuses",
+          "cost": 400,
+          "description": "1x/Descanso Longo: declare um alvo que voce pode ver. O proximo ataque ranged acerta automaticamente e causa dano maximo + 4d10 adicional. Ignora toda resistencia.",
+          "prerequisites": [ { "type": "talent", "id": "tiro-impossivel" } ]
+        },
+        {
+          "id": "mil-batalhas",
+          "name": "Mil Batalhas",
+          "cost": 400,
+          "description": "Passivo: +2 DP permanente. +2 acerto com todas as armas. Reacoes ilimitadas contra ataques corpo-a-corpo (1 por atacante). Seu corpo E a arma.",
+          "prerequisites": [
+            { "type": "talent", "id": "contra-ataque-perfeito" },
+            { "type": "custom", "text": "5 especializacoes" }
+          ]
+        }
+      ]
+    }
+  ]
+}

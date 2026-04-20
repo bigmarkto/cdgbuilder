@@ -1,0 +1,38 @@
+{
+  "id": "tecnomagia",
+  "name": "Tecnomagia",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente da Máquina. Vertente que não canaliza Energia Cósmica pelo corpo — canaliza por OBJETOS. Dispositivos, runas, cristais, mecanismos. O conjurador não sente a energia fluir; ele a mede, armazena e dispara com precisão mecânica. É a vertente dos Inarcanos por natureza, já que O Silêncio os impede de usar magia no próprio corpo.",
+  "governingAttributes": ["ENG", "INT"],
+  "maxRankNormal": 4,
+  "identity": "Itens, máquinas, Inarcanos",
+  "tags": ["tecnologia", "inarcano"],
+  "extraRules": [
+    {
+      "id": "dispositivo-obrigatorio",
+      "name": "Dispositivo Obrigatório",
+      "description": "Sem dispositivo, não conjura. Ponto final. Dispositivos podem ser: cajado rúnico, luva mecânica, arma modificada, cristal de armazenamento."
+    },
+    {
+      "id": "armazenamento",
+      "name": "Armazenamento",
+      "description": "Pode carregar conjurações pré-montadas em dispositivos. Capacidade: ENG cargas por dispositivo. Carregar custa Energia + 10 min por carga. Disparar uma carga armazenada é Ação Bônus (em vez de Ação Principal)."
+    },
+    {
+      "id": "precisao-mecanica",
+      "name": "Precisão Mecânica",
+      "description": "Conjurações de Tecnomagia não podem ter falha crítica. Rolou 1 natural? O dispositivo falha mas não causa efeito adverso. Só não funciona."
+    },
+    {
+      "id": "isolamento",
+      "name": "Isolamento",
+      "description": "Tecnomagia NÃO combina com outras vertentes em conjurações híbridas. A única exceção é a combinação Tecnomagia + Braseira (Caldeira de Fogo)."
+    },
+    {
+      "id": "manutencao",
+      "name": "Manutenção",
+      "description": "Dispositivos precisam de manutenção. 1h por semana ou perdem 1 carga máx."
+    }
+  ],
+  "conjurations": []
+}

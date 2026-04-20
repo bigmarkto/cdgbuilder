@@ -1,0 +1,24 @@
+{
+  "id": "cobertura",
+  "name": "Cobertura",
+  "source": "CDG Vale Desperto v2.0 (port)",
+  "description": "Cobertura altera DP contra ataques à distância/magias de projétil e o bônus em testes de Reflexos contra áreas de efeito. Determinada pelo Mestre conforme a obstrução entre atacante e alvo.",
+  "tiers": [
+    { "id": "nenhuma", "name": "Nenhuma", "dpBonus": 0, "reflexBonus": 0, "blocksLineOfSight": false, "description": "Campo aberto ou alvo totalmente exposto." },
+    { "id": "leve", "name": "Leve", "dpBonus": 2, "reflexBonus": 1, "blocksLineOfSight": false, "examples": ["vegetação rala", "cortina", "mesa virada parcial"], "description": "Obstrui ≤25% do alvo. Interposição simbólica — não bloqueia linha de visão." },
+    { "id": "padrao", "name": "Padrão", "dpBonus": 4, "reflexBonus": 2, "blocksLineOfSight": false, "examples": ["muro na cintura", "árvore", "aliado interposto"], "description": "Obstrui ~50% do alvo. Cobertura de combate típica." },
+    { "id": "superior", "name": "Superior", "dpBonus": 6, "reflexBonus": 3, "blocksLineOfSight": false, "examples": ["seteira", "parede com fresta", "trincheira rasa"], "description": "Obstrui ~75% do alvo. Apenas parte vital exposta." },
+    { "id": "total", "name": "Total", "dpBonus": null, "reflexBonus": null, "blocksLineOfSight": true, "description": "Nenhuma linha de visão clara. O alvo não pode ser atingido diretamente — requer ataque de área, magia sem LoS ou flanqueio." }
+  ],
+  "stacking": "Só a maior cobertura aplicável vale. Não empilhar.",
+  "interactions": [
+    { "id": "flanquear", "name": "Flanquear Ignora Cobertura", "description": "Personagem que flanqueia o alvo ignora cobertura fornecida por parede/objeto na direção flanqueada." },
+    { "id": "magia-sem-los", "name": "Magia sem Linha de Visão", "description": "Magias com alcance 'toque' ou 'área sem LoS' ignoram cobertura contra alvos dentro da área." },
+    { "id": "reflexos-area", "name": "Cobertura em Áreas de Efeito", "description": "Contra áreas de efeito (explosão, nuvem), a cobertura soma ao teste de Reflexos em vez de ao DP." },
+    { "id": "aliado-como-cobertura", "name": "Aliado Interposto", "description": "Aliado interposto fornece cobertura Leve. Se for 1 categoria maior, fornece Padrão." }
+  ],
+  "notes": [
+    "Cobertura Total usa `dpBonus: null` porque não é aditivo — representa bloqueio absoluto.",
+    "Para ataques corpo-a-corpo, apenas Cobertura Superior/Total aplicam (a maioria das interposições não atrapalha alcance curto)."
+  ]
+}

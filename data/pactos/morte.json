@@ -1,0 +1,29 @@
+{
+  "id": "morte",
+  "name": "Pacto de Morte",
+  "source": "CDG_Pactos.md",
+  "patron": "Ancião da Morte",
+  "description": "Pacto firmado com o Conceito de Morte. Morte não reza; ela simplesmente é. Fornece domínio sobre o fim — necromancia, comunicação com mortos, drenagem vital.",
+  "boons": [
+    {
+      "id": "dominio-da-morte",
+      "name": "Domínio da Morte",
+      "description": "Necromancia, falar com mortos, drenar vida, resistência necrótica, invocar espectros.",
+      "modifiers": [
+        { "type": "custom", "text": "Acesso a necromancia, comunicação com mortos, drenagem de vida, resistência necrótica e invocação de espectros." }
+      ]
+    }
+  ],
+  "costs": [
+    {
+      "id": "vidas",
+      "name": "Vidas",
+      "description": "Cada uso do poder exige uma vida ceifada (pode ser animal para poderes menores). O pactuante para de sonhar — o sono se torna vazio negro."
+    }
+  ],
+  "missions": [
+    "Garantir que a morte chegue onde deve.",
+    "Matar imortais.",
+    "Destruir mortos-vivos (paradoxalmente — são uma afronta à Morte verdadeira)."
+  ]
+}

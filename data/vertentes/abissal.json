@@ -1,0 +1,37 @@
+{
+  "id": "abissal",
+  "name": "Abissal",
+  "source": "CDG_Energia_Cosmica.md",
+  "description": "A Vertente do Que Existe Abaixo. O que existia antes de tudo. Antes dos Anciões nomearem os Conceitos, antes da Census Aurea dar vida ao Planeta, antes das leis da física se estabelecerem — havia o Abismo. Conjurar pelo Abissal é mergulhar a mão no tecido cru da pré-realidade e puxar algo de volta. O problema é que a pré-realidade não obedece regras. E o que você puxa pode não ser o que você queria.",
+  "governingAttributes": ["FOC", "CON"],
+  "maxRankNormal": null,
+  "identity": "Abaixo da realidade, sem lei",
+  "tags": ["abissal", "corrupcao", "sem-lei"],
+  "extraRules": [
+    {
+      "id": "sem-teto",
+      "name": "Sem Teto",
+      "description": "Abissal pode ir além de qualquer limite de custo. Cada ponto acima de 4 causa 1d6 de dano PSÍQUICO ao conjurador + 1 ponto de Corrupção. Corrupção acumula permanentemente. A cada 5 pontos de Corrupção, algo MUDA no conjurador (olhos mudam, sombra se comporta diferente, sonhos ficam geométricos, etc.). Com 20+ Corrupção, o Mestre pode começar a intervir nas ações do personagem."
+    },
+    {
+      "id": "distorcao",
+      "name": "Distorção",
+      "description": "Conjurações Abissais podem ignorar resistências mágicas. O efeito não é mágico no sentido tradicional — é pré-mágico. Antimagia não funciona. MAS: Cromo Negativo dos Krominura AMPLIFICA o Abissal (efeito +1 grau em zonas Krominura)."
+    },
+    {
+      "id": "instabilidade",
+      "name": "Instabilidade",
+      "description": "Após conjurar, role 1d20.",
+      "table": [
+        { "roll": "1-3", "effect": "Efeito colateral (Mestre descreve algo estranho acontecendo)." },
+        { "roll": "4-20", "effect": "Normal." }
+      ]
+    },
+    {
+      "id": "geometria",
+      "name": "Geometria",
+      "description": "Efeitos de Forma e Alcance podem ser distorcidos. Pode conjurar através de paredes, em ângulos impossíveis, em alvos que não vê. Custo: +1 extra. O efeito descreve a geometria se dobrando."
+    }
+  ],
+  "conjurations": []
+}

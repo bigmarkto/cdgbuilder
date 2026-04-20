@@ -1,0 +1,29 @@
+{
+  "id": "natureza",
+  "name": "Pacto de Natureza",
+  "source": "CDG_Pactos.md",
+  "patron": "Ancião da Natureza",
+  "description": "Pacto firmado com o Conceito de Natureza. Concede domínio sobre o mundo vivo selvagem em troca de repúdio à civilização.",
+  "boons": [
+    {
+      "id": "dominio-natural",
+      "name": "Domínio Natural",
+      "description": "Controle vegetal, falar com bestas, regeneração em ambiente natural, transformação parcial em fera/planta.",
+      "modifiers": [
+        { "type": "custom", "text": "Controle vegetal, falar com bestas, regeneração em ambiente natural, transformação parcial em fera/planta." }
+      ]
+    }
+  ],
+  "costs": [
+    {
+      "id": "civilizacao",
+      "name": "Civilização",
+      "description": "O pactuante não suporta mais cidades (1d6 psíquico/dia em assentamentos grandes). Corpo se torna parcialmente vegetal/animal."
+    }
+  ],
+  "missions": [
+    "Proteger o mundo natural.",
+    "Destruir construções que agridem a terra.",
+    "Libertar animais presos."
+  ]
+}

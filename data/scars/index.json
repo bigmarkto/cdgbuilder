@@ -1,0 +1,228 @@
+{
+  "id": "cicatrizes-index",
+  "name": "Sistema de Cicatrizes",
+  "source": "CDG_Cicatrizes.md",
+  "description": "Cicatrizes do Gatilho sao marcas PERMANENTES no corpo e na alma do personagem, causadas por momentos de poder extremo, trauma sobrenatural ou sacrificio. Nao sao ferimentos comuns — sao a evidencia fisica de que o personagem tocou algo alem do que um mortal deveria tocar, e SOBREVIVEU. O nome do sistema de RPG vem daqui. Cada Cicatriz tem um CUSTO (efeito negativo permanente) e um GATILHO (bonus ativavel). Cicatrizes NAO sao punicao. Sao CONSEQUENCIA e RECOMPENSA.",
+  "principles": {
+    "central": "Cicatrizes NAO sao punicao. Sao CONSEQUENCIA e RECOMPENSA. Cada Cicatriz tem um CUSTO (efeito negativo permanente) e um GATILHO (bonus ativavel). O personagem fica mais MARCADO mas tambem mais PODEROSO.",
+    "tradeoff": "Poder tem preco, e o preco esta escrito na pele."
+  },
+  "sources": [
+    { "fonte": "Sobrecarga do Poder Original", "quando": "Rolar 8 na tabela de Sobrecarga Severa", "tipo": "Cicatriz de Poder" },
+    { "fonte": "Corrupcao", "quando": "Ao atingir cada limiar (25/50/75)", "tipo": "Cicatriz de Corrupcao" },
+    { "fonte": "Quase-Morte", "quando": "Cair a 0 HP e ser estabilizado 3+ vezes na campanha", "tipo": "Cicatriz de Guerra" },
+    { "fonte": "Sacrificio", "quando": "Usar Ritual de Sangue Tier 2+", "tipo": "Cicatriz de Sacrificio" },
+    { "fonte": "Pacto", "quando": "Firmar Pacto de Alma ou Conceito com Anciao", "tipo": "Cicatriz de Pacto" },
+    { "fonte": "Trauma Narrativo", "quando": "Mestre concede apos evento extremo (decisao do Mestre)", "tipo": "Cicatriz Narrativa" },
+    { "fonte": "Evolucao do Poder Original", "quando": "Ao atingir Rank 3 e Rank 4", "tipo": "Cicatriz de Ascensao" },
+    { "fonte": "Perda de Aliado", "quando": "Um aliado proximo morre permanentemente", "tipo": "Cicatriz de Luto" },
+    { "fonte": "Exposicao a Anciao", "quando": "Contato direto com Anciao ou Conceito puro", "tipo": "Cicatriz Conceitual" }
+  ],
+  "expectedFrequency": {
+    "nivel1a4": "0-2 Cicatrizes (inicio, poucas fontes)",
+    "nivel5a8": "2-5 Cicatrizes (campanha aquece, Sobrecarga e Corrupcao comecam)",
+    "nivel9a12": "5-10 Cicatrizes (alto nivel, confrontos com Ancioes, Pactos, Rituais)",
+    "mediaNivel12": "~6-8 Cicatrizes. Jogadores cautelosos: 3-4. Imprudentes: 10+"
+  },
+  "types": [
+    {
+      "id": "cicatriz-de-poder",
+      "name": "Cicatriz de Poder",
+      "roll": "d12",
+      "description": "Ganhas por Sobrecarga do Poder Original. O poder se inscreve no corpo.",
+      "table": [
+        { "roll": 1, "marca": "Veias visiveis que brilham na cor do poder.", "custo": "Furtividade -1 (brilho sutil constante).", "gatilho": "Ao usar Poder Original: +1d4 dano por 1 turno. 1x/Desc.Curto." },
+        { "roll": 2, "marca": "Cicatriz em espiral no braco dominante.", "custo": "Dor ao segurar armas pesadas (-1 Luta Armada com armas pesadas).", "gatilho": "Ao sofrer Sobrecarga: pode ignorar 1 condicao Leve. 1x/dia." },
+        { "roll": 3, "marca": "Olho muda de cor permanentemente.", "custo": "PER visual -1 com esse olho.", "gatilho": "Visao magica: detecta magia a 6m passivamente com o olho marcado." },
+        { "roll": 4, "marca": "Marcas simetricas nos antebracos (como runas).", "custo": "Queimam ao tocar Census Aurea (-1 ao manipular artefatos de Census).", "gatilho": "Ao tocar criatura magica: sabe 1 fraqueza dela. 1x/Desc.Longo." },
+        { "roll": 5, "marca": "Cicatriz no peito sobre o coracao.", "custo": "Descanso Longo cura 1 dado de HP a menos.", "gatilho": "Ao cair abaixo de 25% HP: Poder Original custa metade por 2 turnos." },
+        { "roll": 6, "marca": "Cabelo muda de cor em uma mecha (cor do poder).", "custo": "Cosmetico (sem custo mecanico). Mas: NPCs percebem algo 'errado'.", "gatilho": "1x/dia: sentir se alguem usou poder sobrenatural nos ultimos 10 min a 18m." },
+        { "roll": 7, "marca": "Pele ao redor da cicatriz tem textura diferente (escamas, metal, gelo, etc).", "custo": "Sensivel a elemento oposto do poder (+1d4 dano do elemento oposto).", "gatilho": "Resistencia parcial ao elemento do poder (metade dano, passivo)." },
+        { "roll": 8, "marca": "Voz muda sutilmente (mais grave, eco, metalica).", "custo": "Intimidacao +1, Persuasao -1.", "gatilho": "Voz de Comando: 1x/dia, 1 palavra, 1 alvo, PRE DT 14 ou obedece." },
+        { "roll": 9, "marca": "Sombra se comporta errado (atrasada, forma diferente).", "custo": "Criaturas sobrenaturais percebem voce automaticamente.", "gatilho": "Pode fundir-se com sombra propria 1x/dia (invisivel 1 turno, so no escuro)." },
+        { "roll": 10, "marca": "Temperatura corporal muda (sempre quente ou sempre frio).", "custo": "Desconforto social (aperto de mao perturba). -1 em primeiro contato Social.", "gatilho": "Imune a condicao Hipotermia OU Hipertermia (depende da direcao)." },
+        { "roll": 11, "marca": "Marca na nuca que pulsa quando poder e usado.", "custo": "Dor de cabeca constante sutil (-1 Concentracao base).", "gatilho": "Ao manter Concentracao no Poder: duracao +50% antes de precisar testar." },
+        { "roll": 12, "marca": "Escolha do jogador (com aprovacao do Mestre).", "custo": "Escolha do jogador.", "gatilho": "Escolha do jogador. Deve ser proporcional aos outros." }
+      ]
+    },
+    {
+      "id": "cicatriz-de-guerra",
+      "name": "Cicatriz de Guerra",
+      "roll": "d12",
+      "description": "Ganhas por quase-morte. O corpo lembra o que a mente tenta esquecer.",
+      "table": [
+        { "roll": 1, "marca": "Cicatriz longa no rosto (corte diagonal).", "custo": "Intimidacao +1, Persuasao -1 com desconhecidos.", "gatilho": "Ao ser atingido no rosto: furia — +2 dano proximo ataque. Passivo." },
+        { "roll": 2, "marca": "Orelha parcialmente cortada/queimada.", "custo": "PER auditivo -1.", "gatilho": "Ao falhar PER auditivo: pode rerolar 1x/dia." },
+        { "roll": 3, "marca": "Dedos rigidos na mao nao-dominante.", "custo": "Desvantagem em testes que exigem DUAS maos coordenadas.", "gatilho": "Agarrao com mao marcada: +2 (garra permanente)." },
+        { "roll": 4, "marca": "Cicatriz profunda no abdomen.", "custo": "Resistencia Fisica -1 contra venenos ingeridos.", "gatilho": "Ao ser envenenado: pode forcar vomito (Acao Bonus) — remove veneno ingerido." },
+        { "roll": 5, "marca": "Joelho danificado (manca levemente).", "custo": "Vel -1,5m.", "gatilho": "Ao ser Derrubado: levanta como Acao Livre (em vez de metade do movimento)." },
+        { "roll": 6, "marca": "Queimadura extensa em um braco.", "custo": "Sensivel a fogo (+1 dano fogo recebido).", "gatilho": "Resistencia a dor: ignora 1 nivel de Exaustao por 1h. 1x/dia." },
+        { "roll": 7, "marca": "Costelas quebradas que soldaram errado.", "custo": "-2 HP maximo permanente.", "gatilho": "Ao absorver dano contundente: -2 dano recebido (osso mais denso). Passivo." },
+        { "roll": 8, "marca": "Cicatriz na garganta (quase decapitado).", "custo": "Voz rouca. -1 Oratoria.", "gatilho": "Ao cair a 0 HP: automaticamente estabiliza no primeiro teste de morte. 1x/dia." },
+        { "roll": 9, "marca": "Olho leitoso (quase perdeu a visao).", "custo": "PER visual -1.", "gatilho": "Olho ve o invisivel a 3m (fragmento de visao alem). Passivo." },
+        { "roll": 10, "marca": "Marca de mordida profunda (criatura monstruosa).", "custo": "Criaturas do mesmo tipo da que mordeu sentem o cheiro: +2 para te rastrear.", "gatilho": "Instinto: +2 Iniciativa contra o tipo de criatura que mordeu. Passivo." },
+        { "roll": 11, "marca": "Dor fantasma no membro ferido (dor cronica).", "custo": "Em clima frio: -1 em testes fisicos (dor piora).", "gatilho": "Preve mudanca de clima com 6h de antecedencia (dor = barometro). +2 Sobrevivencia clima." },
+        { "roll": 12, "marca": "Escolha do jogador.", "custo": "Escolha do jogador.", "gatilho": "Escolha do jogador." }
+      ]
+    },
+    {
+      "id": "cicatriz-de-corrupcao",
+      "name": "Cicatriz de Corrupcao",
+      "roll": "d8",
+      "description": "Ganhas ao atingir limiares de Corrupcao (25/50/75). A escuridao se inscreve.",
+      "table": [
+        { "roll": 1, "marca": "Veias negras visiveis num membro.", "custo": "Cura magica nesse membro tem 50% eficacia.", "gatilho": "Toque necrotico: ataque desarmado com esse membro causa +1d6 necrotico." },
+        { "roll": 2, "marca": "Olhos escurecem (iris quase negra).", "custo": "Visao no escuro perde 9m OU ganha sensibilidade a luz (+1 dano radiance).", "gatilho": "Visao da Corrupcao: ve nivel de Corrupcao de criaturas a 9m. Passivo." },
+        { "roll": 3, "marca": "Sombra tem vida propria (move independente).", "custo": "Nao pode esconder a Corrupcao. Seres sensiveis sabem automaticamente.", "gatilho": "Sombra pode manipular 1 objeto leve a 3m como Acao Bonus. 3x/dia." },
+        { "roll": 4, "marca": "Unhas escurecem e endurecem.", "custo": "Cosmetico perturbador. -1 Social com religiosos/sacerdotes.", "gatilho": "Garras: ataque desarmado causa 1d6 cortante (permanente, arma natural)." },
+        { "roll": 5, "marca": "Pele racha em padrao ao redor do coracao.", "custo": "Dano necrotico recebido +2 (corpo ja esta comprometido).", "gatilho": "Absorver necrotico: 1x/dia, converte dano necrotico recebido em cura igual." },
+        { "roll": 6, "marca": "Voz ganha eco sobrenatural quando irritado.", "custo": "Sussurrar e impossivel quando estressado. Furtividade social -2.", "gatilho": "Voz de Terror: 1x/dia, Intimidacao com Vantagem + alvo faz RES DT 14 ou Amedrontado 1 turno." },
+        { "roll": 7, "marca": "Temperatura cai ao redor (permanente, sutil).", "custo": "Plantas murcham ao toque prolongado. Animais fogem.", "gatilho": "Aura de Desconforto: criaturas a 1,5m sofrem -1 Concentracao. Passivo." },
+        { "roll": 8, "marca": "Marca unica definida pela fonte de Corrupcao (Mestre decide).", "custo": "Mestre decide (proporcional).", "gatilho": "Mestre decide (proporcional)." }
+      ]
+    },
+    {
+      "id": "cicatriz-de-sacrificio",
+      "name": "Cicatriz de Sacrificio",
+      "roll": "d8",
+      "description": "Ganhas por Rituais de Sangue Tier 2+. O preco pago se escreve permanentemente.",
+      "table": [
+        { "roll": 1, "marca": "Palma da mao com cicatriz de corte ritual (nao fecha).", "custo": "Mao sangra quando usa magia (cosmetico + 1 HP/conjuracao, nao curavel).", "gatilho": "Rituais de Sangue tem -2 na DT (sangue flui mais facil)." },
+        { "roll": 2, "marca": "Cabelo completamente branco.", "custo": "Aparenta 10 anos mais velho. NPCs tratam como idoso.", "gatilho": "Sabedoria aparente: +2 em testes de Historia, Religiao, Ocultismo com NPCs." },
+        { "roll": 3, "marca": "Cicatriz circular no peito (onde o coracao foi 'oferecido').", "custo": "Sentir emocoes fortes causa dor (1 HP em momentos de stress emocional extremo).", "gatilho": "Coracao de Pedra: imune a Charme. Passivo." },
+        { "roll": 4, "marca": "Olho de vidro sobrenatural (perdeu o olho no ritual).", "custo": "PER visual -2 (monocular).", "gatilho": "Olho de Vidro ve o plano etereo. Detecta Vesperos, fantasmas e portais." },
+        { "roll": 5, "marca": "Marcas de queimadura nas pontas dos dedos.", "custo": "Nao sente temperatura com as maos. -2 em testes de toque fino.", "gatilho": "Manuseio de materiais magicos sem risco. Imune a maldicao de contato." },
+        { "roll": 6, "marca": "Cicatriz ao redor do pescoco (como se enforcado).", "custo": "Voz permanentemente rouca. Nao pode gritar (max volume = fala normal).", "gatilho": "Ao sussurrar: palavras carregam peso. Persuasao sussurrada tem +2." },
+        { "roll": 7, "marca": "Marca de algemas nos pulsos (sacrificou liberdade).", "custo": "Nao consegue ficar parado por mais de 1h (inquietacao cronica).", "gatilho": "Ao ser preso/agarrado: +4 para escapar. Escorrega de qualquer amarra." },
+        { "roll": 8, "marca": "Escolha do jogador.", "custo": "Escolha do jogador.", "gatilho": "Escolha do jogador." }
+      ]
+    },
+    {
+      "id": "cicatriz-de-pacto",
+      "name": "Cicatriz de Pacto",
+      "roll": "d6",
+      "description": "Ganhas ao firmar Pacto de Alma ou Conceito. A marca do Anciao, literal. O Conceito do Anciao define a tematica.",
+      "table": [
+        { "roll": 1, "marca": "Simbolo do Conceito gravado na pele (parece tatuagem viva).", "custo": "Outros servos do Anciao reconhecem: podem ser aliados OU rivais.", "gatilho": "1x/dia: invocar fragmento do Conceito (efeito tematico menor, DT 10 + PRE)." },
+        { "roll": 2, "marca": "Um membro tem aparencia do Conceito (braco de pedra pra Terra, veias de fogo pra Fogo).", "custo": "Membro e sensivel ao oposto do Conceito (+2 dano do elemento oposto nesse membro).", "gatilho": "Membro e mais forte: +2 em testes fisicos com esse membro (escalada, agarrao, etc)." },
+        { "roll": 3, "marca": "Aura sutil do Conceito (cheiro de cinzas pra Morte, brisa pra Tempo).", "custo": "Impossivel esconder a natureza do Pacto. Deteccao automatica por seres sensiveis.", "gatilho": "Criaturas alinhadas ao Conceito tem reacao neutra-positiva em vez de hostil." },
+        { "roll": 4, "marca": "Sonhos sobre o Conceito toda noite. Vividos, intensos.", "custo": "Descanso Longo as vezes falha (10% chance de nao recuperar, Mestre rola).", "gatilho": "Sonhos profeticos: 1x/semana, o Mestre da 1 pista sobre algo relacionado ao Conceito." },
+        { "roll": 5, "marca": "Olhos mudam para cor do Conceito quando o Pacto e invocado.", "custo": "Olhos brilham sob stress. -2 Furtividade em momentos de tensao.", "gatilho": "Olhar Intimidante: 1x/dia, olhar causa Amedrontado 1 turno (RES DT 12+PRE)." },
+        { "roll": 6, "marca": "Escolha tematica do Mestre baseada no Conceito.", "custo": "Mestre decide.", "gatilho": "Mestre decide." }
+      ]
+    },
+    {
+      "id": "cicatriz-narrativa",
+      "name": "Cicatriz Narrativa",
+      "roll": "Mestre define",
+      "description": "Concedidas pelo Mestre apos eventos extremos. Sao as mais pessoais e unicas. Seguem a regra: CUSTO + GATILHO, proporcionais entre si.",
+      "examples": [
+        { "evento": "Presenciou genocidio", "marca": "Pesadelos cronicos.", "custo": "-1 Desc.Longo.", "gatilho": "Imune a Medo por 1 turno quando protege inocentes." },
+        { "evento": "Traiu aliado proximo", "marca": "Marca de culpa (cosmetica, costas).", "custo": "Aliados sentem desconfianca (-1 Social longo prazo).", "gatilho": "+2 Enganacao permanente." },
+        { "evento": "Perdeu um filho/filha", "marca": "Marca ao redor dos olhos (olheiras permanentes).", "custo": "-1 em tudo quando criancas estao em perigo.", "gatilho": "+4 em TUDO quando protege criancas." },
+        { "evento": "Sobreviveu a explosao de Census Aurea", "marca": "Corpo emana brilho dourado sutil.", "custo": "Detectavel a 30m por magia.", "gatilho": "Resiste a 1 efeito de Census por dia." },
+        { "evento": "Foi escravizado por anos", "marca": "Marcas de corrente nos pulsos.", "custo": "Claustrofobia (-2 em espacos fechados).", "gatilho": "+4 para quebrar/escapar qualquer restricao." }
+      ]
+    },
+    {
+      "id": "cicatriz-de-ascensao",
+      "name": "Cicatriz de Ascensao",
+      "roll": "Fixa por Rank",
+      "description": "Ganhas automaticamente ao atingir Rank 3 e Rank 4 do Poder Original. O poder se inscrevendo.",
+      "ranks": [
+        {
+          "rank": 3,
+          "name": "Cicatriz de Dominio",
+          "description": "O Poder Original marca o corpo de forma definitiva. O jogador escolhe a aparencia. Exemplos: olhos que brilham ao usar o poder, marcas luminosas nos bracos, cabelo que muda de cor, cicatriz em forma do conceito do poder, voz que ecoa, temperatura alterada.",
+          "custoOptions": [
+            "-1 em 1 atributo permanente (qualquer)",
+            "Vulnerabilidade leve ao oposto do poder (+25% dano)",
+            "Condicao cronica leve (dor, insonia parcial, apetite alterado)"
+          ],
+          "gatilhoOptions": [
+            "+2 em 1 atributo por 1 minuto ao usar Poder Original (1x/dia)",
+            "Efeito tematico passivo menor (detectar elemento, resist. parcial, sentido extra)",
+            "Uso extra do Poder Original por dia (+1 uso)"
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "Cicatriz de Transcendencia",
+          "description": "A marca DEFINITIVA. O poder reescreveu parte do corpo permanentemente. Exemplos: membro transformado, aura permanente, olhos completamente diferentes, voz que vibra no sobrenatural, pele com textura do poder, sombra viva.",
+          "custoOptions": [
+            "-2 em 1 atributo permanente",
+            "Vulnerabilidade moderada (+50% dano do oposto)",
+            "Condicao cronica moderada (afeta Descanso, Social, ou Combate)",
+            "Mudanca de aparencia tao severa que altera interacoes sociais (-2 Persuasao geral)"
+          ],
+          "gatilhoOptions": [
+            "+4 em 1 atributo por 1 minuto ao usar Poder (1x/dia)",
+            "Efeito passivo significativo (resist. total a 1 tipo dano, sentido sobrenatural 18m)",
+            "Uso Supremo nao causa Sobrecarga Severa (causa Moderada em vez de Severa)",
+            "Poder Original pode ser usado 1x sem custo por Desc.Longo (uso gratis)"
+          ]
+        }
+      ]
+    }
+  ],
+  "accumulation": {
+    "description": "Cicatrizes se acumulam. Um personagem com 8 Cicatrizes carrega 8 Custos permanentes e 8 Gatilhos ativaveis. Isso muda o personagem FUNDAMENTALMENTE.",
+    "tiers": [
+      { "cicatrizes": "0", "nivelTipico": "1-3", "titulo": "Intocado", "efeito": "Nenhum. Pele lisa. Vida facil." },
+      { "cicatrizes": "1-2", "nivelTipico": "3-5", "titulo": "Marcado", "efeito": "Primeiras historias. Custos manejaveis, gatilhos uteis." },
+      { "cicatrizes": "3-5", "nivelTipico": "5-8", "titulo": "Veterano", "efeito": "Corpo mostra as batalhas. Custos comecam a pesar. Gatilhos sao parte do arsenal." },
+      { "cicatrizes": "6-8", "nivelTipico": "8-10", "titulo": "Cicatrizado", "efeito": "Visivelmente transformado. -3 a -6 acumulado em atributos, mas Gatilhos compensam." },
+      { "cicatrizes": "9-11", "nivelTipico": "10-12", "titulo": "Dilacerado", "efeito": "Quase irreconhecivel. Custos severos. Gatilhos PODEROSOS. Equilibrio fragil." },
+      { "cicatrizes": "12+", "nivelTipico": "12+", "titulo": "Remanescente", "efeito": "Mais cicatriz que pessoa. NPCs reagem com medo/reverencia. Lenda viva. Ou ruina viva." }
+    ],
+    "limiarDeQuebra": {
+      "cicatrizes": 15,
+      "description": "Se um personagem acumular 15 Cicatrizes, o corpo nao aguenta mais. O Mestre e o jogador negociam o que acontece.",
+      "opcoes": [
+        { "id": "aposentadoria", "name": "Aposentadoria", "description": "Personagem se retira. NPC lendario. Novo personagem." },
+        { "id": "transcendencia", "name": "Transcendencia", "description": "Corpo colapsa mas a alma ASCENDE. Vira algo mais. NPC." },
+        { "id": "ultima-missao", "name": "Ultima Missao", "description": "Personagem tem 1 aventura final. Todas Cicatrizes ativam simultaneamente. Poder absoluto por 1 sessao. Depois: morte heroica, permanente, sem ressurreicao." },
+        { "id": "negacao", "name": "Negacao", "description": "Personagem resiste. Vive, mas a proxima Cicatriz (16a) e automaticamente fatal." }
+      ]
+    }
+  },
+  "interactions": [
+    { "sistema": "Corrupcao", "interacao": "Cicatrizes de Corrupcao se acumulam COM a barra de Corrupcao. Se purificar Corrupcao abaixo do limiar, a Cicatriz PERMANECE (o preco ja foi pago)." },
+    { "sistema": "Poder Original", "interacao": "Cicatrizes de Poder e Ascensao amplificam e limitam o poder simultaneamente. Cada Cicatriz e uma evolucao do poder." },
+    { "sistema": "Pactos", "interacao": "Cicatrizes de Pacto sao a marca literal do Anciao. Mesmo quebrando o Pacto, a Cicatriz fica. O Anciao pode 'ativar' a Cicatriz a distancia." },
+    { "sistema": "Rituais de Sangue", "interacao": "Cicatrizes de Sacrificio sao o preco que o Ritual cobrou ALEM do custo mecanico. Sao permanentes mesmo se o efeito do ritual acabar." },
+    { "sistema": "Arvores de Habilidade", "interacao": "Algumas habilidades de Tier 3-4 podem referir-se a Cicatrizes. Ex: 'Se tem 3+ Cicatrizes de Guerra: +2 DP passivo.'" },
+    { "sistema": "Racas", "interacao": "Mandragoras: Cicatrizes curam cosmeticamente (mas o efeito mecanico fica). Vesperos: Cicatrizes brilham etereo. Nefilim: Cicatrizes podem interagir com Marcas de Census." },
+    { "sistema": "Social", "interacao": "NPCs reagem a Cicatrizes visiveis. +1 Intimidacao por 2 Cicatrizes visiveis. -1 Persuasao por 3 Cicatrizes visiveis (com desconhecidos)." }
+  ],
+  "guiaMestre": {
+    "quandoConceder": "A maioria das Cicatrizes vem AUTOMATICAMENTE de outros sistemas (Sobrecarga, Corrupcao, Pactos). Cicatrizes Narrativas sao as unicas que o Mestre concede diretamente.",
+    "criteriosNarrativa": {
+      "conceda": [
+        "O personagem sobreviveu a algo que deveria te-lo matado ou mudado.",
+        "O jogador fez uma ESCOLHA moralmente pesada com consequencias.",
+        "Um momento da campanha foi tao impactante que DEVE deixar marca.",
+        "O jogador PEDIU (alguns jogadores querem Cicatrizes — encoraje)."
+      ],
+      "naoConceda": [
+        "E so mais um combate dificil (use quase-morte em vez disso).",
+        "O jogador nao quer. Cicatrizes Narrativas sao opcionais.",
+        "Seria punicao disfarcada. Se parece injusto, nao de.",
+        "O momento nao foi PESSOAL pro personagem."
+      ]
+    },
+    "regraDeProporcao": {
+      "description": "CUSTO e GATILHO devem ser PROPORCIONAIS.",
+      "escala": [
+        { "nivel": "leve", "custo": "cosmetico, -1 situacional", "gatilho": "1x/dia, +2 situacional" },
+        { "nivel": "medio", "custo": "-1 atributo, desvantagem situacional", "gatilho": "passivo menor, +2 permanente limitado" },
+        { "nivel": "severo", "custo": "-2 atributo, vulnerabilidade", "gatilho": "passivo significativo, +4, resist." }
+      ],
+      "regrasDeOuro": [
+        "Nunca de Custo sem Gatilho (punicao pura).",
+        "Nunca de Gatilho sem Custo (poder gratis).",
+        "O equilibrio nao precisa ser perfeito — precisa PARECER justo e CONTAR uma historia."
+      ]
+    }
+  }
+}

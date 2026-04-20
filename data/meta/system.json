@@ -1,0 +1,96 @@
+{
+  "id": "sistema",
+  "name": "Sistema CDG",
+  "source": "CDG_Livro_Core.md",
+  "description": "Constantes globais do sistema Cicatrizes do Gatilho: atributos, grupos, economia de ações, condições de sobrevivência, estados de HP, testes de morte.",
+  "attributes": [
+    { "id": "CON", "name": "Constituição", "group": "CORPO", "description": "A resistência do corpo. Quanto dano ele aguenta antes de cair, quanto veneno tolera, quanto tempo marcha sem descanso. Governa HP, testes contra venenos, doenças, fadiga e efeitos que atacam o corpo diretamente." },
+    { "id": "POT", "name": "Potência", "group": "CORPO", "description": "A força bruta. Peso carregado, força aplicada em golpes, empurrar, puxar, levantar, derrubar. Governa ataques corpo-a-corpo e a Carga do personagem (POT x 10). Armas pesadas, manobras de agarrão e arremesso dependem de POT." },
+    { "id": "AGI", "name": "Agilidade", "group": "CORPO", "description": "Velocidade, reflexos, precisão. Governa ataques à distância, esquivas, DP (10 + AGI + Armadura), Iniciativa (AGI + PER), acrobacia, furtividade e reflexos." },
+    { "id": "PER", "name": "Percepção", "group": "MENTE", "description": "Os sentidos. O que o personagem nota sem tentar, o que encontra quando procura. Governa rastreamento, investigação visual, sentinela, detecção de emboscadas. Percepção Passiva: 10 + PER." },
+    { "id": "INT", "name": "Intelecto", "group": "MENTE", "description": "Conhecimento, lógica, memória. INT governa magias, alquimia, investigação dedutiva, medicina e conhecimento histórico. Espaços de Conjuração: 0 Base + (INT × 2) — quanto mais INT, mais magias o personagem sabe. Grimório comporta INT em magias registradas." },
+    { "id": "ENG", "name": "Engenhosidade", "group": "MENTE", "description": "Habilidade prática. Capacidade de construir, reparar, improvisar e criar. Governa crafting (forja, carpintaria, engenharia), magitech e runas. É o atributo do ferreiro, inventor, mecânico." },
+    { "id": "RES", "name": "Resiliência", "group": "ESPIRITO", "description": "A força de vontade aplicada. Quanto o personagem aguenta antes de quebrar mentalmente. Governa os Usos de Energia (RES x 3), o recurso universal do sistema. Energia é usada para habilidades de Árvore que não são magias." },
+    { "id": "FOC", "name": "Foco", "group": "ESPIRITO", "description": "Disciplina mental. Concentração, meditação, conexão espiritual. Governa magias divinas (Fé), rituais, concentração em combate e resistência psiônica. Manter magias de concentração exige teste de FOC ao sofrer dano (DT 10 ou dano/2)." },
+    { "id": "PRE", "name": "Presença", "group": "ESPIRITO", "description": "Carisma, autoridade, impacto. Governa persuasão, intimidação, enganação, liderança e encantamento mágico." }
+  ],
+  "attributeGroups": {
+    "CORPO": ["CON", "POT", "AGI"],
+    "MENTE": ["PER", "INT", "ENG"],
+    "ESPIRITO": ["RES", "FOC", "PRE"]
+  },
+  "sizes": [
+    { "id": "medio", "name": "Médio", "description": "Tamanho padrão de humanoides." },
+    { "id": "grande", "name": "Grande", "description": "Criaturas como Nefilim e alguns Constructos. Armas tamanho Grande aumentam dado de dano em +1 categoria. Equipamento sob medida custa o dobro." }
+  ],
+  "baseSpeed": 9,
+  "speedUnit": "metros",
+  "actionEconomy": {
+    "id": "economia-de-acoes",
+    "name": "Economia de Ações",
+    "description": "Cada turno dura 6 segundos fictícios.",
+    "rules": [
+      { "id": "acao-principal", "name": "Ação Principal", "perTurn": 1, "examples": ["Atacar", "Conjurar", "Correr", "Defender", "Ajudar", "Usar Item"] },
+      { "id": "acao-bonus", "name": "Ação Bônus", "perTurn": 1, "examples": ["Ataque secundário", "habilidade rápida", "trocar arma"] },
+      { "id": "reacao", "name": "Reação", "perRound": 1, "examples": ["Ataque de Oportunidade", "Aparar", "Esquivar", "Proteger Aliado"], "notes": "Limitada a 1 por RODADA (não por turno)." },
+      { "id": "movimento", "name": "Movimento", "perTurn": 1, "notes": "Até a velocidade base (9m padrão). Pode dividir antes/depois de ações." }
+    ]
+  },
+  "survivalConditions": {
+    "id": "condicoes-de-sobrevivencia",
+    "name": "Condições de Sobrevivência",
+    "source": "BasedaFicha.md",
+    "tracks": [
+      { "id": "fome", "name": "Fome", "steps": [0, 1, 2, 3, 4] },
+      { "id": "sede", "name": "Sede", "steps": [0, 1, 2, 3, 4] },
+      { "id": "fadiga", "name": "Fadiga", "steps": [0, 1, 2, 3, 4] },
+      { "id": "temperatura", "name": "Temperatura", "steps": [0, 1, 2, 3, 4] }
+    ]
+  },
+  "healthStates": [
+    { "id": "saudavel", "name": "Saudável", "hpRange": "100-76%" },
+    { "id": "ferido", "name": "Ferido", "hpRange": "75-51%" },
+    { "id": "machucado", "name": "Machucado", "hpRange": "50-1%" },
+    { "id": "morrendo", "name": "Morrendo", "hpRange": "0%" }
+  ],
+  "deathSaves": {
+    "id": "testes-de-morte",
+    "name": "Testes de Morte",
+    "description": "Quando o HP chega a 0, o personagem cai inconsciente e começa a fazer Testes de Morte. A cada turno, rola d20.",
+    "roll": "d20",
+    "successThreshold": 10,
+    "successesToStabilize": 3,
+    "failuresToDie": 3,
+    "rules": [
+      { "id": "nat20", "condition": "20 natural", "effect": "Restaura 1 HP." },
+      { "id": "nat1", "condition": "1 natural", "effect": "Conta como duas falhas." },
+      { "id": "dano-massivo", "condition": "Dano massivo", "effect": "Se o dano restante após zerar o HP for igual ou superior ao HP máximo do personagem, ele morre sem testes." }
+    ]
+  },
+  "dice": ["d4", "d6", "d8", "d10", "d12", "d20"],
+  "primaryDie": "d20",
+  "basicTestFormula": "d20 + Atributo + Proficiência >= DT",
+  "difficultyTable": [
+    { "id": "trivial", "name": "Trivial", "dt": 5 },
+    { "id": "facil", "name": "Fácil", "dt": 8 },
+    { "id": "moderado", "name": "Moderado", "dt": 12 },
+    { "id": "dificil", "name": "Difícil", "dt": 16 },
+    { "id": "muito-dificil", "name": "Muito Difícil", "dt": 20 },
+    { "id": "quase-impossivel", "name": "Quase Impossível", "dt": 24 },
+    { "id": "lendario", "name": "Lendário", "dt": 28 }
+  ],
+  "damageTypes": ["cortante", "perfurante", "contundente", "fogo", "gelo", "eletrico", "necrotico", "radiance", "magico"],
+  "critical": {
+    "nat20": "Sucesso crítico. Dano maximizado + dado de dano extra. Habilidades de Armamento podem expandir a faixa.",
+    "nat1": "Falha crítica. O ataque erra e algo sai errado — desequilíbrio, arma escorrega, aliado atingido."
+  },
+  "advantage": {
+    "description": "Em situações favoráveis, rola com Vantagem: dois d20, fica com o maior. Em situações desfavoráveis, Desvantagem: dois d20, fica com o menor. Vantagem e Desvantagem simultâneas se cancelam."
+  },
+  "contestedTests": "Quando dois personagens se opõem diretamente, ambos rolam d20 + Atributo + Proficiência. O maior vence. Empate favorece o defensor.",
+  "catalystRule": "Sem catalisador: custo de Mana/Foco +50%.",
+  "notes": [
+    "Combate é rápido e letal. Personagens acumulam Cicatrizes ao longo da campanha.",
+    "280 Habilidades totais (10 árvores x 28), 50 proficiências básicas + 33 sub-proficiências (contagem conforme Livro Core)."
+  ]
+}

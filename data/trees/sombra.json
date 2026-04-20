@@ -1,0 +1,256 @@
+{
+  "id": "sombra",
+  "name": "Sombra",
+  "source": "CDG_Progressao_P4.md",
+  "description": "Furtividade, Assassinato, Venenos & Roubo — AGI / PER. A Sombra nao e uma arvore de covardes — e a arvore de quem entende que o golpe que mata e o que nao se ve vindo. Eficiencia sobre espetaculo. Precisao sobre forca bruta. O inimigo morre sem saber que estava sendo cacado.",
+  "atributoChave": "AGI / PER",
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Iniciado nas Sombras",
+      "prerequisites": [ { "type": "custom", "text": "AGI 2+ recomendado" } ],
+      "abilities": [
+        { "id": "furtividade", "name": "Furtividade", "cost": 50, "description": "+2 em testes de Furtividade. Pode se mover a velocidade metade sem penalidade de stealth." },
+        { "id": "ataque-furtivo", "name": "Ataque Furtivo", "cost": 50, "description": "Ao atacar criatura que nao te percebeu ou esta flanqueada: +1d6 dano. Funciona 1x/turno." },
+        {
+          "id": "arrombamento",
+          "name": "Arrombamento",
+          "cost": 50,
+          "description": "Pode abrir fechaduras (AGI DT varia). Pode desarmar armadilhas mecanicas (PER DT 14 para detectar, AGI DT 14 para desarmar).",
+          "prerequisites": [ { "type": "attribute", "attr": "AGI", "min": 2 } ]
+        },
+        {
+          "id": "prestidigitacao",
+          "name": "Prestidigitacao",
+          "cost": 50,
+          "description": "Pode roubar objetos de bolsos/cintos sem ser notado (AGI vs PER do alvo). Pode esconder objetos pequenos no corpo.",
+          "prerequisites": [ { "type": "attribute", "attr": "AGI", "min": 2 } ]
+        },
+        {
+          "id": "evasao",
+          "name": "Evasao",
+          "cost": 50,
+          "description": "Ao fazer teste de AGI para metade do dano: sucesso = 0 dano. Falha = metade (em vez de total).",
+          "prerequisites": [ { "type": "attribute", "attr": "AGI", "min": 3 } ]
+        },
+        { "id": "venenos-basicos", "name": "Venenos Basicos", "cost": 50, "description": "Pode aplicar veneno em arma (Acao Bonus). Veneno basico: +1d4 veneno por 3 ataques. Pode extrair veneno de criaturas." },
+        {
+          "id": "disfarce",
+          "name": "Disfarce",
+          "cost": 50,
+          "description": "Pode criar disfarce convincente em 10 min. PER DT (8+PRE) para ver atraves. Inclui voz, postura e maneirismos.",
+          "prerequisites": [ { "type": "attribute", "attr": "PRE", "min": 2 } ]
+        },
+        {
+          "id": "leitura-labial",
+          "name": "Leitura Labial",
+          "cost": 50,
+          "description": "Pode ler labios a ate 18m. Entende conversa sem ouvir. Requer linha de visao e conhecer o idioma.",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 2 } ]
+        },
+        {
+          "id": "reflexos-de-sombra",
+          "name": "Reflexos de Sombra",
+          "cost": 50,
+          "description": "+2 Iniciativa. No primeiro turno de combate, se agir antes do alvo: +2 acerto.",
+          "prerequisites": [ { "type": "attribute", "attr": "AGI", "min": 2 } ]
+        },
+        {
+          "id": "escapista",
+          "name": "Escapista",
+          "cost": 50,
+          "description": "Vantagem em testes para escapar de amarras, agarroes e prisoes. Pode se espremer por espacos apertados.",
+          "prerequisites": [ { "type": "attribute", "attr": "AGI", "min": 2 } ]
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Agente das Sombras",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Sombra" } ],
+      "abilities": [
+        {
+          "id": "ataque-letal",
+          "name": "Ataque Letal",
+          "cost": 100,
+          "description": "Ataque Furtivo sobe para +3d6. Se matar com Ataque Furtivo: morte silenciosa (sem grito, corpo cai sem ruido).",
+          "prerequisites": [ { "type": "talent", "id": "ataque-furtivo" } ]
+        },
+        {
+          "id": "venenos-avancados",
+          "name": "Venenos Avancados",
+          "cost": 100,
+          "description": "CROSS-TREE: Venenos melhorados: paralisante (CON DT 14, 1 turno), soporifero (CON DT 14, 1 min), necrotico (2d6/turno por 3 turnos). Pode criar 3 doses por Descanso Longo.",
+          "prerequisites": [
+            { "type": "talent", "id": "venenos-basicos" },
+            { "type": "custom", "text": "Oficio T1 (Alquimia)" }
+          ]
+        },
+        {
+          "id": "invisivel-na-multidao",
+          "name": "Invisivel na Multidao",
+          "cost": 100,
+          "description": "Pode se esconder em multidoes mesmo sendo observado. Em areas urbanas: Furtividade +4. Pode 'desaparecer' em meio a 10+ pessoas.",
+          "prerequisites": [
+            { "type": "talent", "id": "furtividade" },
+            { "type": "talent", "id": "disfarce" }
+          ]
+        },
+        {
+          "id": "sombra-viva",
+          "name": "Sombra Viva",
+          "cost": 100,
+          "description": "Em escuridao ou penumbra: +4 Furtividade adicional. Pode se fundir com sombras (imovel = invisivel no escuro).",
+          "prerequisites": [
+            { "type": "talent", "id": "furtividade" },
+            { "type": "attribute", "attr": "AGI", "min": 4 }
+          ]
+        },
+        {
+          "id": "golpe-cirurgico",
+          "name": "Golpe Cirurgico",
+          "cost": 100,
+          "description": "Pode mirar pontos vitais. Gaste Acao Bonus antes de atacar: proximo ataque ignora DP natural e bonus de armadura (acerta a carne).",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 4 } ]
+        },
+        {
+          "id": "emboscador-urbano",
+          "name": "Emboscador Urbano",
+          "cost": 100,
+          "description": "Em ambientes com cobertura (cidades, ruinas, florestas): pode iniciar combate escondido automaticamente. Primeiro ataque sempre como Furtivo.",
+          "prerequisites": [ { "type": "talent", "id": "reflexos-de-sombra" } ]
+        },
+        {
+          "id": "mestre-arrombador",
+          "name": "Mestre Arrombador",
+          "cost": 100,
+          "description": "Abre qualquer fechadura nao-magica automaticamente. Fechaduras magicas: AGI DT 18. Pode desarmar armadilhas magicas com PER DT 18.",
+          "prerequisites": [ { "type": "talent", "id": "arrombamento" } ]
+        },
+        {
+          "id": "identidade-falsa",
+          "name": "Identidade Falsa",
+          "cost": 100,
+          "description": "Pode criar identidade falsa completa (nome, historia, documentos). Leva 7 dias para estabelecer. DT 20 para descobrir. Pode manter ate PRE identidades simultaneas.",
+          "prerequisites": [
+            { "type": "talent", "id": "disfarce" },
+            { "type": "attribute", "attr": "PRE", "min": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Mestre Assassino",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Sombra" } ],
+      "abilities": [
+        {
+          "id": "execucao",
+          "name": "Execucao",
+          "cost": 200,
+          "description": "Ao atacar alvo que nao te percebeu: se acertar, dano e MAXIMIZADO + Ataque Furtivo. Alvo com menos de 50 HP: morte instantanea. 1x/Descanso Curto.",
+          "prerequisites": [
+            { "type": "talent", "id": "ataque-letal" },
+            { "type": "talent", "id": "golpe-cirurgico" }
+          ]
+        },
+        {
+          "id": "veneno-letal",
+          "name": "Veneno Letal",
+          "cost": 200,
+          "description": "Pode criar veneno mortal: CON DT 18 ou morre em 1d4 horas. Sucesso: 4d6 veneno + Envenenado 24h. 1 dose por semana de crafting.",
+          "prerequisites": [ { "type": "talent", "id": "venenos-avancados" } ]
+        },
+        {
+          "id": "caminhar-nas-sombras",
+          "name": "Caminhar nas Sombras",
+          "cost": 200,
+          "description": "Acao Bonus: teleporte entre sombras a 18m. Deve haver sombra na origem e no destino. Nao provoca oportunidade. 3x/Descanso Curto.",
+          "prerequisites": [
+            { "type": "talent", "id": "sombra-viva" },
+            { "type": "attribute", "attr": "FOC", "min": 3 }
+          ]
+        },
+        {
+          "id": "fantasma",
+          "name": "Fantasma",
+          "cost": 200,
+          "description": "Pode se mover a velocidade total em stealth sem penalidade. Em penumbra: testes de PER contra voce tem DT +6 (quase impossivel detectar).",
+          "prerequisites": [
+            { "type": "talent", "id": "invisivel-na-multidao" },
+            { "type": "talent", "id": "sombra-viva" }
+          ]
+        },
+        {
+          "id": "rede-de-informantes",
+          "name": "Rede de Informantes",
+          "cost": 200,
+          "description": "CROSS-TREE: Tem contatos em toda cidade que ja visitou. Pode obter informacao sobre qualquer alvo (localizacao, rotina, fraquezas) em 24h. Custo: 50-200 Dracmas.",
+          "prerequisites": [
+            { "type": "talent", "id": "identidade-falsa" },
+            { "type": "custom", "text": "Social T1" }
+          ]
+        },
+        {
+          "id": "reflexos-mortais",
+          "name": "Reflexos Mortais",
+          "cost": 200,
+          "description": "+4 Iniciativa total. Reacao: ao ser atacado, pode fazer ataque de oportunidade ANTES do ataque inimigo resolver (se matar, o ataque nao acontece).",
+          "prerequisites": [
+            { "type": "talent", "id": "reflexos-de-sombra" },
+            { "type": "attribute", "attr": "AGI", "min": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Espectro",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Sombra" } ],
+      "abilities": [
+        {
+          "id": "morte-certa",
+          "name": "Morte Certa",
+          "cost": 400,
+          "description": "1x/dia: declare um alvo. Nas proximas 24h, o primeiro ataque contra ele: acerto automatico, dano maximizado, dano de veneno incluso. Se o alvo sobreviver: sabe que voce esta cacando.",
+          "prerequisites": [
+            { "type": "talent", "id": "execucao" },
+            { "type": "talent", "id": "veneno-letal" }
+          ]
+        },
+        {
+          "id": "onipresente",
+          "name": "Onipresente",
+          "cost": 400,
+          "description": "Pode se teleportar entre sombras a 90m. Pode 'entrar' em sombra e permanecer (espaco dimensional de sombra) por ate 1h. Enquanto dentro: invisivel, indetectavel, pode observar.",
+          "prerequisites": [
+            { "type": "talent", "id": "fantasma" },
+            { "type": "talent", "id": "caminhar-nas-sombras" }
+          ]
+        },
+        {
+          "id": "teia-de-sombras",
+          "name": "Teia de Sombras",
+          "cost": 400,
+          "description": "Sua rede de contatos se torna imperio de informacao. Sabe tudo que acontece em qualquer cidade onde tenha identidade. Pode orquestrar eventos (assassinatos, fugas, golpes politicos) a distancia. Custo: tempo e dinheiro.",
+          "prerequisites": [ { "type": "talent", "id": "rede-de-informantes" } ]
+        },
+        {
+          "id": "perfeicao-letal",
+          "name": "Perfeicao Letal",
+          "cost": 400,
+          "description": "Passivo: +3 acerto permanente. Critico em 18-20 com armas leves. Ataque Furtivo sobe para +5d6. Voce nao faz barulho. Nunca. Nenhum. Nem respirando.",
+          "prerequisites": [ { "type": "talent", "id": "reflexos-mortais" } ]
+        }
+      ]
+    }
+  ]
+}

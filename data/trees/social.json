@@ -1,0 +1,259 @@
+{
+  "id": "social",
+  "name": "Social",
+  "source": "CDG_Progressao_P4.md",
+  "description": "Persuasao, Comercio, Lideranca & Manipulacao — PRE / INT. A espada mais afiada do mundo nao vale nada se o rei mandar seu exercito atras de voce. Social e a arvore de quem entende que PESSOAS sao o recurso mais poderoso — e mais perigoso — do mundo.",
+  "atributoChave": "PRE / INT",
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Lingua de Prata",
+      "prerequisites": [ { "type": "custom", "text": "PRE 2+ recomendado" } ],
+      "abilities": [
+        { "id": "eloquencia", "name": "Eloquencia", "cost": 50, "description": "+2 em todos os testes de Persuasao e Negociacao." },
+        { "id": "intimidar", "name": "Intimidar", "cost": 50, "description": "+2 em testes de Intimidacao. Pode intimidar em combate: Acao Bonus, alvo RES DT (8+PRE) ou -2 acerto por 1 turno." },
+        {
+          "id": "mentiroso",
+          "name": "Mentiroso",
+          "cost": 50,
+          "description": "Vantagem em testes de Enganacao. PER DT (8+PRE) para detectar suas mentiras.",
+          "prerequisites": [ { "type": "attribute", "attr": "PRE", "min": 2 } ]
+        },
+        {
+          "id": "ler-pessoas",
+          "name": "Ler Pessoas",
+          "cost": 50,
+          "description": "Acao: estude 1 pessoa. Aprenda disposicao emocional e se esta mentindo (PER vs PRE dela).",
+          "prerequisites": [ { "type": "attribute", "attr": "PER", "min": 2 } ]
+        },
+        { "id": "barganha", "name": "Barganha", "cost": 50, "description": "Compras custam 15% menos. Vendas rendem 15% mais. Pode negociar em situacoes onde outros nao conseguiriam." },
+        { "id": "contatos", "name": "Contatos", "cost": 50, "description": "Tem 1 contato confiavel em cada cidade grande. Pode pedir favores menores (informacao, abrigo, apresentacao)." },
+        {
+          "id": "inspirar",
+          "name": "Inspirar",
+          "cost": 50,
+          "description": "Acao Bonus: 1 aliado a 9m ganha +1d4 no proximo teste (inspiracao). 1x/Descanso Curto por aliado.",
+          "prerequisites": [ { "type": "attribute", "attr": "PRE", "min": 2 } ]
+        },
+        {
+          "id": "etiqueta",
+          "name": "Etiqueta",
+          "cost": 50,
+          "description": "Sabe se comportar em qualquer contexto social (nobres, criminosos, religiosos). Nunca comete gafe cultural. +2 em primeiras impressoes.",
+          "prerequisites": [ { "type": "attribute", "attr": "INT", "min": 2 } ]
+        },
+        {
+          "id": "provocar",
+          "name": "Provocar",
+          "cost": 50,
+          "description": "Acao Bonus: provoque 1 inimigo a 9m. RES DT (8+PRE) ou deve atacar VOCE no proximo turno (ignora outros alvos).",
+          "prerequisites": [ { "type": "attribute", "attr": "PRE", "min": 2 } ]
+        },
+        { "id": "rumores", "name": "Rumores", "cost": 50, "description": "Ao chegar em assentamento: Mestre revela 1 rumor verdadeiro e 1 falso (voce nao sabe qual e qual) gratuitamente." }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Orador",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Social" } ],
+      "abilities": [
+        {
+          "id": "discurso",
+          "name": "Discurso",
+          "cost": 100,
+          "description": "Acao (1 min): fale para grupo de ate 20 pessoas. PRE DT 14: aliados ganham +2 em proximo combate, +2 moral por 1h. Em NPCs: pode mudar opiniao de Hostil para Neutro.",
+          "prerequisites": [
+            { "type": "talent", "id": "eloquencia" },
+            { "type": "talent", "id": "inspirar" }
+          ]
+        },
+        {
+          "id": "manipulacao",
+          "name": "Manipulacao",
+          "cost": 100,
+          "description": "Pode implantar ideias sutilmente. Em conversa de 10+ min: PRE vs FOC do alvo. Sucesso: alvo acredita que a ideia foi dele. Nao funciona contra ordens suicidas.",
+          "prerequisites": [
+            { "type": "talent", "id": "mentiroso" },
+            { "type": "talent", "id": "ler-pessoas" }
+          ]
+        },
+        {
+          "id": "presenca-dominante",
+          "name": "Presenca Dominante",
+          "cost": 100,
+          "description": "Ao entrar em ambiente: todos percebem. Criaturas ND inferior: RES DT (8+PRE) ou ficam Amedrontadas 1 turno. Passivo em combate.",
+          "prerequisites": [
+            { "type": "talent", "id": "intimidar" },
+            { "type": "attribute", "attr": "PRE", "min": 4 }
+          ]
+        },
+        {
+          "id": "rede-comercial",
+          "name": "Rede Comercial",
+          "cost": 100,
+          "description": "Compras -25% total. Vendas +25%. Pode encomendar itens raros (entrega em 1d4 semanas). Tem contatos em mercado negro.",
+          "prerequisites": [
+            { "type": "talent", "id": "barganha" },
+            { "type": "talent", "id": "contatos" }
+          ]
+        },
+        {
+          "id": "aliado-leal",
+          "name": "Aliado Leal",
+          "cost": 100,
+          "description": "Ganhe 1 NPC aliado permanente (definido com Mestre). Nivel inferior ao seu. Ajuda ativamente. Lealdade depende de como voce o trata.",
+          "prerequisites": [
+            { "type": "talent", "id": "contatos" },
+            { "type": "attribute", "attr": "PRE", "min": 3 }
+          ]
+        },
+        {
+          "id": "negociador-de-crise",
+          "name": "Negociador de Crise",
+          "cost": 100,
+          "description": "Pode negociar em situacoes extremas (refens, cerco, rendicao). +4 em testes sociais sob pressao de vida ou morte.",
+          "prerequisites": [
+            { "type": "talent", "id": "eloquencia" },
+            { "type": "attribute", "attr": "RES", "min": 3 }
+          ]
+        },
+        {
+          "id": "mestre-do-blefe",
+          "name": "Mestre do Blefe",
+          "cost": 100,
+          "description": "Pode mentir sob deteccao magica de mentiras (FOC DT 18 para superar). Pode criar narrativas falsas tao convincentes que ate voce quase acredita.",
+          "prerequisites": [
+            { "type": "talent", "id": "mentiroso" },
+            { "type": "attribute", "attr": "INT", "min": 4 }
+          ]
+        },
+        {
+          "id": "provocacao-letal",
+          "name": "Provocacao Letal",
+          "cost": 100,
+          "description": "Provocacao agora afeta ate 3 inimigos. Alvos provocados tem -2 DP (cegos de raiva). Se atacarem voce e errarem: sofrem ataque de oportunidade.",
+          "prerequisites": [ { "type": "talent", "id": "provocar" } ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Senhor da Corte",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Social" } ],
+      "abilities": [
+        {
+          "id": "oratoria-de-massa",
+          "name": "Oratoria de Massa",
+          "cost": 200,
+          "description": "Acao (10 min): fale para ATE 200 pessoas. Pode incitar revolta, acalmar multidao, converter fieis. PRE DT 18. Efeito dura dias.",
+          "prerequisites": [
+            { "type": "talent", "id": "discurso" },
+            { "type": "attribute", "attr": "PRE", "min": 5 }
+          ]
+        },
+        {
+          "id": "titereiro",
+          "name": "Titereiro",
+          "cost": 200,
+          "description": "Pode manter ate PRE alvos 'manipulados' simultaneamente. Cada um acredita em narrativa diferente que voce criou. Rede de mentiras funcional.",
+          "prerequisites": [
+            { "type": "talent", "id": "manipulacao" },
+            { "type": "talent", "id": "mestre-do-blefe" }
+          ]
+        },
+        {
+          "id": "presenca-imperial",
+          "name": "Presenca Imperial",
+          "cost": 200,
+          "description": "Aura 9m: aliados imunes a Medo e Charme. Inimigos: -2 em acerto e testes de RES. Mesmo Ancioes sentem sua presenca.",
+          "prerequisites": [ { "type": "talent", "id": "presenca-dominante" } ]
+        },
+        {
+          "id": "imperio-comercial",
+          "name": "Imperio Comercial",
+          "cost": 200,
+          "description": "Possui rede comercial propria. Renda passiva: 100 Dracmas/semana. Pode financiar operacoes, contratar mercenarios (ate 20), comprar propriedades.",
+          "prerequisites": [
+            { "type": "talent", "id": "rede-comercial" },
+            { "type": "talent", "id": "aliado-leal" }
+          ]
+        },
+        {
+          "id": "embaixador",
+          "name": "Embaixador",
+          "cost": 200,
+          "description": "Pode representar racas/nacoes em negociacoes. +6 em testes diplomaticos entre faccoes. Pode prevenir guerras ou inicia-las com palavras certas.",
+          "prerequisites": [
+            { "type": "talent", "id": "negociador-de-crise" },
+            { "type": "talent", "id": "etiqueta" }
+          ]
+        },
+        {
+          "id": "destruir-moral",
+          "name": "Destruir Moral",
+          "cost": 200,
+          "description": "Acao: fale com grupo inimigo (ate 10). PRE DT vs RES coletivo. Falha deles: metade foge, metade luta com Desvantagem por 1 min. Funciona 1x/combate.",
+          "prerequisites": [
+            { "type": "talent", "id": "provocacao-letal" },
+            { "type": "talent", "id": "intimidar" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Eminencia",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Social" } ],
+      "abilities": [
+        {
+          "id": "palavra-do-rei",
+          "name": "Palavra do Rei",
+          "cost": 400,
+          "description": "Acao: fale 1 frase. TODAS as criaturas sencientes a 18m: RES DT (8+PRE+INT) ou OBEDECEM incondicionalmente por 1 turno. Nao suicida. 1x/dia. O poder absoluto da voz.",
+          "prerequisites": [
+            { "type": "talent", "id": "oratoria-de-massa" },
+            { "type": "talent", "id": "presenca-imperial" }
+          ]
+        },
+        {
+          "id": "mestre-das-sombras",
+          "name": "Mestre das Sombras",
+          "cost": 400,
+          "description": "CROSS-TREE: Controle rede de agentes, espioes e manipulados em multiplas cidades. Pode orquestrar eventos politicos a distancia. Ninguem sabe que voce existe. Voce e o poder atras do trono.",
+          "prerequisites": [
+            { "type": "talent", "id": "titereiro" },
+            { "type": "custom", "text": "Sombra T2 (Identidade Falsa)" }
+          ]
+        },
+        {
+          "id": "dinastia",
+          "name": "Dinastia",
+          "cost": 400,
+          "description": "Funde imperio comercial com poder politico. Renda: 500 Dracmas/semana. Pode criar leis em territorios aliados. Exercito pessoal de 50+. Voce e uma nacao de uma pessoa.",
+          "prerequisites": [
+            { "type": "talent", "id": "imperio-comercial" },
+            { "type": "talent", "id": "embaixador" }
+          ]
+        },
+        {
+          "id": "aura-de-absoluto",
+          "name": "Aura de Absoluto",
+          "cost": 400,
+          "description": "Passivo: PRE funciona como campo de forca social. Criaturas hostis devem fazer RES DT 20 apenas para ATACAR voce (nao por magia — por pura presenca). Falha: ficam paralisadas de reverencia por 1 turno.",
+          "prerequisites": [
+            { "type": "talent", "id": "presenca-imperial" },
+            { "type": "attribute", "attr": "PRE", "min": 6 }
+          ]
+        }
+      ]
+    }
+  ]
+}

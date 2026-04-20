@@ -1,0 +1,35 @@
+{
+  "id": "dano-de-queda",
+  "name": "Dano de Queda",
+  "source": "CDG Vale Desperto v2.0 (port)",
+  "description": "Dano contundente escalonado pela altura da queda, com teto em velocidade terminal (20d6). Superfície e reações podem reduzir ou amplificar.",
+  "damageType": "contundente",
+  "startMeters": 3,
+  "capDice": "20d6",
+  "table": [
+    { "id": "f0", "name": "0–2m", "minMeters": 0, "maxMeters": 2, "dice": "0", "note": "Queda leve — sem dano; pode derrubar (prone) se terreno irregular." },
+    { "id": "f3", "name": "3–5m", "minMeters": 3, "maxMeters": 5, "dice": "1d6" },
+    { "id": "f6", "name": "6–10m", "minMeters": 6, "maxMeters": 10, "dice": "2d6" },
+    { "id": "f11", "name": "11–15m", "minMeters": 11, "maxMeters": 15, "dice": "3d6" },
+    { "id": "f16", "name": "16–20m", "minMeters": 16, "maxMeters": 20, "dice": "4d6" },
+    { "id": "f21", "name": "21–30m", "minMeters": 21, "maxMeters": 30, "dice": "6d6" },
+    { "id": "f31", "name": "31–45m", "minMeters": 31, "maxMeters": 45, "dice": "8d6" },
+    { "id": "f46", "name": "46–60m", "minMeters": 46, "maxMeters": 60, "dice": "10d6" },
+    { "id": "f61", "name": "61m+", "minMeters": 61, "maxMeters": null, "dice": "20d6", "note": "Velocidade terminal — cap. Alturas maiores não somam dados." }
+  ],
+  "surfaceModifiers": [
+    { "id": "macia", "name": "Superfície Macia", "multiplier": 0.5, "examples": ["neve profunda", "areia fofa", "água profunda (a partir de 3m)", "monte de feno"] },
+    { "id": "rigida", "name": "Superfície Rígida", "multiplier": 1, "examples": ["terra batida", "madeira", "pedra lisa"] },
+    { "id": "letal", "name": "Superfície Letal", "multiplier": 2, "examples": ["espinhos", "lança", "pedra afiada", "metal pontudo"], "note": "Converte metade do dano em perfurante." }
+  ],
+  "reductions": [
+    { "id": "acrobacia", "name": "Amortecer Queda (Acrobacia)", "description": "Reação: Acrobacia DT 12 reduz o dano pela metade (arredondar pra cima). Sucesso crítico (margin ≥10) anula até 10m; acima disso, aplica metade." },
+    { "id": "reflexos", "name": "Agarrar Apoio (Reflexos)", "description": "Reação: Reflexos DT 15 — subtrai 3m da altura efetiva antes de calcular o dano." },
+    { "id": "habilidade", "name": "Habilidades de Árvore", "description": "Árvore Corpo T2 (Pés de Gato) e similares podem reduzir categorias de dano. Aplicadas como modifiers antes da superfície." }
+  ],
+  "stacking": "Reduções aplicam em sequência: (1) habilidade reduz categoria, (2) reação subtrai m, (3) superfície multiplica o dano final.",
+  "notes": [
+    "A tabela usa d6 como dado unificado de queda para manter simples — árvores específicas podem converter em outros tipos (ex: Nefilim Pétreo usa d8 mas recebe 1 passo a menos).",
+    "Queda em água: 0 dano até 10m, depois aplica table como superfície macia. Queda intencional mergulhando: Natação DT para evitar dano a partir de 15m."
+  ]
+}

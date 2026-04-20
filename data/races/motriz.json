@@ -1,0 +1,69 @@
+{
+  "id": "motriz",
+  "name": "Motriz",
+  "source": "CDG_RacasDef.md",
+  "description": "Máquinas de Sangue. Nasceram do oposto dos Constructos — produção em massa, eficiência sobre ética, desespero da Confederação de Riverblue enfrentando hordas corrompidas. A Doutora descobriu que sangue senciente fervido e destilado conduz Energia Cósmica. A Fábrica 7 produziu os primeiros 200 Motriz: máquinas de ferro, engrenagens, tubulações, com caldeira central fervendo sangue. Alguns acordaram conscientes — e a primeira coisa que sentiram foi fome. Precisam de ~1 litro de sangue senciente por dia para funcionar em plena capacidade.",
+  "hitDie": "d10",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "POT": 2, "CON": 1 }
+  },
+  "traits": [
+    {
+      "id": "corpo-industrial",
+      "name": "Corpo Industrial",
+      "description": "Não precisa de comida convencional, água ou ar. Imune a veneno e doença. Barulho constante das engrenagens resulta em -4 permanente em Furtividade.",
+      "modifiers": [
+        { "type": "immunity", "damageType": "veneno" },
+        { "type": "custom", "text": "Imune a doença. Não precisa de comida convencional, água ou ar." },
+        { "type": "proficiency", "id": "furtividade", "rankDelta": -4 }
+      ]
+    },
+    {
+      "id": "caldeira-de-sangue",
+      "name": "Caldeira de Sangue",
+      "description": "Sistema de combustível. Habilidades ativas custam cargas adicionais. A zero cargas, o Modo de Conservação começa a degradar o corpo.",
+      "modifiers": [
+        { "type": "custom", "text": "Recurso 'Cargas' alimentado por sangue. Livro Core menciona 10 cargas." }
+      ]
+    },
+    {
+      "id": "armadura-bruta",
+      "name": "Armadura Bruta",
+      "description": "+2 de Armadura Natural. Resistência 5 a dano perfurante — metal sólido não perfura facilmente.",
+      "modifiers": [
+        { "type": "derived", "target": "DP", "value": 2, "sub": "natural" },
+        { "type": "resistance", "damageType": "perfurante", "value": 5 }
+      ],
+      "notes": "Livro Core lista +3 DP; CDG_RacasDef.md lista +2 DP. Mantive +2 (documento de raças é mais detalhado)."
+    },
+    {
+      "id": "vozeirao",
+      "name": "Vozeirão",
+      "description": "Voz naturalmente alta, pode ser usada para atordoar inimigos."
+    },
+    {
+      "id": "arma-integrada",
+      "name": "Arma Integrada",
+      "description": "Livro Core e Criação v3 citam 'Arma Integrada' como traço Motriz. Detalhes mecânicos não constam no documento de raças."
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "presenca-barulhenta",
+      "name": "Presença Barulhenta",
+      "description": "-6 em Furtividade. É difícil se manter discreto quando se tem um corpo 85% metal.",
+      "modifiers": [
+        { "type": "custom", "text": "-6 em Furtividade (cumulativo com o -4 de Corpo Industrial? Documento não esclarece)." }
+      ]
+    },
+    {
+      "id": "dependencia-de-sangue",
+      "name": "Dependência de Sangue",
+      "description": "Sem combustível, o corpo degrada. A fome não é abstrata — é progressiva, física, e os instintos que gera são difíceis de ignorar. ~1 litro de sangue senciente/dia para plena capacidade."
+    }
+  ],
+  "subtypes": []
+}

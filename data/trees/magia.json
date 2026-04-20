@@ -1,0 +1,255 @@
+{
+  "id": "magia",
+  "name": "Magia",
+  "source": "CDG_Progressao_P2.md",
+  "description": "Escolas Magicas, Conjuracao & Rituais — INT / FOC. Magia no CDG nao e poder inato — e conhecimento. Estudado em grimórios, praticado com disciplina, canalizado pela mente. Quem investe em Magia se torna versatil e poderoso, mas depende de Mana e concentracao.",
+  "atributoChave": "INT / FOC",
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Aprendiz Arcano",
+      "prerequisites": [ { "type": "custom", "text": "INT 2+ recomendado" } ],
+      "abilities": [
+        { "id": "canalizar", "name": "Canalizar", "cost": 50, "description": "Pode usar Mana para conjurar magias. Sem isso, nao pode acessar NENHUMA magia. Base de tudo." },
+        {
+          "id": "projetil-arcano",
+          "name": "Projetil Arcano",
+          "cost": 50,
+          "description": "Acao: dispare projetil de energia. +INT acerto, 18m, 1d8 dano magico. Custo: 2 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "canalizar" } ]
+        },
+        {
+          "id": "escudo-magico",
+          "name": "Escudo Magico",
+          "cost": 50,
+          "description": "Reacao: ao ser atacado, +4 DP ate inicio do proximo turno. Custo: 3 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "canalizar" } ]
+        },
+        {
+          "id": "detectar-magia",
+          "name": "Detectar Magia",
+          "cost": 50,
+          "description": "Acao: sinta presencas magicas a 18m. Identifica escola/tipo. Custo: 1 Mana. Dura 10 min.",
+          "prerequisites": [ { "type": "talent", "id": "canalizar" } ]
+        },
+        {
+          "id": "luz",
+          "name": "Luz",
+          "cost": 50,
+          "description": "Acao Bonus: crie fonte de luz a 9m. Ilumina 6m. Dura 1h. Custo: 1 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "canalizar" } ]
+        },
+        {
+          "id": "manipular-elemento",
+          "name": "Manipular Elemento",
+          "cost": 50,
+          "description": "Acao: controle pequena quantidade de fogo, agua, terra ou ar. Nao causa dano. Utilidade. Custo: 2 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "canalizar" } ]
+        },
+        {
+          "id": "concentracao",
+          "name": "Concentracao",
+          "cost": 50,
+          "description": "Pode manter 1 magia de concentracao ativa. Ao sofrer dano: FOC DT (10 ou dano/2) para manter.",
+          "prerequisites": [ { "type": "attribute", "attr": "FOC", "min": 2 } ]
+        },
+        {
+          "id": "grimorio",
+          "name": "Grimorio",
+          "cost": 50,
+          "description": "Possui grimorio pessoal. Pode registrar magias encontradas. Capacidade: INT x 3 magias.",
+          "prerequisites": [ { "type": "attribute", "attr": "INT", "min": 2 } ]
+        },
+        { "id": "recuperar-mana", "name": "Recuperar Mana", "cost": 50, "description": "Descanso Curto: recupere FOC x 2 de Mana. 1x/dia." },
+        {
+          "id": "contra-magia",
+          "name": "Contra-Magia",
+          "cost": 50,
+          "description": "Reacao: ao ver criatura conjurando a 18m, teste INT vs INT dela. Sucesso: magia cancelada. Custo: Mana igual ao custo da magia alvo.",
+          "prerequisites": [
+            { "type": "talent", "id": "canalizar" },
+            { "type": "attribute", "attr": "INT", "min": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Arcanista",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Magia" } ],
+      "abilities": [
+        {
+          "id": "bola-de-fogo",
+          "name": "Bola de Fogo",
+          "cost": 100,
+          "description": "Acao: esfera de fogo 6m alcance, 3m raio. 4d6 fogo. AGI DT (8+INT) para metade. Custo: 6 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "projetil-arcano" } ]
+        },
+        {
+          "id": "parede-elemental",
+          "name": "Parede Elemental",
+          "cost": 100,
+          "description": "Acao: crie parede de 6m x 3m de fogo, gelo, pedra ou vento. Dura 1 min (concentracao). Efeito varia. Custo: 5 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "manipular-elemento" } ]
+        },
+        {
+          "id": "invisibilidade",
+          "name": "Invisibilidade",
+          "cost": 100,
+          "description": "Acao: torne-se invisivel por 1 min (concentracao). Quebra ao atacar ou conjurar. Custo: 5 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "concentracao" } ]
+        },
+        {
+          "id": "teleporte-curto",
+          "name": "Teleporte Curto",
+          "cost": 100,
+          "description": "Acao Bonus: teleporte ate 9m para local visivel. Custo: 4 Mana. Nao provoca oportunidade.",
+          "prerequisites": [ { "type": "attribute", "attr": "FOC", "min": 3 } ]
+        },
+        {
+          "id": "concentracao-dupla",
+          "name": "Concentracao Dupla",
+          "cost": 100,
+          "description": "Pode manter 2 magias de concentracao simultaneas. Ao sofrer dano: DT +2 para cada magia adicional.",
+          "prerequisites": [
+            { "type": "talent", "id": "concentracao" },
+            { "type": "attribute", "attr": "FOC", "min": 4 }
+          ]
+        },
+        {
+          "id": "metamagia-ampliar",
+          "name": "Metamagia: Ampliar",
+          "cost": 100,
+          "description": "Ao conjurar, gaste +50% Mana: area de efeito dobra. 3x/Descanso Longo.",
+          "prerequisites": [ { "type": "attribute", "attr": "INT", "min": 4 } ]
+        },
+        {
+          "id": "metamagia-silenciar",
+          "name": "Metamagia: Silenciar",
+          "cost": 100,
+          "description": "Ao conjurar, gaste +3 Mana: magia nao tem componente verbal/gestual (conjura sem que ninguem perceba). 3x/Descanso Longo.",
+          "prerequisites": [ { "type": "attribute", "attr": "INT", "min": 4 } ]
+        },
+        {
+          "id": "dissipar",
+          "name": "Dissipar",
+          "cost": 100,
+          "description": "Acao: remova 1 efeito magico em criatura ou objeto tocado. INT DT (10 + nivel da magia x 2). Custo: 5 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "contra-magia" } ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Mago de Guerra",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Magia" } ],
+      "abilities": [
+        {
+          "id": "desintegrar",
+          "name": "Desintegrar",
+          "cost": 200,
+          "description": "Acao: raio concentrado. +INT acerto, 18m. 8d6 dano magico. Se mata: alvo vira po. Custo: 12 Mana.",
+          "prerequisites": [
+            { "type": "talent", "id": "bola-de-fogo" },
+            { "type": "attribute", "attr": "INT", "min": 5 }
+          ]
+        },
+        {
+          "id": "tempo-distorcido",
+          "name": "Tempo Distorcido",
+          "cost": 200,
+          "description": "Acao: por 1 minuto, ganhe 1 Acao extra por turno. Custo: 15 Mana. 1x/Descanso Longo. Apos: Exaustao 1 nivel.",
+          "prerequisites": [
+            { "type": "talent", "id": "teleporte-curto" },
+            { "type": "attribute", "attr": "FOC", "min": 5 }
+          ]
+        },
+        {
+          "id": "campo-antimagia",
+          "name": "Campo Antimagia",
+          "cost": 200,
+          "description": "Acao: crie zona de 6m raio. Nenhuma magia funciona dentro (incluindo as suas). Dura 1 min. Custo: 10 Mana. 1x/Descanso Longo.",
+          "prerequisites": [
+            { "type": "talent", "id": "dissipar" },
+            { "type": "talent", "id": "contra-magia" }
+          ]
+        },
+        {
+          "id": "invocar-elemental",
+          "name": "Invocar Elemental",
+          "cost": 200,
+          "description": "Acao: invoque elemental ND 5 (fogo, agua, terra ou ar). Obedece por 10 min. Concentracao. Custo: 10 Mana.",
+          "prerequisites": [ { "type": "talent", "id": "parede-elemental" } ]
+        },
+        {
+          "id": "metamagia-maximizar",
+          "name": "Metamagia: Maximizar",
+          "cost": 200,
+          "description": "Ao conjurar, gaste x3 Mana: todos os dados de dano sao MAXIMIZADOS. 1x/Descanso Longo.",
+          "prerequisites": [
+            { "type": "custom", "text": "Metamagia Ampliar ou Silenciar" }
+          ]
+        },
+        {
+          "id": "escudo-arcano-total",
+          "name": "Escudo Arcano Total",
+          "cost": 200,
+          "description": "Reacao: esfera protetora em 3m raio. Absorve ate 30 pontos de dano magico ou fisico. Dura 1 turno. Custo: 8 Mana.",
+          "prerequisites": [
+            { "type": "talent", "id": "escudo-magico" },
+            { "type": "talent", "id": "concentracao-dupla" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Arquimago",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Magia" } ],
+      "abilities": [
+        {
+          "id": "palavra-de-poder-matar",
+          "name": "Palavra de Poder: Matar",
+          "cost": 400,
+          "description": "Acao: alvo a 18m com 50 HP ou menos MORRE instantaneamente. Sem teste. Custo: 25 Mana. 1x/dia.",
+          "prerequisites": [ { "type": "talent", "id": "desintegrar" } ]
+        },
+        {
+          "id": "parar-o-tempo",
+          "name": "Parar o Tempo",
+          "cost": 400,
+          "description": "Acao: tempo para para todos exceto voce por 1d4+1 turnos. Pode agir livremente. Custo: 30 Mana. 1x/semana. Envelhece 1 ano.",
+          "prerequisites": [ { "type": "talent", "id": "tempo-distorcido" } ]
+        },
+        {
+          "id": "dominio-arcano",
+          "name": "Dominio Arcano",
+          "cost": 400,
+          "description": "Passivo: custo de Mana de todas as magias reduzido em 25%. Mana maxima +50%. Pode manter 3 concentracoes.",
+          "prerequisites": [
+            { "type": "talent", "id": "campo-antimagia" },
+            { "type": "talent", "id": "metamagia-maximizar" }
+          ]
+        },
+        {
+          "id": "cataclismo",
+          "name": "Cataclismo",
+          "cost": 400,
+          "description": "Acao: devastacao em area 18m raio. 12d6 dano (tipo a escolha). AGI DT (8+INT) para metade. Destroi terreno. Custo: 30 Mana. 1x/Descanso Longo.",
+          "prerequisites": [
+            { "type": "talent", "id": "invocar-elemental" },
+            { "type": "talent", "id": "bola-de-fogo" }
+          ]
+        }
+      ]
+    }
+  ]
+}

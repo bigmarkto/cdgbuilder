@@ -1,0 +1,77 @@
+{
+  "id": "draconato",
+  "name": "Draconato",
+  "source": "CDG_RacasDef.md",
+  "description": "Sucessores Dos Dragões Anciões. Há seis séculos, um dragão deixou descendência entre as terras mortais. O primeiro draconato continua andando por essas terras. Postura de nobreza, presença de comando, dignidade que parece vir junto com a própria respiração. Não são dragões, mas também não passam despercebidos. Cresceram em torno da ideia de legado. A palavra dada tem peso real.",
+  "hitDie": "d12",
+  "baseSpeed": 9,
+  "size": "medio",
+  "attributeBonus": {
+    "type": "fixed",
+    "values": { "PRE": 2, "INT": 1 },
+    "notes": "Definido pelo autor: +2 PRE (presença nobre de linhagem ancestral) e +1 INT (herança de conhecimento dracônico). DV 1d12 (corpo de linhagem)."
+  },
+  "traits": [
+    {
+      "id": "sangue-de-dragao",
+      "name": "Sangue de Dragão",
+      "description": "Resistência natural ao elemento ligado à sua linhagem. Recebe metade do dano de uma escolha elemental definida na criação, e ganha vantagem em testes para suportar clima extremo ou efeitos desse mesmo elemento.",
+      "modifiers": [
+        { "type": "custom", "text": "Resistência (metade do dano) ao elemento da linhagem escolhida na criação." }
+      ]
+    },
+    {
+      "id": "presenca-nobre",
+      "name": "Presença Nobre",
+      "description": "+2 em Persuasão, Intimidação ou Liderança quando estiver falando com autoridade, em audiência ou diante de desconhecidos.",
+      "modifiers": [
+        { "type": "custom", "text": "+2 situacional em Persuasão, Intimidação ou Liderança (com autoridade/em audiência/desconhecidos)." }
+      ]
+    },
+    {
+      "id": "vontade-de-escama",
+      "name": "Vontade de Escama",
+      "description": "Vantagem em testes contra medo, encanto ou manipulação emocional."
+    },
+    {
+      "id": "folego-ancestral",
+      "name": "Fôlego Ancestral",
+      "description": "Uma vez a cada 3 rodadas, pode liberar uma rajada de energia dracônica pela boca, causando 1d8 + Mod. INT.",
+      "modifiers": [
+        { "type": "custom", "text": "1x a cada 3 rodadas: rajada 1d8 + Mod INT." }
+      ]
+    },
+    {
+      "id": "longevidade-herdeira",
+      "name": "Longevidade Herdeira",
+      "description": "Envelhecem devagar e mantêm vigor por muito mais tempo que a maioria das raças. O primeiro draconato ainda caminha entre os vivos."
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "orgulho-hereditario",
+      "name": "Orgulho Hereditário",
+      "description": "-2 em testes para aceitar humilhação, submissão ou ordens consideradas indignas.",
+      "modifiers": [
+        { "type": "custom", "text": "-2 para aceitar humilhação/submissão/ordens indignas." }
+      ]
+    },
+    {
+      "id": "sangue-notavel",
+      "name": "Sangue Notável",
+      "description": "Dificuldade para passar despercebido em ambientes sociais."
+    },
+    {
+      "id": "codigo-de-honra",
+      "name": "Código de Honra",
+      "description": "Quando assume compromisso ou desafio, quebrá-lo causa penalidade social ou espiritual, a critério do mestre."
+    },
+    {
+      "id": "corpo-de-linhagem",
+      "name": "Corpo de Linhagem",
+      "description": "Equipamentos simples feitos para raças pequenas ou médias podem exigir adaptação, ajuste ou custo maior dependendo do porte do draconato."
+    }
+  ],
+  "subtypes": [],
+  "notes": "Draconato é raça oficial. Bônus e DV definidos pelo autor: +2 PRE, +1 INT, DV 1d12."
+}

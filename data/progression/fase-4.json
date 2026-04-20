@@ -1,0 +1,35 @@
+{
+  "id": "fase-4",
+  "name": "Fase 4: As Arvores Finais — Sombra, Social & Tecnomagia",
+  "source": "CDG_Progressao_P4.md",
+  "description": "Parte 4 do sistema de Progressao. As tres arvores finais: infiltracao, influencia e a fusao de magia com tecnologia.",
+  "escopo": ["arvore-sombra", "arvore-social", "arvore-magitech"],
+  "arvoresCobertas": [
+    { "arvore": "Sombra", "resumo": "Furtividade, Assassinato, Venenos & Roubo. A Sombra nao e uma arvore de covardes — e a arvore de quem entende que o golpe que mata e o que nao se ve vindo. Eficiencia sobre espetaculo. Precisao sobre forca bruta. O inimigo morre sem saber que estava sendo cacado." },
+    { "arvore": "Social", "resumo": "Persuasao, Comercio, Lideranca & Manipulacao. A espada mais afiada do mundo nao vale nada se o rei mandar seu exercito atras de voce. Social e a arvore de quem entende que PESSOAS sao o recurso mais poderoso — e mais perigoso — do mundo." },
+    { "arvore": "Magitech (Tecnomagia)", "resumo": "Constructos, Motriz, Engenharia Arcana & Automatos. Onde Oficio cria com martelo e bigorna, Tecnomagia cria com runas e Census Aurea. Onde Magia canaliza energia em feiticos, Magitech canaliza em MAQUINAS. Esta e a arvore da revolucao industrial magica — e das perguntas eticas que ela traz." }
+  ],
+  "regrasEspecificasSombra": {
+    "atributos": "AGI / PER",
+    "requisito": "AGI 2+ recomendado para Tier 1"
+  },
+  "regrasEspecificasSocial": {
+    "atributos": "PRE / INT",
+    "requisito": "PRE 2+ recomendado para Tier 1"
+  },
+  "regrasEspecificasMagitech": {
+    "atributos": "ENG / INT",
+    "requisito": "ENG 2+ obrigatorio",
+    "crossTreePesado": {
+      "description": "Magitech e a arvore mais dependente de outras.",
+      "dependencias": [
+        "Requer Oficio T1 (Maos Habeis ou Engenharia) para MUITAS habilidades",
+        "Combina com Magia (Canalizar) para encantamentos tecnologicos",
+        "Se conecta com Sangue para tecnologia Motriz",
+        "Liga com Fe para tecnologia de Census Aurea"
+      ],
+      "nota": "Investir em Magitech sem pelo menos 3 habilidades de outra arvore e ineficiente."
+    }
+  },
+  "notes": "Consulte data/trees/sombra.json, data/trees/social.json e data/trees/tecnomagia.json para habilidades especificas."
+}

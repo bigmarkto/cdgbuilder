@@ -1,0 +1,235 @@
+{
+  "id": "oficio",
+  "name": "Oficio",
+  "source": "CDG_Progressao_P3.md",
+  "description": "Crafting, Engenharia & Alquimia — ENG / INT. Enquanto outros destroem, o artesao cria. Num mundo onde recursos sao escassos e equipamento e sobrevivencia, quem sabe forjar, destilar e construir vale mais que dez espadachins.",
+  "atributoChave": "ENG / INT",
+  "tiers": [
+    {
+      "tier": 1,
+      "slots": 10,
+      "nivelMin": 2,
+      "nome": "Aprendiz Artesao",
+      "prerequisites": [ { "type": "custom", "text": "ENG 2+ recomendado" } ],
+      "abilities": [
+        { "id": "maos-habeis", "name": "Maos Habeis", "cost": 50, "description": "+2 em todos os testes de Crafting. Identifica qualidade de itens ao toque." },
+        { "id": "forja-basica", "name": "Forja Basica", "cost": 50, "description": "Pode criar armas e armaduras de metal ate qualidade Comum. Requer fornalha e materiais." },
+        {
+          "id": "alquimia-basica",
+          "name": "Alquimia Basica",
+          "cost": 50,
+          "description": "Pode criar pocoes basicas (cura menor 1d6, antidoto, oleo de fogo). Requer kit alquimico.",
+          "prerequisites": [ { "type": "attribute", "attr": "INT", "min": 2 } ]
+        },
+        { "id": "carpintaria", "name": "Carpintaria", "cost": 50, "description": "Pode criar objetos de madeira (arcos, escudos, moveis, abrigos temporarios). Requer ferramentas." },
+        { "id": "costura", "name": "Costura", "cost": 50, "description": "Pode criar armaduras leves, roupas, tendas, bandagens. Requer agulha e material." },
+        { "id": "reparo", "name": "Reparo", "cost": 50, "description": "Pode reparar equipamento danificado. Teste ENG DT 12. Restaura funcionalidade. Tempo: 30 min." },
+        {
+          "id": "avaliar",
+          "name": "Avaliar",
+          "cost": 50,
+          "description": "Acao: identifique valor, materiais e qualidade de qualquer item. Detecta falsificacoes (INT DT 14).",
+          "prerequisites": [ { "type": "attribute", "attr": "INT", "min": 2 } ]
+        },
+        {
+          "id": "engenharia-basica",
+          "name": "Engenharia Basica",
+          "cost": 50,
+          "description": "Pode criar mecanismos simples: alavancas, polias, armadilhas mecanicas basicas (1d8 dano, PER DT 12 pra detectar).",
+          "prerequisites": [ { "type": "attribute", "attr": "ENG", "min": 2 } ]
+        },
+        { "id": "cozinheiro", "name": "Cozinheiro", "cost": 50, "description": "Refeicoes que voce prepara restauram +2 HP em Descanso Curto. Com ingredientes raros: buffs temporarios." },
+        { "id": "reciclagem", "name": "Reciclagem", "cost": 50, "description": "Ao desmontar item: recupera 75% dos materiais (em vez de 50%). Pode desmontar em metade do tempo." }
+      ]
+    },
+    {
+      "tier": 2,
+      "slots": 8,
+      "nivelMin": 5,
+      "nome": "Artesao Profissional",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 1 de Oficio" } ],
+      "abilities": [
+        {
+          "id": "forja-superior",
+          "name": "Forja Superior",
+          "cost": 100,
+          "description": "Pode criar armas/armaduras de qualidade Superior (+1 acerto ou +1 DP). Tempo: metade do normal para itens Comuns.",
+          "prerequisites": [
+            { "type": "talent", "id": "forja-basica" },
+            { "type": "attribute", "attr": "ENG", "min": 3 }
+          ]
+        },
+        {
+          "id": "alquimia-avancada",
+          "name": "Alquimia Avancada",
+          "cost": 100,
+          "description": "Pocoes intermediarias: cura 2d8, resist. elemental (1h), pocao de forca/agilidade (+2, 10 min), venenos (2d6, CON DT 14). Bomba alquimica: 3d6 area.",
+          "prerequisites": [
+            { "type": "talent", "id": "alquimia-basica" },
+            { "type": "attribute", "attr": "INT", "min": 3 }
+          ]
+        },
+        {
+          "id": "armadilheiro",
+          "name": "Armadilheiro",
+          "cost": 100,
+          "description": "Armadilhas melhoradas: 3d8 dano, PER DT 16 para detectar. Pode criar armadilhas de rede (Restringido), de explosao, de veneno.",
+          "prerequisites": [ { "type": "talent", "id": "engenharia-basica" } ]
+        },
+        {
+          "id": "economia",
+          "name": "Economia",
+          "cost": 100,
+          "description": "Custo de materiais para crafting reduzido em 20%. Vendas rendem 25% a mais. Sabe onde encontrar materiais raros.",
+          "prerequisites": [ { "type": "talent", "id": "avaliar" } ]
+        },
+        {
+          "id": "reparo-de-campo",
+          "name": "Reparo de Campo",
+          "cost": 100,
+          "description": "Reparo em 5 min em vez de 30. Pode reparar durante combate (Acao completa). Funciona em Constructos e Motriz.",
+          "prerequisites": [ { "type": "talent", "id": "reparo" } ]
+        },
+        {
+          "id": "construcao",
+          "name": "Construcao",
+          "cost": 100,
+          "description": "Pode construir estruturas: casas, muros, torres de vigia. Tempo: dias em vez de semanas. Qualidade depende de materiais.",
+          "prerequisites": [
+            { "type": "talent", "id": "carpintaria" },
+            { "type": "talent", "id": "engenharia-basica" }
+          ]
+        },
+        {
+          "id": "chef-de-campanha",
+          "name": "Chef de Campanha",
+          "cost": 100,
+          "description": "Refeicoes concedem buffs reais: +1 em 1 atributo por 8h (depende do ingrediente). Ingredientes de monstros = buffs melhores.",
+          "prerequisites": [ { "type": "talent", "id": "cozinheiro" } ]
+        },
+        {
+          "id": "encantar-item",
+          "name": "Encantar Item",
+          "cost": 100,
+          "description": "CROSS-TREE: Pode imbuir itens com propriedade magica menor. Arma: +1d4 dano elemental. Armadura: resist. elemental. Custo: Mana + materiais. Dura 24h.",
+          "prerequisites": [
+            { "type": "custom", "text": "Magia T1 (Canalizar)" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "slots": 6,
+      "nivelMin": 8,
+      "nome": "Mestre Artesao",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 2 de Oficio" } ],
+      "abilities": [
+        {
+          "id": "obra-prima",
+          "name": "Obra-Prima",
+          "cost": 200,
+          "description": "Pode criar armas/armaduras Obra-Prima (+2 acerto/+2 DP, propriedade especial). Tempo: 1 semana. Custo alto. 1 ativa por vez.",
+          "prerequisites": [
+            { "type": "talent", "id": "forja-superior" },
+            { "type": "attribute", "attr": "ENG", "min": 5 }
+          ]
+        },
+        {
+          "id": "alquimia-suprema",
+          "name": "Alquimia Suprema",
+          "cost": 200,
+          "description": "Pocoes poderosas: cura 4d8, mutacao temporaria (ganhe traco racial por 1h), elixir de vida (+20 HP max por 24h). Bomba: 6d6 area.",
+          "prerequisites": [
+            { "type": "talent", "id": "alquimia-avancada" },
+            { "type": "attribute", "attr": "INT", "min": 5 }
+          ]
+        },
+        {
+          "id": "engenheiro-de-cerco",
+          "name": "Engenheiro de Cerco",
+          "cost": 200,
+          "description": "Pode construir maquinas de guerra: catapulta, balista, ariete. Pode criar armadilhas de zona (area 6m, efeitos multiplos).",
+          "prerequisites": [
+            { "type": "talent", "id": "armadilheiro" },
+            { "type": "talent", "id": "construcao" }
+          ]
+        },
+        {
+          "id": "encantamento-permanente",
+          "name": "Encantamento Permanente",
+          "cost": 200,
+          "description": "CROSS-TREE: Itens encantados duram PERMANENTEMENTE. Maximo de ENG itens encantados simultaneos.",
+          "prerequisites": [
+            { "type": "talent", "id": "encantar-item" },
+            { "type": "custom", "text": "Magia T2" }
+          ]
+        },
+        {
+          "id": "automacao",
+          "name": "Automacao",
+          "cost": 200,
+          "description": "Pode criar automatos simples (mini-constructos): seguem 3 comandos, HP 15, DP 12, ataque 1d6. Maximo: ENG/2 ativos.",
+          "prerequisites": [
+            { "type": "talent", "id": "engenharia-basica" },
+            { "type": "attribute", "attr": "ENG", "min": 5 }
+          ]
+        },
+        {
+          "id": "receita-secreta",
+          "name": "Receita Secreta",
+          "cost": 200,
+          "description": "Crie 1 receita unica (defina com Mestre). Pode ser pocao, refeicao, veneno ou bomba. So voce sabe faze-la. Efeito poderoso e unico.",
+          "prerequisites": [
+            { "type": "custom", "text": "Chef de Campanha ou Alquimia Avancada" }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "slots": 4,
+      "nivelMin": 10,
+      "nome": "Grao-Mestre da Forja",
+      "prerequisites": [ { "type": "custom", "text": "3+ habilidades Tier 3 de Oficio" } ],
+      "abilities": [
+        {
+          "id": "artefato",
+          "name": "Artefato",
+          "cost": 400,
+          "description": "Pode criar ARTEFATOS: itens lendarios com 2+ propriedades magicas permanentes. Custo: 1 semana + materiais raros + 500+ Dracmas. 1 por campanha.",
+          "prerequisites": [
+            { "type": "talent", "id": "obra-prima" },
+            { "type": "talent", "id": "encantamento-permanente" }
+          ]
+        },
+        {
+          "id": "elixir-da-imortalidade",
+          "name": "Elixir da Imortalidade",
+          "cost": 400,
+          "description": "1x JAMAIS: crie elixir que remove envelhecimento permanentemente de 1 criatura. Custo: ingredientes de 3 biomas diferentes + sangue de Anciao + 1 ano de trabalho.",
+          "prerequisites": [ { "type": "talent", "id": "alquimia-suprema" } ]
+        },
+        {
+          "id": "fortaleza",
+          "name": "Fortaleza",
+          "cost": 400,
+          "description": "Pode projetar e construir fortalezas completas com defesas automaticas. Torres com balistas autonomas, muros autorreparantes, portoes que reconhecem aliados.",
+          "prerequisites": [
+            { "type": "talent", "id": "engenheiro-de-cerco" },
+            { "type": "talent", "id": "automacao" }
+          ]
+        },
+        {
+          "id": "genio-criativo",
+          "name": "Genio Criativo",
+          "cost": 400,
+          "description": "Passivo: todos os testes de Crafting tem +5. Tempo de criacao reduzido em 50%. Pode improvisar qualquer item com materiais improvaveis (ENG DT 20). Voce e a lenda que outros artesaos contam historias sobre.",
+          "prerequisites": [
+            { "type": "custom", "text": "Qualquer 3 Tier 3 Oficio" }
+          ]
+        }
+      ]
+    }
+  ]
+}
