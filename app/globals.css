@@ -66,6 +66,31 @@ body {
   .stat-box-label { @apply text-[10px] uppercase text-ink-300 tracking-wider; }
   .stat-box-value { @apply text-xl font-serif text-ember-400; }
 
+  /* Wiki community — estilos do HTML gerado por renderDoc().
+     Casam com o mesmo visual do prose-cdg mas com espaçamentos próprios,
+     pois o content vem dentro de <div.wiki-content> sem a classe prose-cdg. */
+  .wiki-content { @apply text-ink-100 leading-relaxed; }
+  .wiki-content h1 { @apply font-serif text-2xl md:text-3xl text-ink-50 mt-6 mb-3 tracking-tight; }
+  .wiki-content h2 { @apply font-serif text-xl text-ink-100 mt-5 mb-2 border-b border-ink-700/70 pb-1; }
+  .wiki-content h3 { @apply font-serif text-lg text-ember-400 mt-4 mb-2; }
+  .wiki-content h4 { @apply font-serif text-base text-ink-100 mt-3 mb-1; }
+  .wiki-content h5, .wiki-content h6 { @apply font-serif text-sm text-ink-200 mt-3 mb-1 uppercase tracking-wider; }
+  .wiki-content p { @apply mb-3; }
+  .wiki-content ul { @apply list-disc pl-6 mb-3 space-y-1; }
+  .wiki-content ol { @apply list-decimal pl-6 mb-3 space-y-1; }
+  .wiki-content li > p { @apply mb-1; }
+  .wiki-content blockquote { @apply border-l-2 border-ember-500/60 pl-4 py-1 my-3 text-ink-200 italic; }
+  .wiki-content hr { @apply my-6 border-ink-700; }
+  .wiki-content code { @apply font-mono text-xs text-ember-400 bg-ink-800/60 px-1 py-0.5 rounded; }
+  .wiki-content pre { @apply bg-ink-900/80 border border-ink-700 rounded p-3 my-3 overflow-x-auto; }
+  .wiki-content pre code { @apply bg-transparent text-ink-100 px-0 py-0 text-xs; }
+  .wiki-content a { @apply text-ember-400 hover:underline; }
+  .wiki-content strong { @apply text-ink-50; }
+  .wiki-content em { @apply text-ink-100 italic; }
+
+  .wikilink { @apply text-ember-400 hover:underline border-b border-dotted border-ember-500/50; }
+  .wikilink-broken { @apply text-blood-400 border-blood-500/50; }
+
   /* Ficha (tela e impressão). As classes sheet-* abstraem as cores
      para que @media print possa inverter paleta facilmente. */
   .sheet-heading { @apply text-ink-50; }

@@ -1,0 +1,267 @@
+// ---------------------------------------------------------------------------
+// Prisma schema — CDG Builder
+//
+// Camada persistente do wiki community (Fase 1..7). Segue a separação lógica:
+//   • Canonical SoT (JSON em data/) — NÃO vive aqui, permanece sob Git.
+//   • Community layer — este schema. Páginas, revisões, uploads, comentários
+//     e audit trail são editáveis pelos usuários autenticados.
+//
+// O campo `Page.canonicalRef` é o ponto de ligação: quando uma página community
+// é "anexada" a uma entidade canônica (e.g. "talents/incendiario"), o leitor
+// injeta automaticamente o bloco community abaixo do JSON SoT renderizado.
+//
+// ---------------------------------------------------------------------------
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")  // Transaction Pooler (pgbouncer=true), usado em runtime.
+  directUrl = env("DIRECT_URL")    // Conexão direta, usada por `prisma migrate`.
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum Role {
+  READER      // default ao criar conta; pode ler/comentar
+  EDITOR      // pode criar/editar páginas community
+  MODERATOR   // pode trancar páginas, esconder comentários, banir
+  ADMIN       // tudo + gestão de roles + acesso a audit log
+}
+
+enum PageKind {
+  ARTICLE     // conteúdo livre
+  CHARACTER   // personagem de exemplo publicado pelo builder
+  LORE        // capítulos de ambientação
+  GUIDE       // tutoriais / builds recomendadas
+  GLOSSARY    // verbetes curtos
+}
+
+enum RevisionStatus {
+  DRAFT
+  PUBLISHED
+  REVERTED
+  HIDDEN      // moderação
+}
+
+// ---------------------------------------------------------------------------
+// Auth.js (NextAuth v5) — tabelas exigidas pelo PrismaAdapter
+// ---------------------------------------------------------------------------
+
+model Account {
+  id                String   @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.Text
+  access_token      String?  @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ---------------------------------------------------------------------------
+// User — unificado Auth.js + perfil CDG
+// ---------------------------------------------------------------------------
+
+model User {
+  id            String    @id @default(cuid())
+  email         String?   @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+
+  // Perfil CDG
+  handle        String?   @unique   // @nome-publico, opcional
+  bio           String?   @db.Text
+  role          Role      @default(READER)
+  bannedAt      DateTime?
+  bannedReason  String?
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+
+  pagesCreated  Page[]       @relation("PageAuthor")
+  revisions     Revision[]
+  uploads       FileUpload[]
+  comments      Comment[]
+  auditEntries  AuditLog[]
+
+  @@index([role])
+}
+
+// ---------------------------------------------------------------------------
+// Page — unidade editorial do wiki community
+// ---------------------------------------------------------------------------
+
+model Page {
+  id            String    @id @default(cuid())
+  slug          String    @unique           // e.g. "guia-de-incendiario"
+  title         String
+  kind          PageKind  @default(ARTICLE)
+
+  // Se a página estende uma entidade canônica, refere-se via "<tipo>/<id>".
+  // Ex: "talents/incendiario", "proficiencies/atirador", "creation".
+  // null = página 100% community (guia, lore original, etc).
+  canonicalRef  String?   @unique
+
+  authorId      String
+  author        User      @relation("PageAuthor", fields: [authorId], references: [id])
+
+  locked        Boolean   @default(false)   // moderação: congela edições
+  lockedReason  String?
+  deletedAt     DateTime?                    // soft delete
+
+  // Ponteiro para a revisão atualmente pública. Usado pelo reader.
+  currentRevisionId String?  @unique
+  currentRevision   Revision? @relation("CurrentRevision", fields: [currentRevisionId], references: [id])
+
+  revisions     Revision[]  @relation("PageRevisions")
+  comments      Comment[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([kind])
+  @@index([authorId])
+  @@index([canonicalRef])
+}
+
+// ---------------------------------------------------------------------------
+// Revision — snapshot imutável de uma edição
+// ---------------------------------------------------------------------------
+
+model Revision {
+  id          String   @id @default(cuid())
+  pageId      String
+  page        Page     @relation("PageRevisions", fields: [pageId], references: [id], onDelete: Cascade)
+
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+
+  // Corpo TipTap em JSON (ProseMirror document). Renderizado server-side
+  // via generateHTML com sanitização.
+  body        Json
+  // Summary do editor ("corrigi typo", "adicionei exemplo").
+  summary     String?
+
+  status      RevisionStatus @default(PUBLISHED)
+
+  // Backlink inverso: se currentRevision.Page aponta aqui, esta é a atual.
+  currentOf   Page?    @relation("CurrentRevision")
+
+  createdAt   DateTime @default(now())
+
+  @@index([pageId, createdAt])
+  @@index([authorId])
+}
+
+// ---------------------------------------------------------------------------
+// FileUpload — imagens embutidas em páginas
+// ---------------------------------------------------------------------------
+
+model FileUpload {
+  id          String   @id @default(cuid())
+  uploaderId  String
+  uploader    User     @relation(fields: [uploaderId], references: [id])
+
+  // URL pública do storage (Supabase Storage ou R2). Path interno fica em storagePath.
+  url         String
+  storagePath String   @unique
+  mimeType    String
+  sizeBytes   Int
+  width       Int?
+  height      Int?
+
+  createdAt   DateTime @default(now())
+
+  @@index([uploaderId])
+}
+
+// ---------------------------------------------------------------------------
+// Comment — discussão sob páginas
+// ---------------------------------------------------------------------------
+
+model Comment {
+  id        String   @id @default(cuid())
+  pageId    String
+  page      Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+
+  // Threading: null = top-level, senão FK para outro Comment.
+  parentId  String?
+  parent    Comment? @relation("CommentThread", fields: [parentId], references: [id], onDelete: Cascade)
+  replies   Comment[] @relation("CommentThread")
+
+  body      String   @db.Text
+  hiddenAt  DateTime?   // moderação
+  hiddenReason String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([pageId, createdAt])
+  @@index([parentId])
+  @@index([authorId])
+}
+
+// ---------------------------------------------------------------------------
+// AuditLog — trilha de ações sensíveis (moderação, mudança de role)
+// ---------------------------------------------------------------------------
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String
+  actor     User     @relation(fields: [actorId], references: [id])
+
+  // Ex: "PAGE_LOCK", "USER_BAN", "ROLE_CHANGE", "REVISION_HIDE".
+  action    String
+  // FK "solto" — (entityType, entityId) identifica o alvo sem acoplar schema.
+  entityType String?
+  entityId   String?
+
+  // Contexto livre: diff, razão, IP, etc.
+  meta      Json?
+
+  createdAt DateTime @default(now())
+
+  @@index([actorId, createdAt])
+  @@index([entityType, entityId])
+  @@index([action, createdAt])
+}

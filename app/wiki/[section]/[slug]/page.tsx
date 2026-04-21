@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { COLLECTIONS, COLLECTION_LABELS, type CollectionId } from '@/lib/types';
 import { collectionSummary, loadEntity } from '@/lib/data';
 import { EntityView } from '@/components/EntityView';
+import { CommunityNotes } from '@/components/wiki/CommunityNotes';
 
 export function generateStaticParams() {
   const params: Array<{ section: string; slug: string }> = [];
@@ -14,12 +15,20 @@ export function generateStaticParams() {
   return params;
 }
 
+// Não force-static: a página precisa ir no banco buscar Community Notes.
+// O shell da canonical entity é puro JSON (rápido); só o bloco community
+// exige dynamic. generateStaticParams + dynamic = 'force-dynamic' é válido
+// no Next 14 — ele gera params mas re-renderiza a cada request.
+export const dynamic = 'force-dynamic';
+
 export default function EntityPage({ params }: { params: { section: string; slug: string } }) {
   const section = params.section as CollectionId;
   if (!COLLECTIONS.includes(section)) notFound();
 
   const entity = loadEntity(section, params.slug);
   if (!entity) notFound();
+
+  const canonicalRef = `${section}/${params.slug}`;
 
   return (
     <div>
@@ -31,6 +40,9 @@ export default function EntityPage({ params }: { params: { section: string; slug
         </Link>
       </nav>
       <EntityView entity={entity as Parameters<typeof EntityView>[0]['entity']} />
+      {/* Server component assíncrono — se não houver página community correspondente,
+          retorna null silenciosamente. */}
+      <CommunityNotes canonicalRef={canonicalRef} />
     </div>
   );
 }
