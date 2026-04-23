@@ -135,6 +135,42 @@ describe('renderDoc — blocks', () => {
       '<pre><code class="language-typescript">const x = [[not-a-link]];</code></pre>'
     );
   });
+
+  it('renders image node with src + alt + title', () => {
+    expect(
+      renderDoc(
+        doc([
+          {
+            type: 'image',
+            attrs: { src: 'https://cdn.example.com/a.png', alt: 'foto', title: 'legenda' }
+          }
+        ])
+      )
+    ).toBe('<img src="https://cdn.example.com/a.png" alt="foto" title="legenda" loading="lazy" />');
+  });
+
+  it('rejects image with dangerous src (drops node)', () => {
+    expect(
+      renderDoc(
+        doc([
+          { type: 'image', attrs: { src: 'javascript:alert(1)', alt: 'x' } }
+        ])
+      )
+    ).toBe('');
+  });
+
+  it('escapes HTML in image alt/title', () => {
+    expect(
+      renderDoc(
+        doc([
+          {
+            type: 'image',
+            attrs: { src: '/img/x.png', alt: '<x>', title: '"t"' }
+          }
+        ])
+      )
+    ).toBe('<img src="/img/x.png" alt="&lt;x&gt;" title="&quot;t&quot;" loading="lazy" />');
+  });
 });
 
 describe('renderDoc — security', () => {

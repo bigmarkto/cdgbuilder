@@ -32,7 +32,8 @@ export type BlockType =
   | 'blockquote'
   | 'horizontalRule'
   | 'hardBreak'
-  | 'codeBlock';
+  | 'codeBlock'
+  | 'image';
 
 export type InlineType = 'text';
 

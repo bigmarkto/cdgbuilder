@@ -26,6 +26,7 @@ const summarySelect = {
   kind: true,
   canonicalRef: true,
   locked: true,
+  lockedReason: true,
   deletedAt: true,
   updatedAt: true,
   createdAt: true,

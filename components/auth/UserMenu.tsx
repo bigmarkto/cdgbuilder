@@ -30,19 +30,29 @@ export async function UserMenu() {
   const { email, name, handle, role } = session.user;
   const label = handle ? `@${handle}` : name || email || 'Usuário';
   const isStaff = role === 'ADMIN' || role === 'MODERATOR';
+  const isAdmin = role === 'ADMIN';
   const needsNick = !handle;
 
   return (
     <div className="flex items-center gap-1">
+      {isAdmin && (
+        <Link
+          href="/admin"
+          className="px-2 py-1.5 rounded text-ember-400 hover:bg-ink-800 hover:text-ember-300 transition-colors text-xs uppercase tracking-wider"
+          title="Painel administrativo"
+        >
+          admin
+        </Link>
+      )}
       <Link
         href="/settings/profile"
         className="px-3 py-1.5 rounded text-ink-200 hover:bg-ink-800 hover:text-ink-50 transition-colors text-sm"
         title={email ?? undefined}
       >
         {label}
-        {isStaff && (
+        {isStaff && !isAdmin && (
           <span className="ml-1.5 text-[10px] uppercase tracking-wider text-ember-400">
-            {role === 'ADMIN' ? 'admin' : 'mod'}
+            mod
           </span>
         )}
         {needsNick && (

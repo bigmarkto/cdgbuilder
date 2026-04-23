@@ -199,6 +199,18 @@ function renderNode(node: DocNode): string {
       return `<pre><code${langAttr}>${escapeHtml(raw)}</code></pre>`;
     }
 
+    case 'image': {
+      // Só aceitamos URLs que passam sanitizeHref. Title/alt escapados.
+      const src = sanitizeHref((node.attrs as { src?: unknown } | undefined)?.src);
+      if (src === '#') return ''; // URL inválida → não renderiza nada
+      const alt = escapeHtml(
+        typeof node.attrs?.alt === 'string' ? (node.attrs.alt as string) : ''
+      );
+      const title = typeof node.attrs?.title === 'string' ? (node.attrs.title as string) : '';
+      const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
+      return `<img src="${src}" alt="${alt}"${titleAttr} loading="lazy" />`;
+    }
+
     case 'text': {
       const raw = typeof node.text === 'string' ? node.text : '';
       const inner = renderTextWithWikilinks(raw);

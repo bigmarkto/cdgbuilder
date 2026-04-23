@@ -24,8 +24,10 @@ import { EditorContent, useEditor, type Editor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
-import { useCallback, useEffect } from 'react';
+import Image from '@tiptap/extension-image';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { DocNode } from '@/lib/wiki/doc';
+import { prepareUpload, finalizeUpload } from '@/lib/wiki/uploadActions';
 
 export interface PageEditorProps {
   /** JSON ProseMirror inicial (DocNode) ou undefined pra editor vazio. */
@@ -61,6 +63,11 @@ export function PageEditor({
           class: 'text-ember-400 underline'
         }
       }),
+      Image.configure({
+        inline: false,
+        allowBase64: false, // só aceita URL (tudo passa pelo upload action)
+        HTMLAttributes: { class: 'wiki-image rounded my-3' }
+      }),
       Placeholder.configure({
         placeholder,
         showOnlyWhenEditable: true,
@@ -91,6 +98,72 @@ export function PageEditor({
     editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
   }, [editor]);
 
+  // Ref pro file input escondido; clicar no botão da toolbar dispara
+  // input.click() pra abrir o diálogo nativo.
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Progresso de upload: null = idle, 0-100 durante PUT. Mostra barra acima da toolbar.
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+
+  const onFileChosen = useCallback(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      // Reset imediato pra permitir re-upload do mesmo arquivo.
+      e.target.value = '';
+      if (!file || !editor) return;
+
+      // 1. Pede signed URL pro server (valida auth/MIME/size).
+      const prep = await prepareUpload({
+        fileName: file.name,
+        mimeType: file.type,
+        size: file.size
+      });
+      if (!prep.ok) {
+        window.alert(`Falha ao enviar: ${prep.error}`);
+        return;
+      }
+
+      // 2. PUT direto do browser pro Supabase, com progress events.
+      setUploadProgress(0);
+      try {
+        await putWithProgress(prep.uploadUrl, file, (pct) => {
+          setUploadProgress(pct);
+        });
+      } catch (err) {
+        setUploadProgress(null);
+        window.alert(
+          `Falha no envio: ${err instanceof Error ? err.message : 'erro desconhecido'}`
+        );
+        return;
+      }
+
+      // 3. Grava registro FileUpload no banco.
+      const fin = await finalizeUpload({
+        storagePath: prep.storagePath,
+        mimeType: file.type,
+        sizeBytes: file.size
+      });
+      setUploadProgress(null);
+      if (!fin.ok) {
+        window.alert(`Falha ao registrar: ${fin.error}`);
+        return;
+      }
+
+      editor
+        .chain()
+        .focus()
+        .setImage({ src: fin.url, alt: file.name })
+        .run();
+    },
+    [editor]
+  );
+
+  const onInsertImage = useCallback(() => {
+    // Ignora cliques no botão enquanto um upload está em andamento.
+    if (uploadProgress !== null) return;
+    fileInputRef.current?.click();
+  }, [uploadProgress]);
+
   if (!editor) {
     return (
       <div className="min-h-[260px] rounded border border-ink-700 bg-ink-900/50 flex items-center justify-center text-ink-400 text-sm">
@@ -101,17 +174,91 @@ export function PageEditor({
 
   return (
     <div className="rounded border border-ink-700 bg-ink-900/50 overflow-hidden">
-      <Toolbar editor={editor} onInsertLink={insertLink} />
+      <Toolbar
+        editor={editor}
+        onInsertLink={insertLink}
+        onInsertImage={onInsertImage}
+        uploading={uploadProgress !== null}
+      />
+      {uploadProgress !== null && (
+        <div
+          className="h-1 bg-ink-800"
+          role="progressbar"
+          aria-valuenow={Math.round(uploadProgress)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label="Enviando imagem"
+        >
+          <div
+            className="h-full bg-ember-500 transition-[width] duration-150"
+            style={{ width: `${uploadProgress}%` }}
+          />
+        </div>
+      )}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"
+        className="hidden"
+        onChange={onFileChosen}
+      />
       <EditorContent editor={editor} />
     </div>
   );
 }
 
 // ---------------------------------------------------------------------------
+// putWithProgress — XHR PUT com events de progresso.
+//
+// Por que XHR e não fetch: a API `fetch` não expõe progresso de upload
+// (só download via ReadableStream em browsers modernos, e mesmo assim
+// request body streaming tem suporte irregular). XHR resolve isso há
+// décadas com `xhr.upload.onprogress`.
+// ---------------------------------------------------------------------------
+
+function putWithProgress(
+  url: string,
+  file: File,
+  onProgress: (percent: number) => void
+): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.upload.addEventListener('progress', (e) => {
+      if (e.lengthComputable) {
+        onProgress((e.loaded / e.total) * 100);
+      }
+    });
+    xhr.addEventListener('load', () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        onProgress(100);
+        resolve();
+      } else {
+        reject(new Error(`Upload falhou (HTTP ${xhr.status}).`));
+      }
+    });
+    xhr.addEventListener('error', () => reject(new Error('Erro de rede.')));
+    xhr.addEventListener('abort', () => reject(new Error('Upload cancelado.')));
+    xhr.open('PUT', url, true);
+    xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+    xhr.send(file);
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Toolbar
 // ---------------------------------------------------------------------------
 
-function Toolbar({ editor, onInsertLink }: { editor: Editor; onInsertLink: () => void }) {
+function Toolbar({
+  editor,
+  onInsertLink,
+  onInsertImage,
+  uploading
+}: {
+  editor: Editor;
+  onInsertLink: () => void;
+  onInsertImage: () => void;
+  uploading?: boolean;
+}) {
   // Força re-render quando o editor state muda (pra highlight dos botões
   // ativos). TipTap expõe `selectionUpdate` e `transaction`; o jeito
   // idiomático no React é useSyncExternalStore, mas pra MVP usamos rerender
@@ -206,6 +353,13 @@ function Toolbar({ editor, onInsertLink }: { editor: Editor; onInsertLink: () =>
       >
         🔗
       </ToolbarButton>
+      <ToolbarButton
+        onClick={onInsertImage}
+        disabled={uploading}
+        title={uploading ? 'Enviando imagem…' : 'Inserir imagem (upload)'}
+      >
+        🖼
+      </ToolbarButton>
       <ToolbarDivider />
       <ToolbarButton
         onClick={() => editor.chain().focus().undo().run()}
@@ -263,8 +417,6 @@ function ToolbarDivider() {
 // ---------------------------------------------------------------------------
 // useReactiveEditor — força re-render quando o editor dispara transaction
 // ---------------------------------------------------------------------------
-
-import { useState } from 'react';
 
 function useReactiveEditor(editor: Editor | null) {
   const [, setTick] = useState(0);

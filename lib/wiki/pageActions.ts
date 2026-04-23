@@ -24,6 +24,8 @@ import { requireRole, PermissionError } from './permissions';
 import { isDoc, type DocNode } from './doc';
 import { isValidSlug } from './slug';
 import { parseCanonicalRef } from './canonicalRef';
+import { writeAudit, AUDIT_ACTIONS } from './auditLog';
+import { buildSearchText } from './search';
 
 export type ActionResult =
   | { ok: true; slug: string }
@@ -80,7 +82,7 @@ function validateInput(input: {
       };
     }
     // Slugs reservados (rotas estáticas da seção /wiki/c/*).
-    const reserved = ['new', 'c', 'index'];
+    const reserved = ['new', 'c', 'index', 'search'];
     if (reserved.includes(input.slug)) {
       return { error: 'Esse slug é reservado — escolhe outro.', field: 'slug' };
     }
@@ -148,6 +150,8 @@ export async function createPage(input: CreateInput): Promise<ActionResult> {
   const { title, slug, kind, canonicalRef, body } = validation.data;
 
   try {
+    const searchText = buildSearchText(title, body);
+
     const page = await db.$transaction(async (tx) => {
       const created = await tx.page.create({
         data: {
@@ -155,7 +159,8 @@ export async function createPage(input: CreateInput): Promise<ActionResult> {
           title,
           kind,
           canonicalRef,
-          authorId: member.id
+          authorId: member.id,
+          searchText
         }
       });
       const revision = await tx.revision.create({
@@ -224,6 +229,8 @@ export async function updatePage(input: UpdateInput): Promise<ActionResult> {
   const { title, kind, canonicalRef, body } = validation.data;
 
   try {
+    const searchText = buildSearchText(title, body);
+
     const page = await db.$transaction(async (tx) => {
       const revision = await tx.revision.create({
         data: {
@@ -240,7 +247,8 @@ export async function updatePage(input: UpdateInput): Promise<ActionResult> {
           title,
           kind,
           canonicalRef,
-          currentRevisionId: revision.id
+          currentRevisionId: revision.id,
+          searchText
         }
       });
     });
@@ -255,6 +263,136 @@ export async function updatePage(input: UpdateInput): Promise<ActionResult> {
     }
 
     return { ok: true, slug: page.slug };
+  } catch (err) {
+    return mapPrismaError(err);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// revertToRevision — rollback para uma revisão anterior
+// ---------------------------------------------------------------------------
+
+type RevertInput = {
+  pageId: string;
+  revisionId: string;
+  summary?: string;
+};
+
+/**
+ * Rollback: cria uma NOVA revisão com o body da revisão alvo e a promove
+ * a currentRevision. Imutabilidade preservada — a revisão alvo continua
+ * intacta no histórico, e a revisão que era current vira apenas uma entrada
+ * anterior na trilha (status permanece PUBLISHED).
+ *
+ * Permite que um EDITOR+ "desfaça" uma edição recente sem perder auditoria.
+ * Locked ainda bloqueia (exceto MODERATOR/ADMIN). Proíbe reverter para a
+ * própria currentRevision (no-op).
+ */
+export async function revertToRevision(input: RevertInput): Promise<ActionResult> {
+  let member;
+  try {
+    member = await requireRole('EDITOR', { mode: 'throw' });
+  } catch (err) {
+    if (err instanceof PermissionError) {
+      return {
+        ok: false,
+        error:
+          err.code === 'not-authenticated'
+            ? 'Você precisa entrar para restaurar revisões.'
+            : 'Sua conta não tem permissão para restaurar revisões.'
+      };
+    }
+    throw err;
+  }
+
+  const [page, target] = await Promise.all([
+    db.page.findUnique({
+      where: { id: input.pageId },
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        locked: true,
+        deletedAt: true,
+        canonicalRef: true,
+        currentRevisionId: true
+      }
+    }),
+    db.revision.findUnique({
+      where: { id: input.revisionId },
+      select: { id: true, pageId: true, body: true, createdAt: true, author: { select: { handle: true, name: true } } }
+    })
+  ]);
+
+  if (!page || page.deletedAt) {
+    return { ok: false, error: 'Página não encontrada.' };
+  }
+  if (!target || target.pageId !== page.id) {
+    return { ok: false, error: 'Revisão não encontrada ou não pertence a essa página.' };
+  }
+  if (page.locked && member.role !== 'MODERATOR' && member.role !== 'ADMIN') {
+    return {
+      ok: false,
+      error: 'Essa página está trancada pela moderação e não pode ser editada agora.'
+    };
+  }
+  if (target.id === page.currentRevisionId) {
+    return { ok: false, error: 'Essa já é a revisão atual — nada a restaurar.' };
+  }
+
+  // Monta summary automático se não veio — aparece no histórico explicando
+  // de onde veio o conteúdo.
+  const authorLabel = target.author.handle
+    ? `@${target.author.handle}`
+    : target.author.name ?? 'autor anônimo';
+  const ts = target.createdAt.toLocaleString('pt-BR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+  const autoSummary = `Revertido para revisão de ${authorLabel} em ${ts}.`;
+
+  try {
+    // Revert reusa o body da revisão alvo; title da página não muda aqui,
+    // mas o searchText precisa ser recomputado porque o body mudou.
+    const searchText = buildSearchText(page.title, target.body);
+
+    const updated = await db.$transaction(async (tx) => {
+      const revision = await tx.revision.create({
+        data: {
+          pageId: page.id,
+          authorId: member.id,
+          body: target.body as unknown as object,
+          summary: input.summary?.trim() || autoSummary,
+          status: 'PUBLISHED'
+        }
+      });
+      return tx.page.update({
+        where: { id: page.id },
+        data: { currentRevisionId: revision.id, searchText }
+      });
+    });
+
+    await writeAudit({
+      actorId: member.id,
+      action: AUDIT_ACTIONS.REVISION_REVERT,
+      entityType: 'page',
+      entityId: page.id,
+      meta: {
+        pageSlug: updated.slug,
+        fromRevisionId: page.currentRevisionId,
+        toRevisionId: target.id
+      }
+    });
+
+    revalidatePath('/wiki/c');
+    revalidatePath(`/wiki/c/${updated.slug}`);
+    revalidatePath(`/wiki/c/${updated.slug}/history`);
+    if (page.canonicalRef) revalidatePath(`/wiki/${page.canonicalRef}`);
+
+    return { ok: true, slug: updated.slug };
   } catch (err) {
     return mapPrismaError(err);
   }

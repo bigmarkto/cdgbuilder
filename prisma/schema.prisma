@@ -153,6 +153,11 @@ model Page {
   revisions     Revision[]  @relation("PageRevisions")
   comments      Comment[]
 
+  // Fase 7 — conteúdo plano (title + extrato do body atual) mantido em app
+  // pra alimentar o índice full-text (to_tsvector('portuguese', searchText)).
+  // Recalculado na transação de create/update/revert.
+  searchText    String?   @db.Text
+
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 

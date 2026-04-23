@@ -9,8 +9,11 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getRevisionById, displayAuthor } from '@/lib/wiki/pageRepo';
+import { getRevisionById, getCommunityPageBySlug, displayAuthor } from '@/lib/wiki/pageRepo';
 import { renderDoc } from '@/lib/wiki/renderDoc';
+import { getCurrentMember, hasAtLeast } from '@/lib/wiki/permissions';
+import { RevertButton } from '@/components/wiki/RevertButton';
+import { RevisionModButton } from '@/components/wiki/RevisionModButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,7 +26,12 @@ export default async function RevisionView({
 }: {
   params: { slug: string; revisionId: string };
 }) {
-  const rev = await getRevisionById(params.revisionId);
+  const [rev, pageFull, member] = await Promise.all([
+    getRevisionById(params.revisionId),
+    // Precisamos de page.locked pra decidir se o rollback é permitido.
+    getCommunityPageBySlug(params.slug),
+    getCurrentMember()
+  ]);
   if (!rev) notFound();
   // Verifica que a revisão realmente pertence à página do slug (proteção
   // contra IDs colados de páginas alheias).
@@ -32,6 +40,12 @@ export default async function RevisionView({
 
   const isCurrent = rev.page.currentRevisionId === rev.id;
   const isHidden = rev.status === 'HIDDEN';
+  const canEdit = member ? hasAtLeast(member.role, 'EDITOR') : false;
+  const canEditLocked = pageFull?.locked
+    ? Boolean(member && hasAtLeast(member.role, 'MODERATOR'))
+    : true;
+  const canRevert = canEdit && canEditLocked && !isCurrent && !isHidden;
+  const canModerate = member ? hasAtLeast(member.role, 'MODERATOR') : false;
   const html = renderDoc(rev.body);
 
   return (
@@ -60,20 +74,34 @@ export default async function RevisionView({
       </nav>
 
       {!isCurrent && !isHidden && (
-        <div className="mb-4 px-3 py-2 rounded border border-ink-600 bg-ink-900/50 text-ink-300 text-sm">
-          Você está vendo uma revisão antiga desta página.{' '}
-          <Link
-            href={`/wiki/c/${rev.page.slug}`}
-            className="text-ember-400 hover:underline"
-          >
-            Ir pra versão atual →
-          </Link>
+        <div className="mb-4 px-3 py-2 rounded border border-ink-600 bg-ink-900/50 text-ink-300 text-sm flex items-center justify-between gap-3">
+          <span>
+            Você está vendo uma revisão antiga desta página.{' '}
+            <Link
+              href={`/wiki/c/${rev.page.slug}`}
+              className="text-ember-400 hover:underline"
+            >
+              Ir pra versão atual →
+            </Link>
+          </span>
+          {canRevert && (
+            <RevertButton
+              pageId={rev.page.id}
+              revisionId={rev.id}
+              slug={rev.page.slug}
+              variant="primary"
+              label="Restaurar esta versão"
+            />
+          )}
         </div>
       )}
 
       {isHidden && (
-        <div className="mb-4 px-3 py-2 rounded border border-blood-500 bg-blood-500/10 text-blood-200 text-sm">
-          Esta revisão foi ocultada pela moderação.
+        <div className="mb-4 px-3 py-2 rounded border border-blood-500 bg-blood-500/10 text-blood-200 text-sm flex items-center justify-between gap-3">
+          <span>Esta revisão foi ocultada pela moderação.</span>
+          {canModerate && (
+            <RevisionModButton revisionId={rev.id} hidden={true} />
+          )}
         </div>
       )}
 
@@ -102,6 +130,12 @@ export default async function RevisionView({
         className="wiki-content prose-ink"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+
+      {canModerate && !isHidden && (
+        <footer className="mt-8 pt-4 border-t border-ink-800 flex items-center justify-end">
+          <RevisionModButton revisionId={rev.id} hidden={false} />
+        </footer>
+      )}
     </article>
   );
 }

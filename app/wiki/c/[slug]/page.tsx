@@ -14,6 +14,8 @@ import { getCommunityPageBySlug, displayAuthor } from '@/lib/wiki/pageRepo';
 import { renderDoc, extractPlaintext } from '@/lib/wiki/renderDoc';
 import { getCurrentMember } from '@/lib/wiki/permissions';
 import { hasAtLeast } from '@/lib/wiki/permissions';
+import { CommentThread } from '@/components/wiki/CommentThread';
+import { PageModControls } from '@/components/wiki/PageModControls';
 
 export const dynamic = 'force-dynamic';
 
@@ -47,6 +49,8 @@ export default async function CommunityPageReader({
   const canonicalLink = page.canonicalRef ? `/wiki/${page.canonicalRef}` : null;
   const canEdit = member ? hasAtLeast(member.role, 'EDITOR') : false;
   const canEditLocked = page.locked ? member && hasAtLeast(member.role, 'MODERATOR') : true;
+  const canModerate = member ? hasAtLeast(member.role, 'MODERATOR') : false;
+  const canAdmin = member ? hasAtLeast(member.role, 'ADMIN') : false;
 
   return (
     <article>
@@ -104,6 +108,17 @@ export default async function CommunityPageReader({
             </Link>
           </div>
         </div>
+        {canModerate && (
+          <div className="mt-2 pt-2 border-t border-ink-800">
+            <PageModControls
+              pageId={page.id}
+              slug={page.slug}
+              locked={page.locked}
+              lockedReason={page.lockedReason}
+              canAdmin={canAdmin}
+            />
+          </div>
+        )}
       </header>
 
       <div
@@ -119,6 +134,8 @@ export default async function CommunityPageReader({
         </Link>
         .
       </footer>
+
+      <CommentThread pageId={page.id} pageSlug={page.slug} />
     </article>
   );
 }

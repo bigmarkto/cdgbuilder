@@ -7,6 +7,7 @@
 import Link from 'next/link';
 import { listCommunityPages, displayAuthor } from '@/lib/wiki/pageRepo';
 import { getCurrentMember, hasAtLeast } from '@/lib/wiki/permissions';
+import { SearchBar } from '@/components/wiki/SearchBar';
 
 export const dynamic = 'force-dynamic';
 
@@ -51,7 +52,7 @@ export default async function CommunityIndex() {
           </Link>
         )}
       </div>
-      <p className="text-ink-200 mb-6">
+      <p className="text-ink-200 mb-4">
         Páginas escritas pelos jogadores — guias, lore expandida, builds, verbetes.
         Para editar, faça login e use o botão na página. O conteúdo canônico do
         sistema continua em{' '}
@@ -60,6 +61,10 @@ export default async function CommunityIndex() {
         </Link>
         .
       </p>
+
+      <div className="mb-6">
+        <SearchBar />
+      </div>
 
       {pages.length === 0 ? (
         <div className="card">
