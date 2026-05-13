@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main className="flex-1">{children}</main>
           <footer className="border-t border-ink-700 py-4 text-center text-xs text-ink-400 print:hidden">
-            CDG Builder — Fase 3. Dados v0.
+            Cicatrizes do Gatilho — builder &amp; wiki da comunidade.
           </footer>
         </div>
       </body>

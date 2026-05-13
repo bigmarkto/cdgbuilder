@@ -19,12 +19,12 @@ export interface CommentThreadProps {
 }
 
 export async function CommentThread({ pageId, pageSlug }: CommentThreadProps) {
-  const [comments, member] = await Promise.all([
-    listCommentTree(pageId),
-    getCurrentMember()
-  ]);
-
+  // Member primeiro pra decidir se a query de comentários deve incluir o
+  // body de comentários ocultos. Pra não-MOD o body é zerado server-side
+  // (ver listCommentTree) — evita vazamento via payload RSC.
+  const member = await getCurrentMember();
   const canModerate = member ? hasAtLeast(member.role, 'MODERATOR') : false;
+  const comments = await listCommentTree(pageId, { canModerate });
 
   return (
     <section className="mt-10 pt-6 border-t border-ink-700">

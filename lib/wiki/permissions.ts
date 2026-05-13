@@ -46,15 +46,24 @@ export async function getCurrentMember() {
 
 /**
  * Exige `required` role. Se não tiver, redireciona (dentro de RSC) ou throw
- * ValidationError (dentro de server action — aí o action handler decide
+ * PermissionError (dentro de server action — aí o action handler decide
  * como lidar).
  *
  * mode='redirect' é o default, adequado para pages. Em server actions
  * preferimos mode='throw' pra poder devolver erro via return.
+ *
+ * Targets do redirect:
+ *   • not-authenticated → /login (com callbackUrl se opts.callbackUrl).
+ *   • insufficient-role → /403 (página dedicada com link de volta).
  */
 export async function requireRole(
   required: Role,
-  opts: { mode?: 'redirect' | 'throw'; loginPath?: string } = {}
+  opts: {
+    mode?: 'redirect' | 'throw';
+    loginPath?: string;
+    /** Opcional: passa pra /403?from=… ajudar o usuário a entender onde caiu. */
+    callbackUrl?: string;
+  } = {}
 ) {
   const mode = opts.mode ?? 'redirect';
   const member = await getCurrentMember();
@@ -66,8 +75,10 @@ export async function requireRole(
 
   if (!hasAtLeast(member.role, required)) {
     if (mode === 'throw') throw new PermissionError('insufficient-role');
-    // Sem página específica de 403 ainda — manda pra home com mensagem genérica.
-    redirect('/?err=forbidden');
+    const url = opts.callbackUrl
+      ? `/403?from=${encodeURIComponent(opts.callbackUrl)}`
+      : '/403';
+    redirect(url);
   }
 
   return member;

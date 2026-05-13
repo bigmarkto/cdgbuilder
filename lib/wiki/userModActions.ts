@@ -68,10 +68,20 @@ export async function banUser(input: {
   }
 
   const reason = input.reason?.trim() || null;
-  await db.user.update({
-    where: { id: target.id },
-    data: { bannedAt: new Date(), bannedReason: reason }
-  });
+
+  // Banir + invalidar sessions na mesma transaction. Sem deletar Session,
+  // o cookie do banido continua válido e o header/UI ainda mostra ele
+  // como "logado" (apesar de toda action falhar). O DELETE força logout
+  // efetivo na próxima request (cookie aponta pra sessionToken inexistente).
+  await db.$transaction([
+    db.user.update({
+      where: { id: target.id },
+      data: { bannedAt: new Date(), bannedReason: reason }
+    }),
+    db.session.deleteMany({
+      where: { userId: target.id }
+    })
+  ]);
 
   await writeAudit({
     actorId: actor.id,

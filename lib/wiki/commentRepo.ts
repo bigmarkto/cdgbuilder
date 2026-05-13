@@ -5,14 +5,19 @@
  *   • Busca todos os comentários visíveis da página numa query só (uma FK)
  *     e monta a árvore em memória. É muito mais barato que N queries de
  *     replies e o volume esperado por página é baixo (dezenas, não milhares).
- *   • Comentários `hiddenAt != null` são retornados mesmo assim, mas sem
- *     body — o cliente pode mostrar um placeholder ("[removido pela mod]").
- *     Mantêm o nó pra não quebrar a árvore de replies.
+ *   • Comentários `hiddenAt != null` continuam no resultado pra não quebrar
+ *     a árvore de replies — mas o body é zerado server-side quando o viewer
+ *     não é MOD+. O placeholder "[removido pela moderação]" vive no client.
  *
  * Regras de visibilidade:
- *   • `hiddenAt != null` + não-MOD → body escondido ("[removido]"); filhos
- *     continuam visíveis normalmente
- *   • MOD+ vê body original com badge "oculto" pra poder desfazer
+ *   • `hiddenAt != null` + não-MOD → body retornado como '' (zerado aqui no
+ *     server pra NUNCA ir no payload RSC). Estrutura preservada.
+ *   • MOD+ vê body original com badge "oculto" pra poder desfazer.
+ *
+ * Privacidade: nunca passar o `body` original pra clientes não-MOD. O bug
+ * histórico era que o componente client recebia o body completo via props
+ * (que vai no RSC payload), e o componente só escondia no JSX — devassável
+ * via DevTools. Agora zeramos aqui.
  */
 import { db } from '@/lib/db';
 
@@ -33,12 +38,26 @@ export interface CommentNode {
   replies: CommentNode[];
 }
 
+export interface ListCommentTreeOptions {
+  /**
+   * Se true, o body de comentários ocultos é retornado intacto (pra UI de
+   * moderação que precisa ler o que foi escondido pra decidir desfazer).
+   * Se false (default), body de hidden vira '' antes de sair do server.
+   */
+  canModerate?: boolean;
+}
+
 /**
  * Carrega todos os comentários de uma página e monta a árvore.
  * Ordena top-level por createdAt asc (mais antigos primeiro — conversa
  * lê como fio), replies também asc dentro de cada thread.
  */
-export async function listCommentTree(pageId: string): Promise<CommentNode[]> {
+export async function listCommentTree(
+  pageId: string,
+  opts: ListCommentTreeOptions = {}
+): Promise<CommentNode[]> {
+  const canModerate = opts.canModerate ?? false;
+
   const rows = await db.comment.findMany({
     where: { pageId },
     select: {
@@ -55,15 +74,17 @@ export async function listCommentTree(pageId: string): Promise<CommentNode[]> {
     orderBy: { createdAt: 'asc' }
   });
 
+  const sanitized = rows.map((row) => sanitizeHiddenBody(row, canModerate));
+
   // Index por id pra resolver relações.
   const byId = new Map<string, CommentNode>();
-  for (const row of rows) {
+  for (const row of sanitized) {
     byId.set(row.id, { ...row, replies: [] });
   }
 
   // Liga replies aos pais; top-level fica solto num array.
   const roots: CommentNode[] = [];
-  for (const row of rows) {
+  for (const row of sanitized) {
     const node = byId.get(row.id)!;
     if (row.parentId && byId.has(row.parentId)) {
       byId.get(row.parentId)!.replies.push(node);
@@ -72,6 +93,24 @@ export async function listCommentTree(pageId: string): Promise<CommentNode[]> {
     }
   }
   return roots;
+}
+
+/**
+ * Zera o `body` de um comentário oculto quando o viewer não é MOD+.
+ * Exposta separada da query pra ficar testável sem mockar Prisma.
+ *
+ * `hiddenReason` é preservada porque o placeholder no client renderiza
+ * "[comentário removido: <razão>]" — a razão é meta da moderação, não
+ * conteúdo do autor.
+ */
+export function sanitizeHiddenBody<T extends { body: string; hiddenAt: Date | null }>(
+  row: T,
+  canModerate: boolean
+): T {
+  if (row.hiddenAt && !canModerate) {
+    return { ...row, body: '' };
+  }
+  return row;
 }
 
 /**
