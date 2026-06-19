@@ -1,0 +1,55 @@
+{
+  "id": "economia-de-acoes",
+  "name": "Economia de Ações",
+  "source": "CDG_Combate (proposta de balanceamento 1.2)",
+  "description": "Cada personagem age uma vez por rodada. Em seu turno tem um orçamento de ações: o que afeta os outros é Ação Padrão; deslocar é Movimento; Bônus só existe quando uma habilidade concede; Reação acontece fora do seu turno.",
+  "baseBudget": {
+    "standard": 1,
+    "move": 1,
+    "bonus": 1,
+    "reaction": 1
+  },
+  "types": [
+    {
+      "id": "standard",
+      "name": "Ação Padrão",
+      "description": "Tudo que afeta outros: atacar, conjurar uma Vertente, ativar habilidade [ATIVA] ofensiva, conceder Poder Original.",
+      "affectsOthers": true
+    },
+    {
+      "id": "move",
+      "name": "Movimento",
+      "description": "Deslocar-se até seu Movimento, levantar, montar, mergulhar. Secundária — não afeta outros diretamente.",
+      "affectsOthers": false
+    },
+    {
+      "id": "bonus",
+      "name": "Ação Bônus",
+      "description": "Só pode ser usada quando uma habilidade, talento ou item menciona explicitamente que custa uma Ação Bônus.",
+      "affectsOthers": false
+    },
+    {
+      "id": "reaction",
+      "name": "Reação",
+      "description": "Resposta fora do seu turno, 1x por rodada. Ex: ataque de oportunidade, aparar, contra-feitiço.",
+      "affectsOthers": false
+    }
+  ],
+  "rules": [
+    "Padrão: 1 Ação Padrão + 1 Movimento + 1 Ação Bônus + 1 Reação por rodada.",
+    "Atacar e conjurar consomem 1 Ação Padrão cada.",
+    "A Ação Bônus do orçamento só pode ser gasta numa habilidade que diga 'custa Ação Bônus' — senão fica ociosa.",
+    "Builds podem conceder ações extras via modificadores (target action.standard, action.move, action.bonus, action.reaction).",
+    "Reação recarrega no início do seu próximo turno."
+  ],
+  "cooldownModel": {
+    "description": "Algumas habilidades/conjurações entram em cooldown após o uso. Cooldown é contado em RODADAS e regredido 1 por turno do personagem. Habilidades sem campo cooldown não têm recarga (limitadas só por recurso).",
+    "field": "cooldown",
+    "unit": "rodadas",
+    "notes": [
+      "cooldown: 0 ou ausente = sem recarga (só limitado por Energia/Mana/usos).",
+      "cooldown: N = indisponível por N rodadas após o uso.",
+      "Recargas por descanso ('1x por descanso longo') continuam valendo em paralelo ao cooldown."
+    ]
+  }
+}

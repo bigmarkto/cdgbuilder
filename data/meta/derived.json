@@ -98,6 +98,18 @@
       "name": "Espaços de Conjuração",
       "formula": "0 + (INT x 2)",
       "notes": "Quantidade de magias que o personagem sabe/pode ter preparadas. Escala com Intelecto."
+    },
+    {
+      "id": "INFLUENCIA",
+      "name": "Influência",
+      "formula": "10 + PRE",
+      "notes": "Balanceamento 1.4: DT base da presença social. Quem tenta resistir à sua persuasão/intimidação/liderança parte deste valor. Dá à PRE um papel fora de conjuração, espelhando a Percepção Passiva (10 + PER). PROVISÓRIO — renomeie/retune à vontade."
+    },
+    {
+      "id": "ENGENHOCAS",
+      "name": "Engenhocas Ativas",
+      "formula": "ENG",
+      "notes": "Balanceamento 1.4: número de dispositivos/engenhocas que o personagem mantém ativos ao mesmo tempo. Dá à ENG um papel fora de conjuração, espelhando a Capacidade de Grimório (INT). PROVISÓRIO — o aprofundamento vem por conteúdo (talentos/itens que consomem Engenhocas)."
     }
   ]
 }

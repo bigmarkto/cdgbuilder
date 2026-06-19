@@ -19,8 +19,18 @@ import { TraumaTracker } from './TraumaTracker';
 import { SizeInfo } from './SizeInfo';
 import { RulesReferencePanel } from './RulesReferencePanel';
 import { ActiveConditionsTracker } from './ActiveConditionsTracker';
+import { CombatTracker } from './CombatTracker';
+import type { VertenteSystem } from './BuilderApp';
 
-export function SheetView({ ctx, vertentes = [] }: { ctx: DataContext; vertentes?: Vertente[] }) {
+export function SheetView({
+  ctx,
+  vertentes = [],
+  vertenteSystem = null
+}: {
+  ctx: DataContext;
+  vertentes?: Vertente[];
+  vertenteSystem?: VertenteSystem | null;
+}) {
   // Evita mismatch SSR/CSR: o store só hidrata no cliente.
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => setHydrated(true), []);
@@ -128,6 +138,12 @@ export function SheetView({ ctx, vertentes = [] }: { ctx: DataContext; vertentes
         </div>
       )}
 
+      {ctx.rules?.acoes && (
+        <div className="mb-4 print:hidden">
+          <CombatTracker ctx={ctx} vertentes={vertentes} vertenteSystem={vertenteSystem} />
+        </div>
+      )}
+
       <div className="mb-4 print:hidden">
         <RulesReferencePanel ctx={ctx} />
       </div>
@@ -198,6 +214,8 @@ export function SheetView({ ctx, vertentes = [] }: { ctx: DataContext; vertentes
             <Stat label="Mana Magitech" value={d.MANA_MAGITECH} />
             <Stat label="Grimório" value={d.GRIMORIO} />
             <Stat label="Esp. Conjuração" value={d.ESPACOS_CONJURACAO} />
+            <Stat label="Influência" value={d.INFLUENCIA} />
+            <Stat label="Engenhocas" value={d.ENGENHOCAS} />
           </ul>
         </Section>
 

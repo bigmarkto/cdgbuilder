@@ -47,6 +47,11 @@ export interface VertenteSystem {
   }>;
   caps?: Record<string, { max: number | null; requirement?: string }>;
   costFormula?: string;
+  /** Balanceamento 1.1: regras de conjuração não-treinada (sobretaxa + DT de controle). */
+  untrainedCasting?: {
+    trainedThreshold?: number;
+    manaSurchargeByIntensity?: Record<string, number>;
+  };
 }
 
 export function BuilderApp({

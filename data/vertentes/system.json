@@ -48,6 +48,25 @@
     { "id": "devastador", "name": "Devastador", "dice": "4d12", "buffValue": 8, "debuffValue": -8, "controlDT": 22, "costModifier": 3 }
   ],
   "costFormula": "Custo = Forma(costModifier) + Alcance(costModifier) + Intensidade(costModifier). O Efeito não tem custo.",
+  "untrainedCasting": {
+    "id": "conjuracao-nao-treinada",
+    "name": "Conjuração Não-Treinada",
+    "description": "Conjurar uma Vertente sem proficiência (Rank 0 / Nenhum) é possível, mas a Energia Cósmica resiste a quem não a conhece: custa mais e exige um teste de controle pra sair certo. Treinar a Vertente (Rank 1+) remove a sobretaxa e o teste.",
+    "trainedThreshold": 1,
+    "manaSurchargeByIntensity": {
+      "leve": 1,
+      "moderado": 2,
+      "forte": 3,
+      "devastador": 4
+    },
+    "controlTest": {
+      "formula": "d20 + AtributoGovernante + BônusRank vs DT de Controle",
+      "dtSource": "intensity.controlDT",
+      "note": "A DT é a controlDT da própria Intensidade (10/14/18/22). Rank 0 (Nenhum) já aplica -4 no teste pelo bônus de rank, então não há penalidade adicional empilhada."
+    },
+    "onFailure": "A conjuração falha (fizzle). A Energia (já com a sobretaxa) é gasta mesmo assim.",
+    "onCriticalFailure": "1 natural: a energia reflui. Sofre 1 dado da Intensidade como dano e ganha +1 de Trauma."
+  },
   "caps": {
     "normal": { "max": 4, "requirement": "1 vertente" },
     "dupla": { "max": 5, "requirement": "2 vertentes (Rank 2+ cada)" },

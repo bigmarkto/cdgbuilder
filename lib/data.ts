@@ -123,6 +123,8 @@ export function loadRulesBundle(): {
   trauma: Record<string, unknown> | null;
   fall: Record<string, unknown> | null;
   sizes: Record<string, unknown> | null;
+  acoes: Record<string, unknown> | null;
+  combate: Record<string, unknown> | null;
 } {
   return {
     degrees: loadEntity<Record<string, unknown>>('rules', 'graus-de-sucesso'),
@@ -130,6 +132,9 @@ export function loadRulesBundle(): {
     cover: loadEntity<Record<string, unknown>>('rules', 'cobertura'),
     trauma: loadEntity<Record<string, unknown>>('rules', 'trauma'),
     fall: loadEntity<Record<string, unknown>>('rules', 'dano-de-queda'),
-    sizes: loadEntity<Record<string, unknown>>('rules', 'tamanhos')
+    sizes: loadEntity<Record<string, unknown>>('rules', 'tamanhos'),
+    // Balanceamento 1.2 / 1.4 — economia de ações e modelo de combate.
+    acoes: loadEntity<Record<string, unknown>>('rules', 'acoes'),
+    combate: loadEntity<Record<string, unknown>>('rules', 'combate')
   };
 }

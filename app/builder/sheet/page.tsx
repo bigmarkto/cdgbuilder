@@ -8,12 +8,16 @@ import {
   loadRulesBundle,
   loadSystem,
   loadTrees,
-  loadVertentes
+  loadVertentes,
+  loadVertenteSystem
 } from '@/lib/data';
 import { SheetView } from '@/components/builder/SheetView';
+import type { VertenteSystem } from '@/components/builder/BuilderApp';
 import type { DataContext, ProgressionTable } from '@/engine/context';
 import type { LevelGrantsTable } from '@/engine/levelup';
 import type {
+  ActionsTable,
+  CombatTable,
   ConditionsTable,
   CoverTable,
   DegreesOfSuccessTable,
@@ -35,6 +39,7 @@ export default function SheetPage() {
   const levelGrants = loadLevelGrants() as LevelGrantsTable | null;
   const trees = loadTrees();
   const vertentes = loadVertentes();
+  const vertenteSystem = loadVertenteSystem() as VertenteSystem | null;
   const rulesRaw = loadRulesBundle();
   const rules: RulesBundle = {
     ...(rulesRaw.degrees ? { degrees: rulesRaw.degrees as unknown as DegreesOfSuccessTable } : {}),
@@ -42,7 +47,9 @@ export default function SheetPage() {
     ...(rulesRaw.cover ? { cover: rulesRaw.cover as unknown as CoverTable } : {}),
     ...(rulesRaw.trauma ? { trauma: rulesRaw.trauma as unknown as TraumaTable } : {}),
     ...(rulesRaw.fall ? { fall: rulesRaw.fall as unknown as FallTable } : {}),
-    ...(rulesRaw.sizes ? { sizes: rulesRaw.sizes as unknown as SizesTable } : {})
+    ...(rulesRaw.sizes ? { sizes: rulesRaw.sizes as unknown as SizesTable } : {}),
+    ...(rulesRaw.acoes ? { acoes: rulesRaw.acoes as unknown as ActionsTable } : {}),
+    ...(rulesRaw.combate ? { combate: rulesRaw.combate as unknown as CombatTable } : {})
   };
 
   if (!system || !derived || !creation || !proficiencies) {
@@ -66,5 +73,5 @@ export default function SheetPage() {
     ...(vertentes.length > 0 ? { vertentes } : {}),
     ...(Object.keys(rules).length > 0 ? { rules } : {})
   };
-  return <SheetView ctx={ctx} vertentes={vertentes} />;
+  return <SheetView ctx={ctx} vertentes={vertentes} vertenteSystem={vertenteSystem} />;
 }

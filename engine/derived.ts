@@ -30,6 +30,10 @@ export interface DerivedValues {
   PER_PASSIVA: number;
   GRIMORIO: number;
   ESPACOS_CONJURACAO: number;
+  /** Balanceamento 1.4: DT base de presença social (persuasão/intimidação/liderança partem daqui). Dá à PRE um papel não-caster, espelhando PER_PASSIVA. */
+  INFLUENCIA: number;
+  /** Balanceamento 1.4: nº de engenhocas/dispositivos que você mantém ativos ao mesmo tempo. Dá à ENG um papel não-caster, espelhando GRIMORIO. */
+  ENGENHOCAS: number;
   hitDie: string | null;
   /** Mods que moldaram os números finais — por target. Útil para tooltips. */
   contributors?: Partial<Record<keyof DerivedValues, EffectModifier[]>>;
@@ -73,6 +77,8 @@ export function computeDerived(ctx: DataContext, character: Character): DerivedV
     PER_PASSIVA: R('PER_PASSIVA', 10 + A('PER')),
     GRIMORIO: R('GRIMORIO', A('INT')),
     ESPACOS_CONJURACAO: R('ESPACOS_CONJURACAO', A('INT') * 2),
+    INFLUENCIA: R('INFLUENCIA', 10 + A('PRE')),
+    ENGENHOCAS: R('ENGENHOCAS', A('ENG')),
     hitDie: racialHitDie(race),
     contributors
   };

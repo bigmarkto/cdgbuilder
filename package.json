@@ -17,7 +17,8 @@
     "db:studio": "prisma studio",
     "db:seed": "prisma db seed",
     "db:promote": "tsx prisma/promote.ts",
-    "db:backfill-search": "tsx prisma/backfillSearchText.ts"
+    "db:backfill-search": "tsx prisma/backfillSearchText.ts",
+    "db:heartbeat": "tsx prisma/heartbeat.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

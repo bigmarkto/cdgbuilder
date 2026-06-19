@@ -1,0 +1,75 @@
+{
+  "id": "modelo-de-combate",
+  "name": "Modelo de Ataque e Dano",
+  "source": "CDG_Combate (proposta de balanceamento 1.4)",
+  "description": "Unifica como ataque e dano são calculados. Acerto usa o teste padrão do sistema (d20 + Atributo + Bônus de Rank vs DP do alvo). O dano é o dado da arma/efeito mais um modificador de atributo, escalado por um fator por categoria — é o que dá a POT e a AGI um papel claro em combate.",
+  "toHitFormula": "d20 + Atributo + BônusRank vs DP do alvo",
+  "damageFormula": "dadoDaArma + floor(Atributo x damageFactor)",
+  "categories": [
+    {
+      "id": "corpo",
+      "name": "Corpo-a-corpo",
+      "toHitAttr": "POT",
+      "damageAttr": "POT",
+      "damageFactor": 1,
+      "defaultProficiency": "luta-armada",
+      "description": "Armas brancas pesadas, contundentes, lâminas largas. Força bruta entra no acerto e no dano."
+    },
+    {
+      "id": "desarmado",
+      "name": "Desarmado",
+      "toHitAttr": "POT",
+      "damageAttr": "POT",
+      "damageFactor": 1,
+      "defaultProficiency": "luta-desarmada",
+      "baseDamage": "1d4",
+      "description": "Punhos, chutes, agarrões. Base 1d4 (1d6 com talento Pancada)."
+    },
+    {
+      "id": "acuidade",
+      "name": "Acuidade",
+      "toHitAttr": "AGI",
+      "damageAttr": "AGI",
+      "damageFactor": 1,
+      "defaultProficiency": "luta-armada",
+      "description": "Armas leves e de precisão (adagas, rapieiras, florete). Usa AGI no lugar de POT — vantagem pra builds ágeis."
+    },
+    {
+      "id": "distancia",
+      "name": "À distância",
+      "toHitAttr": "AGI",
+      "damageAttr": "AGI",
+      "damageFactor": 0.5,
+      "defaultProficiency": "atirar",
+      "description": "Arcos, bestas, armas de fogo. AGI entra pela metade no dano — compensa a segurança de atacar de longe."
+    },
+    {
+      "id": "arremesso",
+      "name": "Arremesso",
+      "toHitAttr": "POT",
+      "damageAttr": "POT",
+      "damageFactor": 1,
+      "defaultProficiency": "arremesso",
+      "description": "Lanças, machadinhas, facas de arremesso. Força define alcance e impacto."
+    },
+    {
+      "id": "conjuracao",
+      "name": "Conjuração",
+      "toHitAttr": null,
+      "damageAttr": null,
+      "damageFactor": 0,
+      "defaultProficiency": null,
+      "description": "Dano vem da Intensidade da conjuração (1d6/2d8/3d10/4d12). O atributo governante entra no acerto, não no dano. Ver vertentes/system.json e engine/casting."
+    }
+  ],
+  "critRule": {
+    "natural20": "Acerto crítico: role os dados de dano duas vezes (não dobra o modificador de atributo).",
+    "natural1": "Erro automático, independente do bônus."
+  },
+  "notes": [
+    "Dano = dado da arma + floor(Atributo do dano x damageFactor).",
+    "À distância usa metade do AGI no dano de propósito (balanceamento risco/recompensa).",
+    "Acuidade existe pra builds de AGI não ficarem dependentes de POT.",
+    "Modificadores de build aplicam nos targets combat.toHit.<cat> e combat.damage.<cat>."
+  ]
+}

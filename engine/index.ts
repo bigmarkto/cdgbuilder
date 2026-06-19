@@ -9,3 +9,6 @@ export * from './xp';
 export * from './effects';
 export * from './trees';
 export * from './modifiers';
+export * from './actions';
+export * from './combat';
+export * from './casting';

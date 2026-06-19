@@ -14,6 +14,8 @@ import { PrintSheetView } from '@/components/builder/PrintSheetView';
 import type { DataContext, ProgressionTable } from '@/engine/context';
 import type { LevelGrantsTable } from '@/engine/levelup';
 import type {
+  ActionsTable,
+  CombatTable,
   ConditionsTable,
   CoverTable,
   DegreesOfSuccessTable,
@@ -42,7 +44,9 @@ export default function SheetPrintPage() {
     ...(rulesRaw.cover ? { cover: rulesRaw.cover as unknown as CoverTable } : {}),
     ...(rulesRaw.trauma ? { trauma: rulesRaw.trauma as unknown as TraumaTable } : {}),
     ...(rulesRaw.fall ? { fall: rulesRaw.fall as unknown as FallTable } : {}),
-    ...(rulesRaw.sizes ? { sizes: rulesRaw.sizes as unknown as SizesTable } : {})
+    ...(rulesRaw.sizes ? { sizes: rulesRaw.sizes as unknown as SizesTable } : {}),
+    ...(rulesRaw.acoes ? { acoes: rulesRaw.acoes as unknown as ActionsTable } : {}),
+    ...(rulesRaw.combate ? { combate: rulesRaw.combate as unknown as CombatTable } : {})
   };
 
   if (!system || !derived || !creation || !proficiencies) {
