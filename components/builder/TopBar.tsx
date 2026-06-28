@@ -117,6 +117,12 @@ export function TopBar({ ctx, steps }: { ctx: DataContext; steps: StepStatus[] }
         >
           Ficha
         </Link>
+        <Link
+          href="/builder/comparar"
+          className="px-2.5 py-1 rounded border border-ink-600 text-ink-100 hover:bg-ink-800"
+        >
+          Comparar
+        </Link>
         <button onClick={handleExport} className="px-2.5 py-1 rounded border border-ink-600 text-ink-100 hover:bg-ink-800">
           Exportar
         </button>

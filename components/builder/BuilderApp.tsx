@@ -8,6 +8,7 @@ import { useBuilderStore } from '@/lib/store';
 import { StepNav } from './StepNav';
 import { LiveSidebar } from './LiveSidebar';
 import { TopBar } from './TopBar';
+import { TutorialGuide } from './TutorialGuide';
 import { StepConceito } from './steps/StepConceito';
 import { StepRaca } from './steps/StepRaca';
 import { StepAtributos } from './steps/StepAtributos';
@@ -71,6 +72,7 @@ export function BuilderApp({
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
       <TopBar ctx={ctx} steps={steps} />
+      <TutorialGuide steps={steps} />
       <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr_280px] gap-6 mt-4">
         <StepNav steps={steps} />
         <main className="min-w-0">
