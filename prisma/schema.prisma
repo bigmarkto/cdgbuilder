@@ -48,6 +48,11 @@ enum RevisionStatus {
   HIDDEN      // moderação
 }
 
+enum SharedKind {
+  SHARE       // ficha compartilhada por link (vivo — sincroniza com o builder do autor)
+  TEMPLATE    // build publicada na biblioteca de templates
+}
+
 // ---------------------------------------------------------------------------
 // Auth.js (NextAuth v5) — tabelas exigidas pelo PrismaAdapter
 // ---------------------------------------------------------------------------
@@ -120,6 +125,7 @@ model User {
   uploads       FileUpload[]
   comments      Comment[]
   auditEntries  AuditLog[]
+  sharedCharacters SharedCharacter[]
 
   @@index([role])
 }
@@ -269,4 +275,59 @@ model AuditLog {
   @@index([actorId, createdAt])
   @@index([entityType, entityId])
   @@index([action, createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// SharedCharacter — fichas do builder publicadas (Categoria 2: features de site)
+//
+// O builder guarda fichas no localStorage (lib/store.ts). Este model é a ponte
+// pro mundo: quando o autor compartilha (SHARE) ou publica um template
+// (TEMPLATE), o JSON completo do Character vai pra cá.
+//
+//   • SHARE  — link "vivo": o builder do autor re-sincroniza `data` a cada
+//     edição (debounce). O leitor sempre vê a versão mais recente.
+//   • TEMPLATE — build curada pra outros começarem. `featured` é marcado por
+//     admin/mod. Não sincroniza ao vivo (é um ponto de partida estável).
+//
+// Campos denormalizados (name/raceId/level) evitam desserializar o JSON inteiro
+// nas listagens e nas estatísticas agregadas (2.6).
+// ---------------------------------------------------------------------------
+
+model SharedCharacter {
+  id        String     @id @default(cuid())   // slug público do link
+  kind      SharedKind @default(SHARE)
+
+  authorId  String
+  author    User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  // Id estável da ficha no localStorage do autor (Character.id). Garante que o
+  // mesmo personagem mapeie sempre pra mesma row (upsert do link vivo).
+  localId   String
+
+  // Denormalizado pra listagem/stats sem ler o JSON.
+  name      String
+  raceId    String?
+  level     Int        @default(1)
+  concept   String?
+
+  // Snapshot completo do Character (engine/character.ts → JSON).
+  data      Json
+
+  // Template: metadados de descoberta + curadoria.
+  summary   String?    @db.Text
+  tags      String[]   @default([])
+  featured  Boolean    @default(false)
+
+  // Moderação (reusa o padrão do wiki).
+  hiddenAt     DateTime?
+  hiddenReason String?
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  // Um SHARE e um TEMPLATE por ficha por autor (idempotência do upsert).
+  @@unique([authorId, localId, kind])
+  @@index([kind, featured, updatedAt])
+  @@index([authorId])
+  @@index([raceId])
 }

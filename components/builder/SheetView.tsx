@@ -20,6 +20,7 @@ import { SizeInfo } from './SizeInfo';
 import { RulesReferencePanel } from './RulesReferencePanel';
 import { ActiveConditionsTracker } from './ActiveConditionsTracker';
 import { CombatTracker } from './CombatTracker';
+import { ShareControls } from './ShareControls';
 import type { VertenteSystem } from './BuilderApp';
 
 export function SheetView({
@@ -143,6 +144,10 @@ export function SheetView({
           <CombatTracker ctx={ctx} vertentes={vertentes} vertenteSystem={vertenteSystem} />
         </div>
       )}
+
+      <div className="mb-4 print:hidden">
+        <ShareControls />
+      </div>
 
       <div className="mb-4 print:hidden">
         <RulesReferencePanel ctx={ctx} />
