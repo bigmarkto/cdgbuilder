@@ -9,7 +9,7 @@
 //
 // Bump CACHE_VERSION a cada deploy pra invalidar.
 
-const CACHE_VERSION = 'cdg-v2';
+const CACHE_VERSION = 'cdg-v3';
 const STATIC_CACHE = `cdg-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `cdg-runtime-${CACHE_VERSION}`;
 
@@ -17,7 +17,7 @@ const RUNTIME_CACHE = `cdg-runtime-${CACHE_VERSION}`;
 // rendered igual pra todo mundo (mesmo logado, o body principal não muda).
 // NUNCA incluir rotas que mostram dados de session, mesmo que indiretamente.
 const ANON_NAV_PREFIXES = ['/wiki', '/builder'];
-const ANON_NAV_EXACT = new Set(['/', '/login', '/login/check-email']);
+const ANON_NAV_EXACT = new Set(['/', '/login']);
 
 // Rotas explicitamente off-limits pro cache de navegação. Mesmo que algum
 // dia ANON_NAV_PREFIXES seja ampliado, essas continuam barradas.

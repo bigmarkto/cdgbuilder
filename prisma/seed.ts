@@ -3,7 +3,7 @@
  * a Fase 2 sem esperar o editor. Idempotente: usa upsert pelo slug.
  *
  * Rodar:   npx prisma db seed
- * Requer:  um User já existente (criado via magic-link). O seed pega o
+ * Requer:  um User já existente (criado via login com Discord). O seed pega o
  *          primeiro User encontrado como "autor de exemplo".
  *
  * O que cria:
@@ -207,7 +207,7 @@ async function main() {
   });
   if (!author) {
     console.error(
-      '[seed] Nenhum User encontrado. Faça login pelo menos 1x (magic-link) antes de rodar o seed.'
+      '[seed] Nenhum User encontrado. Faça login pelo menos 1x (Discord) antes de rodar o seed.'
     );
     process.exit(1);
   }

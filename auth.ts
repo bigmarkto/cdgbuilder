@@ -1,9 +1,12 @@
 /**
  * Auth.js v5 (NextAuth beta) — configuração root.
  *
- * Fluxo: magic-link por email (passwordless). O provider Resend envia um
- * link de verificação; ao clicar, o Auth.js cria/reencontra o User via
+ * Fluxo: login social OAuth (Discord). Um clique, sem email, sem senha — o
+ * provider devolve o perfil, o Auth.js cria/reencontra o User via
  * PrismaAdapter e emite uma sessão persistida em Session (strategy "database").
+ *
+ * Credenciais via env: AUTH_DISCORD_ID + AUTH_DISCORD_SECRET (registradas em
+ * discord.com/developers → OAuth2). Sem essas vars o provider fica inativo.
  *
  * Por que database session e não JWT:
  *   • Permite invalidar sessão server-side (ban, logout remoto) sem esperar
@@ -14,24 +17,25 @@
  * via SQL ou admin panel (Fase 6).
  */
 import NextAuth from 'next-auth';
-import Resend from 'next-auth/providers/resend';
+import Discord from 'next-auth/providers/discord';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { db } from '@/lib/db';
-
-const FROM = process.env.EMAIL_FROM ?? 'onboarding@resend.dev';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(db),
   session: { strategy: 'database' },
   trustHost: true,
   pages: {
-    signIn: '/login',
-    verifyRequest: '/login/check-email'
+    signIn: '/login'
   },
   providers: [
-    Resend({
-      apiKey: process.env.RESEND_API_KEY,
-      from: FROM
+    Discord({
+      clientId: process.env.AUTH_DISCORD_ID,
+      clientSecret: process.env.AUTH_DISCORD_SECRET,
+      // Vincula automaticamente ao User existente que tenha o mesmo email
+      // (ex: contas antigas de magic-link). Seguro aqui porque o Discord só
+      // entrega emails verificados.
+      allowDangerousEmailAccountLinking: true
     })
   ],
   callbacks: {
