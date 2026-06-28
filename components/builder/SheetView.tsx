@@ -21,6 +21,7 @@ import { RulesReferencePanel } from './RulesReferencePanel';
 import { ActiveConditionsTracker } from './ActiveConditionsTracker';
 import { CombatTracker } from './CombatTracker';
 import { ShareControls } from './ShareControls';
+import { TemplateControls } from './TemplateControls';
 import type { VertenteSystem } from './BuilderApp';
 
 export function SheetView({
@@ -145,8 +146,9 @@ export function SheetView({
         </div>
       )}
 
-      <div className="mb-4 print:hidden">
+      <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-3 print:hidden">
         <ShareControls />
+        <TemplateControls />
       </div>
 
       <div className="mb-4 print:hidden">

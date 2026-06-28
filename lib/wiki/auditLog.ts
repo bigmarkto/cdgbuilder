@@ -37,7 +37,11 @@ export const AUDIT_ACTIONS = {
   // Usuários
   USER_BAN: 'USER_BAN',
   USER_UNBAN: 'USER_UNBAN',
-  USER_ROLE_CHANGE: 'USER_ROLE_CHANGE'
+  USER_ROLE_CHANGE: 'USER_ROLE_CHANGE',
+  // Templates (biblioteca de builds)
+  TEMPLATE_FEATURE: 'TEMPLATE_FEATURE',
+  TEMPLATE_UNFEATURE: 'TEMPLATE_UNFEATURE',
+  TEMPLATE_HIDE: 'TEMPLATE_HIDE'
 } as const;
 
 export type AuditAction = (typeof AUDIT_ACTIONS)[keyof typeof AUDIT_ACTIONS];
@@ -182,6 +186,12 @@ export function describeAction(action: string): string {
       return 'Desbaniu usuário';
     case AUDIT_ACTIONS.USER_ROLE_CHANGE:
       return 'Alterou papel';
+    case AUDIT_ACTIONS.TEMPLATE_FEATURE:
+      return 'Destacou template';
+    case AUDIT_ACTIONS.TEMPLATE_UNFEATURE:
+      return 'Removeu destaque do template';
+    case AUDIT_ACTIONS.TEMPLATE_HIDE:
+      return 'Ocultou template';
     default:
       return action;
   }

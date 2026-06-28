@@ -12,6 +12,8 @@ export function Header() {
           <NavLink href="/">Início</NavLink>
           <NavLink href="/wiki">Wiki</NavLink>
           <NavLink href="/builder">Ficha</NavLink>
+          <NavLink href="/templates">Templates</NavLink>
+          <NavLink href="/stats">Stats</NavLink>
           <span className="w-px h-5 bg-ink-700 mx-2" aria-hidden />
           <UserMenu />
         </nav>

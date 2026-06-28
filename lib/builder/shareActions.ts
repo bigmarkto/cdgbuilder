@@ -21,6 +21,7 @@
 import { revalidatePath } from 'next/cache';
 import { db } from '@/lib/db';
 import { getCurrentMember } from '@/lib/wiki/permissions';
+import { extractCharacterMeta as extractMeta } from './meta';
 
 export type ShareResult =
   | { ok: true; slug: string }
@@ -29,56 +30,6 @@ export type ShareResult =
 export type ShareStatusResult =
   | { ok: true; loggedIn: boolean; shared: boolean; slug: string | null }
   | { ok: false; error: string };
-
-// Teto defensivo: o Character serializado é pequeno (<50KB típico). 400KB
-// cobre fichas gigantes com folga e barra payloads abusivos.
-const MAX_DATA_BYTES = 400 * 1024;
-const MAX_LEVEL = 12;
-
-interface ExtractedMeta {
-  localId: string;
-  name: string;
-  raceId: string | null;
-  level: number;
-  concept: string | null;
-}
-
-/**
- * Valida o payload do Character vindo do cliente e extrai os campos
- * denormalizados. Não confia na estrutura — só no que conseguir provar.
- */
-function extractMeta(data: unknown, localId: string): ExtractedMeta | { error: string } {
-  if (!data || typeof data !== 'object') {
-    return { error: 'Ficha inválida.' };
-  }
-  // Tamanho: serializa uma vez e mede.
-  let serialized: string;
-  try {
-    serialized = JSON.stringify(data);
-  } catch {
-    return { error: 'Ficha não serializável.' };
-  }
-  if (serialized.length > MAX_DATA_BYTES) {
-    return { error: 'Ficha grande demais para compartilhar.' };
-  }
-
-  const c = data as Record<string, unknown>;
-  if (typeof c.id !== 'string' || c.id !== localId) {
-    return { error: 'Identificador da ficha não confere.' };
-  }
-
-  const name =
-    typeof c.name === 'string' && c.name.trim() ? c.name.trim().slice(0, 120) : 'Sem nome';
-  const raceId = typeof c.raceId === 'string' && c.raceId ? c.raceId : null;
-  const levelRaw = typeof c.level === 'number' ? Math.floor(c.level) : 1;
-  const level = Math.max(1, Math.min(MAX_LEVEL, levelRaw));
-  const concept =
-    typeof c.concept === 'string' && c.concept.trim()
-      ? c.concept.trim().slice(0, 240)
-      : null;
-
-  return { localId, name, raceId, level, concept };
-}
 
 async function requireLogin() {
   const member = await getCurrentMember();
